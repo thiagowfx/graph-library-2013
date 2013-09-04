@@ -13,7 +13,7 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
-
+	printf("gdcs\n");
     return 0;
 }
 

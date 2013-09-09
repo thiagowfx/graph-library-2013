@@ -13,7 +13,8 @@ using namespace std;
 
 int main() {
   // call to tests
-
+  graph g(10);
+  g.generate_info();
 
   return 0;
 }

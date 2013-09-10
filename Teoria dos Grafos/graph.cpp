@@ -1,6 +1,7 @@
 #include "graph.h"
 
 graph::graph() {
+  //[!!!]
 }
 
 // graph::graph(string s) {
@@ -10,7 +11,6 @@ void graph::read_graph(char* filename) {
   
   ifstream input_file;
   string line;
-
   int u, v;
   
   input_file.open(filename);
@@ -37,10 +37,10 @@ void graph::read_graph(char* filename) {
   
 }
 
-void graph::generate_info() {
+void graph::generate_info(char* filename) {
   
     ofstream output_file;
-    output_file.open("output.txt");
+    output_file.open(filename);
 
     // número de nós
     output_file << "# n = " << n << endl;
@@ -49,11 +49,9 @@ void graph::generate_info() {
     output_file << "# m = " << m << endl;
 
     // grau médio
-    // [!!!] temp cout.setprecision(1);
     output_file << "# d_medio = " << setprecision(1) << average_degree() << endl;
 
     // distribuição empírica
-    // [!!!] all cout.setprecision(1);
     for (int i = 1; i <= n; ++i)
       output_file << i << " " << setprecision(1) << double( degree(i) ) / n << endl;
     
@@ -67,7 +65,6 @@ double graph::average_degree() {
 int graph::degree(int u) {
   int d = 0;
   for (int i = 1; i <= n; ++i)
-    // d+= madj[i][u]
-    d += madj[u][i];
+    d += madj[u][i]; // d+= madj[i][u]
   return d;
 }

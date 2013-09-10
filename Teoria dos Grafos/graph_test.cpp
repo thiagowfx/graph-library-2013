@@ -12,11 +12,12 @@ using namespace std;
 int main() {
   // call to tests
 
-  char filename[] = "as_graph.txt";
+  char input_file[] = "input.txt";
+  char output_file[] = "output.txt";
   
   graph g;
-  g.read_graph(filename);
-  g.generate_info();
+  g.read_graph(input_file);
+  g.generate_info(output_file);
 
   return 0;
 }

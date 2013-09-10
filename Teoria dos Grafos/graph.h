@@ -10,6 +10,7 @@
 #include <vector>
 using namespace std;
 
+// vértices começam em 1
 class graph {
 
   int n,			// número de nós
@@ -32,11 +33,11 @@ class graph {
   // retorna o grau de um nó
   int degree(int);
 
-  // lê o grafo de um arquivo. Default: input.txt
+  // lê o grafo de um arquivo
   void read_graph(char*);
   
-  // imprime informações sobre o grafo no arquivo output.txt
-  void generate_info();
+  // imprime informações sobre o grafo em um arquivo
+  void generate_info(char*);
 
   // retorna o grau médio do grafo
   double average_degree();

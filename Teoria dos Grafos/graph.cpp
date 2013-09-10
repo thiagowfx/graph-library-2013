@@ -1,16 +1,73 @@
 #include "graph.h"
 
-// classe principal
+graph::graph() {
+}
+
 // graph::graph(string s) {
-  
 // }
 
-void graph::generate_info() {
-    ofstream myfile;
-    myfile.open("output.txt");
-    // myfile << "Writing this to a file.\n";
+void graph::read_graph(char* filename) {
+  
+  ifstream input_file;
+  string line;
 
-    myfile << "Número de nós: " << n << endl;
+  int u, v;
+  
+  input_file.open(filename);
+
+  if (input_file.is_open()) {
+
+    // lê o número de nós
+    getline(input_file, line);
+    sscanf(line.c_str(), "%d", &n);
+
+    madj = vector< vector<bool> >(n + 1, vector<bool>(n + 1, false));
+
+    // lê as arestas
+    m = 0;
+    while ( getline (input_file,line) ) {
+      ++m;
+      sscanf(line.c_str(), "%d%d", &u, &v);
+
+      madj[u][v] = madj[v][u] = true;
+    }
     
-    myfile.close();
+    input_file.close();
+  }
+  
+}
+
+void graph::generate_info() {
+  
+    ofstream output_file;
+    output_file.open("output.txt");
+
+    // número de nós
+    output_file << "# n = " << n << endl;
+
+    // número de arestas
+    output_file << "# m = " << m << endl;
+
+    // grau médio
+    // [!!!] temp cout.setprecision(1);
+    output_file << "# d_medio = " << setprecision(1) << average_degree() << endl;
+
+    // distribuição empírica
+    // [!!!] all cout.setprecision(1);
+    for (int i = 1; i <= n; ++i)
+      output_file << i << " " << setprecision(1) << double( degree(i) ) / n << endl;
+    
+    output_file.close();
+}
+
+double graph::average_degree() {
+  return 2 * m / n;
+}
+
+int graph::degree(int u) {
+  int d = 0;
+  for (int i = 1; i <= n; ++i)
+    // d+= madj[i][u]
+    d += madj[u][i];
+  return d;
 }

@@ -1,5 +1,4 @@
 #include <cstdio>
-#include <cstdlib>
 #include <iostream>
 #include "graph.h"
 using namespace std;
@@ -8,12 +7,15 @@ using namespace std;
 
 // signatures
 
-
 // tests
 
 int main() {
   // call to tests
-  graph g(10);
+
+  char filename[] = "as_graph.txt";
+  
+  graph g;
+  g.read_graph(filename);
   g.generate_info();
 
   return 0;

@@ -28,6 +28,7 @@ class graph {
   // estruturas acessórias para outros métodos dfs, bfs
   vector<bool> visited;
   vector<int> pai;
+	vector<int> componente;
 
   // depth-first search a partir do nó especificado
   void dfs(int);

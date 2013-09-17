@@ -79,7 +79,14 @@ int graph::degree(int u) {
 }
 
 void graph::dfs(int v) {
-  // [!!!]
+  // [@@@]
+	visited[v] = true;
+	componente.push_back(v);
+	int numviz = ladj[v].size();
+	// cout << v << " tem " << numviz << " vizinhos" << endl;
+	for (int u = 0; u < numviz; ++u)
+		if (visited[ladj[v][u]] == false)
+			dfs(ladj[v][u]);
 }
 
 void graph::dfs_wrapper(char* filename, int source) {
@@ -90,10 +97,15 @@ void graph::dfs_wrapper(char* filename, int source) {
   // [@@@] - zerar as estruturas de modo conveniente
   visited = vector<bool>(n + 1, false);
   pai = vector<int>(n + 1, -1);
+	componente.clear();
   
-  // [!!!] - chamar dfs
-  // [!!!] - imprimir a saída de modo adequado
+  // [@@@] - chamar dfs
+	dfs(source);
 
+  // [@@@] - imprimir a saída de modo adequado
+	int r = componente.size();
+	for (int i = 0; i < r; ++i)
+		output_file << componente[i] << endl;
 
   output_file.close();
 }

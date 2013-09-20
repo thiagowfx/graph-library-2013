@@ -21,6 +21,7 @@ int main(int argc, char *argv[]) {
   graph g;
   g.read_graph(input_file);
   g.dfs(1);
+  g.bfs(1);
   
   g.generate_info(output_file);
 

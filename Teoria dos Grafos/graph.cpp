@@ -66,16 +66,28 @@ void graph::generate_info(char* filename) {
   for (i = 1; i <= n; ++i)
     output_file << i << " " << setprecision(1) << double( degree(i) ) / n << endl;
 
-  // DFS
+  // ---------- DFS ----------
   cout << endl;
-  cout << "Arvore da DFS" << endl;
+  output_file << "Arvore da DFS" << endl;
   for (i = 1; i <= n; ++i) {
     if (dfs_pai[i] == -1)
       output_file << "Pai de " << i << " = " << "raiz" << endl;
     else
       output_file << "Pai de " << i << " = " << dfs_pai[i] << endl;
   }
-    
+
+  // ---------- BFS ----------
+  cout << endl;
+  output_file << "Arvore da BFS" << endl;
+  for (i = 1; i <= n; ++i) {
+    if (bfs_pai[i] == -1)
+      output_file << "Pai de " << i << " = " << "raiz" << endl;
+    else
+      output_file << "Pai de " << i << " = " << bfs_pai[i] << endl;
+  }
+
+
+  
   output_file.close();
 }
 
@@ -100,15 +112,17 @@ void graph::dfs_matriz(int source) {
   while ( !dfs_stack.empty() ) {
     next = dfs_stack.top();
     dfs_stack.pop();
-    dfs_visited[next] = true;
+    visited[next] = true;
 
-    // para vizinhos
-    // empilhar caos nao tenha sido visitado e assign pai
+    // para vizinhos, empilhar caso nao tenha sido visitado e assign pai
     for (i = 1; i <= n; ++i) {
       if ( madj[next][i] == true) {
 	viz = i;
-	if ( !dfs_visited[viz] ) {
-	  printf("%d %d\n", dfs_pai[viz], next );
+	if ( !visited[viz] ) {
+	  printf("%d\n", viz);
+	  // for (i = 1; i <= n; ++i)
+	  //   cout << visited[i]  << " ";
+	  // cout << endl;
 	  dfs_pai[viz] = next;
 	  dfs_stack.push(viz);
 	}
@@ -116,6 +130,33 @@ void graph::dfs_matriz(int source) {
     }
   }
 }
+
+// matriz de adjacencia style
+void graph::bfs_matriz(int source) {
+  int next,     // no sendo analisado
+    i,
+    viz;        // vizinho
+  bfs_queue.push(source);
+  visited[source] = true;
+
+  while ( !bfs_queue.empty() ) {
+    next = bfs_queue.front();
+    bfs_queue.pop();
+
+    // para vizinhos, empilhar caso nao tenha sido visitado e assign pai
+    for (i = 1; i <= n; ++i) {
+      if ( madj[next][i] == true) {
+	viz = i;
+	if ( !visited[viz] ) {
+	  visited[next] = true;
+	  bfs_pai[viz] = next;
+	  bfs_queue.push(viz);
+	}
+      }
+    }
+  }
+}
+
 
 // void graph::dfs(int s) {
 // 	visited[s] = true;
@@ -134,9 +175,17 @@ void graph::dfs_matriz(int source) {
 
 
 void graph::dfs(int source) {
-  dfs_visited = vector<bool>(n + 1, false);
+  visited = vector<bool>(n + 1, false);
   dfs_pai = vector<int>(n + 1, -1);
   dfs_stack = stack<int>();
   
   dfs_matriz(source);
+}
+
+void graph::bfs(int source) {
+  visited = vector<bool>(n + 1, false);
+  bfs_pai = vector<int>(n + 1, -1);
+  bfs_queue = queue<int>();
+  
+  bfs_matriz(source);
 }

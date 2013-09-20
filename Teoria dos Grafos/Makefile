@@ -1,8 +1,8 @@
 graph_test: graph.cpp graph_test.cpp graph.h
 	g++ graph.cpp graph_test.cpp -o graph_test -Wall -Wextra -g
 
-test:
-	./graph_test input2.txt
+t:
+	./graph_test input3.txt
 
-view:
+v:
 	less output.txt

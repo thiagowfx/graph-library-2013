@@ -10,6 +10,7 @@
 #include <iostream>
 #include <fstream>
 #include <list>
+#include <queue>
 #include <string>
 #include <vector>
 #include <stack>
@@ -24,11 +25,18 @@ class graph {
   vector< vector<bool> > madj;	// matriz de adjacência: true = conectado
   vector< vector<int> > ladj;	// lista de adjacência
 
+  // ---------- operar no grafo ----------
+  vector<bool> visited;
+
   // ---------- DFS ----------
-  vector<bool> dfs_visited;
   vector<int> dfs_pai;
   stack<int> dfs_stack;
   void dfs_matriz(int);
+
+  // ---------- BFS ----------
+  vector<int> bfs_pai;
+  queue<int> bfs_queue;
+  void bfs_matriz(int);
   
  public:
 
@@ -52,6 +60,9 @@ class graph {
 
   // depth-first search a partir do no especificado
   void dfs(int);
+
+  // breadth-first search a partir do no especificado
+  void bfs(int);
 };
 
 #endif

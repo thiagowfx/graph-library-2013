@@ -12,53 +12,46 @@
 #include <list>
 #include <string>
 #include <vector>
+#include <stack>
 using namespace std;
 
-// vértices começam em 1
+// ATENÇAO -- vértices começam em 1
 class graph {
 
-  // estruturas básicas para o grafo
-  
+  // ---------- estrutura do grafo ---------- 
   int n,			// número de nós
     m;				// número de arestas
-  
   vector< vector<bool> > madj;	// matriz de adjacência: true = conectado
   vector< vector<int> > ladj;	// lista de adjacência
 
-  // estruturas acessórias para outros métodos dfs, bfs
-  vector<bool> visited;
-  vector<int> pai;
-	vector<int> componente;
-
-  // depth-first search a partir do nó especificado
-  void dfs(int);
-
+  // ---------- DFS ----------
+  vector<bool> dfs_visited;
+  vector<int> dfs_pai;
+  stack<int> dfs_stack;
+  void dfs_matriz(int);
+  
  public:
 
-  // construtor vazio
   // [@@@]
   graph();
   
-  // lê o grafo a partir de um arquivo
+  // le grafo a partir de um arquivo
   graph(string);
 
-  // retorna o grau de um nó
-  // via matriz de adjacência -- O(n)
+  // retorna grau do no via matriz de adjacência -- O(n)
   int degree(int);
 
-  // lê o grafo de um arquivo
+  // lê grafo de um arquivo
   void read_graph(char*);
   
   // imprime informações sobre o grafo em um arquivo
   void generate_info(char*);
 
-  // retorna o grau médio do grafo
-  // O(1)
+  // retorna o grau médio do grafo - O(1)
   double average_degree();
 
-  // depth-first search a partir de um nó, com info para o arquivo especificado
-  void dfs_wrapper(char*, int);
- 
+  // depth-first search a partir do no especificado
+  void dfs(int);
 };
 
 #endif

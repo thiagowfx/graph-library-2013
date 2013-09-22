@@ -65,34 +65,47 @@ void graph::generate_info(const char* filename) {
 
   output_file << "# n = " << n << endl;
   output_file << "# m = " << m << endl;
-  output_file << "# d_medio = " << setprecision(1) << average_degree() << endl;
+  output_file << setprecision(1) << fixed;
+  output_file << "# d_medio = " << average_degree() << endl;
 
+  output_file << setprecision(2) << fixed;
   for (i = 1; i <= n; ++i)   // distribuição empírica
-    output_file << i << " " << setprecision(2) << double( degree(i) ) / n << endl;
-
-  // ---------- DFS ----------
-  /*output_file << endl;
-    output_file << "Arvore da DFS" << endl;
-    for (i = 1; i <= n; ++i) {
-    if (dfs_pai[i] == -1)
-    output_file << "Pai de " << i << " = " << "raiz" << endl;
-    else
-    output_file << "Pai de " << i << " = " << dfs_pai[i] << endl;
-    }*/
-
-  // ---------- BFS ----------
-  /*output_file << endl;
-    output_file << "Arvore da BFS" << endl;
-    for (i = 1; i <= n; ++i) {
-    if (bfs_pai[i] == -1)
-    output_file << "Pai de " << i << " = " << "raiz" << endl;
-    else
-    output_file << "Pai de " << i << " = " << bfs_pai[i] << endl;
-    }*/
+    output_file << i << " " << double( degree(i) ) / n << endl;
 
   output_file.close();
 }
 
+void graph::generate_more_info(const char* filename) {
+  ofstream output_file;
+  unsigned i;
+  
+  if ( !strcmp(filename,"") )
+    output_file.open(DEFAULT_OUTPUT_FILE);
+  else
+    output_file.open(filename);
+
+  // ---------- DFS ----------
+  output_file << "Árvore da DFS" << endl;
+  for (i = 1; i <= n; ++i) {
+    output_file << "Pai de   " << i << " = " << dfs_pai[i] << endl;
+    output_file << "Level de " << i << " = " << dfs_level[i] << endl;
+  }
+
+  // ---------- BFS ----------
+  output_file << "Árvore da BFS" << endl;
+  for (i = 1; i <= n; ++i) {
+    output_file << "Pai de   " << i << " = " << bfs_pai[i] << endl;
+    output_file << "Level de " << i << " = " << bfs_level[i] << endl;
+  }
+
+  output_file.close();
+}
+
+/*
+ * se n = 0 por definição a resposta é zero
+ * senão, somar todos os graus e dividir por n
+ *
+ */
 double graph::average_degree() {
   return n == 0 ? 0 : 2 * double(m) / n;
 }
@@ -136,6 +149,7 @@ void graph::dfs_matriz(unsigned source) {
 	if ( madj[next][i] == true) {
 	  viz = i;
 	  if ( !visited[viz] ) {
+	    dfs_level[viz] = dfs_level[next] + 1;
 	    dfs_pai[viz] = next;
 	    dfs_stack.push(viz);
 	  }
@@ -163,6 +177,7 @@ void graph::dfs_lista(unsigned source) {
       for (i = 0; i < ladj[next].size(); ++i) {
 	viz = ladj[next][i];
 	if ( !visited[viz] ) {
+	  dfs_level[viz] = dfs_level[next] + 1;
 	  dfs_pai[viz] = next;
 	  dfs_stack.push(viz);
 	}
@@ -189,6 +204,7 @@ void graph::bfs_matriz(unsigned source) {
 	if ( !visited[viz] ) {
 	  visited[next] = true;
 	  bfs_pai[viz] = next;
+	  bfs_level[viz] = bfs_level[next] + 1;
 	  bfs_queue.push(viz);
 	}
       }
@@ -213,6 +229,7 @@ void graph::bfs_lista(unsigned source) {
       if ( !visited[viz] ) {
 	visited[next] = true;
 	bfs_pai[viz] = next;
+	bfs_level[viz] = bfs_level[next] + 1;
 	bfs_queue.push(viz);
       }
     }
@@ -236,23 +253,29 @@ void graph::bfs_lista(unsigned source) {
 
 void graph::dfs_clear() {
   visited = vector<bool>(n + 1, false);
-  dfs_pai = vector<unsigned>(n + 1, -1);
+  dfs_pai = vector<int>(n + 1, -1);
+  dfs_level = vector<int>(n + 1, -1);
   dfs_stack = stack<unsigned>();
 }
 
 void graph::dfs(unsigned source) {
   dfs_clear();
+  dfs_pai[source] = source;
+  dfs_level[source] = 0;
   dfs_matriz(source);
 }
 
 void graph::bfs_clear() {
   visited = vector<bool>(n + 1, false);
-  bfs_pai = vector<unsigned>(n + 1, -1);
+  bfs_pai = vector<int>(n + 1, -1);
+  bfs_level = vector<int>(n + 1, -1);
   bfs_queue = queue<unsigned>();
 }
 
 void graph::bfs(unsigned source) {
   bfs_clear();
+  bfs_pai[source] = source;
+  bfs_level[source] = 0;
   bfs_matriz(source);
 }
 

@@ -4,8 +4,9 @@ graph_test: graph.cpp graph_test.cpp graph.h
 	g++ $^ -o $@ $(CPPFLAGS)
 
 test:
+	make
 	./graph_test
-	rm tmp.txt
 
-view:
-	less output.txt
+clean:
+	rm tmp.txt
+	rm output.exp

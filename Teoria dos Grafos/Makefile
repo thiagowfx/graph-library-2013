@@ -1,8 +1,11 @@
+CPPFLAGS = -Wall -Wextra -g
+
 graph_test: graph.cpp graph_test.cpp graph.h
-	g++ graph.cpp graph_test.cpp -o graph_test -Wall -Wextra -g
+	g++ $^ -o $@ $(CPPFLAGS)
 
-t:
+test:
 	./graph_test input3.txt
+	[[ -e tmp_file.txt ]] && rm tmp_file.txt
 
-v:
+view:
 	less output.txt

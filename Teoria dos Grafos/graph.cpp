@@ -1,13 +1,10 @@
 #include "graph.h"
 
 graph::graph() {
-  //[!!!]
+  n = m = 0;
 }
 
-// graph::graph(string s) {
-// }
-
-void graph::read_graph(char* filename) {
+void graph::read_graph(const char* filename) {
   
   ifstream input_file;
   string line;
@@ -46,20 +43,15 @@ void graph::read_graph(char* filename) {
   
 }
 
-void graph::generate_info(char* filename) {
+void graph::generate_info(const char* filename) {
 
   int i;
     
   ofstream output_file;
   output_file.open(filename);
 
-  // número de nós
   output_file << "# n = " << n << endl;
-
-  // número de arestas
   output_file << "# m = " << m << endl;
-
-  // grau médio
   output_file << "# d_medio = " << setprecision(1) << average_degree() << endl;
 
   // distribuição empírica
@@ -67,7 +59,7 @@ void graph::generate_info(char* filename) {
     output_file << i << " " << setprecision(1) << double( degree(i) ) / n << endl;
 
   // ---------- DFS ----------
-  cout << endl;
+  output_file << endl;
   output_file << "Arvore da DFS" << endl;
   for (i = 1; i <= n; ++i) {
     if (dfs_pai[i] == -1)
@@ -77,7 +69,7 @@ void graph::generate_info(char* filename) {
   }
 
   // ---------- BFS ----------
-  cout << endl;
+  output_file << endl;
   output_file << "Arvore da BFS" << endl;
   for (i = 1; i <= n; ++i) {
     if (bfs_pai[i] == -1)
@@ -86,13 +78,12 @@ void graph::generate_info(char* filename) {
       output_file << "Pai de " << i << " = " << bfs_pai[i] << endl;
   }
 
-
-  
   output_file.close();
 }
 
+// grau médio
 double graph::average_degree() {
-  return 2 * m / n;
+  return n == 0 ? 0 : 2 * m / n;
 }
 
 int graph::degree(int u) {
@@ -119,7 +110,7 @@ void graph::dfs_matriz(int source) {
       if ( madj[next][i] == true) {
 	viz = i;
 	if ( !visited[viz] ) {
-	  printf("%d\n", viz);
+	  // printf("%d\n", viz);
 	  // for (i = 1; i <= n; ++i)
 	  //   cout << visited[i]  << " ";
 	  // cout << endl;
@@ -188,4 +179,12 @@ void graph::bfs(int source) {
   bfs_queue = queue<int>();
   
   bfs_matriz(source);
+}
+
+void graph::debug() {
+  cout << "# n = " << n << endl;
+  cout << "# m = " << m << endl;
+  cout << "# d_medio = " << average_degree() << endl;
+  
+  
 }

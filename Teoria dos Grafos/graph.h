@@ -1,6 +1,5 @@
 // [!!!] wishlist --> para implementar
-// [@@@] gambiarra ou stub ou implementação temporária --> para modificar, melhorar depois
-
+// [@@@] gambiarra, stub ou temporário --> para modificar
 #ifndef GRAPH_H
 #define GRAPH_H
 
@@ -16,8 +15,11 @@
 #include <stack>
 using namespace std;
 
-// ATENÇAO -- vértices começam em 1
 class graph {
+  /*
+   * Vértices começam em 1
+   * Matriz de adjacência e Vetor de adjacência disponíveis
+   */
 
   // ---------- estrutura do grafo ---------- 
   int n,			// número de nós
@@ -31,38 +33,31 @@ class graph {
   // ---------- DFS ----------
   vector<int> dfs_pai;
   stack<int> dfs_stack;
-  void dfs_matriz(int);
+  void dfs_matriz(int node);
 
   // ---------- BFS ----------
   vector<int> bfs_pai;
   queue<int> bfs_queue;
-  void bfs_matriz(int);
+  void bfs_matriz(int node);
   
  public:
 
-  // [@@@]
-  graph();
+  graph();                  // grafo vazio
+  graph(string input_file); // grafo a partir de arquivo
   
-  // le grafo a partir de um arquivo
-  graph(string);
+  // ---------- getters ----------
+  int get_n() { return n; }
+  int get_m() { return m; }
+  const vector<int>& get_dfs_pai() { return dfs_pai; }
+  const vector<int>& get_bfs_pai() { return bfs_pai; }
 
-  // retorna grau do no via matriz de adjacência -- O(n)
-  int degree(int);
-
-  // lê grafo de um arquivo
-  void read_graph(char*);
-  
-  // imprime informações sobre o grafo em um arquivo
-  void generate_info(char*);
-
-  // retorna o grau médio do grafo - O(1)
-  double average_degree();
-
-  // depth-first search a partir do no especificado
-  void dfs(int);
-
-  // breadth-first search a partir do no especificado
-  void bfs(int);
+  int degree(int node);                        // retorna grau do no via matriz de adjacência -- O(n)
+  double average_degree();                     // retorna o grau médio do grafo -- O(1)
+  void read_graph(const char* input_file);     // lê grafo de um arquivo
+  void generate_info(const char* output_file); // imprime informações sobre o grafo em um arquivo
+  void dfs(int node);
+  void bfs(int node);
+  void debug();                                // imprime informações para debug
 };
 
 #endif

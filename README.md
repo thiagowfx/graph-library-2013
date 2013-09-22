@@ -1,3 +1,7 @@
 # README
 
-This is my README.
+Biblioteca de grafos em C++.
+
+* [!!!] wishlist
+* [@@@] stub
+* alt: implementação alternativa

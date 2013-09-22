@@ -1,11 +1,11 @@
+#include "graph.h"
 #include <cassert>
 #include <cstdio>
 #include <iostream>
 #include <cstring>
-#include "graph.h"
 using namespace std;
 
-const char tmp_file[] = "tmp_file.txt";
+const char tmp_file[] = "tmp.txt";
 const char output_file[] = "output.txt";
 char input_file[50] = "input.txt";
 
@@ -15,6 +15,7 @@ void test_zero() {
   assert( g.get_n() == 0 );
   assert( g.get_m() == 0 );
   assert( g.average_degree() == 0);
+  assert( g.get_number_of_components() == 0 );  
 }
 
 // apenas um nó
@@ -30,6 +31,7 @@ void test_one() {
   assert( g.get_m() == 0);
   assert( g.average_degree() == 0);
   assert( g.degree(1) == 0);
+  assert( g.get_number_of_components() == 1 );
 }
 
 // apenas uma aresta
@@ -54,6 +56,7 @@ void test_two() {
   assert( g.get_bfs_pai()[2] == 1); 
   g.bfs(2);
   assert( g.get_bfs_pai()[1] == 2);
+  assert( g.get_number_of_components() == 1 );
 }
 
 /*   1--2--3
@@ -103,6 +106,7 @@ void test_three() {
   assert( g.get_bfs_pai()[5] == 4);
   g.bfs(5);
   assert( g.get_bfs_pai()[4] == 5);
+  assert( g.get_number_of_components() == 2 );
 }
 
 /*
@@ -143,6 +147,7 @@ void test_four() {
   assert( g.get_bfs_pai()[5] == 3);
   assert( g.get_bfs_pai()[6] == 4);
   assert( g.get_bfs_pai()[7] == 5);
+  assert( g.get_number_of_components() == 1 );
 }
 
 /*
@@ -181,6 +186,7 @@ void test_five() {
   assert( g.get_bfs_pai()[3] == 1);
   assert( g.get_bfs_pai()[4] == 1);
   assert( g.get_bfs_pai()[5] == 4); // [@@@] (2?)
+  assert( g.get_number_of_components() == 1 );
 }
 
 void call_tests() {

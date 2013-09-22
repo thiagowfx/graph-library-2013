@@ -59,31 +59,31 @@ void graph::generate_info(const char* filename) {
     output_file << i << " " << setprecision(1) << double( degree(i) ) / n << endl;
 
   // ---------- DFS ----------
-  output_file << endl;
+  /*output_file << endl;
   output_file << "Arvore da DFS" << endl;
   for (i = 1; i <= n; ++i) {
     if (dfs_pai[i] == -1)
       output_file << "Pai de " << i << " = " << "raiz" << endl;
     else
       output_file << "Pai de " << i << " = " << dfs_pai[i] << endl;
-  }
+  }*/
 
   // ---------- BFS ----------
-  output_file << endl;
+  /*output_file << endl;
   output_file << "Arvore da BFS" << endl;
   for (i = 1; i <= n; ++i) {
     if (bfs_pai[i] == -1)
       output_file << "Pai de " << i << " = " << "raiz" << endl;
     else
       output_file << "Pai de " << i << " = " << bfs_pai[i] << endl;
-  }
+  }*/
 
   output_file.close();
 }
 
 // grau médio
 double graph::average_degree() {
-  return n == 0 ? 0 : 2 * m / n;
+  return n == 0 ? 0 : 2 * double(m) / n;
 }
 
 int graph::degree(int u) {
@@ -103,20 +103,24 @@ void graph::dfs_matriz(int source) {
   while ( !dfs_stack.empty() ) {
     next = dfs_stack.top();
     dfs_stack.pop();
-    visited[next] = true;
+    
+    if ( !visited[next] ) {
+      visited[next] = true;
 
-    // para vizinhos, empilhar caso nao tenha sido visitado e assign pai
-    for (i = 1; i <= n; ++i) {
-      if ( madj[next][i] == true) {
-	viz = i;
-	if ( !visited[viz] ) {
-	  // printf("%d\n", viz);
-	  // for (i = 1; i <= n; ++i)
-	  //   cout << visited[i]  << " ";
-	  // cout << endl;
-	  dfs_pai[viz] = next;
-	  dfs_stack.push(viz);
+      // para vizinhos, empilhar caso nao tenha sido visitado e assign pai
+      for (i = 1; i <= n; ++i) {
+	if ( madj[next][i] == true) {
+	  viz = i;
+	  //dfs_stack.push(viz);
+	  if ( !visited[viz] ) {
+	    // printf("%d\n", viz);
+	    // for (i = 1; i <= n; ++i)
+	    //   cout << visited[i]  << " ";
+	    // cout << endl;
+	    dfs_pai[viz] = next;
+	    dfs_stack.push(viz);
 	}
+      }
       }
     }
   }
@@ -185,6 +189,33 @@ void graph::debug() {
   cout << "# n = " << n << endl;
   cout << "# m = " << m << endl;
   cout << "# d_medio = " << average_degree() << endl;
+  cout << endl;
   
+  cout << "Matriz de adjacência" << endl;
+  cout << "   ";
+  for (int i = 1; i <= n; ++i)
+    cout << i << " ";
+  cout << endl;
+  cout << "  ";
+  for (int i = 1; i <= n; ++i)
+    cout << "--";
+  cout << endl;
+  for (int i = 1; i <= n; ++i) {
+    cout << i << ": ";
+    for (int j = 1; j <= n; ++j) {
+      printf("%d ", madj[i][j] ? 1 : 0) ;
+    }
+    puts("");
+  }
   
+  puts("");
+  
+  cout << "Vetor de adjacência" << endl;
+  for (int i = 1; i <= n; ++i) {
+    cout << i << ": ";
+    for (unsigned int j = 0; j < ladj[i].size(); ++j) {
+      cout << ladj[i][j] << " ";
+    }
+    cout << endl;
+  }
 }

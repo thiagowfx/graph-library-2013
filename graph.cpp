@@ -448,15 +448,16 @@ void graph::gera_componentes(const char* filename) {
     if ( !visited[i] )
       dfs_matriz(i);
  	
-	sort(const vector<set<int> >::iterator vetor_componentes.begin(),const vector<set<int> >::iterator vetor_componentes.end(), setcompare);	
+	//sort(const vector<set<int> >::iterator vetor_componentes.begin(),const vector<set<int> >::iterator vetor_componentes.end(), setcompare);	
 	
 	int s = (int) vetor_componentes.size();
 	for (int i = 0; i < s; ++i) {
-		output_file << "Componente " << i << " - tamanho " << vetor_componentes[i].size() << endl;
+		output_file << "Componente " << i+1 << " - tamanho " << vetor_componentes[i].size() << endl;
 		for (std::set<int>::iterator it=vetor_componentes[i].begin(); it != vetor_componentes[i].end(); ++it)
-    	std::cout << ' ' << *it;
-		cout << '\n';
+    	output_file << ' ' << *it;
+		output_file << '\n';
 	}
+	output_file.close();
 }
 
 /* [@@@] Parece ser meio ruim passar um conjunto inteiro como parâmetro, como melhorar? */

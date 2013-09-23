@@ -306,6 +306,8 @@ void test_six() {
 
 	assert( g.get_number_of_components() == 3);
 
+	g.gera_componentes("");
+
 	//assert(1 == 0);
 }
 

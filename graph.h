@@ -12,6 +12,7 @@
 #include <string>
 #include <vector>
 #include <stack>
+#include <set>
 using namespace std; //![@@@]
 
 const char DEFAULT_INPUT_FILE[] = "input.txt";
@@ -27,6 +28,7 @@ class graph {
   // ---------- estrutura base do grafo ---------- 
   unsigned n,			// número de nós
     m;				// número de arestas
+	char representacao;
   vector< vector<bool> > madj;	// matriz de adjacência: true = conectado
   vector< vector<unsigned> > ladj;	// lista de adjacência
 
@@ -34,6 +36,9 @@ class graph {
   vector<bool> visited;
   bool components_calculated;
   unsigned number_of_components;
+	set<int> componente_conexa;
+	vector< set<int> > vetor_componentes;
+ 	bool setcompare(const set<int> A, const set<int> B);
 
   // ---------- DFS ----------
   vector<int> dfs_pai;
@@ -53,6 +58,7 @@ class graph {
 
   // ---------- Outras funções ---------- 
   void calculate_components();
+	//void imprime_componente();
   unsigned degree_matriz(unsigned node); // grau do nó -- O(n)
   unsigned degree_lista(unsigned node);  // grau do nó -- O(1)
   
@@ -76,9 +82,12 @@ class graph {
   void bfs(unsigned node);
   void debug();			// imprime informações para debug
   
-  void read_graph(const char* input_file);     // lê grafo de um arquivo
+  void read_graph(const char* input_file, const char f='d');     // lê grafo de um arquivo
   void generate_info(const char* output_file); // imprime informações sobre o grafo em um arquivo
   void generate_more_info(const char* output_file);
+	void gera_bfstree(const char* filename);
+	void gera_dfstree(const char* filename);
+	void gera_componentes(const char* filename);
 };
 
 #endif

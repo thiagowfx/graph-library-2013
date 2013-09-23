@@ -264,12 +264,15 @@ void test_five() {
   assert( g.degree(3) == 2);
   assert( g.degree(4) == 2);
   assert( g.degree(5) == 3);
+
   
   g.dfs(1);
   assert( g.get_dfs_pai()[2] == 5);
   assert( g.get_dfs_pai()[3] == 5);
   assert( g.get_dfs_pai()[4] == 1);
   assert( g.get_dfs_pai()[5] == 4);
+	g.gera_dfstree("");
+
   
   g.bfs(1);
   assert( g.get_bfs_pai()[2] == 1);
@@ -277,6 +280,33 @@ void test_five() {
   assert( g.get_bfs_pai()[4] == 1);
   assert( g.get_bfs_pai()[5] == 4); // [@@@] (2?)
   assert( g.get_number_of_components() == 1 );
+	//g.gera_bfstree("");
+}
+
+/* 1     4--5 
+ * | \      
+ * 2--3  6
+*/
+void test_six() {
+	ofstream os;
+	os.open(tmp_file);
+	os << "6\n1 2\n1 3\n2 3\n4 5" << endl;
+	os.close();
+
+	graph g;
+	g.read_graph(tmp_file, 'm');
+	assert( g.get_n() == 6 );
+	assert( g.get_m() == 4 );
+  assert( g.degree(1) == 2);
+  assert( g.degree(2) == 2);
+  assert( g.degree(3) == 2);
+  assert( g.degree(4) == 1);
+  assert( g.degree(5) == 1);
+	assert( g.degree(6) == 0);
+
+	assert( g.get_number_of_components() == 3);
+
+	//assert(1 == 0);
 }
 
 void call_tests() {
@@ -286,10 +316,12 @@ void call_tests() {
   test_three();
   test_four();
   test_five();
+	test_six();
 }
 
 int main(int argc, char *argv[]) {
   call_tests();
+
 
   if (argc == 1)
     return 0;

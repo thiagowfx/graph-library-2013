@@ -1,7 +1,5 @@
-Busca em Profundidade
-
-Vertice: 1, Pai: 1, Nivel: 0
-Vertice: 2, Pai: 5, Nivel: 3
-Vertice: 3, Pai: 5, Nivel: 3
-Vertice: 4, Pai: 1, Nivel: 1
-Vertice: 5, Pai: 4, Nivel: 2
+# n = 2
+# m = 1
+# d_medio = 1.0
+1 0.50
+2 0.50

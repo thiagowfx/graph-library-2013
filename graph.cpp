@@ -1,12 +1,22 @@
 #include "graph.h"
 
+/*
+ * Cria um grafo vazio, sem nós nem arestas.
+ *
+ */
 graph::graph() {
   n = m = 0;
   components_calculated = false;
+  rep = 'a';
 }
 
+/*
+ * Lê um grafo a partir de um arquivo de entrada, de acordo com a representação especificada.
+ *
+ */
 void graph::read_graph(const char* filename, const char f) {
   components_calculated = false;
+  rep = f;
   
   ifstream input_file;
   string line;
@@ -28,17 +38,15 @@ void graph::read_graph(const char* filename, const char f) {
     switch (f) {
     case 'l':
       ladj = vector< vector<unsigned> >(n + 1, vector<unsigned>());
-      representacao = f;
       break;
     case 'm':
       madj = vector< vector<bool> >(n + 1, vector<bool>(n + 1, false));
-      representacao = f;
       break;
     case 'a':
     default:
       ladj = vector< vector<unsigned> >(n + 1, vector<unsigned>());
       madj = vector< vector<bool> >(n + 1, vector<bool>(n + 1, false));
-      representacao = 'a';
+      rep = 'a';
     }
 
     // lê as arestas
@@ -49,7 +57,7 @@ void graph::read_graph(const char* filename, const char f) {
 
       // remove entradas repetidas
       if (uold != u || vold != v) {
-	switch(representacao) {
+	switch(rep) {
 	case 'm':
 	  // atualiza matriz de adjacência
 	  madj[u][v] = madj[v][u] = true;
@@ -76,6 +84,7 @@ void graph::read_graph(const char* filename, const char f) {
 
 /*
  * Gera o arquivo de saída solicitado no trabalho
+ *
  */
 void graph::generate_info(const char* filename) {
 
@@ -101,6 +110,7 @@ void graph::generate_info(const char* filename) {
 
 /*
  * Gera informações extras solicitadas no trabalho
+ *
  */
 void graph::generate_more_info(const char* filename) {
   ofstream output_file;
@@ -112,57 +122,55 @@ void graph::generate_more_info(const char* filename) {
     output_file.open(filename);
 
   // ---------- DFS ----------
-  output_file << "Árvore da DFS" << endl;
-  for (i = 1; i <= n; ++i) {
-    output_file << "Pai de   " << i << " = " << dfs_pai[i] << endl;
-    output_file << "Level de " << i << " = " << dfs_level[i] << endl;
-  }
+  output_file << "DFS" << endl;
+  output_file << "Nó -- Pai -- Level" << endl;
+  for (i = 1; i <= n; ++i)
+    output_file << i << " " << dfs_pai[i] << " " << dfs_level[i] << endl;
 
   print_dashes();
 
   // ---------- BFS ----------
-  output_file << "Árvore da BFS" << endl;
-  for (i = 1; i <= n; ++i) {
-    output_file << "Pai de   " << i << " = " << bfs_pai[i] << endl;
-    output_file << "Level de " << i << " = " << bfs_level[i] << endl;
-  }
+  output_file << "BFS" << endl;
+  output_file << "Nó -- Pai -- Level" << endl;
+  for (i = 1; i <= n; ++i)
+    output_file << i << " " << bfs_pai[i] << " " << bfs_level[i] << endl;
 
   output_file.close();
 }
 
-void graph::gera_dfstree(const char* filename) {
-  ofstream output_file;
-  unsigned i;
+// void graph::gera_dfstree(const char* filename) {
+//   ofstream output_file;
+//   unsigned i;
   
-  if ( !strcmp(filename,"") )
-    output_file.open(DEFAULT_OUTPUT_FILE);
-  else
-    output_file.open(filename);
+//   if ( !strcmp(filename,"") )
+//     output_file.open(DEFAULT_OUTPUT_FILE);
+//   else
+//     output_file.open(filename);
 
-  // ---------- DFS ----------
-  output_file << "Busca em Profundidade\n" << endl;
-  for (i = 1; i <= n; ++i) {
-    output_file << "Vertice: " << i << ", Pai: " << dfs_pai[i] << ", Nivel: " << dfs_level[i] << endl;
-  }
-  output_file.close();
-}
+//   // ---------- DFS ----------
+//   output_file << "Busca em Profundidade\n" << endl;
+//   for (i = 1; i <= n; ++i) {
+//     output_file << "Vertice: " << i << ", Pai: " << dfs_pai[i] << ", Nivel: " << dfs_level[i] << endl;
+//   }
+//   output_file.close();
+// }
 
-void graph::gera_bfstree(const char* filename) {
-  ofstream output_file;
-  unsigned i;
+// void graph::gera_bfstree(const char* filename) {
+//   ofstream output_file;
+//   unsigned i;
   
-  if ( !strcmp(filename,"") )
-    output_file.open(DEFAULT_OUTPUT_FILE);
-  else
-    output_file.open(filename);
+//   if ( !strcmp(filename,"") )
+//     output_file.open(DEFAULT_OUTPUT_FILE);
+//   else
+//     output_file.open(filename);
 
-  // ---------- BFS ----------
-  output_file << "Busca em Largura\n" << endl;
-  for (i = 1; i <= n; ++i) {
-    output_file << "Vertice: " << i << ", Pai: " << bfs_pai[i] << ", Nivel: " << bfs_level[i] << endl;
-  }
-  output_file.close();
-}
+//   // ---------- BFS ----------
+//   output_file << "Busca em Largura\n" << endl;
+//   for (i = 1; i <= n; ++i) {
+//     output_file << "Vertice: " << i << ", Pai: " << bfs_pai[i] << ", Nivel: " << bfs_level[i] << endl;
+//   }
+//   output_file.close();
+// }
 
 /*
  * se n = 0 por definição a resposta é zero
@@ -196,7 +204,7 @@ unsigned graph::degree_lista(unsigned u) {
  * Retorna o grau do nó, utilizando a melhor representação 
  */
 unsigned graph::degree(unsigned u) {
-  if (representacao == 'm')
+  if (rep == 'm')
     return degree_matriz(u);
   else
     return degree_lista(u); // default: mais eficiente
@@ -206,9 +214,7 @@ unsigned graph::degree(unsigned u) {
 
 /*
  * Função wrapper da DFS
- * Por enquanto só funciona com matriz de adjacencia 
- * testei lista e também funciona, mas por enquanto só chama
- * matriz, por conveniência
+ * Representação Especificada
  *
  */
 void graph::dfs(unsigned source) {
@@ -216,7 +222,10 @@ void graph::dfs(unsigned source) {
   dfs_pai[source] = source;
   dfs_level[source] = 0;
 
-  dfs_matriz(source); // alt: dfs_lista(source);
+  if (rep == 'm')
+    dfs_matriz(source);
+  else
+    dfs_lista(source); // mais eficiente
 }
 
 /*
@@ -299,16 +308,20 @@ void graph::dfs_lista(unsigned source) {
 
 /* ========== BUSCAS EM LARGURA ========== */
 
-/* Wrapper da BFS [@@@]	 
- * Por enquanto só funciona com matriz de adjacencia
- * testei lista e também funciona, mas por enquanto só chama
- * matriz, por conveniência */
+/*
+ * Função wrapper da BFS
+ * Representação especificada
+ *
+ */
 void graph::bfs(unsigned source) {
   bfs_clear();
   bfs_pai[source] = source;
   bfs_level[source] = 0;
-  bfs_matriz(source);
-  //bfs_lista(source);
+
+  if (rep == 'm')
+    bfs_matriz(source);
+  else
+    bfs_lista(source); // mais eficiente
 }
 
 void graph::bfs_matriz(unsigned source) {

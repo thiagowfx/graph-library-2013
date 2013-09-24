@@ -48,9 +48,9 @@ class graph {
    */
 
   // ---------- estrutura base do grafo ---------- 
-  unsigned n,			// número de nós
-    m;				// número de arestas
-  char representacao;
+  unsigned n,		       // número de nós
+    m;			       // número de arestas
+  char rep;		       // representacao
   vector< vector<bool> > madj; // matriz de adjacência: true = conectado
   vector< vector<unsigned> > ladj; // lista de adjacência
 

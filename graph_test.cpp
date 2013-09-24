@@ -327,9 +327,7 @@ void test_five() {
   assert( g.get_dfs_level()[3] == 3);
   assert( g.get_dfs_level()[4] == 1);
   assert( g.get_dfs_level()[5] == 2);
-  g.gera_dfstree("");
 
-  
   g.bfs(1);
   assert( g.get_bfs_pai()[1] == 1);
   assert( g.get_bfs_pai()[2] == 1);
@@ -343,7 +341,6 @@ void test_five() {
   assert( g.get_bfs_level()[5] == 2);
   
   assert( g.get_number_of_components() == 1 );
-  //g.gera_bfstree("");
 }
 
 /* 1     4--5 

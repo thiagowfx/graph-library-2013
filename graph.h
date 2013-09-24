@@ -3,8 +3,10 @@
 
 #include <algorithm>
 #include <cassert>
+#include <cmath>
 #include <cstdio>
 #include <cstring>
+#include <ctime>
 #include <iomanip>
 #include <iostream>
 #include <fstream>
@@ -13,19 +15,31 @@
 #include <vector>
 #include <stack>
 #include <set>
-#include <time>
 using namespace std;
 
 const char DEFAULT_INPUT_FILE[] = "input.txt";
 const char DEFAULT_OUTPUT_FILE[] = "output.txt";
 const int INVALID_NODE = -1;
 
+/* ---------- Funções Auxiliares ---------- */
+
 /*
- * Retorna a diferença positiva, em milissegundos, entre os dois clocks.
+ * Retorna a diferença positiva, em milissegundos, entre os dois clocks
+ *
  */
 inline double time_milli(clock_t& t2, clock_t& t1) {
   return 1000 * fabs (double(t2 - t1)/CLOCKS_PER_SEC );
 }
+
+/*
+ * Separador de outputs.
+ *
+ */
+inline void print_dashes() {
+  cout << endl << endl << "-------------------------" << endl << endl;
+}
+
+/* ---------- CLASSE PRINCIPAL ---------- */
 
 class graph {
   /*
@@ -64,7 +78,7 @@ class graph {
   void bfs_matriz(unsigned node);
   void bfs_lista(unsigned node);
 
-  // ---------- Outras funções ---------- 
+  // ---------- Outras !funções ---------- 
   void calculate_components();
   //void imprime_componente();
   unsigned degree_matriz(unsigned node); // grau do nó -- O(n)

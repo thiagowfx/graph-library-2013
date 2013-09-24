@@ -1,6 +1,7 @@
-Componente 1 - tamanho 3
- 1 2 3
-Componente 2 - tamanho 2
- 4 5
-Componente 3 - tamanho 1
- 6
+Busca em Profundidade
+
+Vertice: 1, Pai: 1, Nivel: 0
+Vertice: 2, Pai: 5, Nivel: 3
+Vertice: 3, Pai: 5, Nivel: 3
+Vertice: 4, Pai: 1, Nivel: 1
+Vertice: 5, Pai: 4, Nivel: 2

@@ -13,11 +13,19 @@
 #include <vector>
 #include <stack>
 #include <set>
-using namespace std; //![@@@]
+#include <time>
+using namespace std;
 
 const char DEFAULT_INPUT_FILE[] = "input.txt";
 const char DEFAULT_OUTPUT_FILE[] = "output.txt";
 const int INVALID_NODE = -1;
+
+/*
+ * Retorna a diferença positiva, em milissegundos, entre os dois clocks.
+ */
+inline double time_milli(clock_t& t2, clock_t& t1) {
+  return 1000 * fabs (double(t2 - t1)/CLOCKS_PER_SEC );
+}
 
 class graph {
   /*
@@ -28,17 +36,17 @@ class graph {
   // ---------- estrutura base do grafo ---------- 
   unsigned n,			// número de nós
     m;				// número de arestas
-	char representacao;
-  vector< vector<bool> > madj;	// matriz de adjacência: true = conectado
-  vector< vector<unsigned> > ladj;	// lista de adjacência
+  char representacao;
+  vector< vector<bool> > madj; // matriz de adjacência: true = conectado
+  vector< vector<unsigned> > ladj; // lista de adjacência
 
   // ---------- operar no grafo ----------
   vector<bool> visited;
   bool components_calculated;
   unsigned number_of_components;
-	set<int> componente_conexa;
-	vector< set<int> > vetor_componentes;
- 	bool setcompare(const set<int> A, const set<int> B);
+  set<int> componente_conexa;
+  vector< set<int> > vetor_componentes;
+  bool setcompare(const set<int> A, const set<int> B);
 
   // ---------- DFS ----------
   vector<int> dfs_pai;
@@ -58,7 +66,7 @@ class graph {
 
   // ---------- Outras funções ---------- 
   void calculate_components();
-	//void imprime_componente();
+  //void imprime_componente();
   unsigned degree_matriz(unsigned node); // grau do nó -- O(n)
   unsigned degree_lista(unsigned node);  // grau do nó -- O(1)
   
@@ -85,9 +93,9 @@ class graph {
   void read_graph(const char* input_file, const char f='d');     // lê grafo de um arquivo
   void generate_info(const char* output_file); // imprime informações sobre o grafo em um arquivo
   void generate_more_info(const char* output_file);
-	void gera_bfstree(const char* filename);
-	void gera_dfstree(const char* filename);
-	void gera_componentes(const char* filename);
+  void gera_bfstree(const char* filename);
+  void gera_dfstree(const char* filename);
+  void gera_componentes(const char* filename);
 };
 
 #endif

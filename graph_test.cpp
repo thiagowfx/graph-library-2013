@@ -196,6 +196,7 @@ void test_three() {
   assert( g.get_bfs_pai()[4] == 5);
   assert( g.get_bfs_level()[4] == 1);
   assert( g.get_bfs_level()[5] == 0);
+  
   assert( g.get_number_of_components() == 2 );
 }
 
@@ -223,20 +224,69 @@ void test_four() {
   assert( g.degree(7) == 1);
   
   g.dfs(1);
+  assert( g.get_dfs_pai()[1] == 1);
   assert( g.get_dfs_pai()[2] == 1);
   assert( g.get_dfs_pai()[3] == 1);
   assert( g.get_dfs_pai()[4] == 2);
   assert( g.get_dfs_pai()[5] == 3);
   assert( g.get_dfs_pai()[6] == 4);
   assert( g.get_dfs_pai()[7] == 5);
+  assert( g.get_dfs_level()[1] == 0);
+  assert( g.get_dfs_level()[2] == 1);
+  assert( g.get_dfs_level()[3] == 1);
+  assert( g.get_dfs_level()[4] == 2);
+  assert( g.get_dfs_level()[5] == 2);
+  assert( g.get_dfs_level()[6] == 3);
+  assert( g.get_dfs_level()[7] == 3);
+
+  g.dfs(2);
+  assert( g.get_dfs_pai()[1] == 2);
+  assert( g.get_dfs_pai()[2] == 2);
+  assert( g.get_dfs_pai()[3] == 1);
+  assert( g.get_dfs_pai()[4] == 2);
+  assert( g.get_dfs_pai()[5] == 3);
+  assert( g.get_dfs_pai()[6] == 4);
+  assert( g.get_dfs_pai()[7] == 5);
+  assert( g.get_dfs_level()[1] == 1);
+  assert( g.get_dfs_level()[2] == 0);
+  assert( g.get_dfs_level()[3] == 2);
+  assert( g.get_dfs_level()[4] == 1);
+  assert( g.get_dfs_level()[5] == 3);
+  assert( g.get_dfs_level()[6] == 2);
+  assert( g.get_dfs_level()[7] == 4);
   
   g.bfs(1);
+  assert( g.get_bfs_pai()[1] == 1);
   assert( g.get_bfs_pai()[2] == 1);
   assert( g.get_bfs_pai()[3] == 1);
   assert( g.get_bfs_pai()[4] == 2);
   assert( g.get_bfs_pai()[5] == 3);
   assert( g.get_bfs_pai()[6] == 4);
   assert( g.get_bfs_pai()[7] == 5);
+  assert( g.get_bfs_level()[1] == 0);
+  assert( g.get_bfs_level()[2] == 1);
+  assert( g.get_bfs_level()[3] == 1);
+  assert( g.get_bfs_level()[4] == 2);
+  assert( g.get_bfs_level()[5] == 2);
+  assert( g.get_bfs_level()[6] == 3);
+  assert( g.get_bfs_level()[7] == 3);
+
+  g.bfs(2);
+  assert( g.get_bfs_pai()[1] == 2);
+  assert( g.get_bfs_pai()[2] == 2);
+  assert( g.get_bfs_pai()[3] == 1);
+  assert( g.get_bfs_pai()[4] == 2);
+  assert( g.get_bfs_pai()[5] == 3);
+  assert( g.get_bfs_pai()[6] == 4);
+  assert( g.get_bfs_pai()[7] == 5);
+  assert( g.get_bfs_level()[1] == 1);
+  assert( g.get_bfs_level()[2] == 0);
+  assert( g.get_bfs_level()[3] == 2);
+  assert( g.get_bfs_level()[4] == 1);
+  assert( g.get_bfs_level()[5] == 3);
+  assert( g.get_bfs_level()[6] == 2);
+  assert( g.get_bfs_level()[7] == 4);
+
   assert( g.get_number_of_components() == 1 );
 }
 
@@ -267,58 +317,104 @@ void test_five() {
 
   
   g.dfs(1);
+  assert( g.get_dfs_pai()[1] == 1);
   assert( g.get_dfs_pai()[2] == 5);
   assert( g.get_dfs_pai()[3] == 5);
   assert( g.get_dfs_pai()[4] == 1);
   assert( g.get_dfs_pai()[5] == 4);
-	g.gera_dfstree("");
+  assert( g.get_dfs_level()[1] == 0);
+  assert( g.get_dfs_level()[2] == 3);
+  assert( g.get_dfs_level()[3] == 3);
+  assert( g.get_dfs_level()[4] == 1);
+  assert( g.get_dfs_level()[5] == 2);
+  g.gera_dfstree("");
 
   
   g.bfs(1);
+  assert( g.get_bfs_pai()[1] == 1);
   assert( g.get_bfs_pai()[2] == 1);
   assert( g.get_bfs_pai()[3] == 1);
   assert( g.get_bfs_pai()[4] == 1);
-  assert( g.get_bfs_pai()[5] == 4); // [@@@] (2?)
+  assert( g.get_bfs_pai()[5] == 4);
+  assert( g.get_bfs_level()[1] == 0);
+  assert( g.get_bfs_level()[2] == 1);
+  assert( g.get_bfs_level()[3] == 1);
+  assert( g.get_bfs_level()[4] == 1);
+  assert( g.get_bfs_level()[5] == 2);
+  
   assert( g.get_number_of_components() == 1 );
-	//g.gera_bfstree("");
+  //g.gera_bfstree("");
 }
 
 /* 1     4--5 
  * | \      
  * 2--3  6
-*/
+ */
 void test_six() {
-	ofstream os;
-	os.open(tmp_file);
-	os << "6\n1 2\n1 3\n2 3\n4 5" << endl;
-	os.close();
+  ofstream os;
+  os.open(tmp_file);
+  os << "6\n1 2\n1 3\n2 3\n4 5" << endl;
+  os.close();
 
-	graph g;
-	g.read_graph(tmp_file, 'm');
-	assert( g.get_n() == 6 );
-	assert( g.get_m() == 4 );
+  graph g;
+  g.read_graph(tmp_file, 'm');
+  assert( g.get_n() == 6 );
+  assert( g.get_m() == 4 );
   assert( g.degree(1) == 2);
   assert( g.degree(2) == 2);
   assert( g.degree(3) == 2);
   assert( g.degree(4) == 1);
   assert( g.degree(5) == 1);
-	assert( g.degree(6) == 0);
+  assert( g.degree(6) == 0);
 
-	assert( g.get_number_of_components() == 3);
+  g.dfs(1);
+  assert( g.get_dfs_pai()[1] == 1);
+  assert( g.get_dfs_pai()[2] == 3);
+  assert( g.get_dfs_pai()[3] == 1);
+  assert( g.get_dfs_level()[1] == 0);
+  assert( g.get_dfs_level()[2] == 2);
+  assert( g.get_dfs_level()[3] == 1);
+  g.dfs(4);
+  assert( g.get_dfs_pai()[4] == 4);
+  assert( g.get_dfs_pai()[5] == 4);
+  assert( g.get_dfs_level()[4] == 0);
+  assert( g.get_dfs_level()[5] == 1);
+  g.dfs(6);
+  assert( g.get_dfs_pai()[6] == 6);
+  assert( g.get_dfs_level()[6] == 0);
 
-	g.gera_componentes("");
+  g.bfs(1);
+  assert( g.get_bfs_pai()[1] == 1);
+  assert( g.get_bfs_pai()[2] == 1);
+  assert( g.get_bfs_pai()[3] == 1);
+  assert( g.get_bfs_level()[1] == 0);
+  assert( g.get_bfs_level()[2] == 1);
+  assert( g.get_bfs_level()[3] == 1);
+  g.bfs(4);
+  assert( g.get_bfs_pai()[4] == 4);
+  assert( g.get_bfs_pai()[5] == 4);
+  assert( g.get_bfs_level()[4] == 0);
+  assert( g.get_bfs_level()[5] == 1);
+  g.bfs(6);
+  assert( g.get_bfs_pai()[6] == 6);
+  assert( g.get_bfs_level()[6] == 0);
 
-	//assert(1 == 0);
+  
+  assert( g.get_number_of_components() == 3);
+
+  g.gera_componentes("");
+
+  //assert(1 == 0);
 }
 
-void call_tests() {
+inline void call_tests() {
   test_zero();
   test_one();
   test_two();
   test_three();
   test_four();
   test_five();
-	test_six();
+  test_six();
 }
 
 int main(int argc, char *argv[]) {

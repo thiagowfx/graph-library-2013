@@ -6,6 +6,7 @@ graph::graph() {
 }
 
 void graph::read_graph(const char* filename, const char f) {
+  components_calculated = false;
   
   ifstream input_file;
   string line;
@@ -23,22 +24,22 @@ void graph::read_graph(const char* filename, const char f) {
     getline(input_file, line);
     sscanf(line.c_str(), "%d", &n);
 
-		// aloca as estruturas de dados
-		switch(f) {
-			case 'l':
-				ladj = vector< vector<unsigned> >(n + 1, vector<unsigned>());
-				representacao = f;
-				break;
-			case 'm':
-				madj = vector< vector<bool> >(n + 1, vector<bool>(n + 1, false));
-				representacao = f;
-				break;
-			case 'a':
-			default:
-				ladj = vector< vector<unsigned> >(n + 1, vector<unsigned>());
-				madj = vector< vector<bool> >(n + 1, vector<bool>(n + 1, false));
-				representacao = 'a';
-		}
+    // aloca as estruturas de dados
+    switch (f) {
+    case 'l':
+      ladj = vector< vector<unsigned> >(n + 1, vector<unsigned>());
+      representacao = f;
+      break;
+    case 'm':
+      madj = vector< vector<bool> >(n + 1, vector<bool>(n + 1, false));
+      representacao = f;
+      break;
+    case 'a':
+    default:
+      ladj = vector< vector<unsigned> >(n + 1, vector<unsigned>());
+      madj = vector< vector<bool> >(n + 1, vector<bool>(n + 1, false));
+      representacao = 'a';
+    }
 
     // lê as arestas
     m = 0;
@@ -48,21 +49,22 @@ void graph::read_graph(const char* filename, const char f) {
 
       // remove entradas repetidas
       if (uold != u || vold != v) {
-				switch(representacao) {
-					case 'm':
-						// atualiza matriz de adjacência
-						madj[u][v] = madj[v][u] = true;
-						break;
-					case 'l':
-						// atualiza lista de adjacência
-						ladj[u].push_back(v);
-						ladj[v].push_back(u);
-						break;
-					default:
-						madj[u][v] = madj[v][u] = true;
-						ladj[u].push_back(v);
-						ladj[v].push_back(u);
-				}
+	switch(representacao) {
+	case 'm':
+	  // atualiza matriz de adjacência
+	  madj[u][v] = madj[v][u] = true;
+	  break;
+	case 'l':
+	  // atualiza lista de adjacência
+	  ladj[u].push_back(v);
+	  ladj[v].push_back(u);
+	  break;
+	case 'a':
+	default:
+	  madj[u][v] = madj[v][u] = true;
+	  ladj[u].push_back(v);
+	  ladj[v].push_back(u);
+	}
       }
 
       uold = u, vold = v;
@@ -70,14 +72,14 @@ void graph::read_graph(const char* filename, const char f) {
     
     input_file.close();
   }
-
-  components_calculated = false;
 }
 
+/*
+ * Gera o arquivo de saída solicitado no trabalho
+ */
 void graph::generate_info(const char* filename) {
 
-  unsigned i;
-    
+  unsigned i; 
   ofstream output_file;
 
   if ( !strcmp(filename,"") )
@@ -97,6 +99,9 @@ void graph::generate_info(const char* filename) {
   output_file.close();
 }
 
+/*
+ * Gera informações extras solicitadas no trabalho
+ */
 void graph::generate_more_info(const char* filename) {
   ofstream output_file;
   unsigned i;
@@ -113,6 +118,8 @@ void graph::generate_more_info(const char* filename) {
     output_file << "Level de " << i << " = " << dfs_level[i] << endl;
   }
 
+  print_dashes();
+
   // ---------- BFS ----------
   output_file << "Árvore da BFS" << endl;
   for (i = 1; i <= n; ++i) {
@@ -124,7 +131,7 @@ void graph::generate_more_info(const char* filename) {
 }
 
 void graph::gera_dfstree(const char* filename) {
-	 ofstream output_file;
+  ofstream output_file;
   unsigned i;
   
   if ( !strcmp(filename,"") )
@@ -135,13 +142,13 @@ void graph::gera_dfstree(const char* filename) {
   // ---------- DFS ----------
   output_file << "Busca em Profundidade\n" << endl;
   for (i = 1; i <= n; ++i) {
-		output_file << "Vertice: " << i << ", Pai: " << dfs_pai[i] << ", Nivel: " << dfs_level[i] << endl;
+    output_file << "Vertice: " << i << ", Pai: " << dfs_pai[i] << ", Nivel: " << dfs_level[i] << endl;
   }
   output_file.close();
 }
 
 void graph::gera_bfstree(const char* filename) {
-	 ofstream output_file;
+  ofstream output_file;
   unsigned i;
   
   if ( !strcmp(filename,"") )
@@ -152,7 +159,7 @@ void graph::gera_bfstree(const char* filename) {
   // ---------- BFS ----------
   output_file << "Busca em Largura\n" << endl;
   for (i = 1; i <= n; ++i) {
-		output_file << "Vertice: " << i << ", Pai: " << bfs_pai[i] << ", Nivel: " << bfs_level[i] << endl;
+    output_file << "Vertice: " << i << ", Pai: " << bfs_pai[i] << ", Nivel: " << bfs_level[i] << endl;
   }
   output_file.close();
 }
@@ -167,6 +174,7 @@ double graph::average_degree() {
 }
 
 /*
+ * Retorna o grau do nó, utilizando matriz
  * O(n)
  */
 unsigned graph::degree_matriz(unsigned u) {
@@ -177,51 +185,64 @@ unsigned graph::degree_matriz(unsigned u) {
 }
 
 /*
+ * Retorna o grau do nó, utilizando lista
  * O(1)
  */
 unsigned graph::degree_lista(unsigned u) {
   return ladj[u].size();
 }
 
+/*
+ * Retorna o grau do nó, utilizando a melhor representação 
+ */
 unsigned graph::degree(unsigned u) {
-  if (representacao == 'm') return degree_matriz(u);
-	else return degree_lista(u); // assume que por default é usado lista
+  if (representacao == 'm')
+    return degree_matriz(u);
+  else
+    return degree_lista(u); // default: mais eficiente
 }
 
 /* ========== BUSCAS EM PROFUNDIDADE ========== */
 
-/* Wrapper da DFS [@@@]	 
+/*
+ * Função wrapper da DFS
  * Por enquanto só funciona com matriz de adjacencia 
  * testei lista e também funciona, mas por enquanto só chama
- * matriz, por conveniência */
+ * matriz, por conveniência
+ *
+ */
 void graph::dfs(unsigned source) {
   dfs_clear();
   dfs_pai[source] = source;
   dfs_level[source] = 0;
 
-  dfs_matriz(source);
-	//dfs_lista(source);
+  dfs_matriz(source); // alt: dfs_lista(source);
 }
 
-/* dfs_clear
- * limpa as estruturas usadas na dfs */
+/*
+ * Prepara a DFS para ser chamada, inicializando dados convenientemente
+ */
 void graph::dfs_clear() {
-  visited = vector<bool>(n + 1, false);
-  dfs_pai = vector<int>(n + 1, -1);
+  visited = vector<bool> (n + 1, false);
+  dfs_pai = vector<int>  (n + 1, -1);
   dfs_level = vector<int>(n + 1, -1);
   dfs_stack = stack<unsigned>();
-	/* componente_conexa.clear(); - nao vou colocar isso aqui porque 
-	 * quando calculo as componentes conexas eu chamo direto o dfs_matriz e nao o wrapper */
+  
+  /* componente_conexa.clear(); - nao vou colocar isso aqui porque 
+   * quando calculo as componentes conexas eu chamo direto o dfs_matriz e nao o wrapper */
 }
 
+/*
+ * Executa a DFS com matriz
+ */
 void graph::dfs_matriz(unsigned source) {
   unsigned next,     // nó sendo analisado
     i,
     viz;        // vizinho
   dfs_stack.push(source);
 
-	componente_conexa.clear();
-	componente_conexa.insert(source);
+  componente_conexa.clear();
+  componente_conexa.insert(source);
 
   while ( !dfs_stack.empty() ) {
     next = dfs_stack.top();
@@ -229,25 +250,27 @@ void graph::dfs_matriz(unsigned source) {
     
     if ( !visited[next] ) {
       visited[next] = true;
-			componente_conexa.insert(next);
+      componente_conexa.insert(next);
 
       // vizinhos: empilhar e a atualizar pai caso não foi visitado
       for (i = 1; i <= n; ++i) {
-				if ( madj[next][i] == true) {
-					viz = i;
-					if ( !visited[viz] ) {
-						dfs_level[viz] = dfs_level[next] + 1;
-						dfs_pai[viz] = next;
-						dfs_stack.push(viz);
-					}
-				}
+	if ( madj[next][i] == true) {
+	  viz = i;
+	  if ( !visited[viz] ) {
+	    dfs_level[viz] = dfs_level[next] + 1;
+	    dfs_pai[viz] = next;
+	    dfs_stack.push(viz);
+	  }
+	}
       }
     }
   }
-	vetor_componentes.push_back(componente_conexa);
+  vetor_componentes.push_back(componente_conexa);
 }
 
-// lista de adjacencia style
+/*
+ * Executa a DFS com lista
+ */
 void graph::dfs_lista(unsigned source) {
   unsigned next, // no sendo analisado
     i,
@@ -285,7 +308,7 @@ void graph::bfs(unsigned source) {
   bfs_pai[source] = source;
   bfs_level[source] = 0;
   bfs_matriz(source);
-	//bfs_lista(source);
+  //bfs_lista(source);
 }
 
 void graph::bfs_matriz(unsigned source) {
@@ -302,13 +325,13 @@ void graph::bfs_matriz(unsigned source) {
     // para vizinhos, empilhar caso nao tenha sido visitado e assign pai
     for (i = 1; i <= n; ++i) {
       if ( madj[next][i] == true) {
-				viz = i;
-				if ( !visited[viz] ) {
-					visited[next] = true;
-					bfs_pai[viz] = next;
-					bfs_level[viz] = bfs_level[next] + 1;
-					bfs_queue.push(viz);
-				}
+	viz = i;
+	if ( !visited[viz] ) {
+	  visited[next] = true;
+	  bfs_pai[viz] = next;
+	  bfs_level[viz] = bfs_level[next] + 1;
+	  bfs_queue.push(viz);
+	}
       }
     }
   }
@@ -338,20 +361,20 @@ void graph::bfs_lista(unsigned source) {
   }
 }
 
-
+/*
+ * Prepara a BFS para ser chamada, inicializando dados convenientemente
+ */
 void graph::bfs_clear() {
-  visited = vector<bool>(n + 1, false);
-  bfs_pai = vector<int>(n + 1, -1);
+  visited = vector<bool> (n + 1, false);
+  bfs_pai = vector<int>  (n + 1, -1);
   bfs_level = vector<int>(n + 1, -1);
   bfs_queue = queue<unsigned>();
 }
 
-
-
-void print_dashes() {
-  cout << endl << "---------------" << endl << endl;
-}
-
+/*
+ * Imprime várias informações sobre o grafo, para debugá-lo.
+ *
+ */
 void graph::debug() {
   cout << "# n = " << n << endl;
   cout << "# m = " << m << endl;
@@ -374,6 +397,7 @@ void graph::debug() {
     }
     puts("");
   }
+  
   print_dashes();
   
   cout << "Vetor de adjacência" << endl;
@@ -386,11 +410,13 @@ void graph::debug() {
   }
 }
 
-/* Calcula o numero de componentes conexas usando DFS */
+/*
+ * Calcula, através de várias DFS's, o número de componentes conexas do grafo
+ *
+ */
 void graph::calculate_components() {
   number_of_components = 0;
-  // ![@@@] BFS?
-  dfs_clear();
+  dfs_clear(); // alt: bfs
 
   for (unsigned i = 1; i <= n;  ++i) {
     if ( !visited[i] ) {
@@ -398,43 +424,30 @@ void graph::calculate_components() {
       ++number_of_components;
     }
   }
+
+  components_calculated = true;
 }
 
-/* Calcula o numero de componentes conexas usando DFS
-void graph::calculate_components() {
-  number_of_components = 0;
-  // ![@@@] BFS?
-  dfs_clear();
-
-	cout << "Componentes conexas:\n";
-
-  for (unsigned i = 1; i <= n;  ++i) {
-    if ( !visited[i] ) {
-      dfs_matriz(i);
-      ++number_of_components;
-			imprime_componente();
-    }
-  }
-	cout << '\n';
-} */
-
+/*
+ * Retorna o número de componentes conexas do grafo. O cálculo é feito somente uma única vez
+ */
 unsigned graph::get_number_of_components() {
-  if (!components_calculated)
+  if ( !components_calculated )
     calculate_components();
   return number_of_components;
 }
 
 /*
-void graph::imprime_componente(set<int> comp, ) {
-	for (std::set<int>::iterator it=comp.begin(); it != comp.end(); ++it)
-    std::cout << ' ' << *it;
-	cout << '\n';
-}
+  void graph::imprime_componente(set<int> comp, ) {
+  for (std::set<int>::iterator it=comp.begin(); it != comp.end(); ++it)
+  std::cout << ' ' << *it;
+  cout << '\n';
+  }
 */
 
 /* Imprime lista de componentes conexas usando DFS */
 void graph::gera_componentes(const char* filename) {
-	ofstream output_file;
+  ofstream output_file;
   
   if ( !strcmp(filename,"") )
     output_file.open(DEFAULT_OUTPUT_FILE);
@@ -442,26 +455,26 @@ void graph::gera_componentes(const char* filename) {
     output_file.open(filename);
 
   dfs_clear();
-	vetor_componentes.clear();
+  vetor_componentes.clear();
 
   for (unsigned i = 1; i <= n;  ++i)
     if ( !visited[i] )
       dfs_matriz(i);
  	
-	//sort(const vector<set<int> >::iterator vetor_componentes.begin(),const vector<set<int> >::iterator vetor_componentes.end(), setcompare);	
+  //sort(const vector<set<int> >::iterator vetor_componentes.begin(),const vector<set<int> >::iterator vetor_componentes.end(), setcompare);	
 	
-	int s = (int) vetor_componentes.size();
-	for (int i = 0; i < s; ++i) {
-		output_file << "Componente " << i+1 << " - tamanho " << vetor_componentes[i].size() << endl;
-		for (std::set<int>::iterator it=vetor_componentes[i].begin(); it != vetor_componentes[i].end(); ++it)
-    	output_file << ' ' << *it;
-		output_file << '\n';
-	}
-	output_file.close();
+  int s = (int) vetor_componentes.size();
+  for (int i = 0; i < s; ++i) {
+    output_file << "Componente " << i+1 << " - tamanho " << vetor_componentes[i].size() << endl;
+    for (std::set<int>::iterator it=vetor_componentes[i].begin(); it != vetor_componentes[i].end(); ++it)
+      output_file << ' ' << *it;
+    output_file << '\n';
+  }
+  output_file.close();
 }
 
 /* [@@@] Parece ser meio ruim passar um conjunto inteiro como parâmetro, como melhorar? */
 bool graph::setcompare(const set<int> A, const set<int> B) { 
-	return A.size() > B.size(); 
+  return A.size() > B.size(); 
 }
 	

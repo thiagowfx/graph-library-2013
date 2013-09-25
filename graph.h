@@ -17,14 +17,14 @@
 #include <set>
 using namespace std;
 
-const char DEFAULT_INPUT_FILE[] = "input.txt";
+const char DEFAULT_INPUT_FILE[]  = "input.txt";
 const char DEFAULT_OUTPUT_FILE[] = "output.txt";
-const int INVALID_NODE = -1;
+const int INVALID_NODE           = -1;
 
 /* ---------- Funções Auxiliares ---------- */
 
 /*
- * Retorna a diferença positiva, em milissegundos, entre os dois clocks
+ * Retorna a diferença positiva, em milissegundos, entre dois clocks
  *
  */
 inline double time_milli(clock_t& t2, clock_t& t1) {
@@ -61,26 +61,32 @@ class graph {
 	vector<unsigned> componentes_conexas;
 
   // ---------- DFS ----------
-  vector<int> dfs_pai;
-  vector<int> dfs_level;
+  vector<int> dfs_pai;		// pai na árvore geradora da DFS
+  vector<int> dfs_level;	// level na árvore geradora da DFS
   stack<unsigned> dfs_stack;
-  void dfs_clear();
+  void dfs_clear();		// preparar para realizar uma nova DFS
   void dfs_matriz(unsigned node);
+  void dfs_matriz_component(unsigned node);
   void dfs_lista(unsigned node);
+  void dfs_lista_component(unsigned node);
 
   // ---------- BFS ----------
-  vector<int> bfs_pai;
-  vector<int> bfs_level;
+  vector<int> bfs_pai;		// pai na árvore geradora da BFS
+  vector<int> bfs_level;	// level na árvore geradora da BFS
   queue<unsigned> bfs_queue;
-  void bfs_clear();
+  void bfs_clear();		// preparar para realizar uma nova BFS
   void bfs_matriz(unsigned node);
   void bfs_lista(unsigned node);
 
-  // ---------- Outras !funções ---------- 
-  void calculate_components();
-  //void imprime_componente();
-  unsigned degree_matriz(unsigned node); // grau do nó -- O(n)
-  unsigned degree_lista(unsigned node);  // grau do nó -- O(1)
+  // ---------- Componentes ----------
+  vector< vector<unsigned> > components;
+  // set<int> componente_conexa;
+  //vector< set<int> > vetor_componentes;
+  //bool setcompare(const set<int> A, const set<int> B);
+
+  // ---------- Outras funções ---------- 
+  unsigned degree_matriz(unsigned node); // grau de um nó -- O(n)
+  unsigned degree_lista(unsigned node);  // grau de um nó -- O(1)
   
  public:
 
@@ -88,26 +94,27 @@ class graph {
   graph(string input_file); // grafo a partir de arquivo
   
   // ---------- getters ----------
-  unsigned get_n() { return n; }
-  unsigned get_m() { return m; }
-  unsigned get_number_of_components();
-  const vector<int>& get_dfs_pai() { return dfs_pai; }
-  const vector<int>& get_dfs_level() { return dfs_level; }
-  const vector<int>& get_bfs_pai() { return bfs_pai; }
+  unsigned get_n() { return n; } // get número de nós
+  unsigned get_m() { return m; } // get número de arestas
+  unsigned get_number_of_components(); // get número de componentes conexas
+  unsigned get_maior_distancia(unsigned source);	       // get diâmetro do grafo
+  const vector<int>& get_dfs_pai() { return dfs_pai; } // get árvore geradora da DFS
+  const vector<int>& get_dfs_level() { return dfs_level; } 
+  const vector<int>& get_bfs_pai() { return bfs_pai; } // get árvore geradora da BFS
   const vector<int>& get_bfs_level() { return bfs_level; }
 
-  unsigned degree(unsigned node);
+  unsigned degree(unsigned node); // grau de um nó
   double average_degree();    // retorna o grau médio do grafo -- O(1)
-  void dfs(unsigned node);
-  void bfs(unsigned node);
-  void debug();			// imprime informações para debug
+  void dfs(unsigned node); // depth-first search
+  void bfs(unsigned node); // breadth-first search
+  void debug();		   // imprime informações, útil para debugar o código
   
   void read_graph(const char* input_file, const char f='a');     // lê grafo de um arquivo
   void generate_info(const char* output_file); // imprime informações sobre o grafo em um arquivo
   void generate_more_info(const char* output_file);
   void gera_bfstree(unsigned source, const char* filename);
   void gera_dfstree(unsigned source, const char* filename);
-	int maior_distancia(unsigned source);
+  void calculate_components();
 };
 
 #endif

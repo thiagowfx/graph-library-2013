@@ -1,8 +1,8 @@
 #include "graph.h"
 
-const char tmp_file[] = "tmp.txt";
-const char output_file[] = "output.txt";
-const char output_file2[] = "output2.txt";
+const char tmp_file[]        = "tmp.txt";
+const char output_file[]     = "output.txt";
+const char output_file2[]    = "output2.txt";
 const char output_expected[] = "output.exp";
 char input_file[50];
 
@@ -18,6 +18,10 @@ const char REP = 'l';
 
 const bool compare_output = true;
 
+/*
+ * Retorna true se o primeiro arquivo é igual ao segundo. 
+ *
+ */
 bool compare_files (const char* f1, const char* f2, const char* s) {
   // gerar expected
   ofstream os;
@@ -33,8 +37,7 @@ bool compare_files (const char* f1, const char* f2, const char* s) {
   
   if ( if1.is_open() && if2.is_open() ) {
     while ( getline(if1, l1) && getline(if2, l2) ) {
-      assert(l1 == l2);
-      // return false;
+      assert(l1 == l2); // alt: return false;
     }
   }
   return true;
@@ -71,6 +74,7 @@ void test_one() {
   assert( g.average_degree() == 0);
   assert( g.degree(1) == 0);
   assert( g.get_number_of_components() == 1 );
+  //assert( g.get_maior_distancia(1) == 0);
 
   if (compare_output) {
     g.generate_info(output_file);
@@ -116,6 +120,9 @@ void test_two() {
   assert( g.get_bfs_level()[1] == 1);
   assert( g.get_bfs_level()[2] == 0);
   assert( g.get_number_of_components() == 1 );
+	//g.gera_bfstree(1,"tree1.txt");
+	//g.gera_bfstree(2,"tree2.txt");
+  assert( g.get_maior_distancia(2) == 1);
 
   if (compare_output) {
     g.generate_info(output_file);
@@ -206,8 +213,8 @@ void test_three() {
   assert( g.get_bfs_pai()[4] == 5);
   assert( g.get_bfs_level()[4] == 1);
   assert( g.get_bfs_level()[5] == 0);
-  
   assert( g.get_number_of_components() == 2 );
+  assert( g.get_maior_distancia(5) == 1 );
 }
 
 /*
@@ -298,6 +305,7 @@ void test_four() {
   assert( g.get_bfs_level()[7] == 4);
 
   assert( g.get_number_of_components() == 1 );
+  assert( g.get_maior_distancia(7) == 6);
 }
 
 /*
@@ -355,6 +363,7 @@ void test_five() {
 	g.gera_bfstree(3, output_file2);
   
   assert( g.get_number_of_components() == 1 );
+  assert( g.get_maior_distancia(3) == 2);
 }
 
 /* 1     4--5 
@@ -409,10 +418,9 @@ void test_six() {
   g.bfs(6);
   assert( g.get_bfs_pai()[6] == 6);
   assert( g.get_bfs_level()[6] == 0);
-
+  
   assert( g.get_number_of_components() == 3);
-
-  //assert(1 == 0);
+  assert( g.get_maior_distancia(1) == 1);
 }
 
 inline void call_tests() {
@@ -436,8 +444,8 @@ int main(int argc, char *argv[]) {
   graph g;
   g.read_graph(input_file, REP);
   g.generate_info(output_file);
-	g.gera_dfstree(2,"dfstree.txt");
-	g.gera_bfstree(1,"bfstree.txt");
+	//g.gera_dfstree(2,"dfstree.txt");
+	//g.gera_bfstree(1,"bfstree.txt");
   // g.generate_more_info(output_file2); - da segfault por motivos
   
   return 0;

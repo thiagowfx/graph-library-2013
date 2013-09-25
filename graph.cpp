@@ -187,7 +187,6 @@ void graph::dfs(unsigned source) {
   dfs_clear();
   dfs_pai[source] = source;
   dfs_level[source] = 0;
-
   if (REP == 'm')
     dfs_matriz(source);
   else
@@ -209,11 +208,12 @@ void graph::dfs_clear() {
 
 /*
  * Executa a DFS com matriz
+ *
  */
 void graph::dfs_matriz(unsigned source) {
-  unsigned next,     // nó sendo analisado
+  unsigned next,		// nó sendo analisado
     i,
-    viz;        // vizinho
+    viz;
   dfs_stack.push(source);
 
   while ( !dfs_stack.empty() ) {
@@ -222,8 +222,6 @@ void graph::dfs_matriz(unsigned source) {
     
     if ( !visited[next] ) {
       visited[next] = true;
-
-      // vizinhos: empilhar e a atualizar pai caso não foi visitado
       for (i = 1; i <= n; ++i) {
 	if ( madj[next][i] == true) {
 	  viz = i;
@@ -239,12 +237,48 @@ void graph::dfs_matriz(unsigned source) {
 }
 
 /*
+ * Executa a DFS com matriz. Mapeia as componentes conexas.
+ *
+ */
+void graph::dfs_matriz_component(unsigned source) {
+  unsigned next,		// nó sendo analisado
+    i,
+    viz;       
+  dfs_stack.push(source);
+
+  components.push_back( vector<unsigned>() );
+  components[number_of_components].push_back(source);
+  
+  while ( !dfs_stack.empty() ) {
+    next = dfs_stack.top();
+    dfs_stack.pop();
+    
+    if ( !visited[next] ) {
+      visited[next] = true;
+
+      for (i = 1; i <= n; ++i) {
+	if ( madj[next][i] == true) {
+	  viz = i;
+	  if ( !visited[viz] ) {
+	    dfs_level[viz] = dfs_level[next] + 1;
+	    dfs_pai[viz] = next;
+	    dfs_stack.push(viz);
+	  }
+	}
+      }
+    }
+  }
+}
+
+
+/*
  * Executa a DFS com lista
+ *
  */
 void graph::dfs_lista(unsigned source) {
   unsigned next, // no sendo analisado
     i,
-    viz;        // vizinho
+    viz;     
   dfs_stack.push(source);
 
   while ( !dfs_stack.empty() ) {
@@ -254,7 +288,35 @@ void graph::dfs_lista(unsigned source) {
     if ( !visited[next] ) {
       visited[next] = true;
 
-      // vizinhos: empilhar e a atualizar pai caso não foi visitado
+      for (i = 0; i < ladj[next].size(); ++i) {
+	viz = ladj[next][i];
+	if ( !visited[viz] ) {
+	  dfs_level[viz] = dfs_level[next] + 1;
+	  dfs_pai[viz] = next;
+	  dfs_stack.push(viz);
+	}
+      }
+    }
+  }
+}
+
+/*
+ * Executa a DFS com lista. Mapeia as componentes conexas
+ *
+ */
+void graph::dfs_lista_component(unsigned source) {
+  unsigned next, // no sendo analisado
+    i,
+    viz;     
+  dfs_stack.push(source);
+
+  while ( !dfs_stack.empty() ) {
+    next = dfs_stack.top();
+    dfs_stack.pop();
+    
+    if ( !visited[next] ) {
+      visited[next] = true;
+
       for (i = 0; i < ladj[next].size(); ++i) {
 	viz = ladj[next][i];
 	if ( !visited[viz] ) {
@@ -320,6 +382,7 @@ void graph::bfs_matriz(unsigned source) {
     i,
     viz;        // vizinho
   bfs_queue.push(source);
+	//bfs_level[source] = 0; /* vou setar aqui para nao dar problema ao chamar essa funcao sem usar a wrapper */
   visited[source] = true;
 
   while ( !bfs_queue.empty() ) {
@@ -432,6 +495,9 @@ void graph::debug() {
  * default: lista
  */
 void graph::calculate_components() {
+  if (components_calculated)
+    return;
+
   number_of_components = 0;
   dfs_clear(); // alt: bfs
 
@@ -454,6 +520,19 @@ void graph::calculate_components() {
 		  }
 		}
 	}
+
+  for (unsigned i = 1; i <= n;  ++i) {
+    if ( !visited[i] ) {
+
+      if (REP == 'm')
+	dfs_matriz_component(i);
+      else
+	dfs_lista_component(i);
+      
+      ++number_of_components;
+    }
+  }
+
   components_calculated = true;
 }
 
@@ -466,8 +545,61 @@ unsigned graph::get_number_of_components() {
   return number_of_components;
 }
 
-int maior_distancia(unsigned source) {
-	bfs_lista(source);
-	sort(bfs_level.begin(),bfs_level.end());
-	return bfs_level.back;
+/*
+ * Retorna o diâmetro do grafo através dos níveis da BFS.
+ *
+ */
+unsigned graph::get_maior_distancia(unsigned source) {
+  //bfs_clear();
+  
+	bfs(source);
+
+  int ans  = 0;
+  for (unsigned i = 1; i <= n; ++i){
+    if (bfs_level[i] > ans)
+      ans = bfs_level[i];}
+
+  return ans;
 }
+
+/*
+  void graph::imprime_componente(set<int> comp, ) {
+  for (std::set<int>::iterator it=comp.begin(); it != comp.end(); ++it)
+  std::cout << ' ' << *it;
+  cout << '\n';
+  }
+*/
+
+/* Imprime lista de componentes conexas usando DFS */
+// void graph::gera_componentes(const char* filename) {
+//   ofstream output_file;
+  
+//   if ( !strcmp(filename,"") )
+//     output_file.open(DEFAULT_OUTPUT_FILE);
+//   else
+//     output_file.open(filename);
+
+//   dfs_clear();
+//   vetor_componentes.clear();
+
+//   for (unsigned i = 1; i <= n;  ++i)
+//     if ( !visited[i] )
+//       dfs_matriz(i);
+ 	
+//   //sort(const vector<set<int> >::iterator vetor_componentes.begin(),const vector<set<int> >::iterator vetor_componentes.end(), setcompare);	
+	
+//   int s = (int) vetor_componentes.size();
+//   for (int i = 0; i < s; ++i) {
+//     output_file << "Componente " << i+1 << " - tamanho " << vetor_componentes[i].size() << endl;
+//     for (std::set<int>::iterator it=vetor_componentes[i].begin(); it != vetor_componentes[i].end(); ++it)
+//       output_file << ' ' << *it;
+//     output_file << '\n';
+//   }
+//   output_file.close();
+// }
+
+/* [@@@] Parece ser meio ruim passar um conjunto inteiro como parâmetro, como melhorar? */
+// bool graph::setcompare(const set<int> A, const set<int> B) { 
+//   return A.size() > B.size(); 
+// }
+	

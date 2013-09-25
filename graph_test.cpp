@@ -469,8 +469,8 @@ int main(int argc, char *argv[]) {
     t1 = clock();
     t2 = clock();
     cout << time_milli(t2,t1) << endl;
-    cout << g.get_number_of_components() << endl;
-    //g.generate_info(output_file);
+    //cout << g.get_number_of_components() << endl;
+    g.generate_info(output_file);
     //g.gera_dfstree(2,"dfstree.txt");
     //g.gera_bfstree(1,"bfstree.txt");
     // g.generate_more_info(output_file2); - da segfault por motivos

@@ -1,19 +1,7 @@
-Árvore da DFS
-Pai de   1 = 1
-Level de 1 = 0
-Pai de   2 = 3
-Level de 2 = 8
-Pai de   3 = 4
-Level de 3 = 7
-Pai de   4 = 5
-Level de 4 = 6
-Pai de   5 = 6
-Level de 5 = 5
-Pai de   6 = 7
-Level de 6 = 4
-Pai de   7 = 8
-Level de 7 = 3
-Pai de   8 = 9
-Level de 8 = 2
-Pai de   9 = 1
-Level de 9 = 1
+Busca em Largura
+Origem: 3
+Vértice: 1, Pai: 3, Nível: 1
+Vértice: 2, Pai: 1, Nível: 2
+Vértice: 3, Pai: 3, Nível: 0
+Vértice: 4, Pai: 1, Nível: 2
+Vértice: 5, Pai: 3, Nível: 1

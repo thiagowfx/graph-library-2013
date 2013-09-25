@@ -1,5 +1,9 @@
 #include "graph.h"
 
+/*
+ * Constantes de nomes de arquivo
+ *
+ */
 const char tmp_file[]        = "tmp.txt";
 const char output_file[]     = "output.txt";
 const char output_file2[]    = "output2.txt";
@@ -10,12 +14,16 @@ char input_file[50];
  * Determina a representacao usada pelo programa (passada pelo read_graph):
  * 'm': matriz
  * 'l': lista
- * 'a'=default: ambos
+ * 'a': ambos (default)
  * Se nenhum parâmetro de repr. for fornecido ao read_graph, 
  * o default é 'a' (definido no graph.h) 
  */
 const char REP = 'l';
 
+/*
+ * Vamos comparar a saída dos testes também?
+ *
+ */
 const bool compare_output = true;
 
 /*
@@ -42,6 +50,19 @@ bool compare_files (const char* f1, const char* f2, const char* s) {
   }
   return true;
 }
+
+
+/*
+ * Protótipos de função
+ *
+ */
+void test_zero();
+void test_one();
+void test_two();
+void test_three();
+void test_four();
+void test_five();
+void test_six();
 
 // grafo vazio
 void test_zero() {
@@ -120,8 +141,8 @@ void test_two() {
   assert( g.get_bfs_level()[1] == 1);
   assert( g.get_bfs_level()[2] == 0);
   assert( g.get_number_of_components() == 1 );
-	//g.gera_bfstree(1,"tree1.txt");
-	//g.gera_bfstree(2,"tree2.txt");
+  //g.gera_bfstree(1,"tree1.txt");
+  //g.gera_bfstree(2,"tree2.txt");
   assert( g.get_maior_distancia(2) == 1);
 
   if (compare_output) {
@@ -346,7 +367,7 @@ void test_five() {
   assert( g.get_dfs_level()[4] == 1);
   assert( g.get_dfs_level()[5] == 2);
 
-	g.gera_dfstree(3, output_file);
+  g.gera_dfstree(3, output_file);
 
   g.bfs(1);
   assert( g.get_bfs_pai()[1] == 1);
@@ -360,7 +381,7 @@ void test_five() {
   assert( g.get_bfs_level()[4] == 1);
   assert( g.get_bfs_level()[5] == 2);
 
-	g.gera_bfstree(3, output_file2);
+  g.gera_bfstree(3, output_file2);
   
   assert( g.get_number_of_components() == 1 );
   assert( g.get_maior_distancia(3) == 2);
@@ -434,19 +455,20 @@ inline void call_tests() {
 }
 
 int main(int argc, char *argv[]) {
-  call_tests();
-
-  if (argc == 1)
-    return 0;
-  else if (argc == 2)
+  
+  if (argc == 1) {
+    call_tests();
+  }
+  else if (argc == 2) {
     strcpy(input_file, argv[1]);
   
-  graph g;
-  g.read_graph(input_file, REP);
-  g.generate_info(output_file);
-	//g.gera_dfstree(2,"dfstree.txt");
-	//g.gera_bfstree(1,"bfstree.txt");
-  // g.generate_more_info(output_file2); - da segfault por motivos
+    graph g;
+    g.read_graph(input_file, REP);
+    g.generate_info(output_file);
+    //g.gera_dfstree(2,"dfstree.txt");
+    //g.gera_bfstree(1,"bfstree.txt");
+    // g.generate_more_info(output_file2); - da segfault por motivos
+  }
   
   return 0;
 }

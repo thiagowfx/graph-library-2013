@@ -18,20 +18,20 @@ void graph::read_graph(const char* filename, const char r) {
   components_calculated = false;
   REP = r;
   
-  ifstream input_file;
+  ifstream is;
   string line;
   unsigned u, v;
-  unsigned uold = INVALID_NODE, vold = INVALID_NODE;
+  unsigned uold = INVALID_NODE, vold = INVALID_NODE; // para evitar entradas duplicadas na lista
 
   if ( !strcmp(filename,"") )
-    input_file.open(DEFAULT_INPUT_FILE);
+    is.open(DEFAULT_INPUT_FILE);
   else
-    input_file.open(filename);
+    is.open(filename);
 
-  if (input_file.is_open()) {
+  if (is.is_open()) {
 
     // lê o número de nós
-    getline(input_file, line);
+    getline(is, line);
     sscanf(line.c_str(), "%d", &n);
 
     // aloca as estruturas de dados
@@ -51,7 +51,7 @@ void graph::read_graph(const char* filename, const char r) {
 
     // lê as arestas
     m = 0;
-    while ( getline (input_file,line) ) {
+    while ( getline (is,line) ) {
       ++m;
       sscanf(line.c_str(), "%d%d", &u, &v);
 
@@ -78,7 +78,7 @@ void graph::read_graph(const char* filename, const char r) {
       uold = u, vold = v;
     }
     
-    input_file.close();
+    is.close();
   }
 }
 

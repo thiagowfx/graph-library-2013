@@ -243,15 +243,13 @@ void graph::dfs_clear() {
 
 /*
  * Executa a DFS com matriz
+ *
  */
 void graph::dfs_matriz(unsigned source) {
-  unsigned next,     // nó sendo analisado
+  unsigned next,		// nó sendo analisado
     i,
-    viz;        // vizinho
+    viz;
   dfs_stack.push(source);
-
-  componente_conexa.clear();
-  componente_conexa.insert(source);
 
   while ( !dfs_stack.empty() ) {
     next = dfs_stack.top();
@@ -259,9 +257,6 @@ void graph::dfs_matriz(unsigned source) {
     
     if ( !visited[next] ) {
       visited[next] = true;
-      componente_conexa.insert(next);
-
-      // vizinhos: empilhar e a atualizar pai caso não foi visitado
       for (i = 1; i <= n; ++i) {
 	if ( madj[next][i] == true) {
 	  viz = i;
@@ -274,17 +269,56 @@ void graph::dfs_matriz(unsigned source) {
       }
     }
   }
-  vetor_componentes.push_back(componente_conexa);
 }
 
 /*
+ * Executa a DFS com matriz. Mapeia as componentes conexas.
+ *
+ */
+void graph::dfs_matriz_component(unsigned source) {
+  unsigned next,		// nó sendo analisado
+    i,
+    viz;       
+  dfs_stack.push(source);
+
+  components.push_back( vector<unsigned>() );
+  components[number_of_components].push_back(source);
+  
+  while ( !dfs_stack.empty() ) {
+    next = dfs_stack.top();
+    dfs_stack.pop();
+    
+    if ( !visited[next] ) {
+      visited[next] = true;
+      components[number_of_components].push_back(next);
+
+      for (i = 1; i <= n; ++i) {
+	if ( madj[next][i] == true) {
+	  viz = i;
+	  if ( !visited[viz] ) {
+	    dfs_level[viz] = dfs_level[next] + 1;
+	    dfs_pai[viz] = next;
+	    dfs_stack.push(viz);
+	  }
+	}
+      }
+    }
+  }
+}
+
+
+/*
  * Executa a DFS com lista
+ *
  */
 void graph::dfs_lista(unsigned source) {
   unsigned next, // no sendo analisado
     i,
-    viz;        // vizinho
+    viz;     
   dfs_stack.push(source);
+  
+  components.push_back( vector<unsigned>() );
+  components[number_of_components].push_back(source);
 
   while ( !dfs_stack.empty() ) {
     next = dfs_stack.top();
@@ -292,8 +326,8 @@ void graph::dfs_lista(unsigned source) {
     
     if ( !visited[next] ) {
       visited[next] = true;
+      components[number_of_components].push_back(next);
 
-      // vizinhos: empilhar e a atualizar pai caso não foi visitado
       for (i = 0; i < ladj[next].size(); ++i) {
 	viz = ladj[next][i];
 	if ( !visited[viz] ) {
@@ -305,6 +339,36 @@ void graph::dfs_lista(unsigned source) {
     }
   }
 }
+
+/*
+ * Executa a DFS com lista. Mapeia as componentes conexas
+ *
+ */
+void graph::dfs_lista_component(unsigned source) {
+  unsigned next, // no sendo analisado
+    i,
+    viz;     
+  dfs_stack.push(source);
+
+  while ( !dfs_stack.empty() ) {
+    next = dfs_stack.top();
+    dfs_stack.pop();
+    
+    if ( !visited[next] ) {
+      visited[next] = true;
+
+      for (i = 0; i < ladj[next].size(); ++i) {
+	viz = ladj[next][i];
+	if ( !visited[viz] ) {
+	  dfs_level[viz] = dfs_level[next] + 1;
+	  dfs_pai[viz] = next;
+	  dfs_stack.push(viz);
+	}
+      }
+    }
+  }
+}
+
 
 /* ========== BUSCAS EM LARGURA ========== */
 
@@ -428,12 +492,20 @@ void graph::debug() {
  *
  */
 void graph::calculate_components() {
+  if (components_calculated)
+    return;
+
   number_of_components = 0;
   dfs_clear(); // alt: bfs
 
   for (unsigned i = 1; i <= n;  ++i) {
     if ( !visited[i] ) {
-      dfs_matriz(i);
+
+      if (rep == 'm')
+	dfs_matriz_component(i);
+      else
+	dfs_lista_component(i);
+      
       ++number_of_components;
     }
   }
@@ -442,12 +514,36 @@ void graph::calculate_components() {
 }
 
 /*
- * Retorna o número de componentes conexas do grafo. O cálculo é feito somente uma única vez
+ * Retorna o número de componentes conexas do grafo.
  */
 unsigned graph::get_number_of_components() {
   if ( !components_calculated )
     calculate_components();
   return number_of_components;
+}
+
+/*
+ * Retorna o diâmetro do grafo através dos níveis da BFS.
+ *
+ */
+unsigned graph::get_diametro() {
+  bfs_clear();
+  
+  for (unsigned i = 1; i <= n; ++i) {
+    if ( !visited[i] ) {
+      if (rep == 'm')
+	bfs_matriz(i);
+      else
+	bfs_lista(i);
+    }
+  }
+
+  int ans  = 0;
+  for (unsigned i = 1; i <= n; ++i)
+    if (bfs_level[i] > ans)
+      ans = bfs_level[i];
+
+  return ans;
 }
 
 /*
@@ -459,35 +555,35 @@ unsigned graph::get_number_of_components() {
 */
 
 /* Imprime lista de componentes conexas usando DFS */
-void graph::gera_componentes(const char* filename) {
-  ofstream output_file;
+// void graph::gera_componentes(const char* filename) {
+//   ofstream output_file;
   
-  if ( !strcmp(filename,"") )
-    output_file.open(DEFAULT_OUTPUT_FILE);
-  else
-    output_file.open(filename);
+//   if ( !strcmp(filename,"") )
+//     output_file.open(DEFAULT_OUTPUT_FILE);
+//   else
+//     output_file.open(filename);
 
-  dfs_clear();
-  vetor_componentes.clear();
+//   dfs_clear();
+//   vetor_componentes.clear();
 
-  for (unsigned i = 1; i <= n;  ++i)
-    if ( !visited[i] )
-      dfs_matriz(i);
+//   for (unsigned i = 1; i <= n;  ++i)
+//     if ( !visited[i] )
+//       dfs_matriz(i);
  	
-  //sort(const vector<set<int> >::iterator vetor_componentes.begin(),const vector<set<int> >::iterator vetor_componentes.end(), setcompare);	
+//   //sort(const vector<set<int> >::iterator vetor_componentes.begin(),const vector<set<int> >::iterator vetor_componentes.end(), setcompare);	
 	
-  int s = (int) vetor_componentes.size();
-  for (int i = 0; i < s; ++i) {
-    output_file << "Componente " << i+1 << " - tamanho " << vetor_componentes[i].size() << endl;
-    for (std::set<int>::iterator it=vetor_componentes[i].begin(); it != vetor_componentes[i].end(); ++it)
-      output_file << ' ' << *it;
-    output_file << '\n';
-  }
-  output_file.close();
-}
+//   int s = (int) vetor_componentes.size();
+//   for (int i = 0; i < s; ++i) {
+//     output_file << "Componente " << i+1 << " - tamanho " << vetor_componentes[i].size() << endl;
+//     for (std::set<int>::iterator it=vetor_componentes[i].begin(); it != vetor_componentes[i].end(); ++it)
+//       output_file << ' ' << *it;
+//     output_file << '\n';
+//   }
+//   output_file.close();
+// }
 
 /* [@@@] Parece ser meio ruim passar um conjunto inteiro como parâmetro, como melhorar? */
-bool graph::setcompare(const set<int> A, const set<int> B) { 
-  return A.size() > B.size(); 
-}
+// bool graph::setcompare(const set<int> A, const set<int> B) { 
+//   return A.size() > B.size(); 
+// }
 	

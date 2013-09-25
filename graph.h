@@ -50,7 +50,7 @@ class graph {
   // ---------- estrutura base do grafo ---------- 
   unsigned n,		       // número de nós
     m;			       // número de arestas
-  char rep;		       // representacao
+  char REP;		       // representacao
   vector< vector<bool> > madj; // matriz de adjacência: true = conectado
   vector< vector<unsigned> > ladj; // lista de adjacência
 
@@ -58,9 +58,7 @@ class graph {
   vector<bool> visited;
   bool components_calculated;
   unsigned number_of_components;
-  set<int> componente_conexa;
-  vector< set<int> > vetor_componentes;
-  bool setcompare(const set<int> A, const set<int> B);
+	vector<unsigned> componentes_conexas;
 
   // ---------- DFS ----------
   vector<int> dfs_pai;
@@ -104,12 +102,12 @@ class graph {
   void bfs(unsigned node);
   void debug();			// imprime informações para debug
   
-  void read_graph(const char* input_file, const char f='d');     // lê grafo de um arquivo
+  void read_graph(const char* input_file, const char f='a');     // lê grafo de um arquivo
   void generate_info(const char* output_file); // imprime informações sobre o grafo em um arquivo
   void generate_more_info(const char* output_file);
-  void gera_bfstree(const char* filename);
-  void gera_dfstree(const char* filename);
-  void gera_componentes(const char* filename);
+  void gera_bfstree(unsigned source, const char* filename);
+  void gera_dfstree(unsigned source, const char* filename);
+	int maior_distancia(unsigned source);
 };
 
 #endif

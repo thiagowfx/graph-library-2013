@@ -6,6 +6,16 @@ const char output_file2[] = "output2.txt";
 const char output_expected[] = "output.exp";
 char input_file[50];
 
+/* 
+ * Determina a representacao usada pelo programa (passada pelo read_graph):
+ * 'm': matriz
+ * 'l': lista
+ * 'a'=default: ambos
+ * Se nenhum parâmetro de repr. for fornecido ao read_graph, 
+ * o default é 'a' (definido no graph.h) 
+ */
+const char REP = 'l';
+
 const bool compare_output = true;
 
 bool compare_files (const char* f1, const char* f2, const char* s) {
@@ -55,7 +65,7 @@ void test_one() {
   os.close();
   
   graph g;
-  g.read_graph(tmp_file);
+  g.read_graph(tmp_file, REP);
   assert( g.get_n() == 1);
   assert( g.get_m() == 0);
   assert( g.average_degree() == 0);
@@ -79,7 +89,7 @@ void test_two() {
   os.close();
   
   graph g;
-  g.read_graph(tmp_file);
+  g.read_graph(tmp_file, REP);
   assert( g.get_n() == 2);
   assert( g.get_m() == 1);
   assert( g.average_degree() == 1);
@@ -124,7 +134,7 @@ void test_three() {
   os.close();
   
   graph g;
-  g.read_graph(tmp_file);
+  g.read_graph(tmp_file, REP);
   assert( g.get_n() == 5);
   assert( g.get_m() == 3);
   assert( g.degree(1) == 1);
@@ -212,7 +222,7 @@ void test_four() {
   os.close();
   
   graph g;
-  g.read_graph(tmp_file);
+  g.read_graph(tmp_file, REP);
   assert( g.get_n() == 7);
   assert( g.get_m() == 6);
   assert( g.degree(1) == 2);
@@ -306,7 +316,7 @@ void test_five() {
   os.close();
   
   graph g;
-  g.read_graph(tmp_file);
+  g.read_graph(tmp_file, REP);
   assert( g.get_n() == 5);
   assert( g.get_m() == 6);
   assert( g.degree(1) == 3);
@@ -328,17 +338,21 @@ void test_five() {
   assert( g.get_dfs_level()[4] == 1);
   assert( g.get_dfs_level()[5] == 2);
 
+	g.gera_dfstree(3, output_file);
+
   g.bfs(1);
   assert( g.get_bfs_pai()[1] == 1);
   assert( g.get_bfs_pai()[2] == 1);
   assert( g.get_bfs_pai()[3] == 1);
   assert( g.get_bfs_pai()[4] == 1);
-  assert( g.get_bfs_pai()[5] == 4);
+  assert( g.get_bfs_pai()[5] == 2);
   assert( g.get_bfs_level()[1] == 0);
   assert( g.get_bfs_level()[2] == 1);
   assert( g.get_bfs_level()[3] == 1);
   assert( g.get_bfs_level()[4] == 1);
   assert( g.get_bfs_level()[5] == 2);
+
+	g.gera_bfstree(3, output_file2);
   
   assert( g.get_number_of_components() == 1 );
 }
@@ -354,7 +368,7 @@ void test_six() {
   os.close();
 
   graph g;
-  g.read_graph(tmp_file, 'm');
+  g.read_graph(tmp_file, REP);
   assert( g.get_n() == 6 );
   assert( g.get_m() == 4 );
   assert( g.degree(1) == 2);
@@ -396,10 +410,7 @@ void test_six() {
   assert( g.get_bfs_pai()[6] == 6);
   assert( g.get_bfs_level()[6] == 0);
 
-  
   assert( g.get_number_of_components() == 3);
-
-  g.gera_componentes("");
 
   //assert(1 == 0);
 }
@@ -417,16 +428,17 @@ inline void call_tests() {
 int main(int argc, char *argv[]) {
   call_tests();
 
-
   if (argc == 1)
     return 0;
   else if (argc == 2)
     strcpy(input_file, argv[1]);
   
   graph g;
-  g.read_graph(input_file);
+  g.read_graph(input_file, REP);
   g.generate_info(output_file);
-  g.generate_more_info(output_file2);
+	g.gera_dfstree(2,"dfstree.txt");
+	g.gera_bfstree(1,"bfstree.txt");
+  // g.generate_more_info(output_file2); - da segfault por motivos
   
   return 0;
 }

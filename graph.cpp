@@ -176,7 +176,37 @@ unsigned graph::degree(unsigned u) {
     return degree_lista(u); // default: mais eficiente
 }
 
-/* ========== BUSCAS EM PROFUNDIDADE ========== */
+/*
+ * Gerar DFS em todos os vértices
+ *
+ */
+void graph::dfs_all() {
+  dfs_clear();
+  for (unsigned i = 1; i <= n; ++i) {
+    if (!visited[i]) {
+      if (REP == 'm')
+	dfs_matriz(i);
+      else
+	dfs_lista(i);
+    }
+  }
+}
+
+/*
+ * Gerar BFS em todos os vértices
+ *
+ */
+void graph::bfs_all() {
+  bfs_clear();
+  for (unsigned i = 1; i <= n; ++i) {
+    if (!visited[i]) {
+      if (REP == 'm')
+	bfs_matriz(i);
+      else
+	bfs_lista(i);
+    }
+  }
+}
 
 /*
  * Função wrapper da DFS
@@ -214,8 +244,10 @@ void graph::dfs_matriz(unsigned source) {
   unsigned next,		// nó sendo analisado
     i,
     viz;
+  dfs_pai[source] = source;
+  dfs_level[source] = 0;
   dfs_stack.push(source);
-
+  
   while ( !dfs_stack.empty() ) {
     next = dfs_stack.top();
     dfs_stack.pop();
@@ -243,7 +275,9 @@ void graph::dfs_matriz(unsigned source) {
 void graph::dfs_matriz_component(unsigned source) {
   unsigned next,		// nó sendo analisado
     i,
-    viz;       
+    viz;
+  dfs_pai[source] = source;
+  dfs_level[source] = 0;
   dfs_stack.push(source);
 
   components.push_back( vector<unsigned>() );
@@ -278,7 +312,9 @@ void graph::dfs_matriz_component(unsigned source) {
 void graph::dfs_lista(unsigned source) {
   unsigned next, // no sendo analisado
     i,
-    viz;     
+    viz;
+  dfs_pai[source] = source;
+  dfs_level[source] = 0;
   dfs_stack.push(source);
 
   while ( !dfs_stack.empty() ) {
@@ -307,7 +343,9 @@ void graph::dfs_lista(unsigned source) {
 void graph::dfs_lista_component(unsigned source) {
   unsigned next, // no sendo analisado
     i,
-    viz;     
+    viz;
+  dfs_pai[source] = source;
+  dfs_level[source] = 0;
   dfs_stack.push(source);
 
   while ( !dfs_stack.empty() ) {

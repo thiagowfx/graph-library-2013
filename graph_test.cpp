@@ -455,6 +455,8 @@ inline void call_tests() {
 }
 
 int main(int argc, char *argv[]) {
+
+  clock_t t1, t2;
   
   if (argc == 1) {
     call_tests();
@@ -464,7 +466,10 @@ int main(int argc, char *argv[]) {
   
     graph g;
     g.read_graph(input_file, REP);
-    g.generate_info(output_file);
+    t1 = clock();
+    t2 = clock();
+    cout << time_milli(t2,t1) << endl;
+    //g.generate_info(output_file);
     //g.gera_dfstree(2,"dfstree.txt");
     //g.gera_bfstree(1,"bfstree.txt");
     // g.generate_more_info(output_file2); - da segfault por motivos

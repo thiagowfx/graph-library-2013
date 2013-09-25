@@ -15,6 +15,7 @@
 #include <vector>
 #include <stack>
 #include <set>
+
 using namespace std;
 
 const char DEFAULT_INPUT_FILE[]  = "input.txt";
@@ -106,7 +107,9 @@ class graph {
   unsigned degree(unsigned node); // grau de um nó
   double average_degree();    // retorna o grau médio do grafo -- O(1)
   void dfs(unsigned node); // depth-first search
+  void dfs_all();	   // DFS em todos os vértices
   void bfs(unsigned node); // breadth-first search
+  void bfs_all();	   // BFS em todos os vértices
   void debug();		   // imprime informações, útil para debugar o código
   
   void read_graph(const char* input_file, const char f='a');     // lê grafo de um arquivo

@@ -289,6 +289,7 @@ void graph::dfs_matriz_component(unsigned source) {
     
     if ( !visited[next] ) {
       visited[next] = true;
+      components[number_of_components].push_back(next);
 
       for (i = 1; i <= n; ++i) {
 	if ( madj[next][i] == true) {
@@ -348,12 +349,16 @@ void graph::dfs_lista_component(unsigned source) {
   dfs_level[source] = 0;
   dfs_stack.push(source);
 
+  components.push_back( vector<unsigned>() );
+  components[number_of_components].push_back(source);
+
   while ( !dfs_stack.empty() ) {
     next = dfs_stack.top();
     dfs_stack.pop();
     
     if ( !visited[next] ) {
       visited[next] = true;
+      components[number_of_components].push_back(next);
 
       for (i = 0; i < ladj[next].size(); ++i) {
 	viz = ladj[next][i];
@@ -376,18 +381,16 @@ void graph::gera_dfstree(unsigned source, const char* filename) {
   else
     os.open(filename);
 
-	dfs(source);
+  dfs(source);
 
   // ---------- DFS ----------
   os << "Busca em Profundidade" << endl;
-	os << "Origem: " << source << endl;
+  os << "Origem: " << source << endl;
   for (i = 1; i <= n; ++i) {
     os << "Vertice: " << i << ", Pai: " << dfs_pai[i] << ", Nivel: " << dfs_level[i] << endl;
   }
   os.close();
 }
-
-/* ========== BUSCAS EM LARGURA ========== */
 
 /*
  * Função wrapper da BFS
@@ -418,22 +421,22 @@ void graph::bfs_clear() {
 void graph::bfs_matriz(unsigned source) {
   unsigned next,     // no sendo analisado
     i,
-    viz;        // vizinho
+    viz;       
   bfs_queue.push(source);
-	//bfs_level[source] = 0; /* vou setar aqui para nao dar problema ao chamar essa funcao sem usar a wrapper */
+  bfs_pai[source] = source;
+  bfs_level[source] = 0;
+  
   visited[source] = true;
 
   while ( !bfs_queue.empty() ) {
     next = bfs_queue.front();
     bfs_queue.pop();
 
-    // para vizinhos, empilhar caso nao tenha sido visitado e assign pai
     for (i = 1; i <= n; ++i) {
       if ( madj[next][i] == true) {
 	viz = i;
 	if ( !visited[viz] ) {
-	  //visited[next] = true; -- WTF
-		visited[viz] = true;
+	  visited[viz] = true;
 	  bfs_pai[viz] = next;
 	  bfs_level[viz] = bfs_level[next] + 1;
 	  bfs_queue.push(viz);
@@ -446,15 +449,17 @@ void graph::bfs_matriz(unsigned source) {
 void graph::bfs_lista(unsigned source) {
   unsigned next,     // no sendo analisado
     i,
-    viz;        // vizinho
+    viz;       
   bfs_queue.push(source);
+  bfs_pai[source] = source;
+  bfs_level[source] = 0;
+
   visited[source] = true;
 
   while ( !bfs_queue.empty() ) {
     next = bfs_queue.front();
     bfs_queue.pop();
 
-    // para vizinhos, empilhar caso nao tenha sido visitado e assign pai
     for (i = 0; i < ladj[next].size(); ++i) {
       viz = ladj[next][i];
       if ( !visited[viz] ) {
@@ -476,11 +481,11 @@ void graph::gera_bfstree(unsigned source, const char* filename) {
   else
     os.open(filename);
 
-	bfs(source);
+  bfs(source);
 	
   // ---------- BFS ----------
   os << "Busca em Largura" << endl;
-	os << "Origem: " << source << endl;
+  os << "Origem: " << source << endl;
   for (i = 1; i <= n; ++i) {
     os << "Vértice: " << i << ", Pai: " << bfs_pai[i] << ", Nível: " << bfs_level[i] << endl;
   }
@@ -539,35 +544,19 @@ void graph::calculate_components() {
   number_of_components = 0;
   dfs_clear(); // alt: bfs
 
-	switch(REP) {
-	case 'm':	
-		for (unsigned i = 1; i <= n;  ++i) {
-		  if ( !visited[i] ) {
-		    dfs_matriz(i);
-		    ++number_of_components;
-		  }
-		}
-		break;
-	case 'l':
-	case 'a':
-	default:
-		for (unsigned i = 1; i <= n;  ++i) {
-		  if ( !visited[i] ) {
-		    dfs_lista(i);
-		    ++number_of_components;
-		  }
-		}
-	}
-
-  for (unsigned i = 1; i <= n;  ++i) {
-    if ( !visited[i] ) {
-
-      if (REP == 'm')
-	dfs_matriz_component(i);
-      else
-	dfs_lista_component(i);
-      
+  for (unsigned i = 1; i <= n; ++i) {
+    if (!visited[i]) {
       ++number_of_components;
+
+      switch (REP) {
+      case 'm':
+	dfs_matriz_component(i);
+	break;
+      case 'l':
+      case 'a':
+      default:
+	dfs_lista(i);
+      }
     }
   }
 
@@ -588,14 +577,14 @@ unsigned graph::get_number_of_components() {
  *
  */
 unsigned graph::get_maior_distancia(unsigned source) {
-  //bfs_clear();
-  
-	bfs(source);
+  bfs_clear();
+  bfs(source);
 
   int ans  = 0;
   for (unsigned i = 1; i <= n; ++i){
     if (bfs_level[i] > ans)
-      ans = bfs_level[i];}
+      ans = bfs_level[i];
+  }
 
   return ans;
 }

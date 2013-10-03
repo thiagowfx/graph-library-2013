@@ -26,3 +26,5 @@ Recomendo usar o software `meld` para isso.
 * `[!!!]` wishlist
 * `[@@@]` stub
 * `alt:` implementação alternativa
+
+Para realizar modificações no Netbeans, basta criar um novo projeto a partir de código-fonte existente, e especificar a pasta correta.

@@ -27,4 +27,4 @@ Recomendo usar o software `meld` para isso.
 * `[@@@]` stub
 * `alt:` implementação alternativa
 
-Para realizar modificações no Netbeans, basta criar um novo projeto a partir de código-fonte existente, e especificar a pasta correta.
+Para realizar modificações no Netbeans, basta criar um novo projeto a partir de código-fonte existente, e então especificar a pasta correta. Não deletar a pasta `nbproject`.

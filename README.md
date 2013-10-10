@@ -14,17 +14,10 @@ Para dar merge:
      `git mergetool`  
 Recomendo usar o software `meld` para isso.
 
-## Instruções Programa
-
-### Compilar
-`make`
-
-### Testar
-`make test`
-
 ### Comentários nos códigos
 * `[!!!]` wishlist
 * `[@@@]` stub
 * `alt:` implementação alternativa
+* `/** */` documentação
 
 Para realizar modificações no Netbeans, basta criar um novo projeto a partir de código-fonte existente, e então especificar a pasta correta. Não deletar a pasta `nbproject`.

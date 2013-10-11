@@ -1,6 +1,6 @@
 build/Debug/GNU-Linux-x86/tests/tests/newtestclass.o: \
  tests/newtestclass.cpp tests/newtestclass.h Graph.h GraphMatrix.h \
- Graph.h
+ Graph.h GraphList.h
 
 tests/newtestclass.h:
 
@@ -9,3 +9,5 @@ Graph.h:
 GraphMatrix.h:
 
 Graph.h:
+
+GraphList.h:

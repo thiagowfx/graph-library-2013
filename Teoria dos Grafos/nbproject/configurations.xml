@@ -10,6 +10,8 @@
                    projectFiles="true">
       <itemPath>Graph.cpp</itemPath>
       <itemPath>Graph.h</itemPath>
+      <itemPath>GraphList.cpp</itemPath>
+      <itemPath>GraphList.h</itemPath>
       <itemPath>GraphMatrix.cpp</itemPath>
       <itemPath>GraphMatrix.h</itemPath>
       <itemPath>main.cpp</itemPath>
@@ -52,7 +54,7 @@
           <commandLine>`cppunit-config --cflags`</commandLine>
         </cTool>
         <ccTool>
-          <commandLine>`cppunit-config --cflags`</commandLine>
+          <commandLine>`cppunit-config --cflags` --std=c++11</commandLine>
         </ccTool>
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f2</output>
@@ -64,6 +66,10 @@
       <item path="Graph.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Graph.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GraphList.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="GraphList.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="GraphMatrix.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -131,6 +137,10 @@
       <item path="Graph.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Graph.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GraphList.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="GraphList.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="GraphMatrix.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -20,6 +20,8 @@ class Graph {
 public:
     /** Um grafo vazio (sem nós e sem arestas). */
     Graph();
+    /** Um grafo com <b>N</b> nós. */
+    Graph(unsigned long long N);
     virtual ~Graph();
 protected:
     /** Número de nós do grafo. */

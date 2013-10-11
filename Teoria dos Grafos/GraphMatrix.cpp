@@ -7,9 +7,7 @@
 
 #include "GraphMatrix.h"
 
-GraphMatrix::GraphMatrix(unsigned long long N) {
-    this->N = N;    
-    degrees = std::deque<unsigned long long>(N + 1);    
+GraphMatrix::GraphMatrix(unsigned long long N) : Graph(N) {
     adjMatrix = std::vector< std::vector< bool > > (N + 1, std::vector<bool>(N + 1, 0));
 }
 
@@ -17,8 +15,7 @@ GraphMatrix::~GraphMatrix() {
 }
 
 void GraphMatrix::addEdge(unsigned long long node1, unsigned long long node2) {
-    ++M;
-    ++degrees[node1], ++degrees[node2];
+    Graph::addEdge(node1,node2);
     adjMatrix.at(node1).at(node2) = true;
     adjMatrix.at(node2).at(node1) = true;
 }

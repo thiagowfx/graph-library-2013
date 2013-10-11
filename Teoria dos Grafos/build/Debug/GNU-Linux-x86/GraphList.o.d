@@ -1,6 +1,5 @@
-build/Debug/GNU-Linux-x86/GraphList.o: GraphList.cpp GraphList.h \
- GraphStructure.h
+build/Debug/GNU-Linux-x86/GraphList.o: GraphList.cpp GraphList.h Graph.h
 
 GraphList.h:
 
-GraphStructure.h:
+Graph.h:

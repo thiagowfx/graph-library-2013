@@ -12,6 +12,12 @@ Graph::Graph() {
     M = 0;
 }
 
+Graph::Graph(unsigned long long N) {
+    this->N = N;
+    M = 0;
+    degrees = std::deque<unsigned long long>(N + 1);
+}
+
 Graph::~Graph() {
 }
 
@@ -27,9 +33,14 @@ double Graph::getAverDeg() {
     if (N == 0)
         return 0;
     else
-        return 2 * double(M / N);
+        return 2 * double(M) / N;
 }
 
 unsigned long long Graph::getDegree(unsigned long long node) {
     return degrees.at(node);
+}
+
+void Graph::addEdge(unsigned long long node1, unsigned long long node2) {
+    ++M;
+    ++degrees.at(node1), ++degrees.at(node2);
 }

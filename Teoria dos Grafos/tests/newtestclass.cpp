@@ -46,10 +46,10 @@ void newtestclass::testMethod() {
 }
 
 void newtestclass::testEmptyGraph() {
-    Graph g;
-    CPPUNIT_ASSERT_EQUAL( 0ULL, g.getN());
-    CPPUNIT_ASSERT_EQUAL( 0ULL, g.getM());
-    CPPUNIT_ASSERT_EQUAL( 0.0, g.getAverDeg());
+    Graph *g = new GraphMatrix(0);
+    CPPUNIT_ASSERT_EQUAL( 0ULL, g->getN());
+    CPPUNIT_ASSERT_EQUAL( 0ULL, g->getM());
+    CPPUNIT_ASSERT_EQUAL( 0.0, g->getAverDeg());
 }
 
 void newtestclass::testAddEdgesGraphMatrix() {    

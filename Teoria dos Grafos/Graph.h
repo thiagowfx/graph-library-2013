@@ -37,6 +37,11 @@ public:
     double getAverDeg();
     /** Retorna o grau de <i>node</i>. */
     unsigned long long getDegree(unsigned long long node);
+    /** Retorna <b>true</b> se a aresta <i>node1</i>-<i>node2</i> pertence ao grafo. */
+    virtual bool isEdge(unsigned long long node1, unsigned long long node2) = 0;
+    /** Adiciona a aresta <i>node1</i>-<i>node2</i> ao grafo. */
+    virtual void addEdge(unsigned long long node1, unsigned long long node2) = 0;
+    
 };
 
 #endif	/* GRAPH_H */

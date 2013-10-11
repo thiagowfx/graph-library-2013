@@ -20,7 +20,7 @@ private:
 public:
     /** Adiciona a aresta <i>node1</i>-<i>node2</i> ao grafo. */
     void addEdge(unsigned long long node1, unsigned long long node2);
-    /** Retorna true se a aresta <i>node1</i>-<i>node2</i> pertence ao grafo. */
+    /** Retorna <b>true</b> se a aresta <i>node1</i>-<i>node2</i> pertence ao grafo. */
     bool isEdge(unsigned long long node1, unsigned long long node2);
 };
 

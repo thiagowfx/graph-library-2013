@@ -24,6 +24,7 @@ GraphMatrix emptyGm(10);
 GraphMatrix gm(10);
 GraphList emptyGl(10);
 GraphList gl(10);
+Graph* gEx;
 
 template <class T>
 bool compareVectors(const std::vector<T>& v1, const std::vector<T>& v2) {
@@ -75,6 +76,13 @@ void newtestclass::setUp() {
     gl.addEdge(1, 2);
     gl.addEdge(1, 3);
     gl.addEdge(9, 10);
+    
+    gEx = new GraphMatrix(5);
+    gEx->addEdge(1, 2);
+    gEx->addEdge(2, 5);
+    gEx->addEdge(5, 3);
+    gEx->addEdge(4, 5);
+    gEx->addEdge(1, 5);
 }
 
 void newtestclass::tearDown() {
@@ -127,7 +135,7 @@ void newtestclass::testGetDegreeGraphMatrix() {
 }
 
 void newtestclass::testGetNeighboursGraphMatrix() {
-    vector<unsigned long long> v{2, 3};
+    std::vector<unsigned long long> v{2, 3};
     CPPUNIT_ASSERT_MESSAGE(
             returnPrintVector(v)
             + returnPrintVector(gm.getNeighbours(1))
@@ -142,7 +150,7 @@ void newtestclass::testGetNeighboursGraphMatrix() {
     v = {10};
     CPPUNIT_ASSERT(compareVectors(gm.getNeighbours(9), v));
 
-    v = vector<unsigned long long>();
+    v = std::vector<unsigned long long>();
     CPPUNIT_ASSERT(compareVectors(gm.getNeighbours(5), v));
     
     CPPUNIT_ASSERT_THROW ( gm.getNeighbours(11), std::exception);
@@ -189,7 +197,7 @@ void newtestclass::testGetDegreeGraphList() {
 }
 
 void newtestclass::testGetNeighboursGraphList() {
-    vector<unsigned long long> v{2, 3};
+    std::vector<unsigned long long> v{2, 3};
     CPPUNIT_ASSERT_MESSAGE(
             returnPrintVector(v)
             + returnPrintVector(gl.getNeighbours(1))
@@ -204,8 +212,14 @@ void newtestclass::testGetNeighboursGraphList() {
     v = {10};
     CPPUNIT_ASSERT(compareVectors(gl.getNeighbours(9), v));
 
-    v = vector<unsigned long long>();
+    v = std::vector<unsigned long long>();
     CPPUNIT_ASSERT(compareVectors(gl.getNeighbours(5), v));
     
     CPPUNIT_ASSERT_THROW ( gl.getNeighbours(11), std::exception);
+}
+
+void newtestclass::testEmpDist() {
+    std::vector<double> v = gEx->getEmpDist();
+    std::vector<double> w = {0.0, 0.4, 0.4, 0.0, 0.2};
+    CPPUNIT_ASSERT( compareVectors(v, w) );
 }

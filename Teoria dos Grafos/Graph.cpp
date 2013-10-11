@@ -40,6 +40,15 @@ unsigned long long Graph::getDegree(unsigned long long node) {
     return degrees.at(node);
 }
 
+std::vector<double> Graph::getEmpDist() {
+    std::vector<double> v(N, 0.0);
+    for (int i = 1; i <= N; ++i)
+        ++v.at(degrees[i]);
+    for (int i = 1; i < N; ++i)
+        v[i] /= N;
+    return v;
+}
+
 void Graph::addEdge(unsigned long long node1, unsigned long long node2) {
     ++M;
     ++degrees.at(node1), ++degrees.at(node2);

@@ -11,8 +11,6 @@
 #include <deque>
 #include <vector>
 
-using namespace std;
-
 /**
  * Representa um grafo.
  */
@@ -39,6 +37,8 @@ public:
     double getAverDeg();
     /** Retorna o grau de <i>node</i>. */
     unsigned long long getDegree(unsigned long long node);
+    /** Retorna um vetor de <i>double</i> com a distribuição empírica do grafo. */
+    std::vector<double> getEmpDist();
     /** Retorna <b>true</b> se a aresta <i>node1</i>-<i>node2</i> pertence ao grafo. */
     virtual bool isEdge(unsigned long long node1, unsigned long long node2) = 0;
     /** Adiciona a aresta <i>node1</i>-<i>node2</i> ao grafo. */

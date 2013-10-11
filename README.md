@@ -2,6 +2,14 @@
 
 Biblioteca de grafos em C++.
 
+## Dependências
+
+* C++11 (gcc recente)
+* CppUnit (testes)
+* Valgrinder (profiler)
+* Boost !!!
+* OpenMP !!!
+
 ## Instruções GIT
 
 Para clonar (criar repositório local):  

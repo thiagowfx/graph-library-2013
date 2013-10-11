@@ -9,6 +9,7 @@
 #define	GRAPHMATRIX_H
 
 #include "Graph.h"
+#include <deque>
 #include <vector>
 
 class GraphMatrix : public Graph {
@@ -19,9 +20,11 @@ private:
     std::vector < std::vector < bool > > adjMatrix;
 public:
     /** Adiciona a aresta <i>node1</i>-<i>node2</i> ao grafo. */
-    void addEdge(unsigned long long node1, unsigned long long node2);
+    virtual void addEdge(unsigned long long node1, unsigned long long node2);
     /** Retorna <b>true</b> se a aresta <i>node1</i>-<i>node2</i> pertence ao grafo. */
-    bool isEdge(unsigned long long node1, unsigned long long node2);
+    virtual bool isEdge(unsigned long long node1, unsigned long long node2);
+    /** Retorna um vetor com os vizinhos de <i>node</i>. */
+    virtual std::vector<unsigned long long> getNeighbours(unsigned long long node);
 };
 
 #endif	/* GRAPHMATRIX_H */

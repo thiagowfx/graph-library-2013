@@ -9,6 +9,7 @@
 #define	GRAPH_H
 
 #include <deque>
+#include <vector>
 
 using namespace std;
 
@@ -20,12 +21,11 @@ public:
     /** Um grafo vazio (sem nós e sem arestas). */
     Graph();
     virtual ~Graph();
-private:
+protected:
     /** Número de nós do grafo. */
     unsigned long long N;
     /** Número de arestas do grafo. */
     unsigned long long M;
-protected:
     /** Graus dos nós do grafo. */
     std::deque<unsigned long long> degrees;
 public:
@@ -41,7 +41,8 @@ public:
     virtual bool isEdge(unsigned long long node1, unsigned long long node2) = 0;
     /** Adiciona a aresta <i>node1</i>-<i>node2</i> ao grafo. */
     virtual void addEdge(unsigned long long node1, unsigned long long node2) = 0;
-    
+    /** Retorna um vetor com os vizinhos de <i>node</i>. */
+    virtual std::vector<unsigned long long> getNeighbours(unsigned long long node) = 0;
 };
 
 #endif	/* GRAPH_H */

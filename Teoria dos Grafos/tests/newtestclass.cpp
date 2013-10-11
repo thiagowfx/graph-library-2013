@@ -9,6 +9,7 @@
 #include "Graph.h"
 #include "GraphMatrix.h"
 
+GraphMatrix emptyGm(10);
 GraphMatrix gm(10);
 
 template <class T>
@@ -55,6 +56,11 @@ void newtestclass::testAddEdgesGraphMatrix() {
     CPPUNIT_ASSERT( gm.isEdge(1,2) );
     CPPUNIT_ASSERT( gm.isEdge(1,3) );
     CPPUNIT_ASSERT( gm.isEdge(9,10) );
+    CPPUNIT_ASSERT( !gm.isEdge(2,3) );
+    CPPUNIT_ASSERT( !gm.isEdge(1,1) );
+    
+    CPPUNIT_ASSERT( !emptyGm.isEdge(2,3) );
+    CPPUNIT_ASSERT( !emptyGm.isEdge(1,1) );
 }
 
 void newtestclass::testGetDegreeGraphMatrix() {
@@ -63,4 +69,9 @@ void newtestclass::testGetDegreeGraphMatrix() {
     CPPUNIT_ASSERT_EQUAL( 1ULL, gm.getDegree(3));
     CPPUNIT_ASSERT_EQUAL( 1ULL, gm.getDegree(9));
     CPPUNIT_ASSERT_EQUAL( 1ULL, gm.getDegree(10));
+    CPPUNIT_ASSERT_EQUAL( 0ULL, gm.getDegree(4));
+    CPPUNIT_ASSERT_EQUAL( 0ULL, gm.getDegree(5));
+    
+    CPPUNIT_ASSERT_EQUAL( 0ULL, emptyGm.getDegree(1));
+    CPPUNIT_ASSERT_EQUAL( 0ULL, emptyGm.getDegree(10));
 }

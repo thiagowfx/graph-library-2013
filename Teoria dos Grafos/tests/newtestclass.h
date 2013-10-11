@@ -1,8 +1,8 @@
 /*
  * File:   newtestclass.h
- * Author: abc116
+ * Author: thiago
  *
- * Created on 07/10/2013, 19:03:27
+ * Created on 06/10/2013, 20:16:09
  */
 
 #ifndef NEWTESTCLASS_H
@@ -14,7 +14,9 @@ class newtestclass : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE(newtestclass);
 
     CPPUNIT_TEST(testMethod);
-    CPPUNIT_TEST(testTest);
+    CPPUNIT_TEST(testEmptyGraph);
+    CPPUNIT_TEST(testAddEdgesGraphMatrix);
+    CPPUNIT_TEST(testGetDegreeGraphMatrix);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -26,7 +28,9 @@ public:
 
 private:
     void testMethod();
-    void testTest();
+    void testEmptyGraph();
+    void testAddEdgesGraphMatrix();
+    void testGetDegreeGraphMatrix();
 };
 
 #endif	/* NEWTESTCLASS_H */

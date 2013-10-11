@@ -10,6 +10,8 @@
                    projectFiles="true">
       <itemPath>Graph.cpp</itemPath>
       <itemPath>Graph.h</itemPath>
+      <itemPath>GraphMatrix.cpp</itemPath>
+      <itemPath>GraphMatrix.h</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -21,7 +23,7 @@
                    projectFiles="false"
                    kind="TEST_LOGICAL_FOLDER">
       <logicalFolder name="f1"
-                     displayName="New Teste CppUnit"
+                     displayName="Teste Básico"
                      projectFiles="true"
                      kind="TEST">
         <itemPath>tests/newtestclass.cpp</itemPath>
@@ -46,12 +48,6 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
-      </compileType>
-      <item path="Graph.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Graph.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <folder path="TestFiles/f1">
         <cTool>
           <commandLine>`cppunit-config --cflags`</commandLine>
         </cTool>
@@ -59,8 +55,37 @@
           <commandLine>`cppunit-config --cflags`</commandLine>
         </ccTool>
         <linkerTool>
+          <output>${TESTDIR}/TestFiles/f2</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="Graph.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Graph.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GraphMatrix.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="GraphMatrix.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
           <output>${TESTDIR}/TestFiles/f1</output>
           <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
@@ -84,9 +109,11 @@
       <compileType>
         <cTool>
           <developmentMode>5</developmentMode>
+          <commandLine>`cppunit-config --cflags`</commandLine>
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
+          <commandLine>`cppunit-config --cflags`</commandLine>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -94,21 +121,38 @@
         <asmTool>
           <developmentMode>5</developmentMode>
         </asmTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f2</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
       <item path="Graph.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Graph.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="GraphMatrix.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="GraphMatrix.h" ex="false" tool="3" flavor2="0">
+      </item>
       <folder path="TestFiles/f1">
         <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
           <commandLine>`cppunit-config --cflags`</commandLine>
         </cTool>
         <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
           <commandLine>`cppunit-config --cflags`</commandLine>
         </ccTool>
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f1</output>
           <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>

@@ -25,7 +25,7 @@ bool GraphMatrix::isEdge(unsigned long long node1, unsigned long long node2) {
 }
 
 std::vector<unsigned long long> GraphMatrix::getNeighbours(unsigned long long node) {
-    vector<unsigned long long> v;
+    std::vector<unsigned long long> v;
     for (register unsigned long long int i = 1; i <= N; ++i)
         if ( isEdge(node, i) )
             v.push_back(i);

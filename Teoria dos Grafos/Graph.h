@@ -9,6 +9,7 @@
 #define	GRAPH_H
 
 #include <deque>
+#include <string>
 #include <vector>
 
 /**
@@ -16,8 +17,6 @@
  */
 class Graph {
 public:
-    /** Um grafo vazio (sem nós e sem arestas). */
-    Graph();
     /** Um grafo com <b>N</b> nós. */
     Graph(unsigned long long N);
     virtual ~Graph();
@@ -45,6 +44,8 @@ public:
     virtual void addEdge(unsigned long long node1, unsigned long long node2) = 0;
     /** Retorna um vetor com os vizinhos de <i>node</i>. */
     virtual std::vector<unsigned long long> getNeighbours(unsigned long long node) = 0;
+    /** Salva as informações do grafo para o arquivo <b>filename</b>. */
+    void saveInfo(const char* filename);
 };
 
 #endif	/* GRAPH_H */

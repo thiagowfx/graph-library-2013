@@ -4,13 +4,9 @@
  * 
  * Created on 10 de Outubro de 2013, 10:26
  */
-
+#include <iomanip>
+#include <fstream>
 #include "Graph.h"
-
-Graph::Graph() {
-    N = 0;
-    M = 0;
-}
 
 Graph::Graph(unsigned long long N) {
     this->N = N;
@@ -52,4 +48,18 @@ std::vector<double> Graph::getEmpDist() {
 void Graph::addEdge(unsigned long long node1, unsigned long long node2) {
     ++M;
     ++degrees.at(node1), ++degrees.at(node2);
+}
+
+void Graph::saveInfo(const char* filename) {
+    std::ofstream os;
+    os.open(filename);
+    os << "# n = " << N << std::endl;
+    os << "# m = " << M << std::endl;
+    os << "# d_medio = " << std::setprecision(1) << std::fixed << getAverDeg() << std::endl;
+    //os.unsetf(std::ios_base::fixed);
+    os << std::setprecision(2);
+    std::vector<double> v = getEmpDist();
+    for (int i = 1; i < N; ++i)
+        os << i << " " << v[i] << std::endl;
+    os.close();
 }

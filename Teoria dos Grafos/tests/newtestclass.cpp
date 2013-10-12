@@ -14,6 +14,8 @@ using namespace boost::assign; // bring 'operator+=()' into scope
 // BOOST_ASSERT( true )
 // v = {10,11} --std=c++11 way (flag to gcc)
 
+#include <iostream>
+#include <fstream>
 #include <string>
 #include "newtestclass.h"
 #include "Graph.h"
@@ -76,7 +78,7 @@ void newtestclass::setUp() {
     gl.addEdge(1, 2);
     gl.addEdge(1, 3);
     gl.addEdge(9, 10);
-    
+
     gEx = new GraphMatrix(5);
     gEx->addEdge(1, 2);
     gEx->addEdge(2, 5);
@@ -86,6 +88,7 @@ void newtestclass::setUp() {
 }
 
 void newtestclass::tearDown() {
+    delete gEx;
 }
 
 void newtestclass::testMethod() {
@@ -97,13 +100,14 @@ void newtestclass::testEmptyGraphMatrix() {
     CPPUNIT_ASSERT_EQUAL(0ULL, g->getN());
     CPPUNIT_ASSERT_EQUAL(0ULL, g->getM());
     CPPUNIT_ASSERT_EQUAL(0.0, g->getAverDeg());
+    delete g;
 }
 
 void newtestclass::testAddEdgesGraphMatrix() {
     CPPUNIT_ASSERT_EQUAL(3ULL, gm.getM());
     CPPUNIT_ASSERT_EQUAL(10ULL, gm.getN());
     CPPUNIT_ASSERT_EQUAL(0.6, gm.getAverDeg());
-    
+
     CPPUNIT_ASSERT(gm.isEdge(1, 2));
     CPPUNIT_ASSERT(gm.isEdge(2, 1));
     CPPUNIT_ASSERT(gm.isEdge(1, 3));
@@ -115,8 +119,8 @@ void newtestclass::testAddEdgesGraphMatrix() {
 
     CPPUNIT_ASSERT(!emptyGm.isEdge(2, 3));
     CPPUNIT_ASSERT(!emptyGm.isEdge(1, 1));
-    
-    CPPUNIT_ASSERT_THROW ( gm.isEdge(10,11), std::exception);
+
+    CPPUNIT_ASSERT_THROW(gm.isEdge(10, 11), std::exception);
 }
 
 void newtestclass::testGetDegreeGraphMatrix() {
@@ -130,8 +134,8 @@ void newtestclass::testGetDegreeGraphMatrix() {
 
     CPPUNIT_ASSERT_EQUAL(0ULL, emptyGm.getDegree(1));
     CPPUNIT_ASSERT_EQUAL(0ULL, emptyGm.getDegree(10));
-    
-    CPPUNIT_ASSERT_THROW ( gm.getDegree(11), std::exception);
+
+    CPPUNIT_ASSERT_THROW(gm.getDegree(11), std::exception);
 }
 
 void newtestclass::testGetNeighboursGraphMatrix() {
@@ -152,8 +156,8 @@ void newtestclass::testGetNeighboursGraphMatrix() {
 
     v = std::vector<unsigned long long>();
     CPPUNIT_ASSERT(compareVectors(gm.getNeighbours(5), v));
-    
-    CPPUNIT_ASSERT_THROW ( gm.getNeighbours(11), std::exception);
+
+    CPPUNIT_ASSERT_THROW(gm.getNeighbours(11), std::exception);
 }
 
 void newtestclass::testEmptyGraphList() {
@@ -192,8 +196,8 @@ void newtestclass::testGetDegreeGraphList() {
 
     CPPUNIT_ASSERT_EQUAL(0ULL, emptyGl.getDegree(1));
     CPPUNIT_ASSERT_EQUAL(0ULL, emptyGl.getDegree(10));
-    
-    CPPUNIT_ASSERT_THROW ( gl.getDegree(11), std::exception);
+
+    CPPUNIT_ASSERT_THROW(gl.getDegree(11), std::exception);
 }
 
 void newtestclass::testGetNeighboursGraphList() {
@@ -214,12 +218,65 @@ void newtestclass::testGetNeighboursGraphList() {
 
     v = std::vector<unsigned long long>();
     CPPUNIT_ASSERT(compareVectors(gl.getNeighbours(5), v));
-    
-    CPPUNIT_ASSERT_THROW ( gl.getNeighbours(11), std::exception);
+
+    CPPUNIT_ASSERT_THROW(gl.getNeighbours(11), std::exception);
 }
 
 void newtestclass::testEmpDist() {
     std::vector<double> v = gEx->getEmpDist();
     std::vector<double> w = {0.0, 0.4, 0.4, 0.0, 0.2};
-    CPPUNIT_ASSERT( compareVectors(v, w) );
+    CPPUNIT_ASSERT(compareVectors(v, w));
 }
+
+void newtestclass::testSaveInfo() {
+    const char file[] = "tmp/testSaveInfo.txt";
+    gEx->saveInfo(file);
+
+    std::ifstream is;
+    is.open(file);
+    std::string s;
+
+    std::getline(is, s);
+    CPPUNIT_ASSERT("# n = 5" == s);
+
+    std::getline(is, s);
+    CPPUNIT_ASSERT("# m = 5" == s);
+
+    std::getline(is, s);
+    CPPUNIT_ASSERT("# d_medio = 2.0" == s);
+
+    std::getline(is, s);
+    CPPUNIT_ASSERT("1 0.40" == s);
+
+    std::getline(is, s);
+    CPPUNIT_ASSERT("2 0.40" == s);
+
+    std::getline(is, s);
+    CPPUNIT_ASSERT("3 0.00" == s);
+    
+    std::getline(is, s);
+    CPPUNIT_ASSERT("4 0.20" == s);
+    
+    is.close();
+}
+
+//void newtestclass::testReadFileGraphMatrix() {
+    //CPPUNIT_ASSERT(false);
+    //   const char c[] = "samples/k3.txt";
+    //   Graph* g = new GraphMatrix(c);
+    //   
+    //   CPPUNIT_ASSERT( g->isEdge(1, 2) );
+    //   CPPUNIT_ASSERT( g->isEdge(1, 3) );
+    //   CPPUNIT_ASSERT( g->isEdge(2, 3) );
+    //   CPPUNIT_ASSERT( !g->isEdge(1, 1) );
+    //   
+    //   CPPUNIT_ASSERT_EQUAL( 3ULL, g->getN() );
+    //   CPPUNIT_ASSERT_EQUAL( 3ULL, g->getM() );
+    //   
+    //   CPPUNIT_ASSERT_EQUAL( 2ULL, g->getDegree(1));
+    //   CPPUNIT_ASSERT_EQUAL( 2ULL, g->getDegree(2));
+    //   CPPUNIT_ASSERT_EQUAL( 2ULL, g->getDegree(3));
+    //   
+    //   CPPUNIT_ASSERT_THROW( g->isEdge(3, 4), std::exception);
+    //   CPPUNIT_ASSERT_THROW( g->getDegree(4), std::exception);
+//}

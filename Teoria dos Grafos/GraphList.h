@@ -13,6 +13,7 @@
 
 class GraphList : public Graph {
 public:
+    /** Constrói um grafo com <b>N</b> nós. */
     GraphList(unsigned long long N);
     virtual ~GraphList();
 private:

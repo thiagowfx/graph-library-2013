@@ -14,7 +14,9 @@
 
 class GraphMatrix : public Graph {
 public:
+    /** Constrói um grafo com <b>N</b> nós. */
     GraphMatrix(unsigned long long N);
+    /** Constrói o grafo a partir de um arquivo de entrada. */
     virtual ~GraphMatrix();
 private:
     std::vector < std::vector < bool > > adjMatrix;

@@ -24,6 +24,7 @@ class newtestclass : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST(testGetNeighboursGraphList);
     CPPUNIT_TEST(testEmpDist);
     CPPUNIT_TEST(testSaveInfo);
+    CPPUNIT_TEST(testDfs);
     
     CPPUNIT_TEST_SUITE_END();
 
@@ -45,6 +46,7 @@ private:
     void testGetNeighboursGraphList();
     void testEmpDist();
     void testSaveInfo();
+    void testDfs();
 };
 
 #endif	/* NEWTESTCLASS_H */

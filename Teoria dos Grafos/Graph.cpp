@@ -17,7 +17,7 @@ Graph::Graph(unsigned long long N) {
 Graph::~Graph() {
 }
 
-unsigned long long Graph::getN() {
+unsigned long long Graph::getN() const {
     return N;
 }
 

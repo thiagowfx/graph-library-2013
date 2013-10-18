@@ -21,6 +21,7 @@ using namespace boost::assign; // bring 'operator+=()' into scope
 #include "Graph.h"
 #include "GraphMatrix.h"
 #include "GraphList.h"
+#include "GraphAlgorithms.h"
 
 GraphMatrix emptyGm(10);
 GraphMatrix gm(10);
@@ -280,3 +281,31 @@ void newtestclass::testSaveInfo() {
     //   CPPUNIT_ASSERT_THROW( g->isEdge(3, 4), std::exception);
     //   CPPUNIT_ASSERT_THROW( g->getDegree(4), std::exception);
 //}
+
+void newtestclass::testDfs() {
+    GraphAlgorithms GA(gEx);
+    
+    GA.dfs(1);
+    CPPUNIT_ASSERT_EQUAL( 1ULL, GA.getDfsParent(1) );
+    CPPUNIT_ASSERT_EQUAL( 5ULL, GA.getDfsParent(2) );
+    CPPUNIT_ASSERT_EQUAL( 5ULL, GA.getDfsParent(3) );
+    CPPUNIT_ASSERT_EQUAL( 5ULL, GA.getDfsParent(4) );
+    CPPUNIT_ASSERT_EQUAL( 1ULL, GA.getDfsParent(5) );
+    
+    GA.dfs(1);
+    CPPUNIT_ASSERT_EQUAL( 1ULL, GA.getDfsParent(1) );
+    CPPUNIT_ASSERT_EQUAL( 5ULL, GA.getDfsParent(2) );
+    CPPUNIT_ASSERT_EQUAL( 5ULL, GA.getDfsParent(3) );
+    CPPUNIT_ASSERT_EQUAL( 5ULL, GA.getDfsParent(4) );
+    CPPUNIT_ASSERT_EQUAL( 1ULL, GA.getDfsParent(5) );
+   
+    GA.dfs(5);
+    CPPUNIT_ASSERT_EQUAL( 2ULL, GA.getDfsParent(1) );
+    CPPUNIT_ASSERT_EQUAL( 5ULL, GA.getDfsParent(2) );
+    CPPUNIT_ASSERT_EQUAL( 5ULL, GA.getDfsParent(3) );
+    CPPUNIT_ASSERT_EQUAL( 5ULL, GA.getDfsParent(4) );
+    CPPUNIT_ASSERT_EQUAL( 5ULL, GA.getDfsParent(5) );
+    
+}
+
+// adicionar TESTE DFS GRAFO DESCONEXO

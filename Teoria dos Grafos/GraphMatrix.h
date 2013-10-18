@@ -24,9 +24,9 @@ public:
     /** Adiciona a aresta <i>node1</i>-<i>node2</i> ao grafo. */
     virtual void addEdge(unsigned long long node1, unsigned long long node2);
     /** Retorna <b>true</b> se a aresta <i>node1</i>-<i>node2</i> pertence ao grafo. */
-    virtual bool isEdge(unsigned long long node1, unsigned long long node2);
+    virtual bool isEdge(unsigned long long node1, unsigned long long node2) const;
     /** Retorna um vetor com os vizinhos de <i>node</i>. */
-    virtual std::vector<unsigned long long> getNeighbours(unsigned long long node);
+    virtual std::vector<unsigned long long> getNeighbours(unsigned long long node) const;
 };
 
 #endif	/* GRAPHMATRIX_H */

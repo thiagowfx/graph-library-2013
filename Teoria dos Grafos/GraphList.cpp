@@ -20,13 +20,13 @@ void GraphList::addEdge(unsigned long long node1, unsigned long long node2) {
     adjList.at(node2).push_back(node1);
 }
 
-bool GraphList::isEdge(unsigned long long node1, unsigned long long node2) {
+bool GraphList::isEdge(unsigned long long node1, unsigned long long node2) const {
     for (int i = 0; i < adjList.at(node1).size(); ++i)
         if ( adjList.at(node1).at(i) == node2 )
             return true;
     return false;
 }
 
-std::vector<unsigned long long> GraphList::getNeighbours(unsigned long long node) {
+std::vector<unsigned long long> GraphList::getNeighbours(unsigned long long node) const {
     return adjList.at(node);
 }

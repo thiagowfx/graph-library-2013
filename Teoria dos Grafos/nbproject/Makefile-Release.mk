@@ -47,6 +47,9 @@ TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 
 # Test Files
 TESTFILES= \
+	${TESTDIR}/TestFiles/f2 \
+	${TESTDIR}/TestFiles/f4 \
+	${TESTDIR}/TestFiles/f3 \
 	${TESTDIR}/TestFiles/f1
 
 # C Compiler Flags
@@ -108,9 +111,57 @@ ${OBJECTDIR}/main.o: main.cpp
 
 # Build Test Targets
 .build-tests-conf: .build-conf ${TESTFILES}
+${TESTDIR}/TestFiles/f2: ${TESTDIR}/tests/dfs_testclass.o ${TESTDIR}/tests/dfs_testrunner.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f2 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
+
+${TESTDIR}/TestFiles/f4: ${TESTDIR}/tests/inputhandler_testclass.o ${TESTDIR}/tests/inputhandler_testrunner.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f4 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
+
+${TESTDIR}/TestFiles/f3: ${TESTDIR}/tests/outputinfo_newtestrunner.o ${TESTDIR}/tests/outputinfo_testclass.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f3 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
+
 ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/newtestclass.o ${TESTDIR}/tests/newtestrunner.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} `cppunit-config --libs` `cppunit-config --libs`   
+
+
+${TESTDIR}/tests/dfs_testclass.o: tests/dfs_testclass.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} $@.d
+	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/dfs_testclass.o tests/dfs_testclass.cpp
+
+
+${TESTDIR}/tests/dfs_testrunner.o: tests/dfs_testrunner.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} $@.d
+	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/dfs_testrunner.o tests/dfs_testrunner.cpp
+
+
+${TESTDIR}/tests/inputhandler_testclass.o: tests/inputhandler_testclass.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} $@.d
+	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/inputhandler_testclass.o tests/inputhandler_testclass.cpp
+
+
+${TESTDIR}/tests/inputhandler_testrunner.o: tests/inputhandler_testrunner.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} $@.d
+	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/inputhandler_testrunner.o tests/inputhandler_testrunner.cpp
+
+
+${TESTDIR}/tests/outputinfo_newtestrunner.o: tests/outputinfo_newtestrunner.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} $@.d
+	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/outputinfo_newtestrunner.o tests/outputinfo_newtestrunner.cpp
+
+
+${TESTDIR}/tests/outputinfo_testclass.o: tests/outputinfo_testclass.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} $@.d
+	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/outputinfo_testclass.o tests/outputinfo_testclass.cpp
 
 
 ${TESTDIR}/tests/newtestclass.o: tests/newtestclass.cpp 
@@ -207,6 +258,9 @@ ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cpp
 .test-conf:
 	@if [ "${TEST}" = "" ]; \
 	then  \
+	    ${TESTDIR}/TestFiles/f2 || true; \
+	    ${TESTDIR}/TestFiles/f4 || true; \
+	    ${TESTDIR}/TestFiles/f3 || true; \
 	    ${TESTDIR}/TestFiles/f1 || true; \
 	else  \
 	    ./${TEST} || true; \

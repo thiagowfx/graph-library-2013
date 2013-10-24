@@ -5,23 +5,14 @@
  * Created on 06/10/2013, 20:16:11
  */
 
-#include <boost/assign/list_of.hpp> // std::vector<int> v = boost::assign::list_of(1)(2)(3)(4);
-#include <boost/assign/std/vector.hpp> // for 'operator+=()'
-using namespace boost::assign; // bring 'operator+=()' into scope
-// vector<int> values;  
-// values += 1,2,3,4,5,6,7,8,9; // insert values at the end of the container
-#include <boost/assert.hpp>
-// BOOST_ASSERT( true )
-// v = {10,11} --std=c++11 way (flag to gcc)
-
 #include <iostream>
 #include <fstream>
 #include <string>
 #include "newtestclass.h"
-#include "Graph.h"
-#include "GraphMatrix.h"
-#include "GraphList.h"
-#include "GraphAlgorithms.h"
+#include "../Graph.h"
+#include "../GraphMatrix.h"
+#include "../GraphList.h"
+#include "../GraphAlgorithms.h"
 
 GraphMatrix emptyGm(10);
 GraphMatrix gm(10);
@@ -90,10 +81,6 @@ void newtestclass::setUp() {
 
 void newtestclass::tearDown() {
     delete gEx;
-}
-
-void newtestclass::testMethod() {
-    CPPUNIT_ASSERT(true);
 }
 
 void newtestclass::testEmptyGraphMatrix() {
@@ -229,38 +216,6 @@ void newtestclass::testEmpDist() {
     CPPUNIT_ASSERT(compareVectors(v, w));
 }
 
-void newtestclass::testSaveInfo() {
-    const char file[] = "tmp/testSaveInfo.txt";
-    gEx->saveInfo(file);
-
-    std::ifstream is;
-    is.open(file);
-    std::string s;
-
-    std::getline(is, s);
-    CPPUNIT_ASSERT("# n = 5" == s);
-
-    std::getline(is, s);
-    CPPUNIT_ASSERT("# m = 5" == s);
-
-    std::getline(is, s);
-    CPPUNIT_ASSERT("# d_medio = 2.0" == s);
-
-    std::getline(is, s);
-    CPPUNIT_ASSERT("1 0.40" == s);
-
-    std::getline(is, s);
-    CPPUNIT_ASSERT("2 0.40" == s);
-
-    std::getline(is, s);
-    CPPUNIT_ASSERT("3 0.00" == s);
-    
-    std::getline(is, s);
-    CPPUNIT_ASSERT("4 0.20" == s);
-    
-    is.close();
-}
-
 //void newtestclass::testReadFileGraphMatrix() {
     //CPPUNIT_ASSERT(false);
     //   const char c[] = "samples/k3.txt";
@@ -281,31 +236,3 @@ void newtestclass::testSaveInfo() {
     //   CPPUNIT_ASSERT_THROW( g->isEdge(3, 4), std::exception);
     //   CPPUNIT_ASSERT_THROW( g->getDegree(4), std::exception);
 //}
-
-void newtestclass::testDfs() {
-    GraphAlgorithms GA(gEx);
-    
-    GA.dfs(1);
-    CPPUNIT_ASSERT_EQUAL( 1ULL, GA.getDfsParent(1) );
-    CPPUNIT_ASSERT_EQUAL( 5ULL, GA.getDfsParent(2) );
-    CPPUNIT_ASSERT_EQUAL( 5ULL, GA.getDfsParent(3) );
-    CPPUNIT_ASSERT_EQUAL( 5ULL, GA.getDfsParent(4) );
-    CPPUNIT_ASSERT_EQUAL( 1ULL, GA.getDfsParent(5) );
-    
-    GA.dfs(1);
-    CPPUNIT_ASSERT_EQUAL( 1ULL, GA.getDfsParent(1) );
-    CPPUNIT_ASSERT_EQUAL( 5ULL, GA.getDfsParent(2) );
-    CPPUNIT_ASSERT_EQUAL( 5ULL, GA.getDfsParent(3) );
-    CPPUNIT_ASSERT_EQUAL( 5ULL, GA.getDfsParent(4) );
-    CPPUNIT_ASSERT_EQUAL( 1ULL, GA.getDfsParent(5) );
-   
-    GA.dfs(5);
-    CPPUNIT_ASSERT_EQUAL( 2ULL, GA.getDfsParent(1) );
-    CPPUNIT_ASSERT_EQUAL( 5ULL, GA.getDfsParent(2) );
-    CPPUNIT_ASSERT_EQUAL( 5ULL, GA.getDfsParent(3) );
-    CPPUNIT_ASSERT_EQUAL( 5ULL, GA.getDfsParent(4) );
-    CPPUNIT_ASSERT_EQUAL( 5ULL, GA.getDfsParent(5) );
-    
-}
-
-// adicionar TESTE DFS GRAFO DESCONEXO

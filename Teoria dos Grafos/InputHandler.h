@@ -10,12 +10,9 @@
 
 class InputHandler {
 public:
-    /** Lida com o arquivo de entrada <b>filename</b> */
-    InputHandler(const char* filename);
     virtual ~InputHandler();
 private:
-    char filename[100];
-    void removeDuplicates();
+    // void removeDuplicates();
 };
 
 #endif	/* INPUTHANDLER_H */

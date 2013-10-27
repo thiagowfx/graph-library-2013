@@ -21,7 +21,12 @@ void GraphMatrix::addEdge(unsigned long long node1, unsigned long long node2) {
 }
 
 bool GraphMatrix::isEdge(unsigned long long node1, unsigned long long node2) const {
-    return adjMatrix.at(node1).at(node2);
+    //try {
+        return adjMatrix.at(node1).at(node2);
+    //}
+    //catch (std::exception) {
+    //    return false;
+    //}
 }
 
 std::vector<unsigned long long> GraphMatrix::getNeighbours(unsigned long long node) const {

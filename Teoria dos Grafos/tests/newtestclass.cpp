@@ -105,6 +105,12 @@ void newtestclass::testAddEdgesGraphMatrix() {
     CPPUNIT_ASSERT(!gm.isEdge(2, 3));
     CPPUNIT_ASSERT(!gm.isEdge(1, 1));
 
+    CPPUNIT_ASSERT( gEx->isEdge(1, 2) );
+    CPPUNIT_ASSERT( gEx->isEdge(2, 5) );
+    CPPUNIT_ASSERT( gEx->isEdge(5, 3) );
+    CPPUNIT_ASSERT( gEx->isEdge(4, 5) );
+    CPPUNIT_ASSERT( gEx->isEdge(1, 5) );
+
     CPPUNIT_ASSERT(!emptyGm.isEdge(2, 3));
     CPPUNIT_ASSERT(!emptyGm.isEdge(1, 1));
 
@@ -215,24 +221,3 @@ void newtestclass::testEmpDist() {
     std::vector<double> w = {0.0, 0.4, 0.4, 0.0, 0.2};
     CPPUNIT_ASSERT(compareVectors(v, w));
 }
-
-//void newtestclass::testReadFileGraphMatrix() {
-    //CPPUNIT_ASSERT(false);
-    //   const char c[] = "samples/k3.txt";
-    //   Graph* g = new GraphMatrix(c);
-    //   
-    //   CPPUNIT_ASSERT( g->isEdge(1, 2) );
-    //   CPPUNIT_ASSERT( g->isEdge(1, 3) );
-    //   CPPUNIT_ASSERT( g->isEdge(2, 3) );
-    //   CPPUNIT_ASSERT( !g->isEdge(1, 1) );
-    //   
-    //   CPPUNIT_ASSERT_EQUAL( 3ULL, g->getN() );
-    //   CPPUNIT_ASSERT_EQUAL( 3ULL, g->getM() );
-    //   
-    //   CPPUNIT_ASSERT_EQUAL( 2ULL, g->getDegree(1));
-    //   CPPUNIT_ASSERT_EQUAL( 2ULL, g->getDegree(2));
-    //   CPPUNIT_ASSERT_EQUAL( 2ULL, g->getDegree(3));
-    //   
-    //   CPPUNIT_ASSERT_THROW( g->isEdge(3, 4), std::exception);
-    //   CPPUNIT_ASSERT_THROW( g->getDegree(4), std::exception);
-//}

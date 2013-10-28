@@ -14,6 +14,7 @@ Dfs::Dfs(const Graph* G) : G(G) {
 void Dfs::dfsClear() {
     dfsStack = std::stack<unsigned long long> ();
     dfsExplored = std::vector<bool> (G->getN() + 1, false);
+    // decisão de design: pai começa apontando para 0.
     dfsTree = std::vector<unsigned long long> (G->getN() + 1, 0);
 }
 

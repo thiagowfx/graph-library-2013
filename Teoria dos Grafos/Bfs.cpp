@@ -14,6 +14,7 @@ Bfs::Bfs(const Graph* G) : G(G) {
 void Bfs::bfsClear() {
     bfsQueue = std::queue<unsigned long long> ();
     bfsExplored = std::vector<bool> (G->getN() + 1, false);
+    // decisão de design: pai começa apontando para 0.
     bfsTree = std::vector<unsigned long long> (G->getN() + 1, 0);
 }
 

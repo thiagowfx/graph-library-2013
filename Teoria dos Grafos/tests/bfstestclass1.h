@@ -8,13 +8,20 @@
 #ifndef BFSTESTCLASS1_H
 #define	BFSTESTCLASS1_H
 
+#include "../Graph.h"
+#include "../GraphMatrix.h"
+#include "../GraphList.h"
+#include "../Bfs.h"
+
 #include <cppunit/extensions/HelperMacros.h>
 
 class bfstestclass1 : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE(bfstestclass1);
 
-    CPPUNIT_TEST(testMethod);
-    CPPUNIT_TEST(testFailedMethod);
+    CPPUNIT_TEST(testBfs);
+    CPPUNIT_TEST(testBfsGrafoDesconexo);
+    CPPUNIT_TEST(testBfsStartOverPrimeiro);
+    CPPUNIT_TEST(testBfsConflict);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -25,8 +32,10 @@ public:
     void tearDown();
 
 private:
-    void testMethod();
-    void testFailedMethod();
+    void testBfs();
+    void testBfsGrafoDesconexo();
+    void testBfsStartOverPrimeiro();
+    void testBfsConflict();
 };
 
 #endif	/* BFSTESTCLASS1_H */

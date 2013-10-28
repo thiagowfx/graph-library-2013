@@ -12,7 +12,6 @@
 #include "../Graph.h"
 #include "../GraphMatrix.h"
 #include "../GraphList.h"
-#include "../GraphAlgorithms.h"
 
 GraphMatrix emptyGm(10);
 GraphMatrix gm(10);

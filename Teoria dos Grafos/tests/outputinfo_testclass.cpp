@@ -9,7 +9,6 @@
 #include "../Graph.h"
 #include "../GraphMatrix.h"
 #include "../GraphList.h"
-#include "../GraphAlgorithms.h"
 
 Graph* gEx;
 

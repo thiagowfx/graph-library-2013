@@ -4,34 +4,34 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Arquivos de Cabeçalho"
                    projectFiles="true">
+      <itemPath>Dfs.h</itemPath>
+      <itemPath>Graph.h</itemPath>
+      <itemPath>GraphList.h</itemPath>
+      <itemPath>GraphMatrix.h</itemPath>
+      <itemPath>InputHandler.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Arquivos de Código-Fonte"
                    projectFiles="true">
+      <itemPath>Dfs.cpp</itemPath>
       <itemPath>Graph.cpp</itemPath>
-      <itemPath>Graph.h</itemPath>
-      <itemPath>GraphAlgorithms.cpp</itemPath>
-      <itemPath>GraphAlgorithms.h</itemPath>
       <itemPath>GraphList.cpp</itemPath>
-      <itemPath>GraphList.h</itemPath>
       <itemPath>GraphMatrix.cpp</itemPath>
-      <itemPath>GraphMatrix.h</itemPath>
       <itemPath>InputHandler.cpp</itemPath>
-      <itemPath>InputHandler.h</itemPath>
-      <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Arquivos de Recurso"
                    projectFiles="true">
+      <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Arquivos de Teste"
                    projectFiles="false"
                    kind="TEST_LOGICAL_FOLDER">
-      <logicalFolder name="f2" displayName="DFS" projectFiles="true" kind="TEST">
-        <itemPath>tests/dfs_testclass.cpp</itemPath>
-        <itemPath>tests/dfs_testclass.h</itemPath>
-        <itemPath>tests/dfs_testrunner.cpp</itemPath>
+      <logicalFolder name="f5" displayName="Dfs" projectFiles="true" kind="TEST">
+        <itemPath>tests/dfstestclass1.cpp</itemPath>
+        <itemPath>tests/dfstestclass1.h</itemPath>
+        <itemPath>tests/dfstestrunner1.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f4"
                      displayName="Input Handler"
@@ -86,13 +86,13 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="Dfs.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Dfs.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Graph.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Graph.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="GraphAlgorithms.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="GraphAlgorithms.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="GraphList.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -169,13 +169,27 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f5">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f5</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/dfs_testclass.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/dfstestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/dfs_testclass.h" ex="false" tool="3" flavor2="0">
+      <item path="tests/dfstestclass1.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="tests/dfs_testrunner.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/dfstestrunner1.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/inputhandler_testclass.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -224,13 +238,13 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="Dfs.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Dfs.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Graph.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Graph.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="GraphAlgorithms.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="GraphAlgorithms.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="GraphList.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -307,13 +321,27 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f5">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f5</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/dfs_testclass.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/dfstestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/dfs_testclass.h" ex="false" tool="3" flavor2="0">
+      <item path="tests/dfstestclass1.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="tests/dfs_testrunner.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/dfstestrunner1.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/inputhandler_testclass.cpp" ex="false" tool="1" flavor2="0">
       </item>

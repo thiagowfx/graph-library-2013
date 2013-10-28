@@ -35,8 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Dfs.o \
 	${OBJECTDIR}/Graph.o \
-	${OBJECTDIR}/GraphAlgorithms.o \
 	${OBJECTDIR}/GraphList.o \
 	${OBJECTDIR}/GraphMatrix.o \
 	${OBJECTDIR}/InputHandler.o \
@@ -47,7 +47,7 @@ TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 
 # Test Files
 TESTFILES= \
-	${TESTDIR}/TestFiles/f2 \
+	${TESTDIR}/TestFiles/f5 \
 	${TESTDIR}/TestFiles/f4 \
 	${TESTDIR}/TestFiles/f3 \
 	${TESTDIR}/TestFiles/f1
@@ -76,15 +76,15 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/teoria_dos_grafos: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/teoria_dos_grafos ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/Dfs.o: Dfs.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Dfs.o Dfs.cpp
+
 ${OBJECTDIR}/Graph.o: Graph.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Graph.o Graph.cpp
-
-${OBJECTDIR}/GraphAlgorithms.o: GraphAlgorithms.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/GraphAlgorithms.o GraphAlgorithms.cpp
 
 ${OBJECTDIR}/GraphList.o: GraphList.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -111,9 +111,9 @@ ${OBJECTDIR}/main.o: main.cpp
 
 # Build Test Targets
 .build-tests-conf: .build-conf ${TESTFILES}
-${TESTDIR}/TestFiles/f2: ${TESTDIR}/tests/dfs_testclass.o ${TESTDIR}/tests/dfs_testrunner.o ${OBJECTFILES:%.o=%_nomain.o}
+${TESTDIR}/TestFiles/f5: ${TESTDIR}/tests/dfstestclass1.o ${TESTDIR}/tests/dfstestrunner1.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.cc}   -o ${TESTDIR}/TestFiles/f2 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f5 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
 
 ${TESTDIR}/TestFiles/f4: ${TESTDIR}/tests/inputhandler_testclass.o ${TESTDIR}/tests/inputhandler_testrunner.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
@@ -128,16 +128,16 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/newtestclass.o ${TESTDIR}/tests/newtes
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} `cppunit-config --libs` `cppunit-config --libs`   
 
 
-${TESTDIR}/tests/dfs_testclass.o: tests/dfs_testclass.cpp 
+${TESTDIR}/tests/dfstestclass1.o: tests/dfstestclass1.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -g `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/dfs_testclass.o tests/dfs_testclass.cpp
+	$(COMPILE.cc) -g `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/dfstestclass1.o tests/dfstestclass1.cpp
 
 
-${TESTDIR}/tests/dfs_testrunner.o: tests/dfs_testrunner.cpp 
+${TESTDIR}/tests/dfstestrunner1.o: tests/dfstestrunner1.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -g `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/dfs_testrunner.o tests/dfs_testrunner.cpp
+	$(COMPILE.cc) -g `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/dfstestrunner1.o tests/dfstestrunner1.cpp
 
 
 ${TESTDIR}/tests/inputhandler_testclass.o: tests/inputhandler_testclass.cpp 
@@ -176,6 +176,19 @@ ${TESTDIR}/tests/newtestrunner.o: tests/newtestrunner.cpp
 	$(COMPILE.cc) -g -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/newtestrunner.o tests/newtestrunner.cpp
 
 
+${OBJECTDIR}/Dfs_nomain.o: ${OBJECTDIR}/Dfs.o Dfs.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/Dfs.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Dfs_nomain.o Dfs.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/Dfs.o ${OBJECTDIR}/Dfs_nomain.o;\
+	fi
+
 ${OBJECTDIR}/Graph_nomain.o: ${OBJECTDIR}/Graph.o Graph.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	@NMOUTPUT=`${NM} ${OBJECTDIR}/Graph.o`; \
@@ -187,19 +200,6 @@ ${OBJECTDIR}/Graph_nomain.o: ${OBJECTDIR}/Graph.o Graph.cpp
 	    $(COMPILE.cc) -g -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Graph_nomain.o Graph.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/Graph.o ${OBJECTDIR}/Graph_nomain.o;\
-	fi
-
-${OBJECTDIR}/GraphAlgorithms_nomain.o: ${OBJECTDIR}/GraphAlgorithms.o GraphAlgorithms.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/GraphAlgorithms.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} $@.d;\
-	    $(COMPILE.cc) -g -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/GraphAlgorithms_nomain.o GraphAlgorithms.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/GraphAlgorithms.o ${OBJECTDIR}/GraphAlgorithms_nomain.o;\
 	fi
 
 ${OBJECTDIR}/GraphList_nomain.o: ${OBJECTDIR}/GraphList.o GraphList.cpp 
@@ -258,7 +258,7 @@ ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cpp
 .test-conf:
 	@if [ "${TEST}" = "" ]; \
 	then  \
-	    ${TESTDIR}/TestFiles/f2 || true; \
+	    ${TESTDIR}/TestFiles/f5 || true; \
 	    ${TESTDIR}/TestFiles/f4 || true; \
 	    ${TESTDIR}/TestFiles/f3 || true; \
 	    ${TESTDIR}/TestFiles/f1 || true; \

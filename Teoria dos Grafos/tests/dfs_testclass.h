@@ -14,7 +14,8 @@ class dfs_testclass : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE(dfs_testclass);
 
     CPPUNIT_TEST(testDfs);
-    // acrescentar teste com grafo desconexo, e mais outros
+    CPPUNIT_TEST(testDfsGrafoDesconexo);
+    CPPUNIT_TEST(testDfsStartOverPrimeiro);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -26,6 +27,8 @@ public:
 
 private:
     void testDfs();
+    void testDfsGrafoDesconexo();
+    void testDfsStartOverPrimeiro();
 };
 
 #endif	/* DFS_TESTCLASS_H */

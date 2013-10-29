@@ -14,13 +14,12 @@
 
 class GraphMatrix : public Graph {
 public:
-    GraphMatrix(unsigned long long N);
     /** Um grafo com <b>N</b> nós. <i>weighted</i> é <i>true</i> se o grafo possuir pesos. */
     GraphMatrix(unsigned long long N, bool weighted);
     /** Constrói o grafo a partir de um arquivo de entrada. */
     virtual ~GraphMatrix();
 private:
-    std::vector < std::vector < bool > > adjMatrix;
+    std::vector < std::vector < double > > adjMatrix;
 public:
     /** Adiciona a aresta <i>node1</i>-<i>node2</i> ao grafo. */
     virtual void addEdge(unsigned long long node1, unsigned long long node2);

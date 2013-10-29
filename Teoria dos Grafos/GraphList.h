@@ -10,15 +10,16 @@
 
 #include "Graph.h"
 #include <vector>
+#include <utility>
 
 class GraphList : public Graph {
 public:
-    GraphList(unsigned long long N);
     /** Um grafo com <b>N</b> nós. <i>weighted</i> é <i>true</i> se o grafo possuir pesos. */
     GraphList(unsigned long long N, bool weighted);
     virtual ~GraphList();
 private:
-    std::vector < std::vector < unsigned long long > > adjList;
+    // std::vector < std::vector < unsigned long long > > adjList;
+    std::vector < std::vector < std::pair<unsigned long long, double > > > adjList;
 public:
     /** Adiciona a aresta <i>node1</i>-<i>node2</i> ao grafo. */
     virtual void addEdge(unsigned long long node1, unsigned long long node2);

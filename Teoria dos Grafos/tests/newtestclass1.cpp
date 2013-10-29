@@ -67,12 +67,12 @@ void newtestclass1::testBasic4() {
 
 void newtestclass1::testBasic5() {
     Graph *g = new GraphList(5, true);
-    g->addEdge(1, 2, 1);
+    g->addEdge(1, 2, 3.0);
     g->addEdge(1, 3);
     g->addEdge(1, 4, 10);
     g->addEdge(1, 5, 50);
 
-    CPPUNIT_ASSERT_EQUAL(1.0, g->getWeight(1, 2));
+    CPPUNIT_ASSERT_EQUAL(3.0, g->getWeight(1, 2));
     CPPUNIT_ASSERT_EQUAL(1.0, g->getWeight(1, 3));
     CPPUNIT_ASSERT_EQUAL(10.0, g->getWeight(1, 4));
     CPPUNIT_ASSERT_EQUAL(50.0, g->getWeight(1, 5));

@@ -55,6 +55,12 @@ void Graph::addEdge(unsigned long long node1, unsigned long long node2) {
     ++degrees.at(node1), ++degrees.at(node2);
 }
 
+void Graph::addEdge(unsigned long long node1, unsigned long long node2, double weight) {
+    Graph::addEdge(node1, node2);
+    if (weighted == 1 && weight < 0)
+        weighted = 2;
+}
+
 void Graph::saveInfo(const char* filename) {
     std::ofstream os;
     os.open(filename);
@@ -70,9 +76,9 @@ void Graph::saveInfo(const char* filename) {
 }
 
 bool Graph::isWeighted() const {
-    return false;
+    return weighted;
 }
 
 bool Graph::hasNegativeWeight() const {
-    return false;
+    return weighted == 2;
 }

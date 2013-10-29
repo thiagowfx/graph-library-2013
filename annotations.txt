@@ -14,7 +14,7 @@ valores default
 
 
 
-mudar
-
+mudar depois:
+ 
 isWeighted
 hasNegWeight

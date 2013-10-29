@@ -27,7 +27,7 @@ void InputHandler::readGraphMatrix(Graph **g, const char *filename) {
     sscanf(line.c_str(), "%lld", &number_of_nodes);
 
     // allocate the graph
-    *g = new GraphMatrix(number_of_nodes);
+    *g = new GraphMatrix(number_of_nodes, false);
     
     // read edges
     while (getline(is, line)) {
@@ -50,7 +50,7 @@ void InputHandler::readGraphList(Graph **g, const char *filename) {
     sscanf(line.c_str(), "%lld", &number_of_nodes);
 
     // allocate the graph
-    *g = new GraphList(number_of_nodes);
+    *g = new GraphList(number_of_nodes, false);
     
     // read edges
     while (getline(is, line)) {

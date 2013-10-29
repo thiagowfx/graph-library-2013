@@ -1,0 +1,20 @@
+TODO
+
+ - com backwards support
+
+OK inicializar weighted;
+OK construtor Graph true/false/nada
+OK addEdge com mais um parâmetro
+OK adicionar getWeight
+
+valores default
+
+- na matriz: double
+- na lista: pair
+
+
+
+mudar
+
+isWeighted
+hasNegWeight

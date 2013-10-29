@@ -8,7 +8,7 @@
 #include <fstream>
 #include "Graph.h"
 
-Graph::Graph(unsigned long long N) {
+Graph::Graph(unsigned long long N, bool weighted) {
     this->N = N;
     M = 0;
     degrees = std::deque<unsigned long long>(N + 1);
@@ -21,22 +21,22 @@ unsigned long long Graph::getN() const {
     return N;
 }
 
-unsigned long long Graph::getM() {
+unsigned long long Graph::getM() const {
     return M;
 }
 
-double Graph::getAverDeg() {
+double Graph::getAverDeg() const {
     if (N == 0)
         return 0;
     else
         return 2 * double(M) / N;
 }
 
-unsigned long long Graph::getDegree(unsigned long long node) {
+unsigned long long Graph::getDegree(unsigned long long node) const {
     return degrees.at(node);
 }
 
-std::vector<double> Graph::getEmpDist() {
+std::vector<double> Graph::getEmpDist() const {
     std::vector<double> v(N, 0.0);
     for (int i = 1; i <= N; ++i)
         ++v.at(degrees[i]);
@@ -62,4 +62,12 @@ void Graph::saveInfo(const char* filename) {
     for (int i = 1; i < N; ++i)
         os << i << " " << v[i] << std::endl;
     os.close();
+}
+
+bool Graph::isWeighted() const {
+    return false;
+}
+
+bool Graph::hasNegativeWeight() const {
+    return false;
 }

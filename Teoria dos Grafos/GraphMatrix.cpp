@@ -7,7 +7,7 @@
 
 #include "GraphMatrix.h"
 
-GraphMatrix::GraphMatrix(unsigned long long N) : Graph(N) {
+GraphMatrix::GraphMatrix(unsigned long long N, bool weighted) : Graph(N, weighted) {
     adjMatrix = std::vector< std::vector< bool > > (N + 1, std::vector<bool>(N + 1, 0));
 }
 
@@ -20,6 +20,10 @@ void GraphMatrix::addEdge(unsigned long long node1, unsigned long long node2) {
     adjMatrix.at(node2).at(node1) = true;
 }
 
+void GraphMatrix::addEdge(unsigned long long node1, unsigned long long node2, double weight) {
+    
+}
+
 bool GraphMatrix::isEdge(unsigned long long node1, unsigned long long node2) const {
     //try {
         return adjMatrix.at(node1).at(node2);
@@ -27,6 +31,10 @@ bool GraphMatrix::isEdge(unsigned long long node1, unsigned long long node2) con
     //catch (std::exception) {
     //    return false;
     //}
+}
+
+double GraphMatrix::getWeight(unsigned long long node1, unsigned long long node2) const {
+    return 0.0;
 }
 
 std::vector<unsigned long long> GraphMatrix::getNeighbours(unsigned long long node) const {

@@ -52,7 +52,8 @@ TESTFILES= \
 	${TESTDIR}/TestFiles/f5 \
 	${TESTDIR}/TestFiles/f4 \
 	${TESTDIR}/TestFiles/f3 \
-	${TESTDIR}/TestFiles/f1
+	${TESTDIR}/TestFiles/f1 \
+	${TESTDIR}/TestFiles/f6
 
 # C Compiler Flags
 CFLAGS=`cppunit-config --cflags` 
@@ -138,6 +139,10 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/newtestclass.o ${TESTDIR}/tests/newtes
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} `cppunit-config --libs` `cppunit-config --libs`   
 
+${TESTDIR}/TestFiles/f6: ${TESTDIR}/tests/newtestclass1.o ${TESTDIR}/tests/newtestrunner1.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f6 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
+
 
 ${TESTDIR}/tests/bfstestclass1.o: tests/bfstestclass1.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
@@ -197,6 +202,18 @@ ${TESTDIR}/tests/newtestrunner.o: tests/newtestrunner.cpp
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/newtestrunner.o tests/newtestrunner.cpp
+
+
+${TESTDIR}/tests/newtestclass1.o: tests/newtestclass1.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} $@.d
+	$(COMPILE.cc) -g `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/newtestclass1.o tests/newtestclass1.cpp
+
+
+${TESTDIR}/tests/newtestrunner1.o: tests/newtestrunner1.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} $@.d
+	$(COMPILE.cc) -g `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/newtestrunner1.o tests/newtestrunner1.cpp
 
 
 ${OBJECTDIR}/Bfs_nomain.o: ${OBJECTDIR}/Bfs.o Bfs.cpp 
@@ -299,6 +316,7 @@ ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cpp
 	    ${TESTDIR}/TestFiles/f4 || true; \
 	    ${TESTDIR}/TestFiles/f3 || true; \
 	    ${TESTDIR}/TestFiles/f1 || true; \
+	    ${TESTDIR}/TestFiles/f6 || true; \
 	else  \
 	    ./${TEST} || true; \
 	fi

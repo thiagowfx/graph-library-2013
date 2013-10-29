@@ -13,6 +13,7 @@
 
 class GraphList : public Graph {
 public:
+    GraphList(unsigned long long N);
     /** Um grafo com <b>N</b> nós. <i>weighted</i> é <i>true</i> se o grafo possuir pesos. */
     GraphList(unsigned long long N, bool weighted);
     virtual ~GraphList();

@@ -12,6 +12,11 @@ Graph::Graph(unsigned long long N, bool weighted) {
     this->N = N;
     M = 0;
     degrees = std::deque<unsigned long long>(N + 1);
+    
+    if (weighted == false)
+        this->weighted = 0;
+    else
+        this->weighted = 1;
 }
 
 Graph::~Graph() {

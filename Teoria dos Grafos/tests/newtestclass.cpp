@@ -13,10 +13,10 @@
 #include "../GraphMatrix.h"
 #include "../GraphList.h"
 
-GraphMatrix emptyGm(10);
-GraphMatrix gm(10);
-GraphList emptyGl(10);
-GraphList gl(10);
+GraphMatrix emptyGm(10, false);
+GraphMatrix gm(10, false);
+GraphList emptyGl(10, false);
+GraphList gl(10, false);
 Graph* gEx;
 
 template <class T>
@@ -60,17 +60,17 @@ newtestclass::~newtestclass() {
 }
 
 void newtestclass::setUp() {
-    gm = GraphMatrix(10);
+    gm = GraphMatrix(10, false);
     gm.addEdge(1, 2);
     gm.addEdge(1, 3);
     gm.addEdge(9, 10);
 
-    gl = GraphList(10);
+    gl = GraphList(10, false);
     gl.addEdge(1, 2);
     gl.addEdge(1, 3);
     gl.addEdge(9, 10);
 
-    gEx = new GraphMatrix(5);
+    gEx = new GraphMatrix(5, false);
     gEx->addEdge(1, 2);
     gEx->addEdge(2, 5);
     gEx->addEdge(5, 3);
@@ -83,7 +83,7 @@ void newtestclass::tearDown() {
 }
 
 void newtestclass::testEmptyGraphMatrix() {
-    Graph *g = new GraphMatrix(0);
+    Graph *g = new GraphMatrix(0, false);
     CPPUNIT_ASSERT_EQUAL(0ULL, g->getN());
     CPPUNIT_ASSERT_EQUAL(0ULL, g->getM());
     CPPUNIT_ASSERT_EQUAL(0.0, g->getAverDeg());
@@ -154,7 +154,7 @@ void newtestclass::testGetNeighboursGraphMatrix() {
 }
 
 void newtestclass::testEmptyGraphList() {
-    Graph *g = new GraphList(0);
+    Graph *g = new GraphList(0, false);
     CPPUNIT_ASSERT_EQUAL_MESSAGE("Número de nós", 0ULL, g->getN());
     CPPUNIT_ASSERT_EQUAL_MESSAGE("Número de arestas", 0ULL, g->getM());
     CPPUNIT_ASSERT_EQUAL(0.0, g->getAverDeg());

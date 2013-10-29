@@ -14,6 +14,7 @@
 
 class GraphMatrix : public Graph {
 public:
+    GraphMatrix(unsigned long long N);
     /** Um grafo com <b>N</b> nós. <i>weighted</i> é <i>true</i> se o grafo possuir pesos. */
     GraphMatrix(unsigned long long N, bool weighted);
     /** Constrói o grafo a partir de um arquivo de entrada. */

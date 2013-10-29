@@ -21,7 +21,7 @@ outputinfo_testclass::~outputinfo_testclass() {
 }
 
 void outputinfo_testclass::setUp() {
-    gEx = new GraphMatrix(5);
+    gEx = new GraphMatrix(5, false);
     gEx->addEdge(1, 2);
     gEx->addEdge(2, 5);
     gEx->addEdge(5, 3);

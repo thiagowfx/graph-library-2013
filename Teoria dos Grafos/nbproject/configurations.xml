@@ -30,26 +30,26 @@
                    displayName="Arquivos de Teste"
                    projectFiles="false"
                    kind="TEST_LOGICAL_FOLDER">
-      <logicalFolder name="f2" displayName="Bfs" projectFiles="true" kind="TEST">
+      <logicalFolder name="f3" displayName="BFS" projectFiles="true" kind="TEST">
         <itemPath>tests/bfstestclass1.cpp</itemPath>
         <itemPath>tests/bfstestclass1.h</itemPath>
         <itemPath>tests/bfstestrunner1.cpp</itemPath>
       </logicalFolder>
-      <logicalFolder name="f5" displayName="Dfs" projectFiles="true" kind="TEST">
+      <logicalFolder name="f2" displayName="DFS" projectFiles="true" kind="TEST">
         <itemPath>tests/dfstestclass1.cpp</itemPath>
         <itemPath>tests/dfstestclass1.h</itemPath>
         <itemPath>tests/dfstestrunner1.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f4"
-                     displayName="Input Handler"
+                     displayName="InputHandler"
                      projectFiles="true"
                      kind="TEST">
         <itemPath>tests/inputhandler_testclass.cpp</itemPath>
         <itemPath>tests/inputhandler_testclass.h</itemPath>
         <itemPath>tests/inputhandler_testrunner.cpp</itemPath>
       </logicalFolder>
-      <logicalFolder name="f3"
-                     displayName="Output Info"
+      <logicalFolder name="f5"
+                     displayName="OutputInfo"
                      projectFiles="true"
                      kind="TEST">
         <itemPath>tests/outputinfo_newtestrunner.cpp</itemPath>
@@ -129,11 +129,13 @@
         <cTool>
           <incDir>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </incDir>
           <commandLine>`cppunit-config --cflags`</commandLine>
         </cTool>
         <ccTool>
           <incDir>
+            <pElem>.</pElem>
             <pElem>.</pElem>
           </incDir>
           <commandLine>`cppunit-config --cflags`</commandLine>
@@ -141,6 +143,7 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f1</output>
           <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
           </linkerLibItems>
@@ -158,14 +161,21 @@
           <linkerLibItems>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </folder>
       <folder path="TestFiles/f3">
         <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
           <commandLine>`cppunit-config --cflags`</commandLine>
         </cTool>
         <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
           <commandLine>`cppunit-config --cflags`</commandLine>
         </ccTool>
         <linkerTool>
@@ -177,9 +187,15 @@
       </folder>
       <folder path="TestFiles/f4">
         <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
           <commandLine>`cppunit-config --cflags`</commandLine>
         </cTool>
         <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
           <commandLine>`cppunit-config --cflags`</commandLine>
         </ccTool>
         <linkerTool>
@@ -191,9 +207,15 @@
       </folder>
       <folder path="TestFiles/f5">
         <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
           <commandLine>`cppunit-config --cflags`</commandLine>
         </cTool>
         <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
           <commandLine>`cppunit-config --cflags`</commandLine>
         </ccTool>
         <linkerTool>
@@ -254,6 +276,8 @@
       <item path="tests/outputinfo_testclass.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/outputinfo_testclass.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/testesbasicostestclass.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -326,6 +350,7 @@
           <linkerLibItems>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </folder>
@@ -339,6 +364,7 @@
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f2</output>
           <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
           </linkerLibItems>
@@ -437,6 +463,8 @@
       <item path="tests/outputinfo_testclass.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/outputinfo_testclass.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/testesbasicostestclass.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>

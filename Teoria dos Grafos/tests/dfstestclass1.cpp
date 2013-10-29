@@ -22,20 +22,20 @@ dfstestclass1::~dfstestclass1() {
 }
 
 void dfstestclass1::setUp() {
-    gEx = new GraphMatrix(5);
+    gEx = new GraphMatrix(5, false);
     gEx->addEdge(1, 2);
     gEx->addEdge(2, 5);
     gEx->addEdge(5, 3);
     gEx->addEdge(4, 5);
     gEx->addEdge(1, 5);
 
-    gDe = new GraphList(5);
+    gDe = new GraphList(5, false);
     gDe->addEdge(1, 2);
     gDe->addEdge(2, 3);
     gDe->addEdge(1, 3);
     gDe->addEdge(4, 5);
 
-    gK2 = new GraphMatrix(2);
+    gK2 = new GraphMatrix(2, false);
     gK2->addEdge(1, 2);
 }
 

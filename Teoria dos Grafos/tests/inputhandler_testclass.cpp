@@ -26,7 +26,7 @@ void inputhandler_testclass::tearDown() {
 }
 
 void a(Graph **g) {
-    *g = new GraphMatrix(3);
+    *g = new GraphMatrix(3, false);
     (*g)->addEdge(1, 2);
     (*g)->addEdge(2, 3);
     (*g)->addEdge(1, 3);

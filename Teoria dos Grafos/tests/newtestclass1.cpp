@@ -55,7 +55,8 @@ void newtestclass1::testBasic3() {
 }
 
 void newtestclass1::testBasic4() {
-    Graph *g = new GraphMatrix(5);
+    // FIXME Graph *g = new GraphMatrix(5);
+    Graph *g = new GraphMatrix(5, false);
     g->addEdge(1, 2);
     g->addEdge(1, 3, 10);
     CPPUNIT_ASSERT_EQUAL(1.0, g->getWeight(1, 2));
@@ -98,7 +99,8 @@ void newtestclass1::testBasic7() {
 }
 
 void newtestclass1::testBasic8() {
-    Graph *g = new GraphList(5);
+    // FIXME Graph *g = new GraphList(5);
+    Graph *g = new GraphList(5, false);
     g->addEdge(1, 2);
     g->addEdge(1, 3, 10);
     CPPUNIT_ASSERT_EQUAL(1.0, g->getWeight(1, 2));

@@ -16,6 +16,8 @@
                    projectFiles="true">
       <itemPath>Bfs.cpp</itemPath>
       <itemPath>Dfs.cpp</itemPath>
+      <itemPath>Dijkstra.cpp</itemPath>
+      <itemPath>Dijkstra.h</itemPath>
       <itemPath>Graph.cpp</itemPath>
       <itemPath>GraphList.cpp</itemPath>
       <itemPath>GraphMatrix.cpp</itemPath>
@@ -39,6 +41,11 @@
         <itemPath>tests/dfstestclass1.cpp</itemPath>
         <itemPath>tests/dfstestclass1.h</itemPath>
         <itemPath>tests/dfstestrunner1.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f7" displayName="Dijkstra" projectFiles="true" kind="TEST">
+        <itemPath>tests/dijkstratest.cpp</itemPath>
+        <itemPath>tests/dijkstratest.h</itemPath>
+        <itemPath>tests/dijkstratestrunner.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f4"
                      displayName="InputHandler"
@@ -109,6 +116,10 @@
       </item>
       <item path="Dfs.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Dijkstra.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Dijkstra.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Graph.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Graph.h" ex="false" tool="3" flavor2="0">
@@ -239,6 +250,20 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f7">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f7</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/bfstestclass1.cpp" ex="false" tool="1" flavor2="0">
@@ -252,6 +277,12 @@
       <item path="tests/dfstestclass1.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/dfstestrunner1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/dijkstratest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/dijkstratest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/dijkstratestrunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/inputhandler_testclass.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -314,6 +345,10 @@
       </item>
       <item path="Dfs.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Dijkstra.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Dijkstra.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Graph.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Graph.h" ex="false" tool="3" flavor2="0">
@@ -424,6 +459,20 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f7">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f7</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/bfstestclass1.cpp" ex="false" tool="1" flavor2="0">
@@ -437,6 +486,12 @@
       <item path="tests/dfstestclass1.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/dfstestrunner1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/dijkstratest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/dijkstratest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/dijkstratestrunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/inputhandler_testclass.cpp" ex="false" tool="1" flavor2="0">
       </item>

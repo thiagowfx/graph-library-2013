@@ -4,8 +4,6 @@
  * 
  * Created on 10 de Outubro de 2013, 10:26
  */
-#include <iomanip>
-#include <fstream>
 #include "Graph.h"
 
 Graph::Graph(unsigned long long N, bool weighted) {

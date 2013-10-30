@@ -176,3 +176,22 @@ void dfstestclass1::testDfsConflict() {
     CPPUNIT_ASSERT_EQUAL(2ULL, di.getDfsParent(1));
     CPPUNIT_ASSERT_EQUAL(2ULL, di.getDfsParent(2));
 }
+
+void dfstestclass1::testDfsSaveInfo() {
+    Dfs di(gEx);
+    di.dfs(1);
+    const char file[] = "tmp/testDfsSaveInfo.txt";
+    di.saveInfo(file);
+    
+    std::ifstream is;
+    is.open(file);
+    std::string s;
+
+    std::getline(is, s);        CPPUNIT_ASSERT("parent[1] = 1" == s);
+    std::getline(is, s);        CPPUNIT_ASSERT("parent[2] = 5" == s);
+    std::getline(is, s);        CPPUNIT_ASSERT("parent[3] = 5" == s);
+    std::getline(is, s);        CPPUNIT_ASSERT("parent[4] = 5" == s);
+    std::getline(is, s);        CPPUNIT_ASSERT("parent[5] = 1" == s);
+
+    is.close();
+}

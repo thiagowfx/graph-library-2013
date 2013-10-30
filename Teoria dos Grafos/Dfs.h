@@ -21,6 +21,8 @@ public:
     void dfs(const unsigned long long source);
     /** Chama a DFS a partir de <i>source</i>, porém a recomeça do zero, sem aproveitar informações de Dfs' anteriores.*/
     void dfsStartOver(const unsigned long long source);
+    /** Escreve informações sobre a DFS para o arquivo <i>filename</i>. */
+    void saveInfo(const char* filename);
     /** Retorna o pai de <i>node</i>.*/
     unsigned long long getDfsParent(const unsigned long long source) const;
 private:

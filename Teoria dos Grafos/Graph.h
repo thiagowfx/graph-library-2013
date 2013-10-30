@@ -11,6 +11,9 @@
 #include <deque>
 #include <string>
 #include <vector>
+#include <iomanip>
+#include <iostream>
+#include <fstream>
 
 /**
  * Representa um grafo.

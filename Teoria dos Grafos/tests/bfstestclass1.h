@@ -36,6 +36,7 @@ private:
     void testBfsGrafoDesconexo();
     void testBfsStartOverPrimeiro();
     void testBfsConflict();
+    void testBfsSaveInfo();
 };
 
 #endif	/* BFSTESTCLASS1_H */

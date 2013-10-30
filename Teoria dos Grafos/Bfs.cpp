@@ -59,4 +59,13 @@ void Bfs::bfsStartOver(const unsigned long long source) {
 Bfs::~Bfs() {
 }
 
-
+void Bfs::saveInfo(const char* filename) {
+    std::ofstream os;
+    os.open(filename);
+    
+    // template: parent[i] = j
+    for (int i = 1; i <= G->getN(); ++i)
+        os << "parent[" << i << "] = " << getBfsParent(i) << std::endl;
+    
+    os.close();
+}

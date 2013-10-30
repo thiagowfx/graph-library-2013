@@ -176,3 +176,22 @@ void bfstestclass1::testBfsConflict() {
     CPPUNIT_ASSERT_EQUAL(2ULL, di.getBfsParent(1));
     CPPUNIT_ASSERT_EQUAL(2ULL, di.getBfsParent(2));
 }
+
+void bfstestclass1::testBfsSaveInfo() {
+    Bfs di(gEx);
+    di.bfs(1);
+    const char file[] = "tmp/testBfsSaveInfo.txt";
+    di.saveInfo(file);
+    
+    std::ifstream is;
+    is.open(file);
+    std::string s;
+
+    std::getline(is, s);        CPPUNIT_ASSERT("parent[1] = 1" == s);
+    std::getline(is, s);        CPPUNIT_ASSERT("parent[2] = 1" == s);
+    std::getline(is, s);        CPPUNIT_ASSERT("parent[3] = 5" == s);
+    std::getline(is, s);        CPPUNIT_ASSERT("parent[4] = 5" == s);
+    std::getline(is, s);        CPPUNIT_ASSERT("parent[5] = 1" == s);
+
+    is.close();
+}

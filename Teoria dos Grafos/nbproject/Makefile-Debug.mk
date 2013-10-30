@@ -59,8 +59,8 @@ TESTFILES= \
 CFLAGS=`cppunit-config --cflags` 
 
 # CC Compiler Flags
-CCFLAGS=`cppunit-config --cflags` --std=c++11 
-CXXFLAGS=`cppunit-config --cflags` --std=c++11 
+CCFLAGS=`cppunit-config --cflags` --std=c++0x 
+CXXFLAGS=`cppunit-config --cflags` --std=c++0x 
 
 # Fortran Compiler Flags
 FFLAGS=

@@ -93,7 +93,7 @@
           <commandLine>`cppunit-config --cflags`</commandLine>
         </cTool>
         <ccTool>
-          <commandLine>`cppunit-config --cflags` --std=c++11</commandLine>
+          <commandLine>`cppunit-config --cflags` --std=c++0x</commandLine>
         </ccTool>
         <linkerTool>
           <linkerLibItems>
@@ -276,8 +276,6 @@
       <item path="tests/outputinfo_testclass.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/outputinfo_testclass.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="tests/testesbasicostestclass.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -463,8 +461,6 @@
       <item path="tests/outputinfo_testclass.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/outputinfo_testclass.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="tests/testesbasicostestclass.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>

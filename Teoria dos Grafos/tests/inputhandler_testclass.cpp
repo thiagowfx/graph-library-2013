@@ -52,8 +52,8 @@ void inputhandler_testclass::testReadGraphMatrix() {
     CPPUNIT_ASSERT_EQUAL(2ULL, g->getDegree(3));
 
 
-    CPPUNIT_ASSERT_THROW(g->isEdge(1, 4), std::exception);
-    CPPUNIT_ASSERT_THROW(g->isEdge(3, 4), std::exception);
+    //CPPUNIT_ASSERT_THROW(g->isEdge(1, 4), std::exception);
+    //CPPUNIT_ASSERT_THROW(g->isEdge(3, 4), std::exception);
     CPPUNIT_ASSERT_THROW(g->getDegree(4), std::exception);
 
     delete g;

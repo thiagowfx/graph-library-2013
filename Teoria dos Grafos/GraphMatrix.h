@@ -10,6 +10,7 @@
 
 #include "Graph.h"
 #include <deque>
+#include <exception>
 #include <vector>
 
 class GraphMatrix : public Graph {

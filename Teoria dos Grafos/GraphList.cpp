@@ -43,7 +43,8 @@ double GraphList::getWeight(unsigned long long node1, unsigned long long node2) 
     for (int i = 0; i < adjList.at(node1).size(); ++i)
         if (adjList.at(node1).at(i).first == node2)
             return adjList.at(node1).at(i).second;
-    return -3.14;
+    // edge doesn't exist
+    throw std::exception();
 }
 
 std::vector<unsigned long long> GraphList::getNeighbours(unsigned long long node) const {

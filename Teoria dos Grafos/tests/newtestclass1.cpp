@@ -33,7 +33,7 @@ void newtestclass1::testBasic() {
     CPPUNIT_ASSERT_EQUAL(10.0, g->getWeight(1, 4));
     CPPUNIT_ASSERT_EQUAL(50.0, g->getWeight(1, 5));
     CPPUNIT_ASSERT_EQUAL(true, g->isWeighted());
-    CPPUNIT_ASSERT_EQUAL(false, g->hasNegativeWeight());
+    CPPUNIT_ASSERT_EQUAL(false, g->isNegativeWeighted());
 }
 
 void newtestclass1::testBasic2() {
@@ -41,7 +41,7 @@ void newtestclass1::testBasic2() {
     g->addEdge(1, 2, -10);
     CPPUNIT_ASSERT_EQUAL(-10.0, g->getWeight(1, 2));
     CPPUNIT_ASSERT_EQUAL(true, g->isWeighted());
-    CPPUNIT_ASSERT_EQUAL(true, g->hasNegativeWeight());
+    CPPUNIT_ASSERT_EQUAL(true, g->isNegativeWeighted());
 }
 
 void newtestclass1::testBasic3() {
@@ -51,7 +51,7 @@ void newtestclass1::testBasic3() {
     CPPUNIT_ASSERT_EQUAL(1.0, g->getWeight(1, 2));
     CPPUNIT_ASSERT_EQUAL(1.0, g->getWeight(1, 3));
     CPPUNIT_ASSERT_EQUAL(false, g->isWeighted());
-    CPPUNIT_ASSERT_EQUAL(false, g->hasNegativeWeight());
+    CPPUNIT_ASSERT_EQUAL(false, g->isNegativeWeighted());
 }
 
 void newtestclass1::testBasic4() {
@@ -62,7 +62,7 @@ void newtestclass1::testBasic4() {
     CPPUNIT_ASSERT_EQUAL(1.0, g->getWeight(1, 2));
     CPPUNIT_ASSERT_EQUAL(1.0, g->getWeight(1, 3));
     CPPUNIT_ASSERT_EQUAL(false, g->isWeighted());
-    CPPUNIT_ASSERT_EQUAL(false, g->hasNegativeWeight());
+    CPPUNIT_ASSERT_EQUAL(false, g->isNegativeWeighted());
 }
 
 void newtestclass1::testBasic5() {
@@ -77,7 +77,7 @@ void newtestclass1::testBasic5() {
     CPPUNIT_ASSERT_EQUAL(10.0, g->getWeight(1, 4));
     CPPUNIT_ASSERT_EQUAL(50.0, g->getWeight(1, 5));
     CPPUNIT_ASSERT_EQUAL(true, g->isWeighted());
-    CPPUNIT_ASSERT_EQUAL(false, g->hasNegativeWeight());
+    CPPUNIT_ASSERT_EQUAL(false, g->isNegativeWeighted());
 }
 
 void newtestclass1::testBasic6() {
@@ -85,7 +85,7 @@ void newtestclass1::testBasic6() {
     g->addEdge(1, 2, -10);
     CPPUNIT_ASSERT_EQUAL(-10.0, g->getWeight(1, 2));
     CPPUNIT_ASSERT_EQUAL(true, g->isWeighted());
-    CPPUNIT_ASSERT_EQUAL(true, g->hasNegativeWeight());
+    CPPUNIT_ASSERT_EQUAL(true, g->isNegativeWeighted());
 }
 
 void newtestclass1::testBasic7() {
@@ -95,7 +95,7 @@ void newtestclass1::testBasic7() {
     CPPUNIT_ASSERT_EQUAL(1.0, g->getWeight(1, 2));
     CPPUNIT_ASSERT_EQUAL(1.0, g->getWeight(1, 3));
     CPPUNIT_ASSERT_EQUAL(false, g->isWeighted());
-    CPPUNIT_ASSERT_EQUAL(false, g->hasNegativeWeight());
+    CPPUNIT_ASSERT_EQUAL(false, g->isNegativeWeighted());
 }
 
 void newtestclass1::testBasic8() {
@@ -106,5 +106,13 @@ void newtestclass1::testBasic8() {
     CPPUNIT_ASSERT_EQUAL(1.0, g->getWeight(1, 2));
     CPPUNIT_ASSERT_EQUAL(1.0, g->getWeight(1, 3));
     CPPUNIT_ASSERT_EQUAL(false, g->isWeighted());
-    CPPUNIT_ASSERT_EQUAL(false, g->hasNegativeWeight());
+    CPPUNIT_ASSERT_EQUAL(false, g->isNegativeWeighted());
+}
+
+void newtestclass1::testException() {
+    Graph *g = new GraphList(5, true);
+    CPPUNIT_ASSERT_THROW( g->getWeight(1, 10), std::exception);
+    
+    //Graph *h = new GraphMatrix(5, true);
+    //CPPUNIT_ASSERT_THROW( g->isEdge(1, 10), std::exception);
 }

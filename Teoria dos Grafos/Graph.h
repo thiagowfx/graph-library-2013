@@ -56,7 +56,7 @@ public:
     /** Retorna <i>true</i> se o grafo tem pesos. Se o grafo não tem pesos, é como se todas as arestas tivessem peso igual a 1. */
     bool isWeighted() const;
     /** Retorna <i>true</i> se o grafo tem algum peso negativo. Se o grafo não tiver pesos, retorna <i>false</i>. */
-    bool hasNegativeWeight() const;
+    bool isNegativeWeighted() const;
     /** Retorna o peso da aresta formada por <i>node1</i> e <i>node2</i>. */
     virtual double getWeight(unsigned long long node1, unsigned long long node2) const = 0;
 };

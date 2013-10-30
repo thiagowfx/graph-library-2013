@@ -11,6 +11,7 @@
 #include "../Graph.h"
 #include "../GraphMatrix.h"
 #include "../GraphList.h"
+#include <exception>
 
 #include <cppunit/extensions/HelperMacros.h>
 
@@ -25,6 +26,7 @@ class newtestclass1 : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST(testBasic6);
     CPPUNIT_TEST(testBasic7);
     CPPUNIT_TEST(testBasic8);
+    CPPUNIT_TEST(testException);
     
     CPPUNIT_TEST_SUITE_END();
 
@@ -44,6 +46,7 @@ private:
     void testBasic6();
     void testBasic7();
     void testBasic8();
+    void testException();
 };
 
 #endif	/* NEWTESTCLASS1_H */

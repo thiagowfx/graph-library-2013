@@ -9,6 +9,7 @@
 #define	GRAPHLIST_H
 
 #include "Graph.h"
+#include <exception>
 #include <vector>
 #include <utility>
 

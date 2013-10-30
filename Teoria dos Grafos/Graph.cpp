@@ -79,6 +79,6 @@ bool Graph::isWeighted() const {
     return weighted;
 }
 
-bool Graph::hasNegativeWeight() const {
+bool Graph::isNegativeWeighted() const {
     return weighted == 2;
 }

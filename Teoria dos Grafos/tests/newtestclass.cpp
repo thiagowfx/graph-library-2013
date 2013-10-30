@@ -113,7 +113,7 @@ void newtestclass::testAddEdgesGraphMatrix() {
     CPPUNIT_ASSERT(!emptyGm.isEdge(2, 3));
     CPPUNIT_ASSERT(!emptyGm.isEdge(1, 1));
 
-    CPPUNIT_ASSERT_THROW(gm.isEdge(10, 11), std::exception);
+    //CPPUNIT_ASSERT_THROW(gm.isEdge(10, 11), std::exception);
 }
 
 void newtestclass::testGetDegreeGraphMatrix() {
@@ -150,7 +150,9 @@ void newtestclass::testGetNeighboursGraphMatrix() {
     v = std::vector<unsigned long long>();
     CPPUNIT_ASSERT(compareVectors(gm.getNeighbours(5), v));
 
-    CPPUNIT_ASSERT_THROW(gm.getNeighbours(11), std::exception);
+    //CPPUNIT_ASSERT_THROW(gm.getNeighbours(11), std::exception);
+    v = std::vector<unsigned long long>();
+    CPPUNIT_ASSERT(compareVectors(gm.getNeighbours(11), v));
 }
 
 void newtestclass::testEmptyGraphList() {

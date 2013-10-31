@@ -8,17 +8,17 @@
 #include "Bfs.h"
 
 Bfs::Bfs(const Graph* G) : G(G) {
-    bfsClear();
+    clear();
 }
 
-void Bfs::bfsClear() {
+void Bfs::clear() {
     bfsQueue = std::queue<unsigned long long> ();
     bfsExplored = std::vector<bool> (G->getN() + 1, false);
     // decisão de design: pai começa apontando para 0.
     bfsTree = std::vector<unsigned long long> (G->getN() + 1, 0);
 }
 
-unsigned long long Bfs::getBfsParent(const unsigned long long node) const {
+unsigned long long Bfs::getParent(const unsigned long long node) const {
     return bfsTree.at(node);
 }
 
@@ -52,20 +52,20 @@ void Bfs::bfs(const unsigned long long source) {
 }
 
 void Bfs::bfsStartOver(const unsigned long long source) {
-    bfsClear();
+    clear();
     bfs(source);
 }
 
 Bfs::~Bfs() {
 }
 
-void Bfs::saveInfo(const char* filename) {
+void Bfs::saveInfo(const char* filename) const {
     std::ofstream os;
     os.open(filename);
     
     // template: parent[i] = j
     for (int i = 1; i <= G->getN(); ++i)
-        os << "parent[" << i << "] = " << getBfsParent(i) << std::endl;
+        os << "parent[" << i << "] = " << getParent(i) << std::endl;
     
     os.close();
 }

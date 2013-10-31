@@ -8,17 +8,17 @@
 #include "Dfs.h"
 
 Dfs::Dfs(const Graph* G) : G(G) {
-    dfsClear();
+    clear();
 }
 
-void Dfs::dfsClear() {
+void Dfs::clear() {
     dfsStack = std::stack<unsigned long long> ();
     dfsExplored = std::vector<bool> (G->getN() + 1, false);
     // decisão de projeto: pai começa apontando para 0.
     dfsTree = std::vector<unsigned long long> (G->getN() + 1, 0);
 }
 
-unsigned long long Dfs::getDfsParent(const unsigned long long node) const {
+unsigned long long Dfs::getParent(const unsigned long long node) const {
     return dfsTree.at(node);
 }
 
@@ -56,20 +56,20 @@ void Dfs::dfs(const unsigned long long source) {
 }
 
 void Dfs::dfsStartOver(const unsigned long long source) {
-    dfsClear();
+    clear();
     dfs(source);
 }
 
 Dfs::~Dfs() {
 }
 
-void Dfs::saveInfo(const char* filename) {
+void Dfs::saveInfo(const char* filename) const {
     std::ofstream os;
     os.open(filename);
     
     // template: parent[i] = j
     for (int i = 1; i <= G->getN(); ++i)
-        os << "parent[" << i << "] = " << getDfsParent(i) << std::endl;
+        os << "parent[" << i << "] = " << getParent(i) << std::endl;
     
     os.close();
 }

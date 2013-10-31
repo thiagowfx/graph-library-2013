@@ -50,131 +50,131 @@ void dfstestclass1::testDfs() {
     Dfs di(gEx);
 
     di.dfs(1);
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getDfsParent(1));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getDfsParent(2));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getDfsParent(3));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getDfsParent(4));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getDfsParent(5));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(3));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(5));
 
     di.dfs(1);
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getDfsParent(1));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getDfsParent(2));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getDfsParent(3));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getDfsParent(4));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getDfsParent(5));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(3));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(5));
 
     di.dfsStartOver(5);
-    CPPUNIT_ASSERT_EQUAL(2ULL, di.getDfsParent(1));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getDfsParent(2));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getDfsParent(3));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getDfsParent(4));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getDfsParent(5));
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(3));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
 
     di.dfsStartOver(5);
-    CPPUNIT_ASSERT_EQUAL(2ULL, di.getDfsParent(1));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getDfsParent(2));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getDfsParent(3));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getDfsParent(4));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getDfsParent(5));
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(3));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
 }
 
 void dfstestclass1::testDfsGrafoDesconexo() {
     Dfs di(gDe);
 
     di.dfs(1);
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getDfsParent(1));
-    CPPUNIT_ASSERT_EQUAL(3ULL, di.getDfsParent(2));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getDfsParent(3));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getDfsParent(4));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getDfsParent(5));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(3ULL, di.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(3));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(4));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(5));
 
     di.dfs(5);
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getDfsParent(1));
-    CPPUNIT_ASSERT_EQUAL(3ULL, di.getDfsParent(2));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getDfsParent(3));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getDfsParent(4));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getDfsParent(5));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(3ULL, di.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(3));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
 
     di.dfsStartOver(5);
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getDfsParent(1));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getDfsParent(2));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getDfsParent(3));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getDfsParent(4));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getDfsParent(5));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(3));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
 
     di.dfs(3);
-    CPPUNIT_ASSERT_EQUAL(3ULL, di.getDfsParent(1));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getDfsParent(2));
-    CPPUNIT_ASSERT_EQUAL(3ULL, di.getDfsParent(3));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getDfsParent(4));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getDfsParent(5));
+    CPPUNIT_ASSERT_EQUAL(3ULL, di.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(3ULL, di.getParent(3));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
 
     di.dfsStartOver(1);
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getDfsParent(1));
-    CPPUNIT_ASSERT_EQUAL(3ULL, di.getDfsParent(2));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getDfsParent(3));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getDfsParent(4));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getDfsParent(5));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(3ULL, di.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(3));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(4));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(5));
 
     di.dfs(4);
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getDfsParent(1));
-    CPPUNIT_ASSERT_EQUAL(3ULL, di.getDfsParent(2));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getDfsParent(3));
-    CPPUNIT_ASSERT_EQUAL(4ULL, di.getDfsParent(4));
-    CPPUNIT_ASSERT_EQUAL(4ULL, di.getDfsParent(5));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(3ULL, di.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(3));
+    CPPUNIT_ASSERT_EQUAL(4ULL, di.getParent(4));
+    CPPUNIT_ASSERT_EQUAL(4ULL, di.getParent(5));
 }
 
 void dfstestclass1::testDfsStartOverPrimeiro() {
     Dfs di(gDe);
 
     di.dfsStartOver(5);
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getDfsParent(1));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getDfsParent(2));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getDfsParent(3));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getDfsParent(4));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getDfsParent(5));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(3));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
 
     di.dfsStartOver(1);
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getDfsParent(1));
-    CPPUNIT_ASSERT_EQUAL(3ULL, di.getDfsParent(2));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getDfsParent(3));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getDfsParent(4));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getDfsParent(5));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(3ULL, di.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(3));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(4));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(5));
 
     di.dfs(5);
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getDfsParent(1));
-    CPPUNIT_ASSERT_EQUAL(3ULL, di.getDfsParent(2));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getDfsParent(3));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getDfsParent(4));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getDfsParent(5));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(3ULL, di.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(3));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
 }
 
 void dfstestclass1::testDfsConflict() {
     Dfs di(gK2);
 
     di.dfs(1);
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getDfsParent(1));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getDfsParent(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
 
     di.dfs(1);
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getDfsParent(1));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getDfsParent(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
 
     di.dfs(2);
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getDfsParent(1));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getDfsParent(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
     
     di.dfsStartOver(2);
-    CPPUNIT_ASSERT_EQUAL(2ULL, di.getDfsParent(1));
-    CPPUNIT_ASSERT_EQUAL(2ULL, di.getDfsParent(2));
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(2));
     
     di.dfs(1);
-    CPPUNIT_ASSERT_EQUAL(2ULL, di.getDfsParent(1));
-    CPPUNIT_ASSERT_EQUAL(2ULL, di.getDfsParent(2));
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(2));
     
     di.dfs(2);
-    CPPUNIT_ASSERT_EQUAL(2ULL, di.getDfsParent(1));
-    CPPUNIT_ASSERT_EQUAL(2ULL, di.getDfsParent(2));
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(2));
 }
 
 void dfstestclass1::testDfsSaveInfo() {

@@ -9,25 +9,22 @@
 #define	INPUTHANDLER_H
 
 #include "Include.h"
+#include <exception>
 
 class InputHandler {
 public:
     InputHandler();
     virtual ~InputHandler();
-    /** Aloca em <b>g</b> o grafo do arquivo <b>filename</b>, utilizando uma matriz de adjacência.\n
-     * <b>Usage</b>:\n
-     * Graph *g;\n
-     * InputHandler ih;\n
-     * ih.readGraphMatrix(&g, filename);
+    /** Aloca em <b>g</b> o grafo do arquivo <b>filename</b>. \n 
+        <b>rep</b>: representação do grafo a ser lida: \n
+          - 'm' - matriz de adjacência \n
+          - 'l' - list de adjacência \n
+       <b>Usage</b>: \n
+       Graph *g;\n
+       InputHandler ih;\n
+       ih.readGraph(&g, filename, 'm');
      */
-    void readGraphMatrix(Graph **g, const char *filename);
-    /** Aloca em <b>g</b> o grafo do arquivo <b>filename</b>, utilizando uma lista de adjacência.\n
-     * <b>Usage</b>:\n
-     * Graph *g;\n
-     * InputHandler ih;\n
-     * ih.readGraphList(&g, filename);
-     */
-    void readGraphList(Graph **g, const char *filename);
+    void readGraph(Graph **g, const char *filename, char rep);
 private:
     // void removeDuplicates();
 };

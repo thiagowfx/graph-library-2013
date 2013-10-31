@@ -20,9 +20,9 @@ public:
     /** Chama a DFS a partir de <i>source</i>, porém a recomeça do zero, sem aproveitar informações de Dfs' anteriores.*/
     void dfsStartOver(const unsigned long long source);
     /** Escreve informações sobre a DFS para o arquivo <i>filename</i>. */
-    void saveInfo(const char* filename);
+    void saveInfo(const char* filename) const;
     /** Retorna o pai de <i>node</i>.*/
-    unsigned long long getDfsParent(const unsigned long long source) const;
+    unsigned long long getParent(const unsigned long long source) const;
 private:
     /** Grafo no qual a classe vai atuar. */
     const Graph *G;
@@ -34,7 +34,7 @@ private:
     std::vector<bool> dfsExplored;
     /** Reseta quaisquer informações já processadas por uma instância dessa classe.\n
      * Equivalente a reconstruir a Dfs. */
-    void dfsClear();
+    void clear();
 };
 
 #endif	/* DFS_H */

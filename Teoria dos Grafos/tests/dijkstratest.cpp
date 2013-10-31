@@ -10,7 +10,6 @@
 #include "../Dijkstra.h"
 
 Graph *gm;
-Graph *gl;
 
 CPPUNIT_TEST_SUITE_REGISTRATION(dijkstratest);
 
@@ -34,7 +33,7 @@ void dijkstratest::tearDown() {
     delete gm;
 }
 
-void dijkstratest::testMethod() {
+void dijkstratest::testDijkstra() {
     CPPUNIT_ASSERT_EQUAL(5ULL, gm->getN());
     CPPUNIT_ASSERT( gm->isWeighted() );
     CPPUNIT_ASSERT( !gm->isNegativeWeighted() );
@@ -45,8 +44,7 @@ void dijkstratest::testMethod() {
     CPPUNIT_ASSERT_EQUAL(1.0, gm->getWeight(3,5));
     CPPUNIT_ASSERT_EQUAL(3.0, gm->getWeight(4,5));
     
-    unsigned long long source;
-    source = 1;
+    unsigned long long source = 1;
     Dijkstra di(gm, source);
     CPPUNIT_ASSERT_EQUAL(0.0, di.getDistance(1));
     CPPUNIT_ASSERT_EQUAL(1.0, di.getDistance(2));
@@ -55,3 +53,10 @@ void dijkstratest::testMethod() {
     CPPUNIT_ASSERT_EQUAL(3.0, di.getDistance(5));
 }
 
+void dijkstratest::testOnlyPositiveWeights() {
+    Graph *g = new GraphList(5, true);
+    g->addEdge(1, 2, 1.0);
+    g->addEdge(2, 3, -1.0);
+    
+    CPPUNIT_ASSERT_THROW_MESSAGE("o grafo contém algum peso negativo", Dijkstra di(g, 1), std::exception );
+}

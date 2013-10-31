@@ -9,29 +9,27 @@
 #define	DIJKSTRA_H
 
 #include "Graph.h"
-#include <vector>
-#include <queue> // std::priority_queue
-#include <utility> // std::pair
-#include <functional> // std::greater
 
 class Dijkstra {
 public:
-    Dijkstra(Graph *G, unsigned long long source);
+    Dijkstra(const Graph *G, unsigned long long source);
     virtual ~Dijkstra();
-    /** Retorna o comprimento do menor caminho de <i>source</i> a <i>target</i> */
-    double getDistance(unsigned long long target);
+    /** Retorna o pai de <i>node</i> do menor caminho de <i>node</i> a <i>source</i>. */
+    unsigned long long getParent(unsigned long long node) const;
+    /** Retorna o comprimento do menor caminho de <i>source</i> a <i>target</i>. */
+    double getDistance(unsigned long long target) const;
     /** Retorna o vértice de origem. */
-    unsigned long long getSource() {return source;}; 
+    unsigned long long getSource() const;
 private:
-    Graph *G;
-    unsigned long long source;
+    const Graph *G;
+    const unsigned long long source;
     std::vector<double> distance;
-    std::vector<bool> visited;
-    std::vector<unsigned long long> predecessor;
+    std::vector<bool> explored;
+    std::vector<unsigned long long> parent;
     std::priority_queue< std::pair<double, unsigned long long>, 
         std::vector< std::pair<double, unsigned long long> >, 
         std::greater< std::pair<double, unsigned long long> > > Q;
-    void Clear();
+    void clear();
 };
 
 #endif	/* DIJKSTRA_H */

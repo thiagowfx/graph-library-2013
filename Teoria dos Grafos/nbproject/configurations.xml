@@ -7,6 +7,7 @@
       <itemPath>Bfs.h</itemPath>
       <itemPath>Connectivity.h</itemPath>
       <itemPath>Dfs.h</itemPath>
+      <itemPath>Dijkstra.h</itemPath>
       <itemPath>Graph.h</itemPath>
       <itemPath>GraphList.h</itemPath>
       <itemPath>GraphMatrix.h</itemPath>
@@ -20,7 +21,6 @@
       <itemPath>Connectivity.cpp</itemPath>
       <itemPath>Dfs.cpp</itemPath>
       <itemPath>Dijkstra.cpp</itemPath>
-      <itemPath>Dijkstra.h</itemPath>
       <itemPath>Graph.cpp</itemPath>
       <itemPath>GraphList.cpp</itemPath>
       <itemPath>GraphMatrix.cpp</itemPath>

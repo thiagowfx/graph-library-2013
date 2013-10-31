@@ -1,26 +1,17 @@
 # README
 
 Biblioteca de grafos em C++.
+Essa é a parte 2 do trabalho.
 
-## Dependências
+## Dependências para desenvolvimento
 
-* C++11 (gcc recente)
-* CppUnit (testes)
-* Valgrinder (profiler)
-* Boost !!!
-* OpenMP !!!
+* C++11 (gcc 4.8+)
+* CppUnit (suite de testes)
+* NetBeans 7.4
 
-## Instruções GIT
-
-Para clonar (criar repositório local):  
-     `git clone https://bitbucket.org/thiagowfx/teoria-dos-grafos-trabalho-1.git`
-
-Para sincronizar o repositório local com o remoto:  
-     `git pull`
-
-Para dar merge:  
-     `git mergetool`  
-Recomendo usar o software `meld` para isso.
+* Boost
+* OpenMP
+* Valgrind (profiler)
 
 ### Comentários nos códigos
 * `[!!!]` wishlist

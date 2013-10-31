@@ -8,12 +8,17 @@
 #ifndef GRAPH_H
 #define	GRAPH_H
 
+#include <cstring>
 #include <deque>
-#include <string>
-#include <vector>
+#include <exception>
 #include <iomanip>
 #include <iostream>
 #include <fstream>
+#include <queue>
+#include <stack>
+#include <string>
+#include <utility>
+#include <vector>
 
 /**
  * Representa um grafo.

@@ -8,9 +8,6 @@
 #include "dijkstratest.h"
 
 #include "../Dijkstra.h"
-#include "../Graph.h"
-#include "../GraphMatrix.h"
-#include "../GraphList.h"
 
 Graph *gm;
 Graph *gl;

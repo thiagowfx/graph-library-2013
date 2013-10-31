@@ -9,9 +9,6 @@
 #define	GRAPHMATRIX_H
 
 #include "Graph.h"
-#include <deque>
-#include <exception>
-#include <vector>
 
 class GraphMatrix : public Graph {
 public:

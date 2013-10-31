@@ -6,9 +6,6 @@
  */
 
 #include "outputinfo_testclass.h"
-#include "../Graph.h"
-#include "../GraphMatrix.h"
-#include "../GraphList.h"
 
 Graph* gEx;
 

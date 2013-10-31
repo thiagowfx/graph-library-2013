@@ -5,9 +5,6 @@
  * Created on 11 de Outubro de 2013, 21:36
  */
 
-#include <cstring>
-#include <fstream>
-#include <string>
 #include "InputHandler.h"
 
 InputHandler::InputHandler() {

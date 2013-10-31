@@ -5,16 +5,19 @@
                    displayName="Arquivos de Cabeçalho"
                    projectFiles="true">
       <itemPath>Bfs.h</itemPath>
+      <itemPath>Connectivity.h</itemPath>
       <itemPath>Dfs.h</itemPath>
       <itemPath>Graph.h</itemPath>
       <itemPath>GraphList.h</itemPath>
       <itemPath>GraphMatrix.h</itemPath>
+      <itemPath>Include.h</itemPath>
       <itemPath>InputHandler.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Arquivos de Código-Fonte"
                    projectFiles="true">
       <itemPath>Bfs.cpp</itemPath>
+      <itemPath>Connectivity.cpp</itemPath>
       <itemPath>Dfs.cpp</itemPath>
       <itemPath>Dijkstra.cpp</itemPath>
       <itemPath>Dijkstra.h</itemPath>
@@ -112,6 +115,10 @@
       </item>
       <item path="Bfs.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Connectivity.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Connectivity.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Dfs.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Dfs.h" ex="false" tool="3" flavor2="0">
@@ -131,6 +138,8 @@
       <item path="GraphMatrix.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="GraphMatrix.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Include.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="InputHandler.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -341,6 +350,10 @@
       </item>
       <item path="Bfs.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Connectivity.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Connectivity.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Dfs.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Dfs.h" ex="false" tool="3" flavor2="0">
@@ -360,6 +373,8 @@
       <item path="GraphMatrix.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="GraphMatrix.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Include.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="InputHandler.cpp" ex="false" tool="1" flavor2="0">
       </item>

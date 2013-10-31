@@ -8,9 +8,7 @@
 #ifndef BFSTESTCLASS1_H
 #define	BFSTESTCLASS1_H
 
-#include "../Graph.h"
-#include "../GraphMatrix.h"
-#include "../GraphList.h"
+#include "../Include.h"
 #include "../Bfs.h"
 
 #include <cppunit/extensions/HelperMacros.h>

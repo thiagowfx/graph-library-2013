@@ -6,10 +6,6 @@
  */
 
 #include "inputhandler_testclass.h"
-#include "../Graph.h"
-#include "../GraphMatrix.h"
-#include "../GraphList.h"
-#include "../InputHandler.h"
 
 CPPUNIT_TEST_SUITE_REGISTRATION(inputhandler_testclass);
 

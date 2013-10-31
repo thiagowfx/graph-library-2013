@@ -9,8 +9,6 @@
 #define	BFS_H
 
 #include "Graph.h"
-#include <queue>
-#include <vector>
 
 class Bfs {
 public:

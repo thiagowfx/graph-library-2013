@@ -8,6 +8,8 @@
 #ifndef DIJKSTRATEST_H
 #define	DIJKSTRATEST_H
 
+#include "../Include.h"
+
 #include <cppunit/extensions/HelperMacros.h>
 
 class dijkstratest : public CPPUNIT_NS::TestFixture {

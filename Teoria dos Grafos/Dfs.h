@@ -9,8 +9,6 @@
 #define	DFS_H
 
 #include "Graph.h"
-#include <stack>
-#include <vector>
 
 class Dfs {
 public:

@@ -8,10 +8,7 @@
 #ifndef NEWTESTCLASS1_H
 #define	NEWTESTCLASS1_H
 
-#include "../Graph.h"
-#include "../GraphMatrix.h"
-#include "../GraphList.h"
-#include <exception>
+#include "../Include.h"
 
 #include <cppunit/extensions/HelperMacros.h>
 

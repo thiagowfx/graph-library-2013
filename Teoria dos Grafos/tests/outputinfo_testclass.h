@@ -8,6 +8,8 @@
 #ifndef OUTPUTINFO_TESTCLASS_H
 #define	OUTPUTINFO_TESTCLASS_H
 
+#include "../Include.h"
+
 #include <cppunit/extensions/HelperMacros.h>
 
 class outputinfo_testclass : public CPPUNIT_NS::TestFixture {

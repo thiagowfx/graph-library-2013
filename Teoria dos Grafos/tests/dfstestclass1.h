@@ -8,9 +8,7 @@
 #ifndef DFSTESTCLASS1_H
 #define	DFSTESTCLASS1_H
 
-#include "../Graph.h"
-#include "../GraphMatrix.h"
-#include "../GraphList.h"
+#include "../Include.h"
 #include "../Dfs.h"
 
 #include <cppunit/extensions/HelperMacros.h>

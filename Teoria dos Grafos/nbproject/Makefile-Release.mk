@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Bfs.o \
+	${OBJECTDIR}/Connectivity.o \
 	${OBJECTDIR}/Dfs.o \
 	${OBJECTDIR}/Dijkstra.o \
 	${OBJECTDIR}/Graph.o \
@@ -85,6 +86,11 @@ ${OBJECTDIR}/Bfs.o: Bfs.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Bfs.o Bfs.cpp
+
+${OBJECTDIR}/Connectivity.o: Connectivity.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Connectivity.o Connectivity.cpp
 
 ${OBJECTDIR}/Dfs.o: Dfs.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -250,6 +256,19 @@ ${OBJECTDIR}/Bfs_nomain.o: ${OBJECTDIR}/Bfs.o Bfs.cpp
 	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Bfs_nomain.o Bfs.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/Bfs.o ${OBJECTDIR}/Bfs_nomain.o;\
+	fi
+
+${OBJECTDIR}/Connectivity_nomain.o: ${OBJECTDIR}/Connectivity.o Connectivity.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/Connectivity.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Connectivity_nomain.o Connectivity.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/Connectivity.o ${OBJECTDIR}/Connectivity_nomain.o;\
 	fi
 
 ${OBJECTDIR}/Dfs_nomain.o: ${OBJECTDIR}/Dfs.o Dfs.cpp 

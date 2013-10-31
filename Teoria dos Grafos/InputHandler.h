@@ -5,12 +5,10 @@
  * Created on 11 de Outubro de 2013, 21:36
  */
 
-#include "Graph.h"
-#include "GraphMatrix.h"
-#include "GraphList.h"
-
 #ifndef INPUTHANDLER_H
 #define	INPUTHANDLER_H
+
+#include "Include.h"
 
 class InputHandler {
 public:

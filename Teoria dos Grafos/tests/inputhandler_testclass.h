@@ -8,6 +8,9 @@
 #ifndef INPUTHANDLER_TESTCLASS_H
 #define	INPUTHANDLER_TESTCLASS_H
 
+#include "../Include.h"
+#include "../InputHandler.h"
+
 #include <cppunit/extensions/HelperMacros.h>
 
 class inputhandler_testclass : public CPPUNIT_NS::TestFixture {

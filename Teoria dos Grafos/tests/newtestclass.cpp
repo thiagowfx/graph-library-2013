@@ -5,13 +5,7 @@
  * Created on 06/10/2013, 20:16:11
  */
 
-#include <iostream>
-#include <fstream>
-#include <string>
 #include "newtestclass.h"
-#include "../Graph.h"
-#include "../GraphMatrix.h"
-#include "../GraphList.h"
 
 GraphMatrix emptyGm(10, false);
 GraphMatrix gm(10, false);

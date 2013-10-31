@@ -8,6 +8,8 @@
 #ifndef NEWTESTCLASS_H
 #define	NEWTESTCLASS_H
 
+#include "../Include.h"
+
 #include <cppunit/extensions/HelperMacros.h>
 
 class newtestclass : public CPPUNIT_NS::TestFixture {

@@ -8,6 +8,7 @@
 #include "dijkstratest.h"
 
 #include "../Dijkstra.h"
+#include "../Utilities.h"
 
 Graph *gm;
 
@@ -56,9 +57,7 @@ void dijkstratest::testDijkstra() {
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(3));
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
-    CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(5));
-    
-    
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(5));        
 }
 
 void dijkstratest::testOnlyPositiveWeights() {
@@ -67,4 +66,14 @@ void dijkstratest::testOnlyPositiveWeights() {
     g->addEdge(2, 3, -1.0);
     
     CPPUNIT_ASSERT_THROW_MESSAGE("o grafo contém algum peso negativo", Dijkstra di(g, 1), std::exception );
+}
+
+void dijkstratest::testGetPath() {
+    std::vector<unsigned long long> v = {1,2,5,4};
+    Dijkstra di(gm, 1ULL);
+    CPPUNIT_ASSERT_MESSAGE( printVector(v) + printVector(di.getPath(4)), v == di.getPath(4) );
+    
+    v = {2,5,4};
+    Dijkstra dj(gm, 2ULL);
+    CPPUNIT_ASSERT_MESSAGE( printVector(v) + printVector(dj.getPath(4)), v == dj.getPath(4) );
 }

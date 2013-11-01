@@ -17,6 +17,7 @@ class dijkstratest : public CPPUNIT_NS::TestFixture {
 
     CPPUNIT_TEST(testDijkstra);
     CPPUNIT_TEST(testOnlyPositiveWeights);
+    CPPUNIT_TEST(testGetPath);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -29,6 +30,7 @@ public:
 private:
     void testDijkstra();
     void testOnlyPositiveWeights();
+    void testGetPath();
 };
 
 #endif	/* DIJKSTRATEST_H */

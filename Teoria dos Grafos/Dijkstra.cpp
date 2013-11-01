@@ -75,6 +75,7 @@ std::vector<unsigned long long> Dijkstra::getPath(unsigned long long target) con
         node = parent[node];
     }
     path.push_back(source);
+    // de <i>source</i> a <i>path</i>
     std::reverse(path.begin(), path.end());
     return path;
 }

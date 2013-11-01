@@ -6,44 +6,13 @@
  */
 
 #include "newtestclass.h"
+#include "Utilities.h"
 
 GraphMatrix emptyGm(10, false);
 GraphMatrix gm(10, false);
 GraphList emptyGl(10, false);
 GraphList gl(10, false);
 Graph* gEx;
-
-template <class T>
-bool compareVectors(const std::vector<T>& v1, const std::vector<T>& v2) {
-    if (v1.size() != v2.size())
-        return false;
-
-    for (int i = 0; i < (int) v1.size(); ++i)
-        if (v1[i] != v2[i])
-            return false;
-    return true;
-}
-
-template<class T>
-void printVector(const std::vector<T>& v) {
-    for (int i = 0; i < (int) v.size(); ++i)
-        std::cout << v[i] << " ";
-    std::cout << std::endl;
-}
-
-template<class T>
-std::string returnPrintVector(const std::vector<T>& v) {
-    std::string s;
-    s += ": ";
-    char tmp[100];
-    for (int i = 0; i < (int) v.size(); ++i) {
-        sprintf(tmp, "%lld", v[i]);
-        s += tmp;
-        s += " ";
-    }
-    s += "\n";
-    return s;
-}
 
 CPPUNIT_TEST_SUITE_REGISTRATION(newtestclass);
 
@@ -128,14 +97,14 @@ void newtestclass::testGetDegreeGraphMatrix() {
 void newtestclass::testGetNeighboursGraphMatrix() {
     std::vector<unsigned long long> v{2, 3};
     CPPUNIT_ASSERT_MESSAGE(
-            returnPrintVector(v)
-            + returnPrintVector(gm.getNeighbours(1))
+            printVector(v)
+            + printVector(gm.getNeighbours(1))
             , compareVectors(gm.getNeighbours(1), v));
 
     v = {1};
     CPPUNIT_ASSERT_MESSAGE(
-            returnPrintVector(v)
-            + returnPrintVector(gm.getNeighbours(2))
+            printVector(v)
+            + printVector(gm.getNeighbours(2))
             , compareVectors(gm.getNeighbours(2), v));
 
     v = {10};
@@ -192,14 +161,14 @@ void newtestclass::testGetDegreeGraphList() {
 void newtestclass::testGetNeighboursGraphList() {
     std::vector<unsigned long long> v{2, 3};
     CPPUNIT_ASSERT_MESSAGE(
-            returnPrintVector(v)
-            + returnPrintVector(gl.getNeighbours(1))
+            printVector(v)
+            + printVector(gl.getNeighbours(1))
             , compareVectors(gl.getNeighbours(1), v));
 
     v = {1};
     CPPUNIT_ASSERT_MESSAGE(
-            returnPrintVector(v)
-            + returnPrintVector(gl.getNeighbours(2))
+            printVector(v)
+            + printVector(gl.getNeighbours(2))
             , compareVectors(gl.getNeighbours(2), v));
 
     v = {10};

@@ -7,35 +7,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/tests/inputhandler_testclass.cpp</file>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/tests/newtestclass1.h</file>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/Dfs.h</file>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/GraphList.h</file>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/tests/inputhandler_testclass.h</file>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/Dijkstra.h</file>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/tests/bfstestclass1.cpp</file>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/Bfs.cpp</file>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/GraphMatrix.h</file>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/tests/dijkstratest.h</file>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/Utilities.h</file>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/tests/outputinfo_testclass.h</file>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/InputHandler.cpp</file>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/Bfs.h</file>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/Include.h</file>
             <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/tests/newtestclass1.cpp</file>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/tests/newtestclass.cpp</file>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/tests/dfstestclass1.h</file>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/Dijkstra.cpp</file>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/tests/newtestclass.h</file>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/InputHandler.h</file>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/GraphList.cpp</file>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/Dfs.cpp</file>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/tests/bfstestclass1.h</file>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/tests/dfstestclass1.cpp</file>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/tests/outputinfo_testclass.cpp</file>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/tests/outputinfo_newtestrunner.cpp</file>
+            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/GraphMatrix.h</file>
+            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/tests/newtestclass1.h</file>
+            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/Graph.cpp</file>
             <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/GraphMatrix.cpp</file>
-            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/tests/dijkstratest.cpp</file>
+            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/GraphList.h</file>
+            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/GraphList.cpp</file>
             <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/Graph.h</file>
         </group>
     </open-files>

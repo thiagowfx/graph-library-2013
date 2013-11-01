@@ -13,7 +13,7 @@
       <itemPath>GraphMatrix.h</itemPath>
       <itemPath>Include.h</itemPath>
       <itemPath>InputHandler.h</itemPath>
-      <itemPath>Utilities.h</itemPath>
+      <itemPath>Mst.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Arquivos de Código-Fonte"
@@ -26,6 +26,7 @@
       <itemPath>GraphList.cpp</itemPath>
       <itemPath>GraphMatrix.cpp</itemPath>
       <itemPath>InputHandler.cpp</itemPath>
+      <itemPath>Mst.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Arquivos de Recurso"
@@ -59,6 +60,11 @@
         <itemPath>tests/inputhandler_testclass.h</itemPath>
         <itemPath>tests/inputhandler_testrunner.cpp</itemPath>
       </logicalFolder>
+      <logicalFolder name="f8" displayName="MST" projectFiles="true" kind="TEST">
+        <itemPath>tests/msttest.cpp</itemPath>
+        <itemPath>tests/msttest.h</itemPath>
+        <itemPath>tests/msttestrunner.cpp</itemPath>
+      </logicalFolder>
       <logicalFolder name="f5"
                      displayName="OutputInfo"
                      projectFiles="true"
@@ -82,43 +88,6 @@
         <itemPath>tests/newtestclass1.cpp</itemPath>
         <itemPath>tests/newtestclass1.h</itemPath>
         <itemPath>tests/newtestrunner1.cpp</itemPath>
-      </logicalFolder>
-    </logicalFolder>
-    <logicalFolder name="ExternalFiles"
-                   displayName="Arquivos Importantes"
-                   projectFiles="false"
-                   kind="IMPORTANT_FILES_FOLDER">
-      <itemPath>Makefile</itemPath>
-    </logicalFolder>
-    <logicalFolder name="TestFiles"
-                   displayName="Arquivos de Teste"
-                   projectFiles="false"
-                   kind="TEST_LOGICAL_FOLDER">
-      <logicalFolder name="f3" displayName="BFS" projectFiles="true" kind="TEST">
-      </logicalFolder>
-      <logicalFolder name="f2" displayName="DFS" projectFiles="true" kind="TEST">
-      </logicalFolder>
-      <logicalFolder name="f7" displayName="Dijkstra" projectFiles="true" kind="TEST">
-      </logicalFolder>
-      <logicalFolder name="f4"
-                     displayName="InputHandler"
-                     projectFiles="true"
-                     kind="TEST">
-      </logicalFolder>
-      <logicalFolder name="f5"
-                     displayName="OutputInfo"
-                     projectFiles="true"
-                     kind="TEST">
-      </logicalFolder>
-      <logicalFolder name="f1"
-                     displayName="Testes Básicos"
-                     projectFiles="true"
-                     kind="TEST">
-      </logicalFolder>
-      <logicalFolder name="f6"
-                     displayName="Testes Básicos com peso"
-                     projectFiles="true"
-                     kind="TEST">
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -183,7 +152,9 @@
       </item>
       <item path="InputHandler.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Utilities.h" ex="false" tool="3" flavor2="0">
+      <item path="Mst.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Mst.h" ex="false" tool="3" flavor2="0">
       </item>
       <folder path="TestFiles/f1">
         <cTool>
@@ -313,6 +284,20 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f8">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f8</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/bfstestclass1.cpp" ex="false" tool="1" flavor2="0">
@@ -338,6 +323,12 @@
       <item path="tests/inputhandler_testclass.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/inputhandler_testrunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/msttest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/msttest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/msttestrunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/newtestclass.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -420,7 +411,9 @@
       </item>
       <item path="InputHandler.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Utilities.h" ex="false" tool="3" flavor2="0">
+      <item path="Mst.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Mst.h" ex="false" tool="3" flavor2="0">
       </item>
       <folder path="TestFiles/f1">
         <cTool>
@@ -530,6 +523,20 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f8">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f8</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/bfstestclass1.cpp" ex="false" tool="1" flavor2="0">
@@ -555,6 +562,12 @@
       <item path="tests/inputhandler_testclass.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/inputhandler_testrunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/msttest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/msttest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/msttestrunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/newtestclass.cpp" ex="false" tool="1" flavor2="0">
       </item>

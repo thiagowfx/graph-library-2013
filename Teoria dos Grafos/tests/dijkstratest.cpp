@@ -77,3 +77,21 @@ void dijkstratest::testGetPath() {
     Dijkstra dj(gm, 2ULL);
     CPPUNIT_ASSERT_MESSAGE( printVector(v) + printVector(dj.getPath(4)), v == dj.getPath(4) );
 }
+
+void dijkstratest::testConstructorWithTarget() {
+    Graph *g = new GraphMatrix(5, true);
+    g->addEdge(1, 2, 3.0);
+    g->addEdge(2, 3, 3.0);
+    Dijkstra di(g, 1ULL, 2ULL);
+    CPPUNIT_ASSERT_EQUAL(0.0, di.getDistance(1) );
+    CPPUNIT_ASSERT_EQUAL(3.0, di.getDistance(2) );
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
+    
+    std::vector<unsigned long long> v = {1,2};  
+    CPPUNIT_ASSERT_MESSAGE( printVector(v) + printVector(di.getPath(2)), v == di.getPath(2) );
+    
+    CPPUNIT_ASSERT_THROW( di.getParent(3), std::exception );
+    CPPUNIT_ASSERT_THROW( di.getDistance(3), std::exception );
+    CPPUNIT_ASSERT_THROW( di.getPath(3), std::exception );
+} 

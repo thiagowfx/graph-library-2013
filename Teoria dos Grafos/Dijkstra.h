@@ -12,7 +12,10 @@
 
 class Dijkstra {
 public:
+    /** Aplica o algoritmo de Dijkstra a partir de <i>source</i>. */
     Dijkstra(const Graph *G, unsigned long long source);
+    /** Aplica o algoritmo de Dijkstra a partir de <i>source</i>. Para imediatamente ao explorar <i>target</i>. */
+    Dijkstra(const Graph *G, unsigned long long source, unsigned long long target);
     virtual ~Dijkstra();
     /** Retorna o pai de <i>node</i> do menor caminho de <i>node</i> a <i>source</i>. */
     unsigned long long getParent(unsigned long long node) const;
@@ -33,6 +36,9 @@ private:
         std::vector< std::pair<double, unsigned long long> >, 
         std::greater< std::pair<double, unsigned long long> > > Q;
     void clear();
+    /** Aplica o algoritmo de Dijkstra a partir de <i>source</i>. Para imediatamente ao explorar <i>target</i>, desde que o flag <i>stop</i> seja <b>true</b>. */
+    void dijkstra(const Graph *G, unsigned long long source, bool stop, unsigned long long target);
+    
 };
 
 #endif	/* DIJKSTRA_H */

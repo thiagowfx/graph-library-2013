@@ -13,7 +13,7 @@ InputHandler::InputHandler() {
 InputHandler::~InputHandler() {
 }
 
-void InputHandler::readGraph(Graph **g, const char *filename, char rep) {
+void InputHandler::readGraph(Graph **g, const char *filename, char rep, bool weighted) {
     std::ifstream is;
     is.open(filename);
 
@@ -25,19 +25,25 @@ void InputHandler::readGraph(Graph **g, const char *filename, char rep) {
 
     // allocate the graph
     if (rep == 'm')
-        *g = new GraphMatrix(number_of_nodes, false);
+        *g = new GraphMatrix(number_of_nodes, weighted);
     else if (rep == 'l')
-        *g = new GraphList(number_of_nodes, false);
+        *g = new GraphList(number_of_nodes, weighted);
     else
         throw std::exception();
-    
+
     // read edges
     while (getline(is, line)) {
         unsigned long long node1, node2;
-        sscanf(line.c_str(), "%lld%lld", &node1, &node2);
-        (*g)->addEdge(node1, node2);
-    }
+        double dist;
 
+        if (!weighted) {
+            sscanf(line.c_str(), "%lld%lld", &node1, &node2);
+            (*g)->addEdge(node1, node2);
+        } else {
+            sscanf(line.c_str(), "%lld%lld%llf", &node1, &node2, &dist);
+            (*g)->addEdge(node1, node2, dist);
+        }
+    }
     is.close();
 }
 

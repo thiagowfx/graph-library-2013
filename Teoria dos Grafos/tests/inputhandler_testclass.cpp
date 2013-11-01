@@ -33,7 +33,7 @@ void inputhandler_testclass::testReadGraphMatrix() {
     InputHandler ih;
     const char c[] = "tests/graphs/k3.txt";
     //a(&g);
-    ih.readGraph(&g, c, 'm');
+    ih.readGraph(&g, c, 'm', false);
 
     CPPUNIT_ASSERT(g->isEdge(1, 2));
     CPPUNIT_ASSERT(g->isEdge(1, 3));
@@ -60,7 +60,7 @@ void inputhandler_testclass::testReadGraphList() {
     InputHandler ih;
     const char c[] = "tests/graphs/k3.txt";
     //a(&g);
-    ih.readGraph(&g, c, 'l');
+    ih.readGraph(&g, c, 'l', false);
 
     CPPUNIT_ASSERT(g->isEdge(1, 2));
     CPPUNIT_ASSERT(g->isEdge(1, 3));

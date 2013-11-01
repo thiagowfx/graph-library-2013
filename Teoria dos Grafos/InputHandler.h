@@ -24,7 +24,7 @@ public:
        InputHandler ih;\n
        ih.readGraph(&g, filename, 'm');
      */
-    void readGraph(Graph **g, const char *filename, char rep);
+    void readGraph(Graph **g, const char *filename, char rep, bool weighted);
 private:
     // void removeDuplicates();
 };

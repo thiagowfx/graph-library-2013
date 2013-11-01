@@ -66,3 +66,14 @@ unsigned long long Dijkstra::getSource() const {
 unsigned long long Dijkstra::getParent(unsigned long long node) const {
     return parent[node];
 }
+
+std::vector<unsigned long long> Dijkstra::getPath(unsigned long long target) const {
+    std::vector<unsigned long long> path;
+    unsigned long long node = target;
+    while (node != source) {
+        path.push_back(node);
+        node = parent[node];
+    }
+    std::reverse(path.begin(), path.end());
+    return path;
+}

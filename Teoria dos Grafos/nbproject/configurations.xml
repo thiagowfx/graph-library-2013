@@ -29,6 +29,7 @@
     <logicalFolder name="ResourceFiles"
                    displayName="Arquivos de Recurso"
                    projectFiles="true">
+      <itemPath>godel.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -273,6 +274,8 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <item path="godel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/bfstestclass1.cpp" ex="false" tool="1" flavor2="0">
@@ -488,6 +491,8 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <item path="godel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/bfstestclass1.cpp" ex="false" tool="1" flavor2="0">

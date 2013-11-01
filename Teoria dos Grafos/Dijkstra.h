@@ -20,6 +20,9 @@ public:
     double getDistance(unsigned long long target) const;
     /** Retorna o vértice de origem. */
     unsigned long long getSource() const;
+    /** Retorna lista com os vértices do caminho mais curto de <i>source</i> a <i>target</i> */
+    std::vector<unsigned long long> getPath(unsigned long long target) const;
+
 private:
     const Graph *G;
     const unsigned long long source;

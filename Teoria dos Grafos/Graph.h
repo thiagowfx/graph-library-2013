@@ -15,6 +15,7 @@
 #include <iostream>
 #include <fstream>
 #include <functional> // std::greater
+#include <algorithm> // std::reverse
 #include <limits>
 #include <queue>
 #include <stack>

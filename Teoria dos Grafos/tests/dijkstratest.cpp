@@ -51,6 +51,14 @@ void dijkstratest::testDijkstra() {
     CPPUNIT_ASSERT_EQUAL(2.0, di.getDistance(3));
     CPPUNIT_ASSERT_EQUAL(6.0, di.getDistance(4));
     CPPUNIT_ASSERT_EQUAL(3.0, di.getDistance(5));
+    
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(3));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(5));
+    
+    
 }
 
 void dijkstratest::testOnlyPositiveWeights() {

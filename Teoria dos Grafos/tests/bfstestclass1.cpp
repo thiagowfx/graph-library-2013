@@ -55,7 +55,13 @@ void bfstestclass1::testBfs() {
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(3));
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(5));
-
+    
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(2));
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getLevel(3));
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getLevel(4));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(5));
+    
     di.bfs(1);
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
@@ -63,6 +69,12 @@ void bfstestclass1::testBfs() {
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(5));
 
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(2));
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getLevel(3));
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getLevel(4));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(5));
+    
     di.bfsStartOver(5);
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(1));
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(2));
@@ -70,12 +82,24 @@ void bfstestclass1::testBfs() {
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
 
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(3));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(4));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(5));
+    
     di.bfsStartOver(5);
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(1));
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(2));
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(3));
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
+    
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(3));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(4));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(5));
 }
 
 void bfstestclass1::testBfsGrafoDesconexo() {
@@ -95,6 +119,13 @@ void bfstestclass1::testBfsGrafoDesconexo() {
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
 
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(3));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(4));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(5));
+
+    
     di.bfsStartOver(5);
     CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(1));
     CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(2));
@@ -133,7 +164,13 @@ void bfstestclass1::testBfsStartOverPrimeiro() {
     CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(3));
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
-
+    
+    CPPUNIT_ASSERT_THROW(di.getLevel(1), std::exception);
+    CPPUNIT_ASSERT_THROW(di.getLevel(2), std::exception);
+    CPPUNIT_ASSERT_THROW(di.getLevel(3), std::exception);
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(4));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(5));
+    
     di.bfsStartOver(1);
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
@@ -141,12 +178,25 @@ void bfstestclass1::testBfsStartOverPrimeiro() {
     CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(4));
     CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(5));
 
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(3));
+    CPPUNIT_ASSERT_THROW(di.getLevel(4), std::exception);
+    CPPUNIT_ASSERT_THROW(di.getLevel(5), std::exception);
+    
     di.bfs(5);
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(3));
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
+    
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(3));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(4));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(5));
+    
 }
 
 void bfstestclass1::testBfsConflict() {
@@ -155,26 +205,44 @@ void bfstestclass1::testBfsConflict() {
     di.bfs(1);
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
+    
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(2));
 
     di.bfs(1);
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
 
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(2));
+    
     di.bfs(2);
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
+    
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(2));
     
     di.bfsStartOver(2);
     CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(1));
     CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(2));
     
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(2));
+    
     di.bfs(1);
     CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(1));
     CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(2));
     
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(2));
+    
     di.bfs(2);
     CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(1));
     CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(2));
+    
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(2));
 }
 
 void bfstestclass1::testBfsSaveInfo() {

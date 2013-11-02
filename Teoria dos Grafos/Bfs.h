@@ -22,7 +22,9 @@ public:
     /** Escreve informações sobre a BFS para o arquivo <i>filename</i>. */
     void saveInfo(const char* filename) const;
     /** Retorna o pai de <i>node</i>.*/
-    unsigned long long getParent(const unsigned long long source) const;
+    unsigned long long getParent(const unsigned long long node) const;
+    /** Retorna o level do nó <i>source</i> em relação à origem da BFS. */
+    unsigned long long getLevel(const unsigned long long node) const;
 private:
     /** Grafo no qual a classe vai atuar. */
     const Graph *G;
@@ -32,6 +34,8 @@ private:
     std::queue <unsigned long long> bfsQueue;
     /** Vetor de vértices explorados durante a BFS. */
     std::vector<bool> bfsExplored;
+    /** Vetor dos níveis da BFS. */
+    std::vector<unsigned long long> bfsLevel;
     /** Reseta quaisquer informações já processadas por uma instância dessa classe.\n
      * Equivalente a reconstruir a Bfs. */
     void clear();

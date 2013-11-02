@@ -13,7 +13,6 @@
       <itemPath>GraphMatrix.h</itemPath>
       <itemPath>Include.h</itemPath>
       <itemPath>InputHandler.h</itemPath>
-      <itemPath>Mst.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Arquivos de Código-Fonte"
@@ -26,12 +25,16 @@
       <itemPath>GraphList.cpp</itemPath>
       <itemPath>GraphMatrix.cpp</itemPath>
       <itemPath>InputHandler.cpp</itemPath>
-      <itemPath>Mst.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Arquivos de Recurso"
                    projectFiles="true">
-      <itemPath>main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="f1"
+                   displayName="Relatórios"
+                   projectFiles="true"
+                   kind="ROOT">
+      <itemPath>relatorio2-estudo1-questao1.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Arquivos de Teste"
@@ -48,46 +51,41 @@
         <itemPath>tests/dfstestrunner1.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f7" displayName="Dijkstra" projectFiles="true" kind="TEST">
-        <itemPath>tests/dijkstratest.cpp</itemPath>
-        <itemPath>tests/dijkstratest.h</itemPath>
+        <itemPath>tests/dijkstratestclass1.cpp</itemPath>
+        <itemPath>tests/dijkstratestclass1.h</itemPath>
         <itemPath>tests/dijkstratestrunner.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f4"
                      displayName="InputHandler"
                      projectFiles="true"
                      kind="TEST">
-        <itemPath>tests/inputhandler_testclass.cpp</itemPath>
         <itemPath>tests/inputhandler_testclass.h</itemPath>
-        <itemPath>tests/inputhandler_testrunner.cpp</itemPath>
-      </logicalFolder>
-      <logicalFolder name="f8" displayName="MST" projectFiles="true" kind="TEST">
-        <itemPath>tests/msttest.cpp</itemPath>
-        <itemPath>tests/msttest.h</itemPath>
-        <itemPath>tests/msttestrunner.cpp</itemPath>
+        <itemPath>tests/inputhandlertestclass1.cpp</itemPath>
+        <itemPath>tests/inputhandlertestrunner1.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f5"
                      displayName="OutputInfo"
                      projectFiles="true"
                      kind="TEST">
-        <itemPath>tests/outputinfo_newtestrunner.cpp</itemPath>
-        <itemPath>tests/outputinfo_testclass.cpp</itemPath>
-        <itemPath>tests/outputinfo_testclass.h</itemPath>
+        <itemPath>tests/outputinfotestclass1.cpp</itemPath>
+        <itemPath>tests/outputinfotestclass1.h</itemPath>
+        <itemPath>tests/outputinfotestrunner1.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f1"
                      displayName="Testes Básicos"
                      projectFiles="true"
                      kind="TEST">
-        <itemPath>tests/newtestclass.cpp</itemPath>
-        <itemPath>tests/newtestclass.h</itemPath>
-        <itemPath>tests/newtestrunner.cpp</itemPath>
+        <itemPath>tests/testesbasicostestclass.cpp</itemPath>
+        <itemPath>tests/testesbasicostestclass.h</itemPath>
+        <itemPath>tests/testesbasicostestrunner.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f6"
-                     displayName="Testes Básicos com peso"
+                     displayName="Testes Básicos com Peso"
                      projectFiles="true"
                      kind="TEST">
-        <itemPath>tests/newtestclass1.cpp</itemPath>
-        <itemPath>tests/newtestclass1.h</itemPath>
-        <itemPath>tests/newtestrunner1.cpp</itemPath>
+        <itemPath>tests/testesbasicoscompesotestclass1.cpp</itemPath>
+        <itemPath>tests/testesbasicoscompesotestclass1.h</itemPath>
+        <itemPath>tests/testesbasicoscompesotestrunner1.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -152,10 +150,6 @@
       </item>
       <item path="InputHandler.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Mst.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Mst.h" ex="false" tool="3" flavor2="0">
-      </item>
       <folder path="TestFiles/f1">
         <cTool>
           <incDir>
@@ -298,7 +292,7 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
-      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      <item path="relatorio2-estudo1-questao1.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/bfstestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -312,41 +306,44 @@
       </item>
       <item path="tests/dfstestrunner1.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/dijkstratest.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/dijkstratestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/dijkstratest.h" ex="false" tool="3" flavor2="0">
+      <item path="tests/dijkstratestclass1.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/dijkstratestrunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/inputhandler_testclass.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="tests/inputhandler_testclass.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="tests/inputhandler_testrunner.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/inputhandlertestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/msttest.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/inputhandlertestrunner1.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/msttest.h" ex="false" tool="3" flavor2="0">
+      <item path="tests/outputinfotestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/msttestrunner.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/outputinfotestclass1.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="tests/newtestclass.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/outputinfotestrunner1.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/newtestclass.h" ex="false" tool="3" flavor2="0">
+      <item path="tests/testesbasicoscompesotestclass1.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
       </item>
-      <item path="tests/newtestclass1.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/testesbasicoscompesotestclass1.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
-      <item path="tests/newtestclass1.h" ex="false" tool="3" flavor2="0">
+      <item path="tests/testesbasicoscompesotestrunner1.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
       </item>
-      <item path="tests/newtestrunner.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/testesbasicostestclass.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/newtestrunner1.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/testesbasicostestclass.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="tests/outputinfo_newtestrunner.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/outputinfo_testclass.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/outputinfo_testclass.h" ex="false" tool="3" flavor2="0">
+      <item path="tests/testesbasicostestrunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -411,10 +408,6 @@
       </item>
       <item path="InputHandler.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Mst.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Mst.h" ex="false" tool="3" flavor2="0">
-      </item>
       <folder path="TestFiles/f1">
         <cTool>
           <incDir>
@@ -537,7 +530,7 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
-      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      <item path="relatorio2-estudo1-questao1.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/bfstestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -551,41 +544,44 @@
       </item>
       <item path="tests/dfstestrunner1.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/dijkstratest.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/dijkstratestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/dijkstratest.h" ex="false" tool="3" flavor2="0">
+      <item path="tests/dijkstratestclass1.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/dijkstratestrunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/inputhandler_testclass.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="tests/inputhandler_testclass.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="tests/inputhandler_testrunner.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/inputhandlertestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/msttest.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/inputhandlertestrunner1.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/msttest.h" ex="false" tool="3" flavor2="0">
+      <item path="tests/outputinfotestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/msttestrunner.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/outputinfotestclass1.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="tests/newtestclass.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/outputinfotestrunner1.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/newtestclass.h" ex="false" tool="3" flavor2="0">
+      <item path="tests/testesbasicoscompesotestclass1.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
       </item>
-      <item path="tests/newtestclass1.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/testesbasicoscompesotestclass1.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
-      <item path="tests/newtestclass1.h" ex="false" tool="3" flavor2="0">
+      <item path="tests/testesbasicoscompesotestrunner1.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
       </item>
-      <item path="tests/newtestrunner.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/testesbasicostestclass.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/newtestrunner1.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/testesbasicostestclass.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="tests/outputinfo_newtestrunner.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/outputinfo_testclass.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/outputinfo_testclass.h" ex="false" tool="3" flavor2="0">
+      <item path="tests/testesbasicostestrunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>

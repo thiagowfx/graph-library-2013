@@ -28,6 +28,7 @@ void Bfs::bfs(const unsigned long long source) {
     // decisão de design: se <i>source</i> já foi explorado numa bfs anterior, parar aqui
     if (bfsExplored[source])
         return;
+    
     // decisão de design: pai da raiz é a própria raiz
     bfsTree[source] = source;
     bfsQueue.push(source);

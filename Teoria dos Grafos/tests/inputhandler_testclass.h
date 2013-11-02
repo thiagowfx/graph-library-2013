@@ -18,6 +18,8 @@ class inputhandler_testclass : public CPPUNIT_NS::TestFixture {
 
     CPPUNIT_TEST(testReadGraphMatrix);
     CPPUNIT_TEST(testReadGraphList);
+    CPPUNIT_TEST(testReadGraphMatrixWeighted);
+    CPPUNIT_TEST(testReadGraphListWeighted);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -30,6 +32,8 @@ public:
 private:
     void testReadGraphMatrix();
     void testReadGraphList();
+    void testReadGraphMatrixWeighted();
+    void testReadGraphListWeighted();
 };
 
 #endif	/* INPUTHANDLER_TESTCLASS_H */

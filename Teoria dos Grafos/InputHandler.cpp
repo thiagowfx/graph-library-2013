@@ -37,10 +37,10 @@ void InputHandler::readGraph(Graph **g, const char *filename, char rep, bool wei
         double dist;
 
         if (!weighted) {
-            sscanf(line.c_str(), "%lld%lld", &node1, &node2);
+            sscanf(line.c_str(), "%lld %lld", &node1, &node2);
             (*g)->addEdge(node1, node2);
         } else {
-            sscanf(line.c_str(), "%lld%lld%llf", &node1, &node2, &dist);
+            sscanf(line.c_str(), "%lld %lld %lf", &node1, &node2, &dist);
             (*g)->addEdge(node1, node2, dist);
         }
     }

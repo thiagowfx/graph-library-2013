@@ -11,7 +11,6 @@
 #include "Graph.h"
 
 class Mst {
-
 public:
     /** Constrói uma MST em <i>G</i> a partir do nó <i>source</i>, aplicando o algoritmo de <b>Prim</b>.
         NOTA: o grafo pode ser desconexo. */
@@ -32,10 +31,9 @@ private:
     std::vector<double> key;
     std::vector<bool> explored;
     std::vector<unsigned long long> parent;
-    std::priority_queue< std::pair<double, unsigned long long>, 
-        std::vector< std::pair<double, unsigned long long> >, 
-        std::greater< std::pair<double, unsigned long long> > > Q;
-}
+    std::priority_queue< std::pair<double, unsigned long long>,
+    std::vector< std::pair<double, unsigned long long> >,
+    std::greater< std::pair<double, unsigned long long> > > Q;
+};
 
 #endif	/* MST_H */
-

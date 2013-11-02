@@ -1,7 +1,0 @@
-Busca em Largura
-Origem: 3
-Vértice: 1, Pai: 3, Nível: 1
-Vértice: 2, Pai: 1, Nível: 2
-Vértice: 3, Pai: 3, Nível: 0
-Vértice: 4, Pai: 1, Nível: 2
-Vértice: 5, Pai: 3, Nível: 1

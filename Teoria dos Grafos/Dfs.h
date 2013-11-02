@@ -23,6 +23,8 @@ public:
     void saveInfo(const char* filename) const;
     /** Retorna o pai de <i>node</i>.*/
     unsigned long long getParent(const unsigned long long source) const;
+    /** Retorna o level do nó <i>source</i> em relação à origem da DFS. */
+    unsigned long long getLevel(const unsigned long long node) const;
 private:
     /** Grafo no qual a classe vai atuar. */
     const Graph *G;
@@ -32,6 +34,8 @@ private:
     std::stack <unsigned long long> dfsStack;
     /** Vetor de vértices explorados durante a DFS. */
     std::vector<bool> dfsExplored;
+    /** Vetor dos níveis da DFS. */
+    std::vector<unsigned long long> dfsLevel;
     /** Reseta quaisquer informações já processadas por uma instância dessa classe.\n
      * Equivalente a reconstruir a Dfs. */
     void clear();

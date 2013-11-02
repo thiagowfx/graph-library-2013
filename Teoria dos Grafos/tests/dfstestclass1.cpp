@@ -56,6 +56,12 @@ void dfstestclass1::testDfs() {
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(5));
 
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getLevel(2));
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getLevel(3));
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getLevel(4));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(5));
+
     di.dfs(1);
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(2));
@@ -63,12 +69,11 @@ void dfstestclass1::testDfs() {
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(5));
 
-    di.dfsStartOver(5);
-    CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(1));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(2));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(3));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getLevel(2));
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getLevel(3));
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getLevel(4));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(5));
 
     di.dfsStartOver(5);
     CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(1));
@@ -76,6 +81,25 @@ void dfstestclass1::testDfs() {
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(3));
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
+
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(3));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(4));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(5));
+
+    di.dfsStartOver(5);
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(3));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
+    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
+
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(3));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(4));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(5));
 }
 
 void dfstestclass1::testDfsGrafoDesconexo() {
@@ -88,12 +112,24 @@ void dfstestclass1::testDfsGrafoDesconexo() {
     CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(4));
     CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(5));
 
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getLevel(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(3));
+    CPPUNIT_ASSERT_THROW(di.getLevel(4), std::exception);
+    CPPUNIT_ASSERT_THROW(di.getLevel(5), std::exception);
+
     di.dfs(5);
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
     CPPUNIT_ASSERT_EQUAL(3ULL, di.getParent(2));
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(3));
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
+
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getLevel(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(3));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(4));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(5));
 
     di.dfsStartOver(5);
     CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(1));
@@ -102,12 +138,24 @@ void dfstestclass1::testDfsGrafoDesconexo() {
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
 
+    CPPUNIT_ASSERT_THROW(di.getLevel(1), std::exception);
+    CPPUNIT_ASSERT_THROW(di.getLevel(2), std::exception);
+    CPPUNIT_ASSERT_THROW(di.getLevel(3), std::exception);
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(4));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(5));
+
     di.dfs(3);
     CPPUNIT_ASSERT_EQUAL(3ULL, di.getParent(1));
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
     CPPUNIT_ASSERT_EQUAL(3ULL, di.getParent(3));
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
+
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getLevel(2));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(3));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(4));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(5));
 
     di.dfsStartOver(1);
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
@@ -116,12 +164,24 @@ void dfstestclass1::testDfsGrafoDesconexo() {
     CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(4));
     CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(5));
 
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getLevel(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(3));
+    CPPUNIT_ASSERT_THROW(di.getLevel(4), std::exception);
+    CPPUNIT_ASSERT_THROW(di.getLevel(5), std::exception);
+
     di.dfs(4);
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
     CPPUNIT_ASSERT_EQUAL(3ULL, di.getParent(2));
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(3));
     CPPUNIT_ASSERT_EQUAL(4ULL, di.getParent(4));
     CPPUNIT_ASSERT_EQUAL(4ULL, di.getParent(5));
+
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getLevel(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(3));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(4));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(5));
 }
 
 void dfstestclass1::testDfsStartOverPrimeiro() {
@@ -134,6 +194,12 @@ void dfstestclass1::testDfsStartOverPrimeiro() {
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
 
+    CPPUNIT_ASSERT_THROW(di.getLevel(1), std::exception);
+    CPPUNIT_ASSERT_THROW(di.getLevel(2), std::exception);
+    CPPUNIT_ASSERT_THROW(di.getLevel(3), std::exception);
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(4));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(5));
+
     di.dfsStartOver(1);
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
     CPPUNIT_ASSERT_EQUAL(3ULL, di.getParent(2));
@@ -141,12 +207,24 @@ void dfstestclass1::testDfsStartOverPrimeiro() {
     CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(4));
     CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(5));
 
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getLevel(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(3));
+    CPPUNIT_ASSERT_THROW(di.getLevel(4), std::exception);
+    CPPUNIT_ASSERT_THROW(di.getLevel(5), std::exception);
+
     di.dfs(5);
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
     CPPUNIT_ASSERT_EQUAL(3ULL, di.getParent(2));
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(3));
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
     CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
+
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(2ULL, di.getLevel(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(3));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(4));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(5));
 }
 
 void dfstestclass1::testDfsConflict() {
@@ -156,25 +234,43 @@ void dfstestclass1::testDfsConflict() {
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
 
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(2));
+
     di.dfs(1);
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
+    
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(2));
 
     di.dfs(2);
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
     CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
     
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(2));
+
     di.dfsStartOver(2);
     CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(1));
     CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(2));
     
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(2));
+
     di.dfs(1);
     CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(1));
     CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(2));
     
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(2));
+
     di.dfs(2);
     CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(1));
     CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(2));
+    
+    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(2));
 }
 
 void dfstestclass1::testDfsSaveInfo() {
@@ -182,16 +278,21 @@ void dfstestclass1::testDfsSaveInfo() {
     di.dfs(1);
     const char file[] = "tmp/testDfsSaveInfo.txt";
     di.saveInfo(file);
-    
+
     std::ifstream is;
     is.open(file);
     std::string s;
 
-    std::getline(is, s);        CPPUNIT_ASSERT("parent[1] = 1" == s);
-    std::getline(is, s);        CPPUNIT_ASSERT("parent[2] = 5" == s);
-    std::getline(is, s);        CPPUNIT_ASSERT("parent[3] = 5" == s);
-    std::getline(is, s);        CPPUNIT_ASSERT("parent[4] = 5" == s);
-    std::getline(is, s);        CPPUNIT_ASSERT("parent[5] = 1" == s);
+    std::getline(is, s);
+    CPPUNIT_ASSERT("parent[1] = 1" == s);
+    std::getline(is, s);
+    CPPUNIT_ASSERT("parent[2] = 5" == s);
+    std::getline(is, s);
+    CPPUNIT_ASSERT("parent[3] = 5" == s);
+    std::getline(is, s);
+    CPPUNIT_ASSERT("parent[4] = 5" == s);
+    std::getline(is, s);
+    CPPUNIT_ASSERT("parent[5] = 1" == s);
 
     is.close();
 }

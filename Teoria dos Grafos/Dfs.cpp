@@ -11,11 +11,20 @@ Dfs::Dfs(const Graph* G) : G(G) {
     clear();
 }
 
+unsigned long long Dfs::getLevel(const unsigned long long node) const {
+    if (dfsExplored[node])
+        return dfsLevel.at(node);
+    else
+        throw std::exception();
+}
+
 void Dfs::clear() {
     dfsStack = std::stack<unsigned long long> ();
     dfsExplored = std::vector<bool> (G->getN() + 1, false);
     // decisão de projeto: pai começa apontando para 0.
     dfsTree = std::vector<unsigned long long> (G->getN() + 1, 0);
+    // decisão de design: dfsLevel só faz sentido se o nó foi explorado
+    dfsLevel = std::vector<unsigned long long> (G->getN() + 1, 0);
 }
 
 unsigned long long Dfs::getParent(const unsigned long long node) const {
@@ -47,6 +56,7 @@ void Dfs::dfs(const unsigned long long source) {
                 viz = neighbours[i];
                 if (!dfsExplored[viz]) {
                     dfsTree[viz] = next;
+                    dfsLevel[viz] = dfsLevel[next] + 1;
                     dfsStack.push(viz);
                 }
             }
@@ -66,10 +76,10 @@ Dfs::~Dfs() {
 void Dfs::saveInfo(const char* filename) const {
     std::ofstream os;
     os.open(filename);
-    
+
     // template: parent[i] = j
     for (int i = 1; i <= G->getN(); ++i)
         os << "parent[" << i << "] = " << getParent(i) << std::endl;
-    
+
     os.close();
 }

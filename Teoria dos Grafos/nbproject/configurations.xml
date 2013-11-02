@@ -13,6 +13,7 @@
       <itemPath>GraphMatrix.h</itemPath>
       <itemPath>Include.h</itemPath>
       <itemPath>InputHandler.h</itemPath>
+      <itemPath>Utilities.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Arquivos de Código-Fonte"
@@ -29,11 +30,9 @@
     <logicalFolder name="ResourceFiles"
                    displayName="Arquivos de Recurso"
                    projectFiles="true">
+      <itemPath>newmain.cpp</itemPath>
     </logicalFolder>
-    <logicalFolder name="f1"
-                   displayName="Relatórios"
-                   projectFiles="true"
-                   kind="ROOT">
+    <logicalFolder name="f1" displayName="Relatórios" projectFiles="true">
       <itemPath>relatorio2-estudo1-questao1.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -59,8 +58,8 @@
                      displayName="InputHandler"
                      projectFiles="true"
                      kind="TEST">
-        <itemPath>tests/inputhandler_testclass.h</itemPath>
         <itemPath>tests/inputhandlertestclass1.cpp</itemPath>
+        <itemPath>tests/inputhandlertestclass1.h</itemPath>
         <itemPath>tests/inputhandlertestrunner1.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f5"
@@ -101,17 +100,20 @@
       <toolsSet>
         <compilerSet>default</compilerSet>
         <dependencyChecking>true</dependencyChecking>
-        <rebuildPropChanged>false</rebuildPropChanged>
+        <rebuildPropChanged>true</rebuildPropChanged>
       </toolsSet>
       <compileType>
         <cTool>
           <commandLine>`cppunit-config --cflags`</commandLine>
         </cTool>
         <ccTool>
+          <commandlineTool>g++</commandlineTool>
           <commandLine>`cppunit-config --cflags` --std=c++0x</commandLine>
         </ccTool>
         <linkerTool>
+          <output>${TESTDIR}/TestFiles/f8</output>
           <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
@@ -149,6 +151,8 @@
       <item path="InputHandler.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="InputHandler.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Utilities.h" ex="false" tool="3" flavor2="0">
       </item>
       <folder path="TestFiles/f1">
         <cTool>
@@ -278,21 +282,7 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
-      <folder path="TestFiles/f8">
-        <cTool>
-          <commandLine>`cppunit-config --cflags`</commandLine>
-        </cTool>
-        <ccTool>
-          <commandLine>`cppunit-config --cflags`</commandLine>
-        </ccTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f8</output>
-          <linkerLibItems>
-            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
-          </linkerLibItems>
-        </linkerTool>
-      </folder>
-      <item path="relatorio2-estudo1-questao1.cpp" ex="false" tool="1" flavor2="0">
+      <item path="newmain.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/bfstestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -312,9 +302,9 @@
       </item>
       <item path="tests/dijkstratestrunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/inputhandler_testclass.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="tests/inputhandlertestclass1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/inputhandlertestclass1.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/inputhandlertestrunner1.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -368,8 +358,9 @@
           <developmentMode>5</developmentMode>
         </asmTool>
         <linkerTool>
-          <output>${TESTDIR}/TestFiles/f2</output>
+          <output>${TESTDIR}/TestFiles/f8</output>
           <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
@@ -407,6 +398,8 @@
       <item path="InputHandler.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="InputHandler.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Utilities.h" ex="false" tool="3" flavor2="0">
       </item>
       <folder path="TestFiles/f1">
         <cTool>
@@ -516,20 +509,8 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
-      <folder path="TestFiles/f8">
-        <cTool>
-          <commandLine>`cppunit-config --cflags`</commandLine>
-        </cTool>
-        <ccTool>
-          <commandLine>`cppunit-config --cflags`</commandLine>
-        </ccTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f8</output>
-          <linkerLibItems>
-            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
-          </linkerLibItems>
-        </linkerTool>
-      </folder>
+      <item path="newmain.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="relatorio2-estudo1-questao1.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/bfstestclass1.cpp" ex="false" tool="1" flavor2="0">
@@ -550,9 +531,9 @@
       </item>
       <item path="tests/dijkstratestrunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/inputhandler_testclass.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="tests/inputhandlertestclass1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/inputhandlertestclass1.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/inputhandlertestrunner1.cpp" ex="false" tool="1" flavor2="0">
       </item>

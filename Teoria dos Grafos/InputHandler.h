@@ -25,8 +25,8 @@ public:
        ih.readGraph(&g, filename, 'm');
      */
     void readGraph(Graph **g, const char *filename, char rep, bool weighted);
+    void removeDuplicates(const char *inputFile, const char *outputFile);
 private:
-    // void removeDuplicates();
 };
 
 #endif	/* INPUTHANDLER_H */

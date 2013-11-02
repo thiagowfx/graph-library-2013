@@ -47,22 +47,26 @@ void InputHandler::readGraph(Graph **g, const char *filename, char rep, bool wei
     is.close();
 }
 
-//void InputHandler::removeDuplicates() {
-//    std::ifstream is;
-//    std::ofstream os;
-//    is.open(filename);
-//    os.open(filename);
-//    std::string s1, s2;
-//    
-//    // ignorar a primeira linha
-//    getline(is, s1);
-//    os << s1;
-//    
-//    getline(is, s1);
-//    while ( getline(is, s2) ) {
-//        
-//    }
-//    
-//    is.close();
-//    os.close();
-//}
+void InputHandler::removeDuplicates(const char *inputFile, const char *outputFile) {
+    std::ifstream is;
+    std::ofstream os;
+    is.open(inputFile);
+    os.open(outputFile);
+    std::string line1, line2;
+    
+    // ignorar a primeira linha (quantidade de nós)
+    getline(is, line1);
+    os << line1 << std::endl;
+    
+    // se duas ou mais linhas consecutivas são iguais, escrever apenas uma vez
+    getline(is, line1);
+    while ( getline(is, line2) ) {
+        if (line1 != line2)
+            os << line1 << std::endl;
+        line1 = line2;
+    }
+    os << line1 << std::endl;
+    
+    is.close();
+    os.close();
+}

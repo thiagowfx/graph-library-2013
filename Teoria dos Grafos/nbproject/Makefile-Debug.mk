@@ -43,7 +43,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/GraphList.o \
 	${OBJECTDIR}/GraphMatrix.o \
 	${OBJECTDIR}/InputHandler.o \
-	${OBJECTDIR}/relatorio2-estudo1-questao1.o
+	${OBJECTDIR}/newmain.o
 
 # Test Directory
 TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
@@ -62,8 +62,8 @@ TESTFILES= \
 CFLAGS=`cppunit-config --cflags` 
 
 # CC Compiler Flags
-CCFLAGS=`cppunit-config --cflags` 
-CXXFLAGS=`cppunit-config --cflags` 
+CCFLAGS=`cppunit-config --cflags` --std=c++0x 
+CXXFLAGS=`cppunit-config --cflags` --std=c++0x 
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -82,50 +82,50 @@ ${TESTDIR}/TestFiles/f8: ${OBJECTFILES}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc} -o ${TESTDIR}/TestFiles/f8 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/Bfs.o: Bfs.cpp 
+${OBJECTDIR}/Bfs.o: nbproject/Makefile-${CND_CONF}.mk Bfs.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Bfs.o Bfs.cpp
 
-${OBJECTDIR}/Connectivity.o: Connectivity.cpp 
+${OBJECTDIR}/Connectivity.o: nbproject/Makefile-${CND_CONF}.mk Connectivity.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Connectivity.o Connectivity.cpp
 
-${OBJECTDIR}/Dfs.o: Dfs.cpp 
+${OBJECTDIR}/Dfs.o: nbproject/Makefile-${CND_CONF}.mk Dfs.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Dfs.o Dfs.cpp
 
-${OBJECTDIR}/Dijkstra.o: Dijkstra.cpp 
+${OBJECTDIR}/Dijkstra.o: nbproject/Makefile-${CND_CONF}.mk Dijkstra.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Dijkstra.o Dijkstra.cpp
 
-${OBJECTDIR}/Graph.o: Graph.cpp 
+${OBJECTDIR}/Graph.o: nbproject/Makefile-${CND_CONF}.mk Graph.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Graph.o Graph.cpp
 
-${OBJECTDIR}/GraphList.o: GraphList.cpp 
+${OBJECTDIR}/GraphList.o: nbproject/Makefile-${CND_CONF}.mk GraphList.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/GraphList.o GraphList.cpp
 
-${OBJECTDIR}/GraphMatrix.o: GraphMatrix.cpp 
+${OBJECTDIR}/GraphMatrix.o: nbproject/Makefile-${CND_CONF}.mk GraphMatrix.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/GraphMatrix.o GraphMatrix.cpp
 
-${OBJECTDIR}/InputHandler.o: InputHandler.cpp 
+${OBJECTDIR}/InputHandler.o: nbproject/Makefile-${CND_CONF}.mk InputHandler.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/InputHandler.o InputHandler.cpp
 
-${OBJECTDIR}/relatorio2-estudo1-questao1.o: relatorio2-estudo1-questao1.cpp 
+${OBJECTDIR}/newmain.o: nbproject/Makefile-${CND_CONF}.mk newmain.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/relatorio2-estudo1-questao1.o relatorio2-estudo1-questao1.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/newmain.o newmain.cpp
 
 # Subprojects
 .build-subprojects:
@@ -349,17 +349,17 @@ ${OBJECTDIR}/InputHandler_nomain.o: ${OBJECTDIR}/InputHandler.o InputHandler.cpp
 	    ${CP} ${OBJECTDIR}/InputHandler.o ${OBJECTDIR}/InputHandler_nomain.o;\
 	fi
 
-${OBJECTDIR}/relatorio2-estudo1-questao1_nomain.o: ${OBJECTDIR}/relatorio2-estudo1-questao1.o relatorio2-estudo1-questao1.cpp 
+${OBJECTDIR}/newmain_nomain.o: ${OBJECTDIR}/newmain.o newmain.cpp 
 	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/relatorio2-estudo1-questao1.o`; \
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/newmain.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -g -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/relatorio2-estudo1-questao1_nomain.o relatorio2-estudo1-questao1.cpp;\
+	    $(COMPILE.cc) -g -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/newmain_nomain.o newmain.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/relatorio2-estudo1-questao1.o ${OBJECTDIR}/relatorio2-estudo1-questao1_nomain.o;\
+	    ${CP} ${OBJECTDIR}/newmain.o ${OBJECTDIR}/newmain_nomain.o;\
 	fi
 
 # Run Test Targets

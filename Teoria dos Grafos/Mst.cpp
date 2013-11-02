@@ -71,14 +71,14 @@ void Mst::prim(const Graph *G, unsigned long long source) {
 double Mst::getDistance(unsigned long long target) const {
     if (!explored[target])
         throw std::exception();
-    
+
     double distance = 0.0;
     unsigned long long node = target;
     while (node != source) {
         distance += key[node];
         node = parent[node];
     }
-    
+
     return distance;
 }
 

@@ -17,6 +17,7 @@ class primtestclass1 : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE(primtestclass1);
 
     CPPUNIT_TEST(testMst);
+    CPPUNIT_TEST(testMst2);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -28,6 +29,7 @@ public:
 
 private:
     void testMst();
+    void testMst2();
 };
 
 #endif	/* PRIMTESTCLASS1_H */

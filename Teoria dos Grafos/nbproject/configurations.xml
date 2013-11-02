@@ -64,11 +64,6 @@
         <itemPath>tests/inputhandlertestclass1.h</itemPath>
         <itemPath>tests/inputhandlertestrunner1.cpp</itemPath>
       </logicalFolder>
-      <logicalFolder name="f8" displayName="MST" projectFiles="true" kind="TEST">
-        <itemPath>tests/msttestclass1.cpp</itemPath>
-        <itemPath>tests/msttestclass1.h</itemPath>
-        <itemPath>tests/msttestrunner1.cpp</itemPath>
-      </logicalFolder>
       <logicalFolder name="f5"
                      displayName="OutputInfo"
                      projectFiles="true"
@@ -76,6 +71,11 @@
         <itemPath>tests/outputinfotestclass1.cpp</itemPath>
         <itemPath>tests/outputinfotestclass1.h</itemPath>
         <itemPath>tests/outputinfotestrunner1.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f9" displayName="Prim" projectFiles="true" kind="TEST">
+        <itemPath>tests/primtestclass1.cpp</itemPath>
+        <itemPath>tests/primtestclass1.h</itemPath>
+        <itemPath>tests/primtestrunner1.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f1"
                      displayName="Testes Básicos"
@@ -306,6 +306,20 @@
           <output>${TESTDIR}/TestFiles/f8</output>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f9">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f9</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
       <item path="newmain.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/bfstestclass1.cpp" ex="false" tool="1" flavor2="0">
@@ -332,17 +346,17 @@
       </item>
       <item path="tests/inputhandlertestrunner1.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/msttestclass1.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/msttestclass1.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="tests/msttestrunner1.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="tests/outputinfotestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/outputinfotestclass1.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/outputinfotestrunner1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/primtestclass1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/primtestclass1.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/primtestrunner1.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/testesbasicoscompesotestclass1.cpp"
             ex="false"
@@ -543,6 +557,20 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
+      <folder path="TestFiles/f9">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f9</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
       <item path="newmain.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="relatorio2-estudo1-questao1.cpp" ex="false" tool="1" flavor2="0">
@@ -571,17 +599,17 @@
       </item>
       <item path="tests/inputhandlertestrunner1.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/msttestclass1.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/msttestclass1.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="tests/msttestrunner1.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="tests/outputinfotestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/outputinfotestclass1.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/outputinfotestrunner1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/primtestclass1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/primtestclass1.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/primtestrunner1.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/testesbasicoscompesotestclass1.cpp"
             ex="false"

@@ -1,8 +1,8 @@
 /*
- * File:   msttestrunner.cpp
- * Author: gdcs
+ * File:   primtestrunner1.cpp
+ * Author: thiago
  *
- * Created on Nov 1, 2013, 12:41:02 AM
+ * Created on Nov 2, 2013, 6:14:14 PM
  */
 
 #include <cppunit/BriefTestProgressListener.h>

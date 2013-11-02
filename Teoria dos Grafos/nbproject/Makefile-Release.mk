@@ -56,8 +56,8 @@ TESTFILES= \
 	${TESTDIR}/TestFiles/f2 \
 	${TESTDIR}/TestFiles/f7 \
 	${TESTDIR}/TestFiles/f4 \
-	${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/teoria_dos_grafos \
 	${TESTDIR}/TestFiles/f5 \
+	${TESTDIR}/TestFiles/f9 \
 	${TESTDIR}/TestFiles/f1 \
 	${TESTDIR}/TestFiles/f6
 
@@ -161,13 +161,13 @@ ${TESTDIR}/TestFiles/f4: ${TESTDIR}/tests/inputhandlertestclass1.o ${TESTDIR}/te
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f4 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/teoria_dos_grafos: ${TESTDIR}/tests/msttestclass1.o ${TESTDIR}/tests/msttestrunner1.o ${OBJECTFILES:%.o=%_nomain.o}
-	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc}   -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/teoria_dos_grafos $^ ${LDLIBSOPTIONS} 
-
 ${TESTDIR}/TestFiles/f5: ${TESTDIR}/tests/outputinfotestclass1.o ${TESTDIR}/tests/outputinfotestrunner1.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f5 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
+
+${TESTDIR}/TestFiles/f9: ${TESTDIR}/tests/primtestclass1.o ${TESTDIR}/tests/primtestrunner1.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f9 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
 
 ${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/testesbasicostestclass.o ${TESTDIR}/tests/testesbasicostestrunner.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
@@ -226,18 +226,6 @@ ${TESTDIR}/tests/inputhandlertestrunner1.o: tests/inputhandlertestrunner1.cpp
 	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/inputhandlertestrunner1.o tests/inputhandlertestrunner1.cpp
 
 
-${TESTDIR}/tests/msttestclass1.o: tests/msttestclass1.cpp 
-	${MKDIR} -p ${TESTDIR}/tests
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${TESTDIR}/tests/msttestclass1.o tests/msttestclass1.cpp
-
-
-${TESTDIR}/tests/msttestrunner1.o: tests/msttestrunner1.cpp 
-	${MKDIR} -p ${TESTDIR}/tests
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${TESTDIR}/tests/msttestrunner1.o tests/msttestrunner1.cpp
-
-
 ${TESTDIR}/tests/outputinfotestclass1.o: tests/outputinfotestclass1.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
@@ -248,6 +236,18 @@ ${TESTDIR}/tests/outputinfotestrunner1.o: tests/outputinfotestrunner1.cpp
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
 	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/outputinfotestrunner1.o tests/outputinfotestrunner1.cpp
+
+
+${TESTDIR}/tests/primtestclass1.o: tests/primtestclass1.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} $@.d
+	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/primtestclass1.o tests/primtestclass1.cpp
+
+
+${TESTDIR}/tests/primtestrunner1.o: tests/primtestrunner1.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} $@.d
+	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/primtestrunner1.o tests/primtestrunner1.cpp
 
 
 ${TESTDIR}/tests/testesbasicostestclass.o: tests/testesbasicostestclass.cpp 
@@ -425,8 +425,8 @@ ${OBJECTDIR}/relatorio2-estudo1-questao1_nomain.o: ${OBJECTDIR}/relatorio2-estud
 	    ${TESTDIR}/TestFiles/f2 || true; \
 	    ${TESTDIR}/TestFiles/f7 || true; \
 	    ${TESTDIR}/TestFiles/f4 || true; \
-	    ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/teoria_dos_grafos || true; \
 	    ${TESTDIR}/TestFiles/f5 || true; \
+	    ${TESTDIR}/TestFiles/f9 || true; \
 	    ${TESTDIR}/TestFiles/f1 || true; \
 	    ${TESTDIR}/TestFiles/f6 || true; \
 	else  \

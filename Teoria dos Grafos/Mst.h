@@ -16,6 +16,7 @@ public:
     /** Constrói uma MST em <i>G</i> a partir do nó <i>source</i>, aplicando o algoritmo de <b>Prim</b>.
         NOTA: o grafo pode ser desconexo. */
     Mst(const Graph *G, unsigned long long source);
+    virtual ~Mst();
     /** Retorna o pai de <i>node</i> na MST, em relação à raiz da árvore. */
     unsigned long long getParent(unsigned long long node) const;
     /** Retorna o comprimento da MST da raiz da árvore a <i>target</i>. */
@@ -25,7 +26,7 @@ public:
     /** Retorna lista com os vértices do caminho da MST da raiz da árvore a <i>target</i>. */
     std::vector<unsigned long long> getPath(unsigned long long target) const;
     /** Retorna o custo da MST encontrada pelo algoritmo de Prim. */
-    double getCost() const;
+    double getMstCost() const;
 private:
     const Graph *G;
     const unsigned long long source;
@@ -35,6 +36,9 @@ private:
     std::priority_queue< std::pair<double, unsigned long long>, 
         std::vector< std::pair<double, unsigned long long> >, 
         std::greater< std::pair<double, unsigned long long> > > Q;
+    double mstCost;
+    void clear();
+    void prim(const Graph *G, unsigned long long source);
 };
 
 #endif	/* MST_H */

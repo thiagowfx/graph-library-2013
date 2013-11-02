@@ -11,56 +11,66 @@
 
 #define INF std::numeric_limits<double>::max()
 
-Mst::Mst(Graph *G, unsigned long long source) : G(G), source(source) {
-    Prim(G,source);
+Mst::Mst(const Graph *G, unsigned long long source) : G(G), source(source) {
+    prim(G, source);
 };
 
 Mst::~Mst() {
 }
 
-Mst::Prim(Graph *G, unsigned long long source) {
-    key = vector<double>(G->getN()+1, INF);
-    parent = vector<unsigned long long>(G->getN()+1, 0);
-    explored = vector<bool>(G->getN()+1, false);
-    
+void Mst::clear() {
+    key = std::vector<double>(G->getN() + 1, INF);
+    parent = std::vector<unsigned long long>(G->getN() + 1, 0);
+    explored = std::vector<bool>(G->getN() + 1, false);
+    // decisão de design: sem árvore, o custo é nulo
+    mstCost = 0;
+}
+
+void Mst::prim(const Graph *G, unsigned long long source) {
+    clear();
     unsigned long long u, v;
-    vector<unsigned long long> neighbours;
-    pair<double, unsigned long long> next_pair;
+    std::vector<unsigned long long> neighbours;
+    std::pair<double, unsigned long long> next_pair;
+    // immediate key
+    double k;
 
     key[source] = 0;
+    // decisão de design: o pai de <i>source</i> é ele mesmo
     parent[source] = source;
-    
-    //[!!!]
-    unsigned long long N = G->getN()+1;
-    for (unsigned long long i = 1; i < N; ++i) {
-        Q.push(make_pair(key[i], i));
+
+    for (unsigned long long i = 1; i <= G->getN(); ++i) {
+        Q.push(std::make_pair(key[i], i));
     }
-    
+
     while (!Q.empty()) {
         next_pair = Q.top();
         Q.pop();
         u = next_pair.second;
-
+        
+        // limitação da priority queue: pode ser que guardemos nela, mais de uma vez, o mesmo nó
+        if (explored[u])
+            continue;
+        
+        mstCost += next_pair.first;
         explored[u] = true;
         neighbours = G->getNeighbours(u);
-        
+
         for (int i = 0; i < neighbours.size(); ++i) {
             v = neighbours[i];
-            
-            dist = G->getWeight(u, v);
-            if ( !explored[v] && dist < key[v] ) {
-                distance[v] = dist;
+
+            k = G->getWeight(u, v);
+            if (!explored[v] && k < key[v]) {
+                key[v] = k;
                 parent[v] = u;
             }
         }
     }
-    // Acha o custo da MST gerada ??
 }
 
 double Mst::getDistance(unsigned long long target) const {
     if (!explored[target])
         throw std::exception();
-    return distance[target];
+    return 0; //distance[target];
 }
 
 unsigned long long Mst::getSource() const {
@@ -76,7 +86,7 @@ unsigned long long Mst::getParent(unsigned long long node) const {
 std::vector<unsigned long long> Mst::getPath(unsigned long long target) const {
     if (!explored[target])
         throw std::exception();
-    
+
     std::vector<unsigned long long> path;
     unsigned long long node = target;
     while (node != source) {
@@ -87,4 +97,8 @@ std::vector<unsigned long long> Mst::getPath(unsigned long long target) const {
     // de <i>source</i> a <i>path</i>
     std::reverse(path.begin(), path.end());
     return path;
+}
+
+double Mst::getMstCost() const {
+    return mstCost;
 }

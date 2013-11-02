@@ -23,9 +23,9 @@ void Dijkstra::dijkstra(const Graph *G, unsigned long long source, bool stop, un
         throw std::exception();
 
     clear();
+    unsigned long long u, v;
     std::vector<unsigned long long> neighbours;
     std::pair<double, unsigned long long> next_pair;
-    unsigned long long u, v;
     double dist;
 
     distance[source] = 0;
@@ -86,7 +86,7 @@ unsigned long long Dijkstra::getParent(unsigned long long node) const {
 std::vector<unsigned long long> Dijkstra::getPath(unsigned long long target) const {
     if (!explored[target])
         throw std::exception();
-    
+
     std::vector<unsigned long long> path;
     unsigned long long node = target;
     while (node != source) {

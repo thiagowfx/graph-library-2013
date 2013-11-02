@@ -118,9 +118,7 @@
           <commandLine>`cppunit-config --cflags` --std=c++0x</commandLine>
         </ccTool>
         <linkerTool>
-          <output>${TESTDIR}/TestFiles/f8</output>
           <linkerLibItems>
-            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>

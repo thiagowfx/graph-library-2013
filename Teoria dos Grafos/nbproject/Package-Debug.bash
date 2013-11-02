@@ -13,8 +13,8 @@ CND_BUILDDIR=build
 CND_DLIB_EXT=so
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=${TESTDIR}/TestFiles/f8
-OUTPUT_BASENAME=f8
+OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/teoria_dos_grafos
+OUTPUT_BASENAME=teoria_dos_grafos
 PACKAGE_TOP_DIR=teoriadosgrafos/
 
 # Functions

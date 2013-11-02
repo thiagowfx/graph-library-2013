@@ -61,4 +61,3 @@ void msttest::testMst() {
 void msttest::testFailedMethod() {
     CPPUNIT_ASSERT(false);
 }
-

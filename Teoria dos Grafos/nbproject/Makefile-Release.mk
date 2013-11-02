@@ -43,6 +43,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/GraphList.o \
 	${OBJECTDIR}/GraphMatrix.o \
 	${OBJECTDIR}/InputHandler.o \
+	${OBJECTDIR}/Mst.o \
 	${OBJECTDIR}/newmain.o \
 	${OBJECTDIR}/relatorio2-estudo1-questao1.o
 
@@ -55,6 +56,7 @@ TESTFILES= \
 	${TESTDIR}/TestFiles/f2 \
 	${TESTDIR}/TestFiles/f7 \
 	${TESTDIR}/TestFiles/f4 \
+	${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/teoria_dos_grafos \
 	${TESTDIR}/TestFiles/f5 \
 	${TESTDIR}/TestFiles/f1 \
 	${TESTDIR}/TestFiles/f6
@@ -123,6 +125,11 @@ ${OBJECTDIR}/InputHandler.o: InputHandler.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/InputHandler.o InputHandler.cpp
 
+${OBJECTDIR}/Mst.o: Mst.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Mst.o Mst.cpp
+
 ${OBJECTDIR}/newmain.o: newmain.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
@@ -153,6 +160,10 @@ ${TESTDIR}/TestFiles/f7: ${TESTDIR}/tests/dijkstratestclass1.o ${TESTDIR}/tests/
 ${TESTDIR}/TestFiles/f4: ${TESTDIR}/tests/inputhandlertestclass1.o ${TESTDIR}/tests/inputhandlertestrunner1.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f4 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/teoria_dos_grafos: ${TESTDIR}/tests/msttestclass1.o ${TESTDIR}/tests/msttestrunner1.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
+	${LINK.cc}   -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/teoria_dos_grafos $^ ${LDLIBSOPTIONS} 
 
 ${TESTDIR}/TestFiles/f5: ${TESTDIR}/tests/outputinfotestclass1.o ${TESTDIR}/tests/outputinfotestrunner1.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
@@ -213,6 +224,18 @@ ${TESTDIR}/tests/inputhandlertestrunner1.o: tests/inputhandlertestrunner1.cpp
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
 	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/inputhandlertestrunner1.o tests/inputhandlertestrunner1.cpp
+
+
+${TESTDIR}/tests/msttestclass1.o: tests/msttestclass1.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${TESTDIR}/tests/msttestclass1.o tests/msttestclass1.cpp
+
+
+${TESTDIR}/tests/msttestrunner1.o: tests/msttestrunner1.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${TESTDIR}/tests/msttestrunner1.o tests/msttestrunner1.cpp
 
 
 ${TESTDIR}/tests/outputinfotestclass1.o: tests/outputinfotestclass1.cpp 
@@ -355,6 +378,19 @@ ${OBJECTDIR}/InputHandler_nomain.o: ${OBJECTDIR}/InputHandler.o InputHandler.cpp
 	    ${CP} ${OBJECTDIR}/InputHandler.o ${OBJECTDIR}/InputHandler_nomain.o;\
 	fi
 
+${OBJECTDIR}/Mst_nomain.o: ${OBJECTDIR}/Mst.o Mst.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/Mst.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Mst_nomain.o Mst.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/Mst.o ${OBJECTDIR}/Mst_nomain.o;\
+	fi
+
 ${OBJECTDIR}/newmain_nomain.o: ${OBJECTDIR}/newmain.o newmain.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	@NMOUTPUT=`${NM} ${OBJECTDIR}/newmain.o`; \
@@ -389,6 +425,7 @@ ${OBJECTDIR}/relatorio2-estudo1-questao1_nomain.o: ${OBJECTDIR}/relatorio2-estud
 	    ${TESTDIR}/TestFiles/f2 || true; \
 	    ${TESTDIR}/TestFiles/f7 || true; \
 	    ${TESTDIR}/TestFiles/f4 || true; \
+	    ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/teoria_dos_grafos || true; \
 	    ${TESTDIR}/TestFiles/f5 || true; \
 	    ${TESTDIR}/TestFiles/f1 || true; \
 	    ${TESTDIR}/TestFiles/f6 || true; \

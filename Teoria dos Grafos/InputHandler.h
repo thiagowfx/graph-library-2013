@@ -25,6 +25,7 @@ public:
        ih.readGraph(&g, filename, 'm');
      */
     void readGraph(Graph **g, const char *filename, char rep, bool weighted);
+    /** Remove as linhas duplicadas consecutivas do arquivo <i>inputFile</i>, escrevendo a saída no arquivo <i>outputFile</i>. */
     void removeDuplicates(const char *inputFile, const char *outputFile);
 private:
 };

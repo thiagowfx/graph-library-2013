@@ -19,13 +19,13 @@ Mst::~Mst() {
 }
 
 Mst::Prim(Graph *G, unsigned long long source) {
-    key = std::vector<double>(G->getN()+1, INF);
-    parent = std::vector<unsigned long long>(G->getN()+1, 0);
-    explored = std::vector<bool>(G->getN()+1, false);
+    key = vector<double>(G->getN()+1, INF);
+    parent = vector<unsigned long long>(G->getN()+1, 0);
+    explored = vector<bool>(G->getN()+1, false);
     
     unsigned long long u, v;
-    std::vector<unsigned long long> neighbours;
-    std::pair<double, unsigned long long> next_pair;
+    vector<unsigned long long> neighbours;
+    pair<double, unsigned long long> next_pair;
 
     key[source] = 0;
     parent[source] = source;
@@ -33,7 +33,7 @@ Mst::Prim(Graph *G, unsigned long long source) {
     //[!!!]
     unsigned long long N = G->getN()+1;
     for (unsigned long long i = 1; i < N; ++i) {
-        Q.push(std::make_pair(key[i], i));
+        Q.push(make_pair(key[i], i));
     }
     
     while (!Q.empty()) {
@@ -88,4 +88,3 @@ std::vector<unsigned long long> Mst::getPath(unsigned long long target) const {
     std::reverse(path.begin(), path.end());
     return path;
 }
-

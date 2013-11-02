@@ -116,3 +116,17 @@ void primtestclass1::testMst2() {
     v = {3, 2};
     CPPUNIT_ASSERT(v == mi.getPath(2));
 }
+
+void primtestclass1::testSaveInfo() {
+    const char output[] = "tmp/mstSaveInfo.txt";
+    const char expected[] = "tests/graphs/mstSaveInfo.exp";
+    Mst mi(gl, 3ULL);
+    mi.saveInfo(output);
+    CPPUNIT_ASSERT(areFilesEquali(output, expected));
+
+    const char output2[] = "tmp/mstSaveInfo2.txt";
+    const char expected2[] = "tests/graphs/mstSaveInfo2.exp";
+    Mst mj(gm, 1ULL);
+    mj.saveInfo(output2);
+    CPPUNIT_ASSERT(areFilesEquali(output2, expected2));
+}

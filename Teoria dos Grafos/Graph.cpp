@@ -59,7 +59,7 @@ void Graph::addEdge(unsigned long long node1, unsigned long long node2, double w
         weighted = 2;
 }
 
-void Graph::saveInfo(const char* filename) {
+void Graph::saveInfo(const char* filename) const {
     std::ofstream os;
     os.open(filename);
     os << "# n = " << N << std::endl;

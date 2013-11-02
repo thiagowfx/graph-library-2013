@@ -45,7 +45,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/InputHandler.o \
 	${OBJECTDIR}/Mst.o \
 	${OBJECTDIR}/newmain.o \
-	${OBJECTDIR}/relatorio2-estudo1-questao1.o
+	${OBJECTDIR}/relatorio2-estudo1-questao1.o \
+	${OBJECTDIR}/relatorio2-estudo1-questao2.o
 
 # Test Directory
 TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
@@ -139,6 +140,11 @@ ${OBJECTDIR}/relatorio2-estudo1-questao1.o: relatorio2-estudo1-questao1.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/relatorio2-estudo1-questao1.o relatorio2-estudo1-questao1.cpp
+
+${OBJECTDIR}/relatorio2-estudo1-questao2.o: relatorio2-estudo1-questao2.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/relatorio2-estudo1-questao2.o relatorio2-estudo1-questao2.cpp
 
 # Subprojects
 .build-subprojects:
@@ -415,6 +421,19 @@ ${OBJECTDIR}/relatorio2-estudo1-questao1_nomain.o: ${OBJECTDIR}/relatorio2-estud
 	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/relatorio2-estudo1-questao1_nomain.o relatorio2-estudo1-questao1.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/relatorio2-estudo1-questao1.o ${OBJECTDIR}/relatorio2-estudo1-questao1_nomain.o;\
+	fi
+
+${OBJECTDIR}/relatorio2-estudo1-questao2_nomain.o: ${OBJECTDIR}/relatorio2-estudo1-questao2.o relatorio2-estudo1-questao2.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/relatorio2-estudo1-questao2.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/relatorio2-estudo1-questao2_nomain.o relatorio2-estudo1-questao2.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/relatorio2-estudo1-questao2.o ${OBJECTDIR}/relatorio2-estudo1-questao2_nomain.o;\
 	fi
 
 # Run Test Targets

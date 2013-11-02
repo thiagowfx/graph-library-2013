@@ -63,7 +63,7 @@ public:
     /** Retorna um vetor com os vizinhos de <i>node</i>. */
     virtual std::vector<unsigned long long> getNeighbours(unsigned long long node) const = 0;
     /** Salva as informações do grafo para o arquivo <b>filename</b>. */
-    void saveInfo(const char* filename);
+    void saveInfo(const char* filename) const;
     /** Retorna <i>true</i> se o grafo tem pesos. Se o grafo não tem pesos, é como se todas as arestas tivessem peso igual a 1. */
     bool isWeighted() const;
     /** Retorna <i>true</i> se o grafo tem algum peso negativo. Se o grafo não tiver pesos, retorna <i>false</i>. */

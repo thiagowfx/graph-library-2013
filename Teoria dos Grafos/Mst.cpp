@@ -117,3 +117,17 @@ double Mst::getKey(unsigned long long node) const {
         throw std::exception();
     return key[node];
 }
+
+void Mst::saveInfo(const char* filename) const {
+    std::ofstream os;
+    os.open(filename);
+
+    os << "custo = " << mstCost << std::endl;
+    os << G->getN() << std::endl;
+    for (int i = 1; i <= G->getN(); ++i) {
+        if (i != source && explored[i])
+            os << i << " " << getParent(i) << " " << getKey(i) << std::endl;
+    }
+
+    os.close();
+}

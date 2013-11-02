@@ -10,6 +10,7 @@
 
 #include "../Include.h"
 #include "../Mst.h"
+#include "../Utilities.h"
 
 #include <cppunit/extensions/HelperMacros.h>
 
@@ -18,6 +19,7 @@ class primtestclass1 : public CPPUNIT_NS::TestFixture {
 
     CPPUNIT_TEST(testMst);
     CPPUNIT_TEST(testMst2);
+    CPPUNIT_TEST(testSaveInfo);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -30,6 +32,7 @@ public:
 private:
     void testMst();
     void testMst2();
+    void testSaveInfo();
 };
 
 #endif	/* PRIMTESTCLASS1_H */

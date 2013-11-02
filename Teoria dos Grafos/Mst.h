@@ -11,7 +11,6 @@
 #include "Graph.h"
 
 class Mst {
-
 public:
     /** Constrói uma MST em <i>G</i> a partir do nó <i>source</i>, aplicando o algoritmo de <b>Prim</b>.
         NOTA: o grafo pode ser desconexo. */
@@ -29,15 +28,17 @@ public:
     double getMstCost() const;
     /** Retorna o custo da aresta <i>node</i>-pai de <i>node</i> em relação à origem da MST. */
     double getKey(unsigned long long node) const;
+    /** Salva a MST para o arquivo <b>filename</b>. */
+    void saveInfo(const char* filename) const;
 private:
     const Graph *G;
     const unsigned long long source;
     std::vector<double> key;
     std::vector<bool> explored;
     std::vector<unsigned long long> parent;
-    std::priority_queue< std::pair<double, unsigned long long>, 
-        std::vector< std::pair<double, unsigned long long> >, 
-        std::greater< std::pair<double, unsigned long long> > > Q;
+    std::priority_queue< std::pair<double, unsigned long long>,
+    std::vector< std::pair<double, unsigned long long> >,
+    std::greater< std::pair<double, unsigned long long> > > Q;
     double mstCost;
     void clear();
     void prim(const Graph *G, unsigned long long source);

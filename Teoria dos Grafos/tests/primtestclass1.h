@@ -8,6 +8,9 @@
 #ifndef PRIMTESTCLASS1_H
 #define	PRIMTESTCLASS1_H
 
+#include "../Include.h"
+#include "../Mst.h"
+
 #include <cppunit/extensions/HelperMacros.h>
 
 class primtestclass1 : public CPPUNIT_NS::TestFixture {

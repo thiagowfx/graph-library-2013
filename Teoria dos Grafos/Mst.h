@@ -27,6 +27,8 @@ public:
     std::vector<unsigned long long> getPath(unsigned long long target) const;
     /** Retorna o custo da MST encontrada pelo algoritmo de Prim. */
     double getMstCost() const;
+    /** [!!!] */
+    double getKey(unsigned long long node) const;
 private:
     const Graph *G;
     const unsigned long long source;

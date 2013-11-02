@@ -9,6 +9,8 @@
 #define	DIJKSTRATEST_H
 
 #include "../Include.h"
+#include "../Dijkstra.h"
+#include "../Utilities.h"
 
 #include <cppunit/extensions/HelperMacros.h>
 
@@ -19,7 +21,7 @@ class dijkstratest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST(testOnlyPositiveWeights);
     CPPUNIT_TEST(testGetPath);
     CPPUNIT_TEST(testConstructorWithTarget);
-    
+
     CPPUNIT_TEST_SUITE_END();
 
 public:

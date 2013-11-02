@@ -46,11 +46,11 @@ void Mst::prim(const Graph *G, unsigned long long source) {
         next_pair = Q.top();
         Q.pop();
         u = next_pair.second;
-        
+
         // limitação da priority queue: pode ser que guardemos nela, mais de uma vez, o mesmo nó
         if (explored[u])
             continue;
-        
+
         mstCost += next_pair.first;
         explored[u] = true;
         neighbours = G->getNeighbours(u);
@@ -62,6 +62,7 @@ void Mst::prim(const Graph *G, unsigned long long source) {
             if (!explored[v] && k < key[v]) {
                 key[v] = k;
                 parent[v] = u;
+                Q.push(std::make_pair(key[v], v));
             }
         }
     }
@@ -70,7 +71,15 @@ void Mst::prim(const Graph *G, unsigned long long source) {
 double Mst::getDistance(unsigned long long target) const {
     if (!explored[target])
         throw std::exception();
-    return 0; //distance[target];
+    
+    double distance = 0.0;
+    unsigned long long node = target;
+    while (node != source) {
+        distance += key[node];
+        node = parent[node];
+    }
+    
+    return distance;
 }
 
 unsigned long long Mst::getSource() const {
@@ -101,4 +110,10 @@ std::vector<unsigned long long> Mst::getPath(unsigned long long target) const {
 
 double Mst::getMstCost() const {
     return mstCost;
+}
+
+double Mst::getKey(unsigned long long node) const {
+    if (!explored[node])
+        throw std::exception();
+    return key[node];
 }

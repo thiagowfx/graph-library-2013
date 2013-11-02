@@ -7,9 +7,6 @@
 
 #include "dijkstratestclass1.h"
 
-#include "../Dijkstra.h"
-#include "../Utilities.h"
-
 Graph *gm;
 
 CPPUNIT_TEST_SUITE_REGISTRATION(dijkstratest);

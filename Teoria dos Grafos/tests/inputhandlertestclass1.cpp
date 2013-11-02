@@ -5,20 +5,20 @@
  * Created on Oct 22, 2013, 9:51:08 AM
  */
 
-#include "inputhandler_testclass.h"
+#include "inputhandlertestclass1.h"
 
-CPPUNIT_TEST_SUITE_REGISTRATION(inputhandler_testclass);
+CPPUNIT_TEST_SUITE_REGISTRATION(inputhandlertestclass1);
 
-inputhandler_testclass::inputhandler_testclass() {
+inputhandlertestclass1::inputhandlertestclass1() {
 }
 
-inputhandler_testclass::~inputhandler_testclass() {
+inputhandlertestclass1::~inputhandlertestclass1() {
 }
 
-void inputhandler_testclass::setUp() {
+void inputhandlertestclass1::setUp() {
 }
 
-void inputhandler_testclass::tearDown() {
+void inputhandlertestclass1::tearDown() {
 }
 
 void a(Graph **g) {
@@ -28,7 +28,7 @@ void a(Graph **g) {
     (*g)->addEdge(1, 3);
 }
 
-void inputhandler_testclass::testReadGraphMatrix() {
+void inputhandlertestclass1::testReadGraphMatrix() {
     Graph *g;
     InputHandler ih;
     const char c[] = "tests/graphs/k3.txt";
@@ -55,7 +55,7 @@ void inputhandler_testclass::testReadGraphMatrix() {
     delete g;
 }
 
-void inputhandler_testclass::testReadGraphList() {
+void inputhandlertestclass1::testReadGraphList() {
     Graph *g;
     InputHandler ih;
     const char c[] = "tests/graphs/k3.txt";
@@ -79,7 +79,7 @@ void inputhandler_testclass::testReadGraphList() {
     delete g;
 }
 
-void inputhandler_testclass::testReadGraphMatrixWeighted() {
+void inputhandlertestclass1::testReadGraphMatrixWeighted() {
     Graph *g;
     InputHandler ih;
     const char c[] = "tests/graphs/k3weighted.txt";
@@ -109,7 +109,7 @@ void inputhandler_testclass::testReadGraphMatrixWeighted() {
     delete g;
 }
 
-void inputhandler_testclass::testReadGraphListWeighted() {
+void inputhandlertestclass1::testReadGraphListWeighted() {
     Graph *g;
     InputHandler ih;
     const char c[] = "tests/graphs/k3weighted.txt";
@@ -137,4 +137,20 @@ void inputhandler_testclass::testReadGraphListWeighted() {
     CPPUNIT_ASSERT_THROW(g->getDegree(4), std::exception);
 
     delete g;
+}
+
+void inputhandlertestclass1::testRemoveDuplicates() {
+    InputHandler ih;
+
+    const char input[] = "tests/graphs/duplicates.txt";
+    const char output[] = "tmp/duplicates.txt";
+    const char expected[] = "tests/graphs/duplicates.exp";
+    ih.removeDuplicates(input, output);
+    CPPUNIT_ASSERT(areFilesEquali(output, expected));
+
+    const char input2[] = "tests/graphs/duplicates2.txt";
+    const char output2[] = "tmp/duplicates2.txt";
+    const char expected2[] = "tests/graphs/duplicates2.exp";
+    ih.removeDuplicates(input2, output2);
+    CPPUNIT_ASSERT(areFilesEquali(output2, expected2));
 }

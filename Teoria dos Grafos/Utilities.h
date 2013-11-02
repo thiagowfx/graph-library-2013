@@ -10,11 +10,17 @@
 
 #include <string>
 #include <vector>
+#include <fstream>
 
-// from <algorithms>
-// std::equal(v.begin(), v.begin() + v.size(), v2.begin());
+template <class T> bool compareVectors(const std::vector<T>& v1, const std::vector<T>& v2);
+template<class T> std::string printVector(const std::vector<T>& v);
+bool areFilesEqual(const char *filename1, const char *filename2);
+
 template <class T>
 bool compareVectors(const std::vector<T>& v1, const std::vector<T>& v2) {
+    // from <algorithms>
+    // std::equal(v.begin(), v.begin() + v.size(), v2.begin());
+
     if (v1.size() != v2.size())
         return false;
     for (int i = 0; i < (int) v1.size(); ++i)
@@ -25,9 +31,9 @@ bool compareVectors(const std::vector<T>& v1, const std::vector<T>& v2) {
 
 template<class T>
 std::string printVector(const std::vector<T>& v) {
-//    for (int i = 0; i < (int) v.size(); ++i)
-//        std::cout << v[i] << " ";
-//    std::cout << std::endl;
+    //    for (int i = 0; i < (int) v.size(); ++i)
+    //        std::cout << v[i] << " ";
+    //    std::cout << std::endl;
     std::string s;
     s += ": ";
     char tmp[100];
@@ -40,5 +46,19 @@ std::string printVector(const std::vector<T>& v) {
     return s;
 }
 
-#endif	/* UTILITIES_H */
+bool areFilesEquali(const char *filename1, const char *filename2) {
+    std::ifstream is1;
+    std::ifstream is2;
+    is1.open(filename1);
+    is2.open(filename2);
+    std::string line1, line2;
 
+    while (getline(is1, line1) && getline(is2, line2)) {
+        if (line1 != line2)
+            return false;
+    }
+
+    return true;
+}
+
+#endif	/* UTILITIES_H */

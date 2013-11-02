@@ -10,22 +10,25 @@
 
 #include "../Include.h"
 #include "../InputHandler.h"
+#include "../Utilities.h"
 
 #include <cppunit/extensions/HelperMacros.h>
 
-class inputhandler_testclass : public CPPUNIT_NS::TestFixture {
-    CPPUNIT_TEST_SUITE(inputhandler_testclass);
+class inputhandlertestclass1 : public CPPUNIT_NS::TestFixture {
+    CPPUNIT_TEST_SUITE(inputhandlertestclass1);
 
     CPPUNIT_TEST(testReadGraphMatrix);
     CPPUNIT_TEST(testReadGraphList);
     CPPUNIT_TEST(testReadGraphMatrixWeighted);
     CPPUNIT_TEST(testReadGraphListWeighted);
+    CPPUNIT_TEST(testRemoveDuplicates);
+    
 
     CPPUNIT_TEST_SUITE_END();
 
 public:
-    inputhandler_testclass();
-    virtual ~inputhandler_testclass();
+    inputhandlertestclass1();
+    virtual ~inputhandlertestclass1();
     void setUp();
     void tearDown();
 
@@ -34,6 +37,7 @@ private:
     void testReadGraphList();
     void testReadGraphMatrixWeighted();
     void testReadGraphListWeighted();
+    void testRemoveDuplicates();
 };
 
 #endif	/* INPUTHANDLER_TESTCLASS_H */

@@ -43,6 +43,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/GraphList.o \
 	${OBJECTDIR}/GraphMatrix.o \
 	${OBJECTDIR}/InputHandler.o \
+	${OBJECTDIR}/newmain.o \
 	${OBJECTDIR}/relatorio2-estudo1-questao1.o
 
 # Test Directory
@@ -121,6 +122,11 @@ ${OBJECTDIR}/InputHandler.o: InputHandler.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/InputHandler.o InputHandler.cpp
+
+${OBJECTDIR}/newmain.o: newmain.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/newmain.o newmain.cpp
 
 ${OBJECTDIR}/relatorio2-estudo1-questao1.o: relatorio2-estudo1-questao1.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -347,6 +353,19 @@ ${OBJECTDIR}/InputHandler_nomain.o: ${OBJECTDIR}/InputHandler.o InputHandler.cpp
 	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/InputHandler_nomain.o InputHandler.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/InputHandler.o ${OBJECTDIR}/InputHandler_nomain.o;\
+	fi
+
+${OBJECTDIR}/newmain_nomain.o: ${OBJECTDIR}/newmain.o newmain.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/newmain.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/newmain_nomain.o newmain.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/newmain.o ${OBJECTDIR}/newmain_nomain.o;\
 	fi
 
 ${OBJECTDIR}/relatorio2-estudo1-questao1_nomain.o: ${OBJECTDIR}/relatorio2-estudo1-questao1.o relatorio2-estudo1-questao1.cpp 

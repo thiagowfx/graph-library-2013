@@ -109,7 +109,7 @@ do grafo.
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="28" columns="4">
+<lyxtabular version="3" rows="29" columns="4">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -131,6 +131,8 @@ Grafo
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
 Nó
 \end_layout
 
@@ -140,6 +142,8 @@ Nó
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
 Distância
 \end_layout
 
@@ -149,6 +153,8 @@ Distância
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
 Menor Caminho
 \end_layout
 
@@ -178,7 +184,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-3
+19
 \end_layout
 
 \end_inset
@@ -187,7 +193,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1\rightarrow100\rightarrow8\rightarrow10$
+\begin_inset Formula $1,100,17,8,67,10$
 \end_inset
 
 
@@ -219,7 +225,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-2
+24
 \end_layout
 
 \end_inset
@@ -228,7 +234,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1\rightarrow2\rightarrow20$
+\begin_inset Formula $1,100,17,8,73,74,19,20$
 \end_inset
 
 
@@ -260,7 +266,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-3
+21
 \end_layout
 
 \end_inset
@@ -269,7 +275,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1\rightarrow2\rightarrow37\rightarrow30$
+\begin_inset Formula $1,100,17,8,67,26,31,30$
 \end_inset
 
 
@@ -301,7 +307,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-3
+19
 \end_layout
 
 \end_inset
@@ -310,7 +316,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1\rightarrow100\rightarrow8\rightarrow40$
+\begin_inset Formula $1,100,17,8,40$
 \end_inset
 
 
@@ -342,7 +348,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-3
+23
 \end_layout
 
 \end_inset
@@ -351,7 +357,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1\rightarrow2\rightarrow6\rightarrow50$
+\begin_inset Formula $1,100,17,8,73,50$
 \end_inset
 
 
@@ -383,7 +389,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-1
+2
 \end_layout
 
 \end_inset
@@ -392,7 +398,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1\rightarrow10$
+\begin_inset Formula $1,52,10$
 \end_inset
 
 
@@ -424,7 +430,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-2
+3
 \end_layout
 
 \end_inset
@@ -433,7 +439,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1\rightarrow2\rightarrow20$
+\begin_inset Formula $1,144,20$
 \end_inset
 
 
@@ -474,7 +480,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1\rightarrow4\rightarrow30$
+\begin_inset Formula $1,4,30$
 \end_inset
 
 
@@ -506,7 +512,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-1
+3
 \end_layout
 
 \end_inset
@@ -515,7 +521,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1\rightarrow40$
+\begin_inset Formula $1,331,40$
 \end_inset
 
 
@@ -547,7 +553,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-2
+3
 \end_layout
 
 \end_inset
@@ -556,7 +562,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1\rightarrow2\rightarrow50$
+\begin_inset Formula $1,337,41,50$
 \end_inset
 
 
@@ -588,7 +594,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-4
+26
 \end_layout
 
 \end_inset
@@ -597,7 +603,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1\rightarrow2\rightarrow3\rightarrow3782\rightarrow10$
+\begin_inset Formula $1,2,3,7739,3782,8405,7014,10$
 \end_inset
 
 
@@ -629,7 +635,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-7
+38
 \end_layout
 
 \end_inset
@@ -638,7 +644,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1\rightarrow2\rightarrow3\rightarrow9041\rightarrow4669\rightarrow18\rightarrow19\rightarrow20$
+\begin_inset Formula $1,2,3,7739,3782,3259,9657,1486,4206,2783,19,20$
 \end_inset
 
 
@@ -670,7 +676,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-7
+34
 \end_layout
 
 \end_inset
@@ -679,7 +685,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1\rightarrow2\rightarrow3\rightarrow278\rightarrow1398\rightarrow301\rightarrow29\rightarrow30$
+\begin_inset Formula $1,2,3,7739,7738,7080,995,4307,598,599,29,30$
 \end_inset
 
 
@@ -711,7 +717,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-5
+30
 \end_layout
 
 \end_inset
@@ -720,7 +726,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1\rightarrow2\rightarrow3\rightarrow9041\rightarrow3267\rightarrow40$
+\begin_inset Formula $1,2,3,7739,7738,7080,995,3486,877,40$
 \end_inset
 
 
@@ -752,7 +758,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-5
+27
 \end_layout
 
 \end_inset
@@ -773,7 +779,7 @@ Menor Caminho
 \uwave off
 \noun off
 \color none
-\begin_inset Formula $1\rightarrow10000\rightarrow9999\rightarrow9998\rightarrow2404\rightarrow50$
+\begin_inset Formula $1,2,3,7463,8774,6577,7713,4461,50$
 \end_inset
 
 
@@ -805,7 +811,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-7
+27
 \end_layout
 
 \end_inset
@@ -814,7 +820,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1\rightarrow2\rightarrow13545\rightarrow49238\rightarrow10641\rightarrow18082\rightarrow9\rightarrow10$
+\begin_inset Formula $1,2,40954,6638,24142,5438,5437,30631,18082,9,10$
 \end_inset
 
 
@@ -846,7 +852,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-5
+17
 \end_layout
 
 \end_inset
@@ -867,7 +873,7 @@ Menor Caminho
 \uwave off
 \noun off
 \color none
-\begin_inset Formula $1\rightarrow2\rightarrow13545\rightarrow28813\rightarrow8143\rightarrow20$
+\begin_inset Formula $1,2,40954,9187,44780,14530,12285,30632,34758,38687,20$
 \end_inset
 
 
@@ -899,7 +905,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-7
+40
 \end_layout
 
 \end_inset
@@ -920,7 +926,7 @@ Menor Caminho
 \uwave off
 \noun off
 \color none
-\begin_inset Formula $1\rightarrow2\rightarrow49645\rightarrow35889\rightarrow42945\rightarrow32\rightarrow31\rightarrow30$
+\begin_inset Formula $1,2,40954,9187,46430,48174,42945,32,31,30$
 \end_inset
 
 
@@ -952,7 +958,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-5
+21
 \end_layout
 
 \end_inset
@@ -973,7 +979,7 @@ Menor Caminho
 \uwave off
 \noun off
 \color none
-\begin_inset Formula $1\rightarrow2\rightarrow49645\rightarrow13509\rightarrow39\rightarrow40$
+\begin_inset Formula $1,2,40954,6638,28947,16279,19115,36243,13509,7746,39,40$
 \end_inset
 
 
@@ -1005,7 +1011,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-5
+18
 \end_layout
 
 \end_inset
@@ -1026,7 +1032,7 @@ Menor Caminho
 \uwave off
 \noun off
 \color none
-\begin_inset Formula $1\rightarrow2\rightarrow13545\rightarrow49238\rightarrow10284\rightarrow50$
+\begin_inset Formula $1,2,40954,46519,11807,5924,5925,8120,23726,50$
 \end_inset
 
 
@@ -1036,7 +1042,7 @@ Menor Caminho
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1045,7 +1051,7 @@ Menor Caminho
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1054,11 +1060,11 @@ Menor Caminho
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-9
+56
 \end_layout
 
 \end_inset
@@ -1067,7 +1073,61 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1\rightarrow2\rightarrow3\rightarrow4\rightarrow5\rightarrow6\rightarrow7\rightarrow8\rightarrow9\rightarrow10$
+\begin_inset Formula $1,100000,99999,99998,92827,24681,49217,86633,23787,19564,82822,...$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+\begin_inset Formula $...,24916,79294,79095,35948,30951,30952,30953,70778,10$
 \end_inset
 
 
@@ -1099,7 +1159,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-16
+105
 \end_layout
 
 \end_inset
@@ -1108,7 +1168,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1\rightarrow100000\rightarrow99999\rightarrow99998\rightarrow23575\rightarrow7300\rightarrow8080\rightarrow$
+\begin_inset Formula $1,100000,99999,99998,5098,15254,23575,7300,96904,96903,42404,60810,...$
 \end_inset
 
 
@@ -1161,7 +1221,7 @@ Menor Caminho
 \uwave off
 \noun off
 \color none
-\begin_inset Formula $53746\rightarrow28\rightarrow27\rightarrow26\rightarrow25\rightarrow24\rightarrow23\rightarrow22\rightarrow21\rightarrow20$
+\begin_inset Formula $...,60811,60812,89262,41578,12,13,14,15,16,17,18,19,20$
 \end_inset
 
 
@@ -1193,7 +1253,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-8
+46
 \end_layout
 
 \end_inset
@@ -1202,7 +1262,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1\rightarrow100000\rightarrow99999\rightarrow99998\rightarrow23575\rightarrow7300\rightarrow59430\rightarrow31\rightarrow30$
+\begin_inset Formula $1,100000,99999,99998,5098,15254,23575,7300,94647,59430,48919,31,30$
 \end_inset
 
 
@@ -1234,7 +1294,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-14
+79
 \end_layout
 
 \end_inset
@@ -1243,7 +1303,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1\rightarrow100000\rightarrow99999\rightarrow99998\rightarrow49217\rightarrow23787\rightarrow$
+\begin_inset Formula $1,100000,99999,99998,92827,24681,49217,86633,23787,...$
 \end_inset
 
 
@@ -1284,7 +1344,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $19564\rightarrow78297\rightarrow7874\rightarrow35\rightarrow36\rightarrow37\rightarrow38\rightarrow39\rightarrow40$
+\begin_inset Formula $...,19564,72304,78297,7874,74107,35,36,37,38,39,40$
 \end_inset
 
 
@@ -1316,7 +1376,7 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-8
+44
 \end_layout
 
 \end_inset
@@ -1325,10 +1385,213 @@ Menor Caminho
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $1\rightarrow100000\rightarrow99999\rightarrow99998\rightarrow49217\rightarrow21224\rightarrow99060\rightarrow72224\rightarrow50$
+\begin_inset Formula $1,100000,99999,99998,92827,24681,49217,21224,14174,99060,72224,50$
 \end_inset
 
 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Árvore geradora mínima (MST)
+\end_layout
+
+\begin_layout Standard
+asasasas
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Grafo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Tempo (s)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Custo
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0,001
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+336
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10,89
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+999
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0,30
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+31947
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1,21
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+216236
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1,18
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+608677
 \end_layout
 
 \end_inset

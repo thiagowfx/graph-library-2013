@@ -9,6 +9,7 @@
 
 Graph *gm;
 Graph *gl;
+Graph *gDesc;
 
 CPPUNIT_TEST_SUITE_REGISTRATION(primtestclass1);
 
@@ -32,11 +33,18 @@ void primtestclass1::setUp() {
     gl->addEdge(1, 4, 1);
     gl->addEdge(2, 3, 1);
     gl->addEdge(3, 4, 10);
+
+    gDesc = new GraphList(5, true);
+    gDesc->addEdge(1, 2, 10);
+    gDesc->addEdge(2, 3, 1);
+    gDesc->addEdge(1, 3, 1);
+    gDesc->addEdge(4, 5, 1);
 }
 
 void primtestclass1::tearDown() {
     delete gm;
     delete gl;
+    delete gDesc;
 }
 
 void primtestclass1::testMst() {
@@ -53,6 +61,7 @@ void primtestclass1::testMst() {
     unsigned long long source = 1;
     Mst mi(gm, source);
     CPPUNIT_ASSERT_EQUAL(1ULL, mi.getSource());
+    CPPUNIT_ASSERT_EQUAL(5ULL, mi.getNumberOfMstNodes());
 
     CPPUNIT_ASSERT_EQUAL(1ULL, mi.getParent(1));
     CPPUNIT_ASSERT_EQUAL(1ULL, mi.getParent(2));
@@ -92,6 +101,7 @@ void primtestclass1::testMst2() {
     unsigned long long source = 3;
     Mst mi(gl, source);
     CPPUNIT_ASSERT_EQUAL(3ULL, mi.getSource());
+    CPPUNIT_ASSERT_EQUAL(4ULL, mi.getNumberOfMstNodes());
 
     CPPUNIT_ASSERT_EQUAL(2ULL, mi.getParent(1));
     CPPUNIT_ASSERT_EQUAL(3ULL, mi.getParent(2));
@@ -129,4 +139,37 @@ void primtestclass1::testSaveInfo() {
     Mst mj(gm, 1ULL);
     mj.saveInfo(output2);
     CPPUNIT_ASSERT(areFilesEquali(output2, expected2));
+}
+
+void primtestclass1::testMstGrafoDesconexo() {
+    Mst mj(gDesc, 4ULL);    
+    CPPUNIT_ASSERT_EQUAL(5ULL, gDesc->getN());
+    CPPUNIT_ASSERT_EQUAL(4ULL, mj.getSource());
+    
+    CPPUNIT_ASSERT_EQUAL(2ULL, mj.getNumberOfMstNodes());
+    CPPUNIT_ASSERT_EQUAL(1.0, mj.getMstCost());
+    
+    Mst mi(gDesc, 1ULL);
+    CPPUNIT_ASSERT_EQUAL(5ULL, gDesc->getN());
+    CPPUNIT_ASSERT_EQUAL(1ULL, mi.getSource());
+    CPPUNIT_ASSERT_EQUAL(3ULL, mi.getNumberOfMstNodes());
+    CPPUNIT_ASSERT_EQUAL(2.0, mi.getMstCost());
+
+    CPPUNIT_ASSERT_EQUAL(1ULL, mi.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(3ULL, mi.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, mi.getParent(3));
+    CPPUNIT_ASSERT_THROW(mi.getParent(4), std::exception);
+    CPPUNIT_ASSERT_THROW(mi.getParent(5), std::exception);
+
+    CPPUNIT_ASSERT_EQUAL(0.0, mi.getKey(1));
+    CPPUNIT_ASSERT_EQUAL(1.0, mi.getKey(2));
+    CPPUNIT_ASSERT_EQUAL(1.0, mi.getKey(3));
+    CPPUNIT_ASSERT_THROW(mi.getKey(4), std::exception);
+    CPPUNIT_ASSERT_THROW(mi.getKey(5), std::exception);
+
+    CPPUNIT_ASSERT_EQUAL(0.0, mi.getDistance(1));
+    CPPUNIT_ASSERT_EQUAL(2.0, mi.getDistance(2));
+    CPPUNIT_ASSERT_EQUAL(1.0, mi.getDistance(3));
+    CPPUNIT_ASSERT_THROW(mi.getKey(4), std::exception);
+    CPPUNIT_ASSERT_THROW(mi.getKey(5), std::exception);
 }

@@ -20,6 +20,7 @@ class primtestclass1 : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST(testMst);
     CPPUNIT_TEST(testMst2);
     CPPUNIT_TEST(testSaveInfo);
+    CPPUNIT_TEST(testMstGrafoDesconexo);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -33,6 +34,7 @@ private:
     void testMst();
     void testMst2();
     void testSaveInfo();
+    void testMstGrafoDesconexo();
 };
 
 #endif	/* PRIMTESTCLASS1_H */

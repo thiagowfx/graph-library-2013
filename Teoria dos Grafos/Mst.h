@@ -30,9 +30,12 @@ public:
     double getKey(unsigned long long node) const;
     /** Salva a MST para o arquivo <b>filename</b>. */
     void saveInfo(const char* filename) const;
+    /** Retorna o número de nós da Mst. */
+    unsigned long long getNumberOfMstNodes() const;
 private:
     const Graph *G;
     const unsigned long long source;
+    unsigned long long numberOfMstNodes;
     std::vector<double> key;
     std::vector<bool> explored;
     std::vector<unsigned long long> parent;

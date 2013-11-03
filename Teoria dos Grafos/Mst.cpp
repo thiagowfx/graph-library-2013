@@ -24,6 +24,7 @@ void Mst::clear() {
     explored = std::vector<bool>(G->getN() + 1, false);
     // decisão de design: sem árvore, o custo é nulo
     mstCost = 0;
+    numberOfMstNodes = 0;
 }
 
 void Mst::prim(const Graph *G, unsigned long long source) {
@@ -48,13 +49,15 @@ void Mst::prim(const Graph *G, unsigned long long source) {
         u = next_pair.second;
 
         // limitação da priority queue: pode ser que guardemos nela, mais de uma vez, o mesmo nó
-        if (explored[u])
+        if (explored[u] || key[u] == INF)
             continue;
 
-        mstCost += next_pair.first;
         explored[u] = true;
-        neighbours = G->getNeighbours(u);
+        
+        ++numberOfMstNodes;
+        mstCost += next_pair.first;
 
+        neighbours = G->getNeighbours(u);
         for (int i = 0; i < neighbours.size(); ++i) {
             v = neighbours[i];
 
@@ -124,10 +127,14 @@ void Mst::saveInfo(const char* filename) const {
 
     os << "custo = " << mstCost << std::endl;
     os << G->getN() << std::endl;
-    for (int i = 1; i <= G->getN(); ++i) {
+    for (int i = 1; i <= getNumberOfMstNodes(); ++i) {
         if (i != source && explored[i])
             os << i << " " << getParent(i) << " " << getKey(i) << std::endl;
     }
 
     os.close();
+}
+
+unsigned long long Mst::getNumberOfMstNodes() const {
+    return numberOfMstNodes;
 }

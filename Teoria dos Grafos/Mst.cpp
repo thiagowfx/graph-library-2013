@@ -126,8 +126,8 @@ void Mst::saveInfo(const char* filename) const {
     os.open(filename);
 
     os << "custo = " << mstCost << std::endl;
-    os << G->getN() << std::endl;
-    for (int i = 1; i <= getNumberOfMstNodes(); ++i) {
+    os << getNumberOfMstNodes() << std::endl;
+    for (register int i = 1; i <= G->getN(); ++i) {
         if (i != source && explored[i])
             os << i << " " << getParent(i) << " " << getKey(i) << std::endl;
     }

@@ -32,7 +32,6 @@
     <logicalFolder name="ResourceFiles"
                    displayName="Arquivos de Recurso"
                    projectFiles="true">
-      <itemPath>newmain.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="f1" displayName="Relatórios" projectFiles="true">
       <itemPath>relatorio2-estudo1-questao1.cpp</itemPath>
@@ -112,13 +111,20 @@
       </toolsSet>
       <compileType>
         <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
           <commandLine>`cppunit-config --cflags`</commandLine>
         </cTool>
         <ccTool>
           <commandlineTool>g++</commandlineTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
           <commandLine>`cppunit-config --cflags` --std=c++0x</commandLine>
         </ccTool>
         <linkerTool>
+          <output>${TESTDIR}/TestFiles/f8</output>
           <linkerLibItems>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
           </linkerLibItems>
@@ -292,21 +298,6 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
-      <folder path="TestFiles/f8">
-        <cTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </cTool>
-        <ccTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </ccTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f8</output>
-        </linkerTool>
-      </folder>
       <folder path="TestFiles/f9">
         <cTool>
           <commandLine>`cppunit-config --cflags`</commandLine>
@@ -321,7 +312,7 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
-      <item path="newmain.cpp" ex="false" tool="1" flavor2="0">
+      <item path="relatorio2-estudo1-questao2.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/bfstestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -572,8 +563,6 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
-      <item path="newmain.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="relatorio2-estudo1-questao1.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="relatorio2-estudo1-questao2.cpp" ex="false" tool="1" flavor2="0">

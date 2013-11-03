@@ -39,12 +39,13 @@ OBJECTFILES= \
 	${OBJECTDIR}/Connectivity.o \
 	${OBJECTDIR}/Dfs.o \
 	${OBJECTDIR}/Dijkstra.o \
+	${OBJECTDIR}/FloydWarshall.o \
 	${OBJECTDIR}/Graph.o \
 	${OBJECTDIR}/GraphList.o \
 	${OBJECTDIR}/GraphMatrix.o \
 	${OBJECTDIR}/InputHandler.o \
 	${OBJECTDIR}/Mst.o \
-	${OBJECTDIR}/relatorio2-estudo1-questao2.o
+	${OBJECTDIR}/main.o
 
 # Test Directory
 TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
@@ -54,6 +55,7 @@ TESTFILES= \
 	${TESTDIR}/TestFiles/f3 \
 	${TESTDIR}/TestFiles/f2 \
 	${TESTDIR}/TestFiles/f7 \
+	${TESTDIR}/TestFiles/f8 \
 	${TESTDIR}/TestFiles/f4 \
 	${TESTDIR}/TestFiles/f5 \
 	${TESTDIR}/TestFiles/f9 \
@@ -78,11 +80,11 @@ LDLIBSOPTIONS=`cppunit-config --libs`
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${TESTDIR}/TestFiles/f8
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/teoria_dos_grafos
 
-${TESTDIR}/TestFiles/f8: ${OBJECTFILES}
-	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.cc} -o ${TESTDIR}/TestFiles/f8 ${OBJECTFILES} ${LDLIBSOPTIONS}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/teoria_dos_grafos: ${OBJECTFILES}
+	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/teoria_dos_grafos ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/Bfs.o: nbproject/Makefile-${CND_CONF}.mk Bfs.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -103,6 +105,11 @@ ${OBJECTDIR}/Dijkstra.o: nbproject/Makefile-${CND_CONF}.mk Dijkstra.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/Dijkstra.o Dijkstra.cpp
+
+${OBJECTDIR}/FloydWarshall.o: nbproject/Makefile-${CND_CONF}.mk FloydWarshall.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/FloydWarshall.o FloydWarshall.cpp
 
 ${OBJECTDIR}/Graph.o: nbproject/Makefile-${CND_CONF}.mk Graph.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -129,10 +136,10 @@ ${OBJECTDIR}/Mst.o: nbproject/Makefile-${CND_CONF}.mk Mst.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/Mst.o Mst.cpp
 
-${OBJECTDIR}/relatorio2-estudo1-questao2.o: nbproject/Makefile-${CND_CONF}.mk relatorio2-estudo1-questao2.cpp 
+${OBJECTDIR}/main.o: nbproject/Makefile-${CND_CONF}.mk main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/relatorio2-estudo1-questao2.o relatorio2-estudo1-questao2.cpp
+	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:
@@ -150,6 +157,10 @@ ${TESTDIR}/TestFiles/f2: ${TESTDIR}/tests/dfstestclass1.o ${TESTDIR}/tests/dfste
 ${TESTDIR}/TestFiles/f7: ${TESTDIR}/tests/dijkstratestclass1.o ${TESTDIR}/tests/dijkstratestrunner.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f7 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
+
+${TESTDIR}/TestFiles/f8: ${TESTDIR}/tests/floydwarshalltest.o ${TESTDIR}/tests/floydwarshalltestrunner.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f8 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
 
 ${TESTDIR}/TestFiles/f4: ${TESTDIR}/tests/inputhandlertestclass1.o ${TESTDIR}/tests/inputhandlertestrunner1.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
@@ -206,6 +217,18 @@ ${TESTDIR}/tests/dijkstratestrunner.o: tests/dijkstratestrunner.cpp
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/dijkstratestrunner.o tests/dijkstratestrunner.cpp
+
+
+${TESTDIR}/tests/floydwarshalltest.o: tests/floydwarshalltest.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} $@.d
+	$(COMPILE.cc) -g -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/floydwarshalltest.o tests/floydwarshalltest.cpp
+
+
+${TESTDIR}/tests/floydwarshalltestrunner.o: tests/floydwarshalltestrunner.cpp 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} $@.d
+	$(COMPILE.cc) -g -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/floydwarshalltestrunner.o tests/floydwarshalltestrunner.cpp
 
 
 ${TESTDIR}/tests/inputhandlertestclass1.o: tests/inputhandlertestclass1.cpp 
@@ -320,6 +343,19 @@ ${OBJECTDIR}/Dijkstra_nomain.o: ${OBJECTDIR}/Dijkstra.o Dijkstra.cpp
 	    ${CP} ${OBJECTDIR}/Dijkstra.o ${OBJECTDIR}/Dijkstra_nomain.o;\
 	fi
 
+${OBJECTDIR}/FloydWarshall_nomain.o: ${OBJECTDIR}/FloydWarshall.o FloydWarshall.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/FloydWarshall.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g -I. -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/FloydWarshall_nomain.o FloydWarshall.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/FloydWarshall.o ${OBJECTDIR}/FloydWarshall_nomain.o;\
+	fi
+
 ${OBJECTDIR}/Graph_nomain.o: ${OBJECTDIR}/Graph.o Graph.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	@NMOUTPUT=`${NM} ${OBJECTDIR}/Graph.o`; \
@@ -385,17 +421,17 @@ ${OBJECTDIR}/Mst_nomain.o: ${OBJECTDIR}/Mst.o Mst.cpp
 	    ${CP} ${OBJECTDIR}/Mst.o ${OBJECTDIR}/Mst_nomain.o;\
 	fi
 
-${OBJECTDIR}/relatorio2-estudo1-questao2_nomain.o: ${OBJECTDIR}/relatorio2-estudo1-questao2.o relatorio2-estudo1-questao2.cpp 
+${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/relatorio2-estudo1-questao2.o`; \
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/main.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -g -I. -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/relatorio2-estudo1-questao2_nomain.o relatorio2-estudo1-questao2.cpp;\
+	    $(COMPILE.cc) -g -I. -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/main_nomain.o main.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/relatorio2-estudo1-questao2.o ${OBJECTDIR}/relatorio2-estudo1-questao2_nomain.o;\
+	    ${CP} ${OBJECTDIR}/main.o ${OBJECTDIR}/main_nomain.o;\
 	fi
 
 # Run Test Targets
@@ -405,6 +441,7 @@ ${OBJECTDIR}/relatorio2-estudo1-questao2_nomain.o: ${OBJECTDIR}/relatorio2-estud
 	    ${TESTDIR}/TestFiles/f3 || true; \
 	    ${TESTDIR}/TestFiles/f2 || true; \
 	    ${TESTDIR}/TestFiles/f7 || true; \
+	    ${TESTDIR}/TestFiles/f8 || true; \
 	    ${TESTDIR}/TestFiles/f4 || true; \
 	    ${TESTDIR}/TestFiles/f5 || true; \
 	    ${TESTDIR}/TestFiles/f9 || true; \
@@ -417,7 +454,7 @@ ${OBJECTDIR}/relatorio2-estudo1-questao2_nomain.o: ${OBJECTDIR}/relatorio2-estud
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${TESTDIR}/TestFiles/f8
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/teoria_dos_grafos
 
 # Subprojects
 .clean-subprojects:

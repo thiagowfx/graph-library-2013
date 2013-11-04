@@ -22,10 +22,9 @@ void heaptestclass1::tearDown() {
 }
 
 void heaptestclass1::testHeap() {
-    Heap<int> h(10);
+    Heap<int> h;
     CPPUNIT_ASSERT(h.empty());
-    CPPUNIT_ASSERT_EQUAL(10ULL, h.getMaxSize());
-
+    
     h.push(50);
     CPPUNIT_ASSERT_EQUAL(50, h.top());
 
@@ -41,8 +40,7 @@ void heaptestclass1::testHeap() {
 
     h.pop();
     CPPUNIT_ASSERT_EQUAL(35, h.top());
-    CPPUNIT_ASSERT_EQUAL(10ULL, h.getMaxSize());
-
+    
     h.push(40);
     CPPUNIT_ASSERT_EQUAL(35, h.top());
 
@@ -67,11 +65,10 @@ void heaptestclass1::testHeap() {
 }
 
 void heaptestclass1::testHeap2() {
-    Heap<double> Q(5);
+    Heap<double> Q;
 
     CPPUNIT_ASSERT(Q.empty());
-    CPPUNIT_ASSERT_EQUAL(5ULL, Q.getMaxSize());
-
+    
     Q.push(3);
     CPPUNIT_ASSERT_EQUAL(3.0, Q.top());
     Q.push(-1);
@@ -90,14 +87,8 @@ void heaptestclass1::testHeap2() {
     CPPUNIT_ASSERT_EQUAL(3.14, Q.top());
 }
 
-void heaptestclass1::testHeapExceedMaxSize() {
-    Heap<int> h(1);
-    h.push(1);
-    CPPUNIT_ASSERT_THROW( h.push(1), std::exception);
-}
-
 void heaptestclass1::testHeapWithPair() {
-    Heap< std::pair<double, unsigned long long> > h(10);
+    Heap< std::pair<double, unsigned long long> > h;
     
     h.push( std::make_pair(4.0, 3ULL) );
     CPPUNIT_ASSERT(std::make_pair(4.0, 3ULL) == h.top() );

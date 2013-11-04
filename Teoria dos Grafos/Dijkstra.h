@@ -33,7 +33,7 @@ private:
     std::vector<double> distance;
     std::vector<bool> explored;
     std::vector<unsigned long long> parent;
-    //Heap< std::pair<double, unsigned long long> > Q;
+    Heap< std::pair<double, unsigned long long> > Q;
     void clear();
     /** Aplica o algoritmo de Dijkstra a partir de <i>source</i>. Para imediatamente ao explorar <i>target</i>, desde que o flag <i>stop</i> seja <b>true</b>. */
     void dijkstra(const Graph *G, unsigned long long source, bool stop, unsigned long long target);

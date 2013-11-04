@@ -8,52 +8,45 @@
 #ifndef HEAP_H
 #define	HEAP_H
 
-#include <vector>
+#include <deque>
 
+/** Classe Genérica de Heap de mínimo. Compatível com a <b>priority_queue</b> da STL. Sem limite superior. */
 template<class T>
 class Heap {
 public:
-    /** Constrói uma heap de tamanho máximo <b>maxSize</b>. */
-    Heap(unsigned long long maxSize);
+    /** Constrói uma heap de mínimo. */
+    Heap();
     /** Coloca <b>data</b> na heap. */
     void push(const T& data);
     /** Remove o elemento do topo da heap. */
     void pop();
     /** Retorna o elemento do topo da heap. */
     T top();
-    /** Retorna <b>true</b> se a pilha estiver vazia. */
+    /** Retorna <b>true</b> se a heap estiver vazia. */
     bool empty();
     /** Retorna o tamanho atual da heap. */
     unsigned long long size();
-    /** Retorna o tamanho máximo que a heap pode ter. */
-    unsigned long long getMaxSize();
     virtual ~Heap();
 private:
-    /** Guarda a estrutura da heap. */
-    std::vector<T> tree;
-    /** Tamanho atual do heap. Número atual de elementos. */
+    /** Guarda a estrutura da heap.\n
+     *  0-based index.
+     **/
+    std::deque<T> tree;
+    /** Tamanho (número de elementos) atual da heap. */
     unsigned long long tam;
-    /** Tamanho máximo que o heap pode ter. */
-    unsigned long long maxSize;
 };
 
-// --------------------------------------------------------------
+/*----------------------------------------------------------------------------*/
 
 template<class T>
-Heap<T>::Heap(unsigned long long maxSize) {
-    this->maxSize = maxSize;
+Heap<T>::Heap() {
     tam = 0;
-    // 0-based index
-    tree = std::vector<T>(maxSize, T());
+    // aloca o primeiro elemento
+    tree = std::deque<T>(1, T());
 }
 
 template<class T>
 Heap<T>::~Heap() {
-}
-
-template<class T>
-unsigned long long Heap<T>::getMaxSize() {
-    return maxSize;
 }
 
 template<class T>
@@ -63,9 +56,6 @@ unsigned long long Heap<T>::size() {
 
 template<class T>
 void Heap<T>::push(const T& data) {
-    if (tam == maxSize)
-        throw std::exception();
-
     tree[tam] = data;
     unsigned long long aux = tam;
     T tmp;
@@ -82,6 +72,8 @@ void Heap<T>::push(const T& data) {
     }
 
     ++tam;
+    // aloca mais um elemento
+    tree.push_back(T());
 }
 
 template<class T>

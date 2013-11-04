@@ -17,7 +17,6 @@ class heaptestclass1 : public CPPUNIT_NS::TestFixture {
 
     CPPUNIT_TEST(testHeap);
     CPPUNIT_TEST(testHeap2);
-    CPPUNIT_TEST(testHeapExceedMaxSize);
     CPPUNIT_TEST(testHeapWithPair);
 
     CPPUNIT_TEST_SUITE_END();
@@ -31,7 +30,6 @@ public:
 private:
     void testHeap();
     void testHeap2();
-    void testHeapExceedMaxSize();
     void testHeapWithPair();
 };
 

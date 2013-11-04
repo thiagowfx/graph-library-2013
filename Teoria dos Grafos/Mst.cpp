@@ -39,8 +39,6 @@ void Mst::prim(const Graph *G, unsigned long long source) {
     // decisão de design: o pai de <i>source</i> é ele mesmo
     parent[source] = source;
     
-    // [!!!] Q é uma variável local, declarada aqui!
-    Heap<std::pair<double, unsigned long long> > Q(G->getN()+1);
     for (unsigned long long i = 1; i <= G->getN(); ++i) {
         Q.push(std::make_pair(key[i], i));
     }

@@ -1,0 +1,93 @@
+Calculando o tempo com clock() e sem medir memoria (valgrind)
+
+Grafo 1
+Distância média: 26.0384
+Tempo de execução: 0.09 s
+RUN FINISHED; exit value 0; real time: 90ms; user: 0ms; system: 90ms
+
+
+Grafo 2
+Distância média: 4.17181
+Tempo de execução: 114.28 s
+RUN FINISHED; exit value 0; real time: 1m 54s; user: 30ms; system: 1m 54s
+
+(sem medir o tempo de calculo da distancia media)
+Distância média: 4.17181
+Tempo de execução: 113.37 s
+RUN FINISHED; exit value 0; real time: 1m 53s; user: 30ms; system: 1m 53s
+
+(compilando só o main com -O3)
+Distância média: 4.17181
+Tempo de execução: 114.45 s
+RUN FINISHED; exit value 0; real time: 1m 54s; user: 40ms; system: 1m 54s
+
+(compilando todo o projeto com -O3)
+Distância média: 4.17181
+Tempo de execução: 6.13 s
+RUN FINISHED; exit value 0; real time: 6s; user: 20ms; system: 6s
+
+(Development Mode: Performance Release
+ Additional Options -std=c++0x -O3)
+Distância média: 4.17181
+Tempo de execução: 6.12 s
+RUN FINISHED; exit value 0; real time: 6s; user: 10ms; system: 6s
+
+(same as above)
+Distância média: 4.17181
+Tempo de execução: 6.12 s
+RUN FINISHED; exit value 0; real time: 6s; user: 10ms; system: 6s
+
+(Project Properties:
+	Configuration: Release (active)
+	C++ Compiler:
+		Development Mode: Release
+		Additional Options: --std=c++0x -O3
+	Linker -> Libraries: vazio)
+	
+Distância média: 4.17181
+Tempo de execução: 6.07 s
+RUN FINISHED; exit value 0; real time: 6s; user: 10ms; system: 6s
+
+(second run)
+Distância média: 4.17181
+Tempo de execução: 6.04 s
+RUN FINISHED; exit value 0; real time: 6s; user: 20ms; system: 6s
+
+Distância média: 4.17181
+Tempo de execução: 6 s
+RUN FINISHED; exit value 0; real time: 6s; user: 10ms; system: 6s
+
+Usando apenas o Development Mode: PerformanceRelease
+sem Additional Options pro compiler
+- dando clean,build aparece isso aqui na saida
+	g++    -c -O3 -MMD -MP -MF ...
+Distância média: 4.17181
+Tempo de execução: 6.07 s
+RUN FINISHED; exit value 0; real time: 6s; user: 20ms; system: 6s
+
+second run
+Distância média: 4.17181
+Tempo de execução: 6.1 s
+RUN FINISHED; exit value 0; real time: 6s; user: 20ms; system: 6s
+
+third run
+Distância média: 4.17181
+Tempo de execução: 6.07 s
+RUN FINISHED; exit value 0; real time: 6s; user: 10ms; system: 6s
+
+fourth run
+Distância média: 4.17181
+Tempo de execução: 6.07 s
+RUN FINISHED; exit value 0; real time: 6s; user: 20ms; system: 6s
+
+Obs: Release compila com -O2 e PerformanceRelease com -O3.
+Por algum motivo, O2 tem sido mais rapido
+
+Grafo 3
+Distância média: 32.0215
+Tempo de execução: 500.403 s
+RUN FINISHED; exit value 0; real time: 1h 20m 0s; user: 4s; system: 1h 19m 51s
+
+
+
+

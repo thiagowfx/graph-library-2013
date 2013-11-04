@@ -59,8 +59,8 @@ double FloydWarshall::getAverageDist() const {
   double averageDist = 0.0;
 
   // somar tudo
-  for (int u = 1; u <= G->getN(); ++u) {
-    for (int v = 1; v <= G->getN(); ++v) {
+  for (unsigned long long u = 1; u <= G->getN(); ++u) {
+    for (unsigned long long v = 1; v <= G->getN(); ++v) {
       if (D[u][v] != INF)
 	averageDist += D[u][v];
     }

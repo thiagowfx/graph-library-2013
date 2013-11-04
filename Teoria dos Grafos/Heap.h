@@ -1,10 +1,3 @@
-/* 
- * File:   Heap.h
- * Author: thiago
- *
- * Created on November 3, 2013, 8:19 PM
- */
-
 #ifndef HEAP_H
 #define	HEAP_H
 

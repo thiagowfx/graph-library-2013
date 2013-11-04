@@ -18,6 +18,7 @@ class heaptestclass1 : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST(testHeap);
     CPPUNIT_TEST(testHeap2);
     CPPUNIT_TEST(testHeapWithPair);
+    CPPUNIT_TEST(testTopReturnAfterPop);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -31,6 +32,7 @@ private:
     void testHeap();
     void testHeap2();
     void testHeapWithPair();
+    void testTopReturnAfterPop();
 };
 
 #endif	/* HEAPTESTCLASS1_H */

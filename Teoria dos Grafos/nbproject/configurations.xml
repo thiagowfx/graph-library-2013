@@ -15,7 +15,6 @@
       <itemPath>Include.h</itemPath>
       <itemPath>InputHandler.h</itemPath>
       <itemPath>Mst.h</itemPath>
-      <itemPath>Utilities.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Arquivos de Código-Fonte"
@@ -30,6 +29,13 @@
       <itemPath>GraphMatrix.cpp</itemPath>
       <itemPath>InputHandler.cpp</itemPath>
       <itemPath>Mst.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="f2"
+                   displayName="Arquivos de Programação Genérica"
+                   projectFiles="true"
+                   kind="ROOT">
+      <itemPath>Heap.h</itemPath>
+      <itemPath>Utilities.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Arquivos de Recurso"
@@ -66,6 +72,11 @@
         <itemPath>tests/floydwarshalltest.cpp</itemPath>
         <itemPath>tests/floydwarshalltest.h</itemPath>
         <itemPath>tests/floydwarshalltestrunner.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f10" displayName="Heap" projectFiles="true" kind="TEST">
+        <itemPath>tests/heaptestclass1.cpp</itemPath>
+        <itemPath>tests/heaptestclass1.h</itemPath>
+        <itemPath>tests/heaptestrunner1.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f4"
                      displayName="InputHandler"
@@ -172,6 +183,8 @@
       </item>
       <item path="GraphMatrix.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Heap.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Include.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="InputHandler.cpp" ex="false" tool="1" flavor2="0">
@@ -204,6 +217,20 @@
           <linkerLibItems>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f10">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f10</output>
+          <linkerLibItems>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
@@ -366,6 +393,12 @@
       </item>
       <item path="tests/floydwarshalltestrunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="tests/heaptestclass1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/heaptestclass1.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/heaptestrunner1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="tests/inputhandlertestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/inputhandlertestclass1.h" ex="false" tool="3" flavor2="0">
@@ -467,6 +500,8 @@
       </item>
       <item path="GraphMatrix.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Heap.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Include.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="InputHandler.cpp" ex="false" tool="1" flavor2="0">
@@ -497,6 +532,20 @@
           <linkerLibItems>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f10">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f10</output>
+          <linkerLibItems>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
@@ -644,6 +693,12 @@
       <item path="tests/floydwarshalltest.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/floydwarshalltestrunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/heaptestclass1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/heaptestclass1.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/heaptestrunner1.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/inputhandlertestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>

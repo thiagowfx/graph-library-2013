@@ -14,7 +14,7 @@
 
 template <class T> bool compareVectors(const std::vector<T>& v1, const std::vector<T>& v2);
 template<class T> std::string printVector(const std::vector<T>& v);
-bool areFilesEqual(const char *filename1, const char *filename2);
+bool areFilesEquali(const char *filename1, const char *filename2);
 
 template <class T>
 bool compareVectors(const std::vector<T>& v1, const std::vector<T>& v2) {

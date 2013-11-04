@@ -9,6 +9,7 @@
 #define	MST_H
 
 #include "Graph.h"
+#include "Heap.h"
 
 class Mst {
 public:
@@ -39,9 +40,9 @@ private:
     std::vector<double> key;
     std::vector<bool> explored;
     std::vector<unsigned long long> parent;
-    std::priority_queue< std::pair<double, unsigned long long>,
+    /*std::priority_queue< std::pair<double, unsigned long long>,
     std::vector< std::pair<double, unsigned long long> >,
-    std::greater< std::pair<double, unsigned long long> > > Q;
+    std::greater< std::pair<double, unsigned long long> > > Q;*/
     double mstCost;
     void clear();
     void prim(const Graph *G, unsigned long long source);

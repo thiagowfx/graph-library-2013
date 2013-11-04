@@ -20,11 +20,11 @@ int main() {
     Graph *g;
     InputHandler ih;
 
-    //const char c[] = "inputs/grafo_1.txt";
+    const char c[] = "inputs/grafo_1.txt";
     //const char c[] = "inputs/grafo_2.txt";
     //    const char c[] = "inputs/grafo_3.txt";
     //    const char c[] = "inputs/grafo_4.txt";
-        const char c[] = "inputs/grafo_5.txt";
+    //    const char c[] = "inputs/grafo_5.txt";
 
     ih.readGraph(&g, c, 'l', true);
 

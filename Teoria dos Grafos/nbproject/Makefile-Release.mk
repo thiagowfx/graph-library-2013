@@ -45,9 +45,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/GraphMatrix.o \
 	${OBJECTDIR}/InputHandler.o \
 	${OBJECTDIR}/Mst.o \
-	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/relatorio2-estudo1-questao1.o \
-	${OBJECTDIR}/relatorio2-estudo1-questao2.o
+	${OBJECTDIR}/relatorio2-estudo1-questao1.o
 
 # Test Directory
 TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
@@ -69,8 +67,8 @@ TESTFILES= \
 CFLAGS=`cppunit-config --cflags` 
 
 # CC Compiler Flags
-CCFLAGS=`cppunit-config --cflags` 
-CXXFLAGS=`cppunit-config --cflags` 
+CCFLAGS=--std=c++0x
+CXXFLAGS=--std=c++0x
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -79,80 +77,70 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=`cppunit-config --libs` `cppunit-config --libs`  
+LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${TESTDIR}/TestFiles/f8
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/teoria_dos_grafos
 
-${TESTDIR}/TestFiles/f8: ${OBJECTFILES}
-	${MKDIR} -p ${TESTDIR}/TestFiles
-	${LINK.cc} -o ${TESTDIR}/TestFiles/f8 ${OBJECTFILES} ${LDLIBSOPTIONS}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/teoria_dos_grafos: ${OBJECTFILES}
+	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/teoria_dos_grafos ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/Bfs.o: Bfs.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Bfs.o Bfs.cpp
+	$(COMPILE.cc) -O3 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Bfs.o Bfs.cpp
 
 ${OBJECTDIR}/Connectivity.o: Connectivity.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Connectivity.o Connectivity.cpp
+	$(COMPILE.cc) -O3 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Connectivity.o Connectivity.cpp
 
 ${OBJECTDIR}/Dfs.o: Dfs.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Dfs.o Dfs.cpp
+	$(COMPILE.cc) -O3 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Dfs.o Dfs.cpp
 
 ${OBJECTDIR}/Dijkstra.o: Dijkstra.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Dijkstra.o Dijkstra.cpp
+	$(COMPILE.cc) -O3 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Dijkstra.o Dijkstra.cpp
 
 ${OBJECTDIR}/FloydWarshall.o: FloydWarshall.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/FloydWarshall.o FloydWarshall.cpp
+	$(COMPILE.cc) -O3 -MMD -MP -MF $@.d -o ${OBJECTDIR}/FloydWarshall.o FloydWarshall.cpp
 
 ${OBJECTDIR}/Graph.o: Graph.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Graph.o Graph.cpp
+	$(COMPILE.cc) -O3 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Graph.o Graph.cpp
 
 ${OBJECTDIR}/GraphList.o: GraphList.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/GraphList.o GraphList.cpp
+	$(COMPILE.cc) -O3 -MMD -MP -MF $@.d -o ${OBJECTDIR}/GraphList.o GraphList.cpp
 
 ${OBJECTDIR}/GraphMatrix.o: GraphMatrix.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/GraphMatrix.o GraphMatrix.cpp
+	$(COMPILE.cc) -O3 -MMD -MP -MF $@.d -o ${OBJECTDIR}/GraphMatrix.o GraphMatrix.cpp
 
 ${OBJECTDIR}/InputHandler.o: InputHandler.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/InputHandler.o InputHandler.cpp
+	$(COMPILE.cc) -O3 -MMD -MP -MF $@.d -o ${OBJECTDIR}/InputHandler.o InputHandler.cpp
 
 ${OBJECTDIR}/Mst.o: Mst.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Mst.o Mst.cpp
-
-${OBJECTDIR}/main.o: main.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -O3 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Mst.o Mst.cpp
 
 ${OBJECTDIR}/relatorio2-estudo1-questao1.o: relatorio2-estudo1-questao1.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/relatorio2-estudo1-questao1.o relatorio2-estudo1-questao1.cpp
-
-${OBJECTDIR}/relatorio2-estudo1-questao2.o: relatorio2-estudo1-questao2.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/relatorio2-estudo1-questao2.o relatorio2-estudo1-questao2.cpp
+	$(COMPILE.cc) -O3 -MMD -MP -MF $@.d -o ${OBJECTDIR}/relatorio2-estudo1-questao1.o relatorio2-estudo1-questao1.cpp
 
 # Subprojects
 .build-subprojects:
@@ -203,121 +191,121 @@ ${TESTDIR}/TestFiles/f6: ${TESTDIR}/tests/testesbasicoscompesotestclass1.o ${TES
 ${TESTDIR}/tests/bfstestclass1.o: tests/bfstestclass1.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/bfstestclass1.o tests/bfstestclass1.cpp
+	$(COMPILE.cc) -O3 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/bfstestclass1.o tests/bfstestclass1.cpp
 
 
 ${TESTDIR}/tests/bfstestrunner1.o: tests/bfstestrunner1.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/bfstestrunner1.o tests/bfstestrunner1.cpp
+	$(COMPILE.cc) -O3 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/bfstestrunner1.o tests/bfstestrunner1.cpp
 
 
 ${TESTDIR}/tests/dfstestclass1.o: tests/dfstestclass1.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/dfstestclass1.o tests/dfstestclass1.cpp
+	$(COMPILE.cc) -O3 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/dfstestclass1.o tests/dfstestclass1.cpp
 
 
 ${TESTDIR}/tests/dfstestrunner1.o: tests/dfstestrunner1.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/dfstestrunner1.o tests/dfstestrunner1.cpp
+	$(COMPILE.cc) -O3 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/dfstestrunner1.o tests/dfstestrunner1.cpp
 
 
 ${TESTDIR}/tests/dijkstratestclass1.o: tests/dijkstratestclass1.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/dijkstratestclass1.o tests/dijkstratestclass1.cpp
+	$(COMPILE.cc) -O3 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/dijkstratestclass1.o tests/dijkstratestclass1.cpp
 
 
 ${TESTDIR}/tests/dijkstratestrunner.o: tests/dijkstratestrunner.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/dijkstratestrunner.o tests/dijkstratestrunner.cpp
+	$(COMPILE.cc) -O3 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/dijkstratestrunner.o tests/dijkstratestrunner.cpp
 
 
 ${TESTDIR}/tests/floydwarshalltest.o: tests/floydwarshalltest.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/floydwarshalltest.o tests/floydwarshalltest.cpp
+	$(COMPILE.cc) -O3 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/floydwarshalltest.o tests/floydwarshalltest.cpp
 
 
 ${TESTDIR}/tests/floydwarshalltestrunner.o: tests/floydwarshalltestrunner.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/floydwarshalltestrunner.o tests/floydwarshalltestrunner.cpp
+	$(COMPILE.cc) -O3 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/floydwarshalltestrunner.o tests/floydwarshalltestrunner.cpp
 
 
 ${TESTDIR}/tests/heaptestclass1.o: tests/heaptestclass1.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/heaptestclass1.o tests/heaptestclass1.cpp
+	$(COMPILE.cc) -O3 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/heaptestclass1.o tests/heaptestclass1.cpp
 
 
 ${TESTDIR}/tests/heaptestrunner1.o: tests/heaptestrunner1.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/heaptestrunner1.o tests/heaptestrunner1.cpp
+	$(COMPILE.cc) -O3 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/heaptestrunner1.o tests/heaptestrunner1.cpp
 
 
 ${TESTDIR}/tests/inputhandlertestclass1.o: tests/inputhandlertestclass1.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/inputhandlertestclass1.o tests/inputhandlertestclass1.cpp
+	$(COMPILE.cc) -O3 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/inputhandlertestclass1.o tests/inputhandlertestclass1.cpp
 
 
 ${TESTDIR}/tests/inputhandlertestrunner1.o: tests/inputhandlertestrunner1.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/inputhandlertestrunner1.o tests/inputhandlertestrunner1.cpp
+	$(COMPILE.cc) -O3 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/inputhandlertestrunner1.o tests/inputhandlertestrunner1.cpp
 
 
 ${TESTDIR}/tests/outputinfotestclass1.o: tests/outputinfotestclass1.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/outputinfotestclass1.o tests/outputinfotestclass1.cpp
+	$(COMPILE.cc) -O3 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/outputinfotestclass1.o tests/outputinfotestclass1.cpp
 
 
 ${TESTDIR}/tests/outputinfotestrunner1.o: tests/outputinfotestrunner1.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/outputinfotestrunner1.o tests/outputinfotestrunner1.cpp
+	$(COMPILE.cc) -O3 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/outputinfotestrunner1.o tests/outputinfotestrunner1.cpp
 
 
 ${TESTDIR}/tests/primtestclass1.o: tests/primtestclass1.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/primtestclass1.o tests/primtestclass1.cpp
+	$(COMPILE.cc) -O3 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/primtestclass1.o tests/primtestclass1.cpp
 
 
 ${TESTDIR}/tests/primtestrunner1.o: tests/primtestrunner1.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/primtestrunner1.o tests/primtestrunner1.cpp
+	$(COMPILE.cc) -O3 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/primtestrunner1.o tests/primtestrunner1.cpp
 
 
 ${TESTDIR}/tests/testesbasicostestclass.o: tests/testesbasicostestclass.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/testesbasicostestclass.o tests/testesbasicostestclass.cpp
+	$(COMPILE.cc) -O3 -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/testesbasicostestclass.o tests/testesbasicostestclass.cpp
 
 
 ${TESTDIR}/tests/testesbasicostestrunner.o: tests/testesbasicostestrunner.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/testesbasicostestrunner.o tests/testesbasicostestrunner.cpp
+	$(COMPILE.cc) -O3 -I. `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/testesbasicostestrunner.o tests/testesbasicostestrunner.cpp
 
 
 ${TESTDIR}/tests/testesbasicoscompesotestclass1.o: tests/testesbasicoscompesotestclass1.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/testesbasicoscompesotestclass1.o tests/testesbasicoscompesotestclass1.cpp
+	$(COMPILE.cc) -O3 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/testesbasicoscompesotestclass1.o tests/testesbasicoscompesotestclass1.cpp
 
 
 ${TESTDIR}/tests/testesbasicoscompesotestrunner1.o: tests/testesbasicoscompesotestrunner1.cpp 
 	${MKDIR} -p ${TESTDIR}/tests
 	${RM} $@.d
-	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/testesbasicoscompesotestrunner1.o tests/testesbasicoscompesotestrunner1.cpp
+	$(COMPILE.cc) -O3 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/tests/testesbasicoscompesotestrunner1.o tests/testesbasicoscompesotestrunner1.cpp
 
 
 ${OBJECTDIR}/Bfs_nomain.o: ${OBJECTDIR}/Bfs.o Bfs.cpp 
@@ -328,7 +316,7 @@ ${OBJECTDIR}/Bfs_nomain.o: ${OBJECTDIR}/Bfs.o Bfs.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Bfs_nomain.o Bfs.cpp;\
+	    $(COMPILE.cc) -O3 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Bfs_nomain.o Bfs.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/Bfs.o ${OBJECTDIR}/Bfs_nomain.o;\
 	fi
@@ -341,7 +329,7 @@ ${OBJECTDIR}/Connectivity_nomain.o: ${OBJECTDIR}/Connectivity.o Connectivity.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Connectivity_nomain.o Connectivity.cpp;\
+	    $(COMPILE.cc) -O3 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Connectivity_nomain.o Connectivity.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/Connectivity.o ${OBJECTDIR}/Connectivity_nomain.o;\
 	fi
@@ -354,7 +342,7 @@ ${OBJECTDIR}/Dfs_nomain.o: ${OBJECTDIR}/Dfs.o Dfs.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Dfs_nomain.o Dfs.cpp;\
+	    $(COMPILE.cc) -O3 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Dfs_nomain.o Dfs.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/Dfs.o ${OBJECTDIR}/Dfs_nomain.o;\
 	fi
@@ -367,7 +355,7 @@ ${OBJECTDIR}/Dijkstra_nomain.o: ${OBJECTDIR}/Dijkstra.o Dijkstra.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Dijkstra_nomain.o Dijkstra.cpp;\
+	    $(COMPILE.cc) -O3 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Dijkstra_nomain.o Dijkstra.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/Dijkstra.o ${OBJECTDIR}/Dijkstra_nomain.o;\
 	fi
@@ -380,7 +368,7 @@ ${OBJECTDIR}/FloydWarshall_nomain.o: ${OBJECTDIR}/FloydWarshall.o FloydWarshall.
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/FloydWarshall_nomain.o FloydWarshall.cpp;\
+	    $(COMPILE.cc) -O3 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/FloydWarshall_nomain.o FloydWarshall.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/FloydWarshall.o ${OBJECTDIR}/FloydWarshall_nomain.o;\
 	fi
@@ -393,7 +381,7 @@ ${OBJECTDIR}/Graph_nomain.o: ${OBJECTDIR}/Graph.o Graph.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Graph_nomain.o Graph.cpp;\
+	    $(COMPILE.cc) -O3 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Graph_nomain.o Graph.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/Graph.o ${OBJECTDIR}/Graph_nomain.o;\
 	fi
@@ -406,7 +394,7 @@ ${OBJECTDIR}/GraphList_nomain.o: ${OBJECTDIR}/GraphList.o GraphList.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/GraphList_nomain.o GraphList.cpp;\
+	    $(COMPILE.cc) -O3 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/GraphList_nomain.o GraphList.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/GraphList.o ${OBJECTDIR}/GraphList_nomain.o;\
 	fi
@@ -419,7 +407,7 @@ ${OBJECTDIR}/GraphMatrix_nomain.o: ${OBJECTDIR}/GraphMatrix.o GraphMatrix.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/GraphMatrix_nomain.o GraphMatrix.cpp;\
+	    $(COMPILE.cc) -O3 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/GraphMatrix_nomain.o GraphMatrix.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/GraphMatrix.o ${OBJECTDIR}/GraphMatrix_nomain.o;\
 	fi
@@ -432,7 +420,7 @@ ${OBJECTDIR}/InputHandler_nomain.o: ${OBJECTDIR}/InputHandler.o InputHandler.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/InputHandler_nomain.o InputHandler.cpp;\
+	    $(COMPILE.cc) -O3 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/InputHandler_nomain.o InputHandler.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/InputHandler.o ${OBJECTDIR}/InputHandler_nomain.o;\
 	fi
@@ -445,22 +433,9 @@ ${OBJECTDIR}/Mst_nomain.o: ${OBJECTDIR}/Mst.o Mst.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Mst_nomain.o Mst.cpp;\
+	    $(COMPILE.cc) -O3 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Mst_nomain.o Mst.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/Mst.o ${OBJECTDIR}/Mst_nomain.o;\
-	fi
-
-${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/main.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/main_nomain.o main.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/main.o ${OBJECTDIR}/main_nomain.o;\
 	fi
 
 ${OBJECTDIR}/relatorio2-estudo1-questao1_nomain.o: ${OBJECTDIR}/relatorio2-estudo1-questao1.o relatorio2-estudo1-questao1.cpp 
@@ -471,22 +446,9 @@ ${OBJECTDIR}/relatorio2-estudo1-questao1_nomain.o: ${OBJECTDIR}/relatorio2-estud
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/relatorio2-estudo1-questao1_nomain.o relatorio2-estudo1-questao1.cpp;\
+	    $(COMPILE.cc) -O3 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/relatorio2-estudo1-questao1_nomain.o relatorio2-estudo1-questao1.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/relatorio2-estudo1-questao1.o ${OBJECTDIR}/relatorio2-estudo1-questao1_nomain.o;\
-	fi
-
-${OBJECTDIR}/relatorio2-estudo1-questao2_nomain.o: ${OBJECTDIR}/relatorio2-estudo1-questao2.o relatorio2-estudo1-questao2.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/relatorio2-estudo1-questao2.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/relatorio2-estudo1-questao2_nomain.o relatorio2-estudo1-questao2.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/relatorio2-estudo1-questao2.o ${OBJECTDIR}/relatorio2-estudo1-questao2_nomain.o;\
 	fi
 
 # Run Test Targets
@@ -510,7 +472,7 @@ ${OBJECTDIR}/relatorio2-estudo1-questao2_nomain.o: ${OBJECTDIR}/relatorio2-estud
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${TESTDIR}/TestFiles/f8
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/teoria_dos_grafos
 
 # Subprojects
 .clean-subprojects:

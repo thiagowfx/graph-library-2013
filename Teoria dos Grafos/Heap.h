@@ -13,7 +13,7 @@
 template<class T>
 class Heap {
 public:
-    /** ConstrÃ³i uma heap de tamanho mÃ¡ximo <b>maxSize</b>. */
+    /** Constrói uma heap de tamanho máximo <b>maxSize</b>. */
     Heap(unsigned long long maxSize);
     /** Coloca <b>data</b> na heap. */
     void push(const T& data);
@@ -25,15 +25,15 @@ public:
     bool empty();
     /** Retorna o tamanho atual da heap. */
     unsigned long long size();
-    /** Retorna o tamanho mÃ¡ximo que a heap pode ter. */
+    /** Retorna o tamanho máximo que a heap pode ter. */
     unsigned long long getMaxSize();
     virtual ~Heap();
 private:
     /** Guarda a estrutura da heap. */
     std::vector<T> tree;
-    /** Tamanho atual do heap. NÃºmero atual de elementos. */
+    /** Tamanho atual do heap. Número atual de elementos. */
     unsigned long long tam;
-    /** Tamanho mÃ¡ximo que o heap pode ter. */
+    /** Tamanho máximo que o heap pode ter. */
     unsigned long long maxSize;
 };
 

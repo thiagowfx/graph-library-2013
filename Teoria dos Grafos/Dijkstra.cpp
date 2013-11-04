@@ -31,6 +31,9 @@ void Dijkstra::dijkstra(const Graph *G, unsigned long long source, bool stop, un
     distance[source] = 0;
     // decisão de design: o pai de <i>source</i> é ele mesmo
     parent[source] = source;
+    
+    // [!!!] A heap declarada aqui é uma variável local!
+    Heap< std::pair<double, unsigned long long> > Q( G->getN()+1 );
     Q.push(std::make_pair(distance[source], source));
 
     while (!Q.empty()) {

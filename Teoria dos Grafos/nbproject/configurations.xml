@@ -32,8 +32,7 @@
     </logicalFolder>
     <logicalFolder name="f2"
                    displayName="Arquivos de Programação Genérica"
-                   projectFiles="true"
-                   kind="ROOT">
+                   projectFiles="true">
       <itemPath>Heap.h</itemPath>
       <itemPath>Utilities.h</itemPath>
     </logicalFolder>
@@ -451,8 +450,8 @@
           <commandLine>`cppunit-config --cflags`</commandLine>
         </cTool>
         <ccTool>
-          <developmentMode>5</developmentMode>
-          <commandLine>`cppunit-config --cflags`</commandLine>
+          <developmentMode>6</developmentMode>
+          <commandLine>--std=c++0x</commandLine>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -460,13 +459,6 @@
         <asmTool>
           <developmentMode>5</developmentMode>
         </asmTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f8</output>
-          <linkerLibItems>
-            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
-            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
-          </linkerLibItems>
-        </linkerTool>
       </compileType>
       <item path="Bfs.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -664,11 +656,7 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
-      <item path="main.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="relatorio2-estudo1-questao1.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="relatorio2-estudo1-questao2.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/bfstestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>

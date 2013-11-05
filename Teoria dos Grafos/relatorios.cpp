@@ -8,13 +8,14 @@
 // #include <thread>
 // #include <unistd.h>
 
-#define GRAFO_ATUAL c5
+#define GRAFO_ATUAL c4
 
 const char c1[] = "inputs/grafo_1.txt";
 const char c2[] = "inputs/grafo_2.txt";
 const char c3[] = "inputs/grafo_3.txt";
 const char c4[] = "inputs/grafo_4.txt";
 const char c5[] = "inputs/grafo_5.txt";
+const char rd[] = "inputs/rede_colaboracao.txt";
 Graph *g;
 
 void relatorio2_estudo1_questao1() {
@@ -32,7 +33,7 @@ void relatorio2_estudo1_questao1() {
 
 void relatorio2_estudo1_questao2() {
     clock_t start, stop;
-    
+
     //------------------------------------------------------------------------//
     start = clock();
 
@@ -43,10 +44,32 @@ void relatorio2_estudo1_questao2() {
     std::cout << std::endl;
 
     stop = clock();
-    
+
     double time_elapsed = double(stop) - double(start);
     time_elapsed /= CLOCKS_PER_SEC;
+
+    double time_elapsed2 = (stop - start) / double(CLOCKS_PER_SEC);
+    //------------------------------------------------------------------------//    
+
+    std::cout << "Tempo de execução: " << time_elapsed << " s" << std::endl;
+    std::cout << "Tempo de execução: " << time_elapsed2 << " s" << std::endl;
+}
+
+void relatorio2_estudo2_questao1() {
+    clock_t start, stop;
+
+    //------------------------------------------------------------------------//
+    start = clock();
+
+    Dijkstra di(g, 2722ULL);
     
+    stop = clock();
+    
+    di.saveInfo("answers/dijkstra_output.txt");
+
+    double time_elapsed = double(stop) - double(start);
+    time_elapsed /= CLOCKS_PER_SEC;
+
     double time_elapsed2 = (stop - start) / double(CLOCKS_PER_SEC);
     //------------------------------------------------------------------------//    
 
@@ -58,7 +81,7 @@ int main() {
     InputHandler ih;
     ih.readGraph(&g, GRAFO_ATUAL, 'l', true);
 
-    relatorio2_estudo1_questao2();
+    relatorio2_estudo2_questao1();
 
     return 0;
 }

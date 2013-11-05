@@ -255,16 +255,11 @@ void bfstestclass1::testBfsSaveInfo() {
     is.open(file);
     std::string s;
 
-    std::getline(is, s);
-    CPPUNIT_ASSERT("parent[1] = 1" == s);
-    std::getline(is, s);
-    CPPUNIT_ASSERT("parent[2] = 1" == s);
-    std::getline(is, s);
-    CPPUNIT_ASSERT("parent[3] = 5" == s);
-    std::getline(is, s);
-    CPPUNIT_ASSERT("parent[4] = 5" == s);
-    std::getline(is, s);
-    CPPUNIT_ASSERT("parent[5] = 1" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("parent[1] = 1" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("parent[2] = 1" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("parent[3] = 5" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("parent[4] = 5" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("parent[5] = 1" == s);
 
     is.close();
 }
@@ -279,16 +274,11 @@ void bfstestclass1::testBfsSaveInfo2() {
     is.open(file);
     std::string s;
 
-    std::getline(is, s);
-    CPPUNIT_ASSERT("parent[1] = 1" == s);
-    std::getline(is, s);
-    CPPUNIT_ASSERT("parent[2] = 1" == s);
-    std::getline(is, s);
-    CPPUNIT_ASSERT("parent[3] = 1" == s);
-    std::getline(is, s);
-    CPPUNIT_ASSERT("parent[4] = undef" == s);
-    std::getline(is, s);
-    CPPUNIT_ASSERT("parent[5] = undef" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("parent[1] = 1" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("parent[2] = 1" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("parent[3] = 1" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("parent[4] = undef" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("parent[5] = undef" == s);
 
     is.close();
 }

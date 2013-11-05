@@ -21,6 +21,7 @@ class dijkstratest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST(testOnlyPositiveWeights);
     CPPUNIT_TEST(testGetPath);
     CPPUNIT_TEST(testConstructorWithTarget);
+    CPPUNIT_TEST(testSaveInfo);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -35,6 +36,7 @@ private:
     void testOnlyPositiveWeights();
     void testGetPath();
     void testConstructorWithTarget();
+    void testSaveInfo();
 };
 
 #endif	/* DIJKSTRATEST_H */

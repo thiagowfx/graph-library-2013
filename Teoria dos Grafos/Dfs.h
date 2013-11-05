@@ -10,6 +10,7 @@
 
 #include "Graph.h"
 #include <exception>
+#include <fstream>
 #include <stack>
 #include <vector>
 

@@ -2,6 +2,7 @@
 #define	BFS_H
 
 #include "Graph.h"
+class Graph;
 #include <exception>
 #include <fstream>
 #include <queue>

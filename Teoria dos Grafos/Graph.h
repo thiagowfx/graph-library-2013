@@ -1,6 +1,12 @@
 #ifndef GRAPH_H
 #define	GRAPH_H
 
+#include "Dijkstra.h"
+class Dijkstra;
+#include "Bfs.h"
+class Bfs;
+#include "FloydWarshall.h"
+class FloydWarshall;
 #include <cstring>
 #include <deque>
 #include <exception>
@@ -63,6 +69,10 @@ public:
     bool isNegativeWeighted() const;
     /** Retorna o peso da aresta formada por <i>node1</i> e <i>node2</i>. */
     virtual double getWeight(const unsigned long long node1, const unsigned long long node2) const = 0;
+    /** Retorna a distância entre os nós <i>node1</i> e <i>node2</i>.
+     *  Lança uma exceção se não houver caminho entre os mesmos. 
+     **/
+    double getDistance(const unsigned long long node1, const unsigned long long node2) const;
 };
 
 #endif	/* GRAPH_H */

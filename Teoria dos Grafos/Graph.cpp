@@ -74,3 +74,19 @@ bool Graph::isWeighted() const {
 bool Graph::isNegativeWeighted() const {
     return weighted == 2;
 }
+
+double Graph::getDistance(const unsigned long long node1, const unsigned long long node2) const {
+    if ( !isWeighted() ) {
+        Bfs bi(this);
+        bi.bfs(node1);
+        return bi.getLevel(node2);
+    }
+    else if ( !isNegativeWeighted() ) {
+        Dijkstra di(this, node1, node2);
+        return di.getDistance(node2);
+    } 
+    else {
+        FloydWarshall fi(this);
+        return fi.getDistance(node1, node2);
+    }
+}

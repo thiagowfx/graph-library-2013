@@ -44,7 +44,10 @@ void floydwarshalltest::testFloydWarshall() {
     CPPUNIT_ASSERT_EQUAL(0ULL , fw.getParent(5ULL,5ULL));
     CPPUNIT_ASSERT_EQUAL(1ULL , fw.getParent(1ULL,3ULL));
     CPPUNIT_ASSERT_EQUAL(3ULL , fw.getParent(1ULL,2ULL));
-    CPPUNIT_ASSERT_EQUAL(0ULL , fw.getParent(1ULL,4ULL));
+    CPPUNIT_ASSERT_THROW(fw.getParent(1ULL,4ULL), std::exception);
+    CPPUNIT_ASSERT_THROW(fw.getParent(2ULL,5ULL), std::exception);
+    CPPUNIT_ASSERT_THROW(fw.getParent(3ULL,4ULL), std::exception);
+    CPPUNIT_ASSERT_THROW(fw.getParent(3ULL,5ULL), std::exception);
     CPPUNIT_ASSERT_EQUAL(4ULL , fw.getParent(4ULL,5ULL));
 }
 
@@ -68,4 +71,13 @@ void floydwarshalltest::testAverDist() {
 
   delete gl;
   delete gm;
+}
+
+void floydwarshalltest::testFloydWarshallException() {
+    Graph *gm = new GraphMatrix(2, true);
+    FloydWarshall f(gm);
+    CPPUNIT_ASSERT_THROW( f.getDistance(1, 2), std::exception );
+    CPPUNIT_ASSERT_THROW( f.getParent(1, 2), std::exception );
+    
+    delete gm;
 }

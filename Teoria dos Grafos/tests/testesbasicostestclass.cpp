@@ -185,3 +185,31 @@ void newtestclass::testEmpDist() {
     std::vector<double> w = {0.0, 0.4, 0.4, 0.0, 0.2};
     CPPUNIT_ASSERT(compareVectors(v, w));
 }
+
+void newtestclass::testGetDist() {
+    Graph *gsempeso = new GraphList(3, false);
+    gsempeso->addEdge(1, 2);
+    gsempeso->addEdge(2, 3);
+    CPPUNIT_ASSERT( 1.0 == gsempeso->getDistance(1, 2));
+    CPPUNIT_ASSERT( 2.0 == gsempeso->getDistance(1, 3));
+    
+    delete gsempeso;
+    
+    Graph *gpesopos = new GraphMatrix(3, true);
+    gpesopos->addEdge(1, 2, 1.0);
+    gpesopos->addEdge(1, 3, 3.0);
+    gpesopos->addEdge(2, 3, 1.0);
+    CPPUNIT_ASSERT( 1.0 == gpesopos->getDistance(1, 2) );
+    CPPUNIT_ASSERT( 2.0 == gpesopos->getDistance(1, 3) );
+    
+    delete gpesopos;
+    
+    Graph *gpesoneg = new GraphMatrix(3, true);
+    gpesoneg->addEdge(1, 2, 1);
+    gpesoneg->addEdge(2, 3, -4);
+    gpesoneg->addEdge(1, 3, 2);
+    CPPUNIT_ASSERT( -2.0 == gpesoneg->getDistance(1, 2));
+    CPPUNIT_ASSERT( -3.0 == gpesoneg->getDistance(1, 3));
+    
+    delete gpesoneg;
+}

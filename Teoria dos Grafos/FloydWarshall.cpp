@@ -38,10 +38,14 @@ void FloydWarshall::clear() {
 }
 
 unsigned long long FloydWarshall::getParent(const unsigned long long source, const unsigned long long target) const {
+    if ( D[source][target] ==  INF )
+        throw std::exception();
     return P[source][target];
 }
 
 double FloydWarshall::getDistance(const unsigned long long source, const unsigned long long target) const {
+    if ( D[source][target] == INF )
+        throw std::exception();
     return D[source][target];
 }
 

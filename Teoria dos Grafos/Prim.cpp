@@ -1,15 +1,15 @@
-#include "Mst.h"
+#include "Prim.h"
 
 #define INF std::numeric_limits<double>::max()
 
-Mst::Mst(const Graph *G, const unsigned long long source) : G(G), source(source) {
+Prim::Prim(const Graph *G, const unsigned long long source) : G(G), source(source) {
     prim(G, source);
 };
 
-Mst::~Mst() {
+Prim::~Prim() {
 }
 
-void Mst::clear() {
+void Prim::clear() {
     key = std::vector<double>(G->getN() + 1, INF);
     parent = std::vector<unsigned long long>(G->getN() + 1, 0);
     explored = std::vector<bool>(G->getN() + 1, false);
@@ -17,7 +17,7 @@ void Mst::clear() {
     numberOfMstNodes = 0;
 }
 
-void Mst::prim(const Graph *G, const unsigned long long source) {
+void Prim::prim(const Graph *G, const unsigned long long source) {
     clear();
     unsigned long long u, v;
     std::vector<unsigned long long> neighbours;
@@ -28,7 +28,7 @@ void Mst::prim(const Graph *G, const unsigned long long source) {
     key[source] = 0;
     // decisão de design: o pai de <i>source</i> é ele mesmo
     parent[source] = source;
-    Q.push( std::make_pair(key[source],source) );
+    Q.push(std::make_pair(key[source], source));
 
     while (!Q.empty()) {
         next_pair = Q.top();
@@ -37,7 +37,7 @@ void Mst::prim(const Graph *G, const unsigned long long source) {
 
         if (explored[u])
             continue;
-        
+
         explored[u] = true;
         ++numberOfMstNodes;
 
@@ -45,7 +45,7 @@ void Mst::prim(const Graph *G, const unsigned long long source) {
         for (int i = 0; i < neighbours.size(); ++i) {
             v = neighbours[i];
             k = G->getWeight(u, v);
-            if ( !explored[v] && k < key[v]) {
+            if (!explored[v] && k < key[v]) {
                 key[v] = k;
                 parent[v] = u;
                 Q.push(std::make_pair(key[v], v));
@@ -54,7 +54,7 @@ void Mst::prim(const Graph *G, const unsigned long long source) {
     }
 }
 
-double Mst::getDistance(const unsigned long long target) const {
+double Prim::getDistance(const unsigned long long target) const {
     if (!explored[target])
         throw std::exception();
 
@@ -68,17 +68,17 @@ double Mst::getDistance(const unsigned long long target) const {
     return distance;
 }
 
-unsigned long long Mst::getSource() const {
+unsigned long long Prim::getSource() const {
     return source;
 }
 
-unsigned long long Mst::getParent(const unsigned long long node) const {
+unsigned long long Prim::getParent(const unsigned long long node) const {
     if (!explored[node])
         throw std::exception();
     return parent[node];
 }
 
-std::vector<unsigned long long> Mst::getPath(const unsigned long long target) const {
+std::vector<unsigned long long> Prim::getPath(const unsigned long long target) const {
     if (!explored[target])
         throw std::exception();
 
@@ -94,7 +94,7 @@ std::vector<unsigned long long> Mst::getPath(const unsigned long long target) co
     return path;
 }
 
-double Mst::getMstCost() const {
+double Prim::getMstCost() const {
     double mstCost = 0.0;
     for (unsigned long long i = 1; i <= G->getN(); ++i)
         if (key[i] != INF) // if (explored[i])
@@ -102,20 +102,20 @@ double Mst::getMstCost() const {
     return mstCost;
 }
 
-double Mst::getKey(const unsigned long long node) const {
+double Prim::getKey(const unsigned long long node) const {
     if (!explored[node])
         throw std::exception();
     return key[node];
 }
 
-void Mst::saveGraph(const char* filename) const {
+void Prim::saveGraph(const char* filename) const {
     std::ofstream os;
     os.open(filename);
 
     // template: igual ao de um grafo
     os << "custo = " << getMstCost() << std::endl;
     os << getNumberOfMstNodes() << std::endl;
-    for (register int i = 1; i <= G->getN(); ++i) {
+    for (unsigned long long int i = 1; i <= G->getN(); ++i) {
         if (i != source && explored[i])
             os << i << " " << getParent(i) << " " << getKey(i) << std::endl;
     }
@@ -123,7 +123,7 @@ void Mst::saveGraph(const char* filename) const {
     os.close();
 }
 
-void Mst::saveInfo(const char *filename) const {
+void Prim::saveInfo(const char *filename) const {
     std::ofstream os;
     os.open(filename);
 
@@ -147,12 +147,18 @@ void Mst::saveInfo(const char *filename) const {
         } catch (std::exception) {
             os << "undef";
         }
+        os << ", path[" << i << "] = ";
+        try {
+            os << returnVectorSaveInfo(getPath(i));
+        } catch (std::exception) {
+            os << "undef";
+        }
         os << std::endl;
     }
 
     os.close();
 }
 
-unsigned long long Mst::getNumberOfMstNodes() const {
+unsigned long long Prim::getNumberOfMstNodes() const {
     return numberOfMstNodes;
 }

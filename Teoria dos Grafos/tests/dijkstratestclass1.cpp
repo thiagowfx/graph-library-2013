@@ -2,15 +2,15 @@
 
 Graph *gm;
 
-CPPUNIT_TEST_SUITE_REGISTRATION(dijkstratest);
+CPPUNIT_TEST_SUITE_REGISTRATION(dijkstratestclass1);
 
-dijkstratest::dijkstratest() {
+dijkstratestclass1::dijkstratestclass1() {
 }
 
-dijkstratest::~dijkstratest() {
+dijkstratestclass1::~dijkstratestclass1() {
 }
 
-void dijkstratest::setUp() {
+void dijkstratestclass1::setUp() {
     gm = new GraphMatrix(5, true);
     gm->addEdge(1, 2, 1.0);
     gm->addEdge(2, 5, 2.0);
@@ -20,11 +20,11 @@ void dijkstratest::setUp() {
     gm->addEdge(4, 5, 3.0);
 }
 
-void dijkstratest::tearDown() {
+void dijkstratestclass1::tearDown() {
     delete gm;
 }
 
-void dijkstratest::testDijkstra() {
+void dijkstratestclass1::testDijkstra() {
     CPPUNIT_ASSERT_EQUAL(5ULL, gm->getN());
     CPPUNIT_ASSERT(gm->isWeighted());
     CPPUNIT_ASSERT(!gm->isNegativeWeighted());
@@ -50,7 +50,7 @@ void dijkstratest::testDijkstra() {
     CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(5));
 }
 
-void dijkstratest::testOnlyPositiveWeights() {
+void dijkstratestclass1::testOnlyPositiveWeights() {
     Graph *g = new GraphList(5, true);
     g->addEdge(1, 2, 1.0);
     g->addEdge(2, 3, -1.0);
@@ -58,7 +58,7 @@ void dijkstratest::testOnlyPositiveWeights() {
     CPPUNIT_ASSERT_THROW_MESSAGE("o grafo contém algum peso negativo", Dijkstra di(g, 1), std::exception);
 }
 
-void dijkstratest::testGetPath() {
+void dijkstratestclass1::testGetPath() {
     std::vector<unsigned long long> v = {1, 2, 5, 4};
     Dijkstra di(gm, 1ULL);
     CPPUNIT_ASSERT_MESSAGE(printVector(v) + printVector(di.getPath(4)), v == di.getPath(4));
@@ -68,7 +68,7 @@ void dijkstratest::testGetPath() {
     CPPUNIT_ASSERT_MESSAGE(printVector(v) + printVector(dj.getPath(4)), v == dj.getPath(4));
 }
 
-void dijkstratest::testConstructorWithTarget() {
+void dijkstratestclass1::testConstructorWithTarget() {
     Graph *g = new GraphMatrix(5, true);
     g->addEdge(1, 2, 3.0);
     g->addEdge(2, 3, 3.0);
@@ -86,7 +86,7 @@ void dijkstratest::testConstructorWithTarget() {
     CPPUNIT_ASSERT_THROW(di.getPath(3), std::exception);
 }
 
-void dijkstratest::testSaveInfo() {
+void dijkstratestclass1::testSaveInfo() {
     Graph *g = new GraphMatrix(4, true);
     g->addEdge(1, 2, 2.0);
     g->addEdge(2, 3, 2.0);

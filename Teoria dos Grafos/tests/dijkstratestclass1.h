@@ -7,8 +7,8 @@
 
 #include <cppunit/extensions/HelperMacros.h>
 
-class dijkstratest : public CPPUNIT_NS::TestFixture {
-    CPPUNIT_TEST_SUITE(dijkstratest);
+class dijkstratestclass1 : public CPPUNIT_NS::TestFixture {
+    CPPUNIT_TEST_SUITE(dijkstratestclass1);
 
     CPPUNIT_TEST(testDijkstra);
     CPPUNIT_TEST(testOnlyPositiveWeights);
@@ -19,8 +19,8 @@ class dijkstratest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE_END();
 
 public:
-    dijkstratest();
-    virtual ~dijkstratest();
+    dijkstratestclass1();
+    virtual ~dijkstratestclass1();
     void setUp();
     void tearDown();
 

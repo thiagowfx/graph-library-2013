@@ -2,10 +2,7 @@
 #define	DFS_H
 
 #include "Graph.h"
-#include <exception>
-#include <fstream>
-#include <stack>
-#include <vector>
+#include "Utilities.h"
 
 class Dfs {
 public:

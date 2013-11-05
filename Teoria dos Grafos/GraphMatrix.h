@@ -2,6 +2,7 @@
 #define	GRAPHMATRIX_H
 
 #include "Graph.h"
+#include "Utilities.h"
 
 class GraphMatrix : public Graph {
 public:

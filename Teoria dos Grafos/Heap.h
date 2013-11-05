@@ -1,8 +1,7 @@
 #ifndef HEAP_H
 #define	HEAP_H
 
-#include <deque>
-#include <stdexcept>
+#include "Utilities.h"
 
 /** Classe Genérica de Heap de mínimo. Compatível com a <b>priority_queue</b> da STL. Sem limite superior. */
 template<class T>

@@ -5,8 +5,7 @@
  * Created on 06/10/2013, 20:16:11
  */
 
-#include "testesbasicostestclass.h"
-#include "Utilities.h"
+#include "graphtestclass1.h"
 
 GraphMatrix emptyGm(10, false);
 GraphMatrix gm(10, false);
@@ -14,15 +13,15 @@ GraphList emptyGl(10, false);
 GraphList gl(10, false);
 Graph* gEx;
 
-CPPUNIT_TEST_SUITE_REGISTRATION(newtestclass);
+CPPUNIT_TEST_SUITE_REGISTRATION(graphtestclass1);
 
-newtestclass::newtestclass() {
+graphtestclass1::graphtestclass1() {
 }
 
-newtestclass::~newtestclass() {
+graphtestclass1::~graphtestclass1() {
 }
 
-void newtestclass::setUp() {
+void graphtestclass1::setUp() {
     gm = GraphMatrix(10, false);
     gm.addEdge(1, 2);
     gm.addEdge(1, 3);
@@ -41,11 +40,11 @@ void newtestclass::setUp() {
     gEx->addEdge(1, 5);
 }
 
-void newtestclass::tearDown() {
+void graphtestclass1::tearDown() {
     delete gEx;
 }
 
-void newtestclass::testEmptyGraphMatrix() {
+void graphtestclass1::testEmptyGraphMatrix() {
     Graph *g = new GraphMatrix(0, false);
     CPPUNIT_ASSERT_EQUAL(0ULL, g->getN());
     CPPUNIT_ASSERT_EQUAL(0ULL, g->getM());
@@ -53,7 +52,7 @@ void newtestclass::testEmptyGraphMatrix() {
     delete g;
 }
 
-void newtestclass::testAddEdgesGraphMatrix() {
+void graphtestclass1::testAddEdgesGraphMatrix() {
     CPPUNIT_ASSERT_EQUAL(3ULL, gm.getM());
     CPPUNIT_ASSERT_EQUAL(10ULL, gm.getN());
     CPPUNIT_ASSERT_EQUAL(0.6, gm.getAverDeg());
@@ -79,7 +78,7 @@ void newtestclass::testAddEdgesGraphMatrix() {
     //CPPUNIT_ASSERT_THROW(gm.isEdge(10, 11), std::exception);
 }
 
-void newtestclass::testGetDegreeGraphMatrix() {
+void graphtestclass1::testGetDegreeGraphMatrix() {
     CPPUNIT_ASSERT_EQUAL(2ULL, gm.getDegree(1));
     CPPUNIT_ASSERT_EQUAL(1ULL, gm.getDegree(2));
     CPPUNIT_ASSERT_EQUAL(1ULL, gm.getDegree(3));
@@ -94,7 +93,7 @@ void newtestclass::testGetDegreeGraphMatrix() {
     CPPUNIT_ASSERT_THROW(gm.getDegree(11), std::exception);
 }
 
-void newtestclass::testGetNeighboursGraphMatrix() {
+void graphtestclass1::testGetNeighboursGraphMatrix() {
     std::vector<unsigned long long> v{2, 3};
     CPPUNIT_ASSERT_MESSAGE(
             printVector(v)
@@ -118,14 +117,14 @@ void newtestclass::testGetNeighboursGraphMatrix() {
     CPPUNIT_ASSERT(compareVectors(gm.getNeighbours(11), v));
 }
 
-void newtestclass::testEmptyGraphList() {
+void graphtestclass1::testEmptyGraphList() {
     Graph *g = new GraphList(0, false);
     CPPUNIT_ASSERT_EQUAL_MESSAGE("Número de nós", 0ULL, g->getN());
     CPPUNIT_ASSERT_EQUAL_MESSAGE("Número de arestas", 0ULL, g->getM());
     CPPUNIT_ASSERT_EQUAL(0.0, g->getAverDeg());
 }
 
-void newtestclass::testAddEdgesGraphList() {
+void graphtestclass1::testAddEdgesGraphList() {
     CPPUNIT_ASSERT_EQUAL(3ULL, gl.getM());
     CPPUNIT_ASSERT_EQUAL(10ULL, gl.getN());
     CPPUNIT_ASSERT_EQUAL(0.6, gl.getAverDeg());
@@ -143,7 +142,7 @@ void newtestclass::testAddEdgesGraphList() {
     CPPUNIT_ASSERT(!emptyGl.isEdge(1, 1));
 }
 
-void newtestclass::testGetDegreeGraphList() {
+void graphtestclass1::testGetDegreeGraphList() {
     CPPUNIT_ASSERT_EQUAL(2ULL, gl.getDegree(1));
     CPPUNIT_ASSERT_EQUAL(1ULL, gl.getDegree(2));
     CPPUNIT_ASSERT_EQUAL(1ULL, gl.getDegree(3));
@@ -158,7 +157,7 @@ void newtestclass::testGetDegreeGraphList() {
     CPPUNIT_ASSERT_THROW(gl.getDegree(11), std::exception);
 }
 
-void newtestclass::testGetNeighboursGraphList() {
+void graphtestclass1::testGetNeighboursGraphList() {
     std::vector<unsigned long long> v{2, 3};
     CPPUNIT_ASSERT_MESSAGE(
             printVector(v)
@@ -180,13 +179,13 @@ void newtestclass::testGetNeighboursGraphList() {
     CPPUNIT_ASSERT_THROW(gl.getNeighbours(11), std::exception);
 }
 
-void newtestclass::testEmpDist() {
+void graphtestclass1::testEmpDist() {
     std::vector<double> v = gEx->getEmpDist();
     std::vector<double> w = {0.0, 0.4, 0.4, 0.0, 0.2};
     CPPUNIT_ASSERT(compareVectors(v, w));
 }
 
-void newtestclass::testGetDist() {
+void graphtestclass1::testGetDist() {
     Graph *gsempeso = new GraphList(3, false);
     gsempeso->addEdge(1, 2);
     gsempeso->addEdge(2, 3);
@@ -213,4 +212,23 @@ void newtestclass::testGetDist() {
     CPPUNIT_ASSERT_EQUAL(2.0, gpesoneg->getWeight(1,3));
     CPPUNIT_ASSERT_EQUAL( 0.0,  gpesoneg->getDistance(1, 3));
     delete gpesoneg;
+}
+
+void graphtestclass1::testSaveInfo() {
+    const char file[] = "tmp/testSaveInfo.txt";
+    gEx->saveInfo(file);
+
+    std::ifstream is;
+    is.open(file);
+    std::string s;
+
+    std::getline(is, s);    CPPUNIT_ASSERT("# n = 5" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("# m = 5" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("# d_medio = 2.0" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("1 0.40" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("2 0.40" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("3 0.00" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("4 0.20" == s);
+
+    is.close();
 }

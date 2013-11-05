@@ -3,16 +3,14 @@
 
 #include "Graph.h"
 #include "Heap.h"
-#include <exception>
-#include <fstream>
-#include <vector>
+#include "Utilities.h"
 
-class Mst {
+class Prim {
 public:
     /** Constrói uma MST em <i>G</i> a partir do nó <i>source</i>, aplicando o algoritmo de <b>Prim</b>.
         NOTA: o grafo pode ser desconexo. */
-    Mst(const Graph *G, const unsigned long long source);
-    virtual ~Mst();
+    Prim(const Graph *G, const unsigned long long source);
+    virtual ~Prim();
     /** Retorna o pai de <i>node</i> na MST, em relação à raiz da árvore.
      *  Lança uma exceção se o nó não foi explorado. 
      **/

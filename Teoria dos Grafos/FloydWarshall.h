@@ -3,7 +3,7 @@
 
 #include "Graph.h"
 class Graph;
-#include <vector>
+#include "Utilities.h"
 
 class FloydWarshall {
 public:
@@ -29,7 +29,6 @@ private:
     /** Inicializa os vetores. */
     void clear();
 };
-
 
 #endif	/* FLOYDWARSHALL_H */
 

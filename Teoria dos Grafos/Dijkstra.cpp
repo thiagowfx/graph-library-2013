@@ -1,22 +1,5 @@
 #include "Dijkstra.h"
 
-#define INF std::numeric_limits<double>::max()
-
-std::string returnVectorSaveInfo(const std::vector<unsigned long long>& v) {
-    //    for (int i = 0; i < (int) v.size(); ++i)
-    //        std::cout << v[i] << " ";
-    //    std::cout << std::endl;
-    std::string s;
-    char tmp[100];
-    for (unsigned long long i = 0; i < v.size(); ++i) {
-        sprintf(tmp, "%lld", v[i]);
-        s += tmp;
-        if (i != (v.size() - 1))
-            s += " ";
-    }
-    return s;
-}
-
 Dijkstra::Dijkstra(const Graph *G, const unsigned long long source) : G(G), source(source) {
     // não importa qual nó é passado como último argumento
     dijkstra(G, source, false, 0);

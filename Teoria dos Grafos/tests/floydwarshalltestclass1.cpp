@@ -5,20 +5,19 @@
  * Created on Nov 3, 2013, 1:52:59 AM
  */
 
-#include "floydwarshalltest.h"
-#include "FloydWarshall.h"
+#include "floydwarshalltestclass1.h"
 
 Graph *gDesc;
 
-CPPUNIT_TEST_SUITE_REGISTRATION(floydwarshalltest);
+CPPUNIT_TEST_SUITE_REGISTRATION(floydwarshalltestclass1);
 
-floydwarshalltest::floydwarshalltest() {
+floydwarshalltestclass1::floydwarshalltestclass1() {
 }
 
-floydwarshalltest::~floydwarshalltest() {
+floydwarshalltestclass1::~floydwarshalltestclass1() {
 }
 
-void floydwarshalltest::setUp() {
+void floydwarshalltestclass1::setUp() {
     gDesc = new GraphList(5, true);
     gDesc->addEdge(1, 2, 10);
     gDesc->addEdge(2, 3, 1);
@@ -26,11 +25,11 @@ void floydwarshalltest::setUp() {
     gDesc->addEdge(4, 5, 2);
 }
 
-void floydwarshalltest::tearDown() {
+void floydwarshalltestclass1::tearDown() {
     delete gDesc;
 }
 
-void floydwarshalltest::testFloydWarshall() {
+void floydwarshalltestclass1::testFloydWarshall() {
     FloydWarshall fw(gDesc);
     
     CPPUNIT_ASSERT_EQUAL(0.0 , fw.getDistance(1ULL,1ULL));
@@ -51,7 +50,7 @@ void floydwarshalltest::testFloydWarshall() {
     CPPUNIT_ASSERT_EQUAL(4ULL , fw.getParent(4ULL,5ULL));
 }
 
-void floydwarshalltest::testFWNeg() {
+void floydwarshalltestclass1::testFWNeg() {
     Graph *gpesoneg = new GraphMatrix(3, true);
     gpesoneg->addEdge(1, 2, 1.0);
     gpesoneg->addEdge(2, 3, -1.0);
@@ -76,7 +75,7 @@ void floydwarshalltest::testFWNeg() {
     delete gpesoneg;
 }
 
-void floydwarshalltest::testAverDist() {
+void floydwarshalltestclass1::testAverDist() {
   Graph *gm = new GraphMatrix(5, true);
   gm->addEdge(1, 2, 2.0);
   gm->addEdge(2, 3, 2.0);
@@ -98,7 +97,7 @@ void floydwarshalltest::testAverDist() {
   delete gm;
 }
 
-void floydwarshalltest::testFloydWarshallException() {
+void floydwarshalltestclass1::testFloydWarshallException() {
     Graph *gm = new GraphMatrix(2, true);
     FloydWarshall f(gm);
     CPPUNIT_ASSERT_THROW( f.getDistance(1, 2), std::exception );

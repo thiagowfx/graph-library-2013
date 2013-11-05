@@ -59,7 +59,7 @@ void primtestclass1::testMst() {
     CPPUNIT_ASSERT_EQUAL(3.0, gm->getWeight(4, 5));
 
     unsigned long long source = 1;
-    Mst mi(gm, source);
+    Prim mi(gm, source);
     CPPUNIT_ASSERT_EQUAL(1ULL, mi.getSource());
     CPPUNIT_ASSERT_EQUAL(5ULL, mi.getNumberOfMstNodes());
 
@@ -99,7 +99,7 @@ void primtestclass1::testMst2() {
     CPPUNIT_ASSERT_EQUAL(10.0, gl->getWeight(3, 4));
 
     unsigned long long source = 3;
-    Mst mi(gl, source);
+    Prim mi(gl, source);
     CPPUNIT_ASSERT_EQUAL(3ULL, mi.getSource());
     CPPUNIT_ASSERT_EQUAL(4ULL, mi.getNumberOfMstNodes());
 
@@ -130,32 +130,32 @@ void primtestclass1::testMst2() {
 void primtestclass1::testSaveGraph() {
     const char output[] = "tmp/mstSaveInfo.txt";
     const char expected[] = "tests/graphs/mstSaveInfo.exp";
-    Mst mi(gl, 3ULL);
+    Prim mi(gl, 3ULL);
     mi.saveGraph(output);
     CPPUNIT_ASSERT(areFilesEqual(output, expected));
 
     const char output2[] = "tmp/mstSaveInfo2.txt";
     const char expected2[] = "tests/graphs/mstSaveInfo2.exp";
-    Mst mj(gm, 1ULL);
+    Prim mj(gm, 1ULL);
     mj.saveGraph(output2);
     CPPUNIT_ASSERT(areFilesEqual(output2, expected2));
 
     const char output3[] = "tmp/mstSaveInfo3.txt";
     const char expected3[] = "tests/graphs/mstSaveInfo3.exp";
-    Mst mk(gDesc, 1ULL);
+    Prim mk(gDesc, 1ULL);
     mk.saveGraph(output3);
     CPPUNIT_ASSERT(areFilesEqual(output3, expected3));
 }
 
 void primtestclass1::testMstGrafoDesconexo() {
-    Mst mj(gDesc, 4ULL);
+    Prim mj(gDesc, 4ULL);
     CPPUNIT_ASSERT_EQUAL(5ULL, gDesc->getN());
     CPPUNIT_ASSERT_EQUAL(4ULL, mj.getSource());
 
     CPPUNIT_ASSERT_EQUAL(2ULL, mj.getNumberOfMstNodes());
     CPPUNIT_ASSERT_EQUAL(1.0, mj.getMstCost());
 
-    Mst mi(gDesc, 1ULL);
+    Prim mi(gDesc, 1ULL);
     CPPUNIT_ASSERT_EQUAL(5ULL, gDesc->getN());
     CPPUNIT_ASSERT_EQUAL(1ULL, mi.getSource());
     CPPUNIT_ASSERT_EQUAL(3ULL, mi.getNumberOfMstNodes());
@@ -181,7 +181,7 @@ void primtestclass1::testMstGrafoDesconexo() {
 }
 
 void primtestclass1::testSaveInfo() {
-    Mst mi(gDesc, 1ULL);
+    Prim mi(gDesc, 1ULL);
     const char file[] = "tmp/testPrimSaveInfo.txt";
     mi.saveInfo(file);
 
@@ -190,11 +190,11 @@ void primtestclass1::testSaveInfo() {
     std::string s;
 
     std::getline(is, s);    CPPUNIT_ASSERT("custo = 2, source = 1" == s);
-    std::getline(is, s);    CPPUNIT_ASSERT("key[1] = 0, parent[1] = 1" == s);
-    std::getline(is, s);    CPPUNIT_ASSERT("key[2] = 1, parent[2] = 3" == s);
-    std::getline(is, s);    CPPUNIT_ASSERT("key[3] = 1, parent[3] = 1" == s);
-    std::getline(is, s);    CPPUNIT_ASSERT("key[4] = undef, parent[4] = undef" == s);
-    std::getline(is, s);    CPPUNIT_ASSERT("key[5] = undef, parent[5] = undef" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("key[1] = 0, parent[1] = 1, path[1] = 1" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("key[2] = 1, parent[2] = 3, path[2] = 1 3 2" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("key[3] = 1, parent[3] = 1, path[3] = 1 3" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("key[4] = undef, parent[4] = undef, path[4] = undef" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("key[5] = undef, parent[5] = undef, path[5] = undef" == s);
 
     is.close();
 }

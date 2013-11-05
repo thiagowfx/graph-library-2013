@@ -1,5 +1,4 @@
 #include "FloydWarshall.h"
-#define INF std::numeric_limits<double>::max()
 
 FloydWarshall::FloydWarshall(const Graph *G) : G(G) {
     clear();

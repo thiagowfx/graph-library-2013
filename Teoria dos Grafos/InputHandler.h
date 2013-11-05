@@ -2,7 +2,7 @@
 #define	INPUTHANDLER_H
 
 #include "Include.h"
-#include <exception>
+#include "Utilities.h"
 
 class InputHandler {
 public:

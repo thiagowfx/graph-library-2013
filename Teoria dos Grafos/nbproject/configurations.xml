@@ -12,8 +12,11 @@
       <itemPath>Graph.h</itemPath>
       <itemPath>GraphList.h</itemPath>
       <itemPath>GraphMatrix.h</itemPath>
+      <itemPath>Heap.h</itemPath>
+      <itemPath>Include.h</itemPath>
       <itemPath>InputHandler.h</itemPath>
-      <itemPath>Mst.h</itemPath>
+      <itemPath>Prim.h</itemPath>
+      <itemPath>Utilities.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Arquivos de Código-Fonte"
@@ -27,22 +30,15 @@
       <itemPath>GraphList.cpp</itemPath>
       <itemPath>GraphMatrix.cpp</itemPath>
       <itemPath>InputHandler.cpp</itemPath>
-      <itemPath>Mst.cpp</itemPath>
-    </logicalFolder>
-    <logicalFolder name="f2"
-                   displayName="Arquivos de Programação Genérica"
-                   projectFiles="true">
-      <itemPath>Heap.h</itemPath>
-      <itemPath>Include.h</itemPath>
-      <itemPath>Utilities.h</itemPath>
+      <itemPath>Prim.cpp</itemPath>
+      <itemPath>Utilities.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Arquivos de Recurso"
                    projectFiles="true">
-      <itemPath>relatorios.cpp</itemPath>
-    </logicalFolder>
-    <logicalFolder name="f1" displayName="Relatórios" projectFiles="true">
+      <itemPath>newmain.cpp</itemPath>
       <itemPath>relatorio2-estudo1-questao3-alt.cpp</itemPath>
+      <itemPath>relatorios.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Arquivos de Teste"
@@ -61,15 +57,28 @@
       <logicalFolder name="f7" displayName="Dijkstra" projectFiles="true" kind="TEST">
         <itemPath>tests/dijkstratestclass1.cpp</itemPath>
         <itemPath>tests/dijkstratestclass1.h</itemPath>
-        <itemPath>tests/dijkstratestrunner.cpp</itemPath>
+        <itemPath>tests/dijkstratestrunner1.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f8"
                      displayName="FloydWarshall"
                      projectFiles="true"
                      kind="TEST">
-        <itemPath>tests/floydwarshalltest.cpp</itemPath>
-        <itemPath>tests/floydwarshalltest.h</itemPath>
-        <itemPath>tests/floydwarshalltestrunner.cpp</itemPath>
+        <itemPath>tests/floydwarshalltestclass1.cpp</itemPath>
+        <itemPath>tests/floydwarshalltestclass1.h</itemPath>
+        <itemPath>tests/floydwarshalltestrunner1.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f1" displayName="Graph" projectFiles="true" kind="TEST">
+        <itemPath>tests/graphtestclass1.cpp</itemPath>
+        <itemPath>tests/graphtestclass1.h</itemPath>
+        <itemPath>tests/graphtestrunner1.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f6"
+                     displayName="Graph Weight"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/graphweighttestclass1.cpp</itemPath>
+        <itemPath>tests/graphweighttestclass1.h</itemPath>
+        <itemPath>tests/graphweighttestrunner1.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f10" displayName="Heap" projectFiles="true" kind="TEST">
         <itemPath>tests/heaptestclass1.cpp</itemPath>
@@ -84,34 +93,10 @@
         <itemPath>tests/inputhandlertestclass1.h</itemPath>
         <itemPath>tests/inputhandlertestrunner1.cpp</itemPath>
       </logicalFolder>
-      <logicalFolder name="f5"
-                     displayName="OutputInfo"
-                     projectFiles="true"
-                     kind="TEST">
-        <itemPath>tests/outputinfotestclass1.cpp</itemPath>
-        <itemPath>tests/outputinfotestclass1.h</itemPath>
-        <itemPath>tests/outputinfotestrunner1.cpp</itemPath>
-      </logicalFolder>
       <logicalFolder name="f9" displayName="Prim" projectFiles="true" kind="TEST">
         <itemPath>tests/primtestclass1.cpp</itemPath>
         <itemPath>tests/primtestclass1.h</itemPath>
         <itemPath>tests/primtestrunner1.cpp</itemPath>
-      </logicalFolder>
-      <logicalFolder name="f1"
-                     displayName="Testes Básicos"
-                     projectFiles="true"
-                     kind="TEST">
-        <itemPath>tests/testesbasicostestclass.cpp</itemPath>
-        <itemPath>tests/testesbasicostestclass.h</itemPath>
-        <itemPath>tests/testesbasicostestrunner.cpp</itemPath>
-      </logicalFolder>
-      <logicalFolder name="f6"
-                     displayName="Testes Básicos com Peso"
-                     projectFiles="true"
-                     kind="TEST">
-        <itemPath>tests/testesbasicoscompesotestclass1.cpp</itemPath>
-        <itemPath>tests/testesbasicoscompesotestclass1.h</itemPath>
-        <itemPath>tests/testesbasicoscompesotestrunner1.cpp</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -189,9 +174,11 @@
       </item>
       <item path="InputHandler.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Mst.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Prim.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="Mst.h" ex="false" tool="3" flavor2="0">
+      <item path="Prim.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Utilities.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Utilities.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -365,7 +352,10 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
-      <item path="relatorios.cpp" ex="false" tool="1" flavor2="0">
+      <item path="relatorio2-estudo1-questao3-alt.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
       </item>
       <item path="tests/bfstestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -383,13 +373,25 @@
       </item>
       <item path="tests/dijkstratestclass1.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="tests/dijkstratestrunner.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/dijkstratestrunner1.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/floydwarshalltest.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/floydwarshalltestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/floydwarshalltest.h" ex="false" tool="3" flavor2="0">
+      <item path="tests/floydwarshalltestclass1.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="tests/floydwarshalltestrunner.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/floydwarshalltestrunner1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/graphtestclass1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/graphtestclass1.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/graphtestrunner1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/graphweighttestclass1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/graphweighttestclass1.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/graphweighttestrunner1.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/heaptestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -403,38 +405,11 @@
       </item>
       <item path="tests/inputhandlertestrunner1.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/outputinfotestclass1.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/outputinfotestclass1.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="tests/outputinfotestrunner1.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="tests/primtestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/primtestclass1.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/primtestrunner1.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/testesbasicoscompesotestclass1.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="tests/testesbasicoscompesotestclass1.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="tests/testesbasicoscompesotestrunner1.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="tests/testesbasicostestclass.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/testesbasicostestclass.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="tests/testesbasicostestrunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -499,9 +474,11 @@
       </item>
       <item path="InputHandler.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Mst.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Prim.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="Mst.h" ex="false" tool="3" flavor2="0">
+      <item path="Prim.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Utilities.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Utilities.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -673,13 +650,25 @@
       </item>
       <item path="tests/dijkstratestclass1.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="tests/dijkstratestrunner.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/dijkstratestrunner1.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/floydwarshalltest.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/floydwarshalltestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/floydwarshalltest.h" ex="false" tool="3" flavor2="0">
+      <item path="tests/floydwarshalltestclass1.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="tests/floydwarshalltestrunner.cpp" ex="false" tool="1" flavor2="0">
+      <item path="tests/floydwarshalltestrunner1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/graphtestclass1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/graphtestclass1.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/graphtestrunner1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/graphweighttestclass1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/graphweighttestclass1.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/graphweighttestrunner1.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/heaptestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -693,38 +682,11 @@
       </item>
       <item path="tests/inputhandlertestrunner1.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="tests/outputinfotestclass1.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/outputinfotestclass1.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="tests/outputinfotestrunner1.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="tests/primtestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/primtestclass1.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="tests/primtestrunner1.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/testesbasicoscompesotestclass1.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="tests/testesbasicoscompesotestclass1.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="tests/testesbasicoscompesotestrunner1.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="tests/testesbasicostestclass.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="tests/testesbasicostestclass.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="tests/testesbasicostestrunner.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>

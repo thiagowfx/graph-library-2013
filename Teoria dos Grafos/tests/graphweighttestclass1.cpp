@@ -5,23 +5,23 @@
  * Created on Oct 28, 2013, 11:00:07 PM
  */
 
-#include "testesbasicoscompesotestclass1.h"
+#include "graphweighttestclass1.h"
 
-CPPUNIT_TEST_SUITE_REGISTRATION(newtestclass1);
+CPPUNIT_TEST_SUITE_REGISTRATION(graphweighttestclass1);
 
-newtestclass1::newtestclass1() {
+graphweighttestclass1::graphweighttestclass1() {
 }
 
-newtestclass1::~newtestclass1() {
+graphweighttestclass1::~graphweighttestclass1() {
 }
 
-void newtestclass1::setUp() {
+void graphweighttestclass1::setUp() {
 }
 
-void newtestclass1::tearDown() {
+void graphweighttestclass1::tearDown() {
 }
 
-void newtestclass1::testBasic() {
+void graphweighttestclass1::testBasic() {
     Graph *g = new GraphMatrix(5, true);
     g->addEdge(1, 2, 1);
     g->addEdge(1, 3);
@@ -42,7 +42,7 @@ void newtestclass1::testBasic() {
     CPPUNIT_ASSERT_EQUAL(false, g->isNegativeWeighted());
 }
 
-void newtestclass1::testBasic2() {
+void graphweighttestclass1::testBasic2() {
     Graph *g = new GraphMatrix(5, true);
     g->addEdge(1, 2, -10);
     CPPUNIT_ASSERT_EQUAL(-10.0, g->getWeight(1, 2));
@@ -50,7 +50,7 @@ void newtestclass1::testBasic2() {
     CPPUNIT_ASSERT_EQUAL(true, g->isNegativeWeighted());
 }
 
-void newtestclass1::testBasic3() {
+void graphweighttestclass1::testBasic3() {
     Graph *g = new GraphMatrix(5, false);
     g->addEdge(1, 2);
     g->addEdge(1, 3, 10);
@@ -60,7 +60,7 @@ void newtestclass1::testBasic3() {
     CPPUNIT_ASSERT_EQUAL(false, g->isNegativeWeighted());
 }
 
-void newtestclass1::testBasic4() {
+void graphweighttestclass1::testBasic4() {
     // FIXME Graph *g = new GraphMatrix(5);
     Graph *g = new GraphMatrix(5, false);
     g->addEdge(1, 2);
@@ -71,7 +71,7 @@ void newtestclass1::testBasic4() {
     CPPUNIT_ASSERT_EQUAL(false, g->isNegativeWeighted());
 }
 
-void newtestclass1::testBasic5() {
+void graphweighttestclass1::testBasic5() {
     Graph *g = new GraphList(5, true);
     g->addEdge(1, 2, 3.0);
     g->addEdge(1, 3);
@@ -92,7 +92,7 @@ void newtestclass1::testBasic5() {
     CPPUNIT_ASSERT_EQUAL(false, g->isNegativeWeighted());
 }
 
-void newtestclass1::testBasic6() {
+void graphweighttestclass1::testBasic6() {
     Graph *g = new GraphList(5, true);
     g->addEdge(1, 2, -10);
     CPPUNIT_ASSERT_EQUAL(-10.0, g->getWeight(1, 2));
@@ -100,7 +100,7 @@ void newtestclass1::testBasic6() {
     CPPUNIT_ASSERT_EQUAL(true, g->isNegativeWeighted());
 }
 
-void newtestclass1::testBasic7() {
+void graphweighttestclass1::testBasic7() {
     Graph *g = new GraphList(5, false);
     g->addEdge(1, 2);
     g->addEdge(1, 3, 10);
@@ -110,7 +110,7 @@ void newtestclass1::testBasic7() {
     CPPUNIT_ASSERT_EQUAL(false, g->isNegativeWeighted());
 }
 
-void newtestclass1::testBasic8() {
+void graphweighttestclass1::testBasic8() {
     // FIXME Graph *g = new GraphList(5);
     Graph *g = new GraphList(5, false);
     g->addEdge(1, 2);
@@ -121,7 +121,7 @@ void newtestclass1::testBasic8() {
     CPPUNIT_ASSERT_EQUAL(false, g->isNegativeWeighted());
 }
 
-void newtestclass1::testException() {
+void graphweighttestclass1::testException() {
     Graph *g = new GraphList(5, true);
     CPPUNIT_ASSERT_THROW(g->getWeight(1, 10), std::exception);
 

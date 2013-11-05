@@ -4,9 +4,7 @@
 #include "Graph.h"
 class Graph;
 #include "Heap.h"
-#include <fstream>
-#include <stdexcept>
-#include <vector>
+#include "Utilities.h"
 
 class Dijkstra {
 public:

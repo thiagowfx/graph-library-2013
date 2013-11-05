@@ -2,6 +2,7 @@
 #define	GRAPHLIST_H
 
 #include "Graph.h"
+#include "Utilities.h"
 
 class GraphList : public Graph {
 public:

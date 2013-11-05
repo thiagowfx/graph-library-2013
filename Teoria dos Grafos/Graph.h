@@ -7,20 +7,7 @@ class Dijkstra;
 class Bfs;
 #include "FloydWarshall.h"
 class FloydWarshall;
-#include <cstring>
-#include <deque>
-#include <exception>
-#include <iomanip>
-#include <iostream>
-#include <fstream>
-#include <functional>   // std::greater
-#include <algorithm>    // std::reverse
-#include <limits>       // std::numeric_limits
-#include <queue>
-#include <stack>
-#include <string>
-#include <utility>      // std::pair
-#include <vector>
+#include "Utilities.h"
 
 /**
  * Representa um grafo.

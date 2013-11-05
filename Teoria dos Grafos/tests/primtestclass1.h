@@ -9,7 +9,7 @@
 #define	PRIMTESTCLASS1_H
 
 #include "../Include.h"
-#include "../Mst.h"
+#include "../Prim.h"
 #include "../Utilities.h"
 
 #include <cppunit/extensions/HelperMacros.h>

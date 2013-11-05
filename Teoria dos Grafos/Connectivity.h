@@ -2,6 +2,7 @@
 #define	CONNECTIVITY_H
 
 #include "Graph.h"
+#include "Utilities.h"
 
 class Connectivity {
 public:

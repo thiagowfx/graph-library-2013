@@ -1,13 +1,25 @@
 #ifndef UTILITIES_H
 #define	UTILITIES_H
 
-#include <string>
-#include <vector>
+#include <algorithm>    // std::reverse
+#include <cstring>
+#include <deque>
+#include <exception>    // std::exception
+#include <iomanip>
+#include <iostream>     // std::cout, std::endl
 #include <fstream>
+#include <functional>   // std::greater
+#include <limits>       // std::numeric_limits
+#include <queue>
+#include <stdexcept>    // custom exceptions
+#include <stack>
+#include <string>
+#include <utility>      // std::pair
+#include <vector>
 
-template <class T> bool compareVectors(const std::vector<T>& v1, const std::vector<T>& v2);
-template<class T> std::string printVector(const std::vector<T>& v);
-template<class T> std::string printVectorSaveInfo(const std::vector<T>& v);
+const double INF = std::numeric_limits<double>::max();
+
+std::string returnVectorSaveInfo(const std::vector<unsigned long long>& v);
 bool areFilesEqual(const char *filename1, const char *filename2);
 
 template <class T> bool compareVectors(const std::vector<T>& v1, const std::vector<T>& v2) {
@@ -16,16 +28,13 @@ template <class T> bool compareVectors(const std::vector<T>& v1, const std::vect
 
     if (v1.size() != v2.size())
         return false;
-    for (int i = 0; i < (int) v1.size(); ++i)
+    for (unsigned long long i = 0; i < v1.size(); ++i)
         if (v1[i] != v2[i])
             return false;
     return true;
 }
 
 template<class T> std::string printVector(const std::vector<T>& v) {
-    //    for (int i = 0; i < (int) v.size(); ++i)
-    //        std::cout << v[i] << " ";
-    //    std::cout << std::endl;
     std::string s;
     s += ": ";
     char tmp[100];
@@ -36,21 +45,6 @@ template<class T> std::string printVector(const std::vector<T>& v) {
     }
     s += "\n";
     return s;
-}
-
-bool areFilesEqual(const char *filename1, const char *filename2) {
-    std::ifstream is1;
-    std::ifstream is2;
-    is1.open(filename1);
-    is2.open(filename2);
-    std::string line1, line2;
-
-    while (getline(is1, line1) && getline(is2, line2)) {
-        if (line1 != line2)
-            return false;
-    }
-
-    return true;
 }
 
 #endif	/* UTILITIES_H */

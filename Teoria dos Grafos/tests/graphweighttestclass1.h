@@ -12,8 +12,8 @@
 
 #include <cppunit/extensions/HelperMacros.h>
 
-class newtestclass1 : public CPPUNIT_NS::TestFixture {
-    CPPUNIT_TEST_SUITE(newtestclass1);
+class graphweighttestclass1 : public CPPUNIT_NS::TestFixture {
+    CPPUNIT_TEST_SUITE(graphweighttestclass1);
 
     CPPUNIT_TEST(testBasic);
     CPPUNIT_TEST(testBasic2);
@@ -28,8 +28,8 @@ class newtestclass1 : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE_END();
 
 public:
-    newtestclass1();
-    virtual ~newtestclass1();
+    graphweighttestclass1();
+    virtual ~graphweighttestclass1();
     void setUp();
     void tearDown();
 

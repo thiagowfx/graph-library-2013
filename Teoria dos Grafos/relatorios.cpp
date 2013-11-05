@@ -1,15 +1,15 @@
 #include "Dijkstra.h"
 #include "Graph.h"
 #include "InputHandler.h"
-#include "Mst.h"
+#include "Prim.h"
 #include "Utilities.h"
 #include <boost/progress.hpp>
 #include <iostream>
 #include <string>
 #include <time.h>
 
-#define GRAFO_ATUAL rd
-#define TEST relatorio2_estudo2_questao1
+#define GRAFO_ATUAL c1
+#define TEST relatorio2_estudo1_questao2
 
 const char tt[] = "inputs/teste.txt";
 const char c1[] = "inputs/grafo_1.txt";
@@ -38,7 +38,7 @@ void relatorio2_estudo1_questao1() {
 void relatorio2_estudo1_questao2() {
     boost::progress_timer timer;
 
-    Mst mi(g, 2722ULL);
+    Prim mi(g, 2722ULL);
     std::cout << "Custo -- Número de nós" << std::endl;
     std::cout << mi.getMstCost() << " -- " << mi.getNumberOfMstNodes();
     std::cout << std::endl;

@@ -13,8 +13,8 @@
 
 #include <cppunit/extensions/HelperMacros.h>
 
-class floydwarshalltest : public CPPUNIT_NS::TestFixture {
-    CPPUNIT_TEST_SUITE(floydwarshalltest);
+class floydwarshalltestclass1 : public CPPUNIT_NS::TestFixture {
+    CPPUNIT_TEST_SUITE(floydwarshalltestclass1);
 
     CPPUNIT_TEST(testFloydWarshall);
     CPPUNIT_TEST(testFWNeg);
@@ -24,8 +24,8 @@ class floydwarshalltest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE_END();
 
 public:
-    floydwarshalltest();
-    virtual ~floydwarshalltest();
+    floydwarshalltestclass1();
+    virtual ~floydwarshalltestclass1();
     void setUp();
     void tearDown();
 

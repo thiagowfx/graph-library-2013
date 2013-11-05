@@ -122,8 +122,8 @@ do programa da seguinte maneira: primeiro criamos o stub (assinatura; protótipo
 \end_layout
 
 \begin_layout Standard
-Optamos por recomeçar o trabalho praticamente do zero, abandonando o modelo
- anterior de desenvolvimento e de organização dos arquivos.
+Optamos por recomeçar o trabalho todo praticamente do zero, abandonando
+ o modelo anterior de desenvolvimento e de organização dos arquivos.
  Agora passamos a utilizar programação orientada a objetos que a linguagem
  C++ fornece, utilizando de conceitos tais como herança, encapsulamento
  e polimorfismo para tornar a biblioteca mais fácil de manter para seus
@@ -240,11 +240,11 @@ Dijkstra (caminho mínimo)
 \end_layout
 
 \begin_layout Itemize
-Mst (Prim: árvore geradora mínima)
+Floyd (-Warshall) (distância média)
 \end_layout
 
 \begin_layout Itemize
-Floyd (-Warshall) (distância média)
+Mst (Prim: árvore geradora mínima)
 \end_layout
 
 \begin_layout Itemize
@@ -259,7 +259,7 @@ Utilities
 \series default
  para armazená-las.
  São funções com propósitos do tipo: comparar dois vetores, comparar dois
- arquivos de texto, etc.
+ arquivos de texto, imprimir o conteúdo de um vetor, etc.
 \end_layout
 
 \begin_layout Standard

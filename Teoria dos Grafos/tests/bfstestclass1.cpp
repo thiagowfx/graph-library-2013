@@ -292,3 +292,19 @@ void bfstestclass1::testBfsSaveInfo2() {
 
     is.close();
 }
+
+void bfstestclass1::testBfsAll() {
+    Bfs bi(gDe);
+    bi.bfsAll();
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(3));
+    CPPUNIT_ASSERT_EQUAL(4ULL, bi.getParent(4));
+    CPPUNIT_ASSERT_EQUAL(4ULL, bi.getParent(5));
+
+    CPPUNIT_ASSERT_EQUAL(0ULL, bi.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(3));
+    CPPUNIT_ASSERT_EQUAL(0ULL, bi.getLevel(4));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(5));
+}

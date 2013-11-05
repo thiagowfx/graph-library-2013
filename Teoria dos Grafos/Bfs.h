@@ -22,6 +22,10 @@ public:
     void bfs(const unsigned long long source);
     /** Faz uma BFS a partir do nó <i>source</i>, porém ignora as buscas anteriores. Equivalente a criar uma nova instância. */
     void bfsStartOver(const unsigned long long source);
+    /** Executa a BFS em todos os vértices do grafo.\n
+     *  Objetivo: gerar uma floresta de BFS do grafo.
+     **/
+    void bfsAll();
     /** Escreve informações sobre a BFS para o arquivo <b>filename</b>.\n
      *  template: parent[i] = j 
      **/

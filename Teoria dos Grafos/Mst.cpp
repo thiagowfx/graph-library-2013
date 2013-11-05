@@ -1,12 +1,3 @@
-/* 
- * File:   Mst.cpp
- * Author: gdcs
- * 
- * Esta classe participa da luta pela reforma agrária e justiça social no Brasil.
- * 
- * Created on November 1, 2013, 12:25 AM
- */
-
 #include "Mst.h"
 
 #define INF std::numeric_limits<double>::max()

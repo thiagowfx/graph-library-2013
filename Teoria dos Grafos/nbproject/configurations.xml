@@ -12,7 +12,6 @@
       <itemPath>Graph.h</itemPath>
       <itemPath>GraphList.h</itemPath>
       <itemPath>GraphMatrix.h</itemPath>
-      <itemPath>Include.h</itemPath>
       <itemPath>InputHandler.h</itemPath>
       <itemPath>Mst.h</itemPath>
     </logicalFolder>
@@ -34,6 +33,7 @@
                    displayName="Arquivos de Programação Genérica"
                    projectFiles="true">
       <itemPath>Heap.h</itemPath>
+      <itemPath>Include.h</itemPath>
       <itemPath>Utilities.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -43,7 +43,6 @@
     </logicalFolder>
     <logicalFolder name="f1" displayName="Relatórios" projectFiles="true">
       <itemPath>relatorio2-estudo1-questao3-alt.cpp</itemPath>
-      <itemPath>relatorio2-estudo1-questao3.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Arquivos de Teste"
@@ -656,10 +655,7 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
-      <item path="relatorio2-estudo1-questao3-alt.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
+      <item path="relatorios.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/bfstestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>

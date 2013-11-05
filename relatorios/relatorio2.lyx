@@ -288,7 +288,7 @@ Distância até o vértice 1
 \end_layout
 
 \begin_layout Standard
-Rodamos uma cada programa somente 
+Rodamos cada programa somente 
 \series bold
 uma única vez
 \series default
@@ -2018,10 +2018,29 @@ Distância e caminho mínimo até Dijkstra
 \end_layout
 
 \begin_layout Standard
+Usamos a representação de 
+\series bold
+lista de adjacência
+\series default
+, rodando o 
+\series bold
+algoritmo de Dijkstra
+\series default
+.
+ 
+\series bold
+OBS.: 
+\series default
+Edsger W.
+ Dijkstra ID = 2722.
+\end_layout
+
+\begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="3">
+<lyxtabular version="3" rows="9" columns="4">
 <features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -2033,6 +2052,17 @@ Distância e caminho mínimo até Dijkstra
 
 \series bold
 Colaborador
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+ID
 \end_layout
 
 \end_inset
@@ -2075,6 +2105,18 @@ Alan M.
 \begin_inset Text
 
 \begin_layout Plain Layout
+11365
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\infty$
+\end_inset
+
 
 \end_layout
 
@@ -2084,7 +2126,7 @@ Alan M.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+não existe
 \end_layout
 
 \end_inset
@@ -2106,7 +2148,16 @@ J.
 \begin_inset Text
 
 \begin_layout Plain Layout
+471365
+\end_layout
 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.48037
 \end_layout
 
 \end_inset
@@ -2115,6 +2166,9 @@ J.
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $2722,9490,7200,10343,646765,490368,10746,3655,471365$
+\end_inset
+
 
 \end_layout
 
@@ -2122,7 +2176,7 @@ J.
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2132,7 +2186,57 @@ Jon M.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5709
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.71595
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2722,217250,11456,768,11448,4704,...$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2145,6 +2249,9 @@ Jon M.
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $...,585432,8629,11834,9608,5709$
+\end_inset
+
 
 \end_layout
 
@@ -2152,7 +2259,7 @@ Jon M.
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2161,7 +2268,57 @@ Jon M.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+11386
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.75351
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2722,217250,11456,768,6479,8528,10572,$
+\end_inset
+
+...
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -2174,6 +2331,9 @@ Jon M.
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $...,357587,11649,3694,318911,11386$
+\end_inset
+
 
 \end_layout
 
@@ -2195,7 +2355,16 @@ Daniel R.
 \begin_inset Text
 
 \begin_layout Plain Layout
+343930
+\end_layout
 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.94283
 \end_layout
 
 \end_inset
@@ -2204,6 +2373,9 @@ Daniel R.
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $2722,9490,7200,391667,371226,4379,68773,11466,343930$
+\end_inset
+
 
 \end_layout
 
@@ -2224,7 +2396,16 @@ Ricardo Marroquim
 \begin_inset Text
 
 \begin_layout Plain Layout
+309497
+\end_layout
 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.80935
 \end_layout
 
 \end_inset
@@ -2233,6 +2414,9 @@ Ricardo Marroquim
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $2722,9490,408912,2932,371,10304,496285,309497$
+\end_inset
+
 
 \end_layout
 
@@ -2244,6 +2428,48 @@ Ricardo Marroquim
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+Tempo de execução médio: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sem 
+\family typewriter
+-O3
+\family default
+: 
+\begin_inset Formula $32$
+\end_inset
+
+--
+\begin_inset Formula $33$
+\end_inset
+
+s
+\end_layout
+
+\begin_layout Itemize
+Com 
+\family typewriter
+-O3
+\family default
+: 
+\begin_inset Formula $9$
+\end_inset
+
+--
+\begin_inset Formula $10$
+\end_inset
+
+s
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Pico de memória médio:
 \end_layout
 
 \begin_layout Subsection

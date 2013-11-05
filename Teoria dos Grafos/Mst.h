@@ -1,10 +1,3 @@
-/* 
- * File:   Mst.h
- * Author: gdcs
- *
- * Created on November 1, 2013, 12:25 AM
- */
-
 #ifndef MST_H
 #define	MST_H
 

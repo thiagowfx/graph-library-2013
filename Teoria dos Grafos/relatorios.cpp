@@ -1,15 +1,17 @@
-#include "Graph.h"
 #include "Dijkstra.h"
-#include "Utilities.h"
+#include "Graph.h"
 #include "InputHandler.h"
 #include "Mst.h"
+#include "Utilities.h"
+#include <boost/progress.hpp>
+#include <iostream>
+#include <string>
 #include <time.h>
-// #include <chrono>
-// #include <thread>
-// #include <unistd.h>
 
-#define GRAFO_ATUAL c4
+#define GRAFO_ATUAL rd
+#define TEST relatorio2_estudo2_questao1
 
+const char tt[] = "inputs/teste.txt";
 const char c1[] = "inputs/grafo_1.txt";
 const char c2[] = "inputs/grafo_2.txt";
 const char c3[] = "inputs/grafo_3.txt";
@@ -19,8 +21,9 @@ const char rd[] = "inputs/rede_colaboracao.txt";
 Graph *g;
 
 void relatorio2_estudo1_questao1() {
-    Dijkstra di(g, 1ULL);
+    boost::progress_timer timer;
 
+    Dijkstra di(g, 1ULL);
     std::cout << "Distância -- Caminho" << std::endl;
     std::cout
             << di.getDistance(10) << " -- " << printVector(di.getPath(10)) << std::endl
@@ -29,59 +32,37 @@ void relatorio2_estudo1_questao1() {
             << di.getDistance(40) << " -- " << printVector(di.getPath(40)) << std::endl
             << di.getDistance(50) << " -- " << printVector(di.getPath(50)) << std::endl;
     std::cout << std::endl;
+    di.saveInfo("answers/relatorio2_estudo1_questao1.txt");
 }
 
 void relatorio2_estudo1_questao2() {
-    clock_t start, stop;
+    boost::progress_timer timer;
 
-    //------------------------------------------------------------------------//
-    start = clock();
-
-    Mst mi(g, 1ULL);
-
+    Mst mi(g, 2722ULL);
     std::cout << "Custo -- Número de nós" << std::endl;
     std::cout << mi.getMstCost() << " -- " << mi.getNumberOfMstNodes();
     std::cout << std::endl;
+    mi.saveInfo("answers/relatorio2_estudo1_questao2");
+}
 
-    stop = clock();
-
-    double time_elapsed = double(stop) - double(start);
-    time_elapsed /= CLOCKS_PER_SEC;
-
-    double time_elapsed2 = (stop - start) / double(CLOCKS_PER_SEC);
-    //------------------------------------------------------------------------//    
-
-    std::cout << "Tempo de execução: " << time_elapsed << " s" << std::endl;
-    std::cout << "Tempo de execução: " << time_elapsed2 << " s" << std::endl;
+void relatorio2_estudo1_questao3() {
+    boost::progress_timer timer;
+    
+    FloydWarshall fw(g);
+    std::cout << "Distância Média" << std::endl;
+    std::cout << fw.getAverageDist() << std::endl;
 }
 
 void relatorio2_estudo2_questao1() {
-    clock_t start, stop;
+    boost::progress_timer timer;
 
-    //------------------------------------------------------------------------//
-    start = clock();
-
-    Dijkstra di(g, 2722ULL);
-    
-    stop = clock();
-    
-    di.saveInfo("answers/dijkstra_output.txt");
-
-    double time_elapsed = double(stop) - double(start);
-    time_elapsed /= CLOCKS_PER_SEC;
-
-    double time_elapsed2 = (stop - start) / double(CLOCKS_PER_SEC);
-    //------------------------------------------------------------------------//    
-
-    std::cout << "Tempo de execução: " << time_elapsed << " s" << std::endl;
-    std::cout << "Tempo de execução: " << time_elapsed2 << " s" << std::endl;
+    Dijkstra di(g, 2722ULL); // edsger w. dijkstra
+    di.saveInfo("answers/relatorio2_estudo2_questao1.txt");
 }
 
 int main() {
     InputHandler ih;
     ih.readGraph(&g, GRAFO_ATUAL, 'l', true);
-
-    relatorio2_estudo2_questao1();
-
+    TEST();
     return 0;
 }

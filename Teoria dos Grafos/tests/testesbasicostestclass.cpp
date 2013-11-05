@@ -205,11 +205,15 @@ void newtestclass::testGetDist() {
     delete gpesopos;
     
     Graph *gpesoneg = new GraphMatrix(3, true);
-    gpesoneg->addEdge(1, 2, 1);
-    gpesoneg->addEdge(2, 3, -4);
-    gpesoneg->addEdge(1, 3, 2);
-    CPPUNIT_ASSERT( -2.0 == gpesoneg->getDistance(1, 2));
-    CPPUNIT_ASSERT( -3.0 == gpesoneg->getDistance(1, 3));
-    
+    gpesoneg->addEdge(1, 2, 1.0);
+    gpesoneg->addEdge(2, 3, -1.0);
+    gpesoneg->addEdge(1, 3, 2.0);
+    CPPUNIT_ASSERT(gpesoneg->isWeighted());
+    CPPUNIT_ASSERT(gpesoneg->isNegativeWeighted());
+    CPPUNIT_ASSERT_EQUAL(1.0, gpesoneg->getWeight(1,2));
+    CPPUNIT_ASSERT_EQUAL(-1.0, gpesoneg->getWeight(2,3));
+    CPPUNIT_ASSERT_EQUAL(2.0, gpesoneg->getWeight(1,3));
+    //CPPUNIT_ASSERT_EQUAL( -1.0, gpesoneg->getDistance(2, 3));
+    CPPUNIT_ASSERT_EQUAL( 0.0,  gpesoneg->getDistance(1, 3));
     delete gpesoneg;
 }

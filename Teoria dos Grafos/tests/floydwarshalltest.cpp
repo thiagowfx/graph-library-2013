@@ -51,6 +51,31 @@ void floydwarshalltest::testFloydWarshall() {
     CPPUNIT_ASSERT_EQUAL(4ULL , fw.getParent(4ULL,5ULL));
 }
 
+void floydwarshalltest::testFWNeg() {
+    Graph *gpesoneg = new GraphMatrix(3, true);
+    gpesoneg->addEdge(1, 2, 1.0);
+    gpesoneg->addEdge(2, 3, -1.0);
+    gpesoneg->addEdge(1, 3, 2.0);
+    CPPUNIT_ASSERT_EQUAL(3ULL, gpesoneg->getN());
+    CPPUNIT_ASSERT(gpesoneg->isWeighted());
+    CPPUNIT_ASSERT(gpesoneg->isNegativeWeighted());
+    CPPUNIT_ASSERT_EQUAL(1.0, gpesoneg->getWeight(1,2));
+    CPPUNIT_ASSERT_EQUAL(-1.0, gpesoneg->getWeight(2,3));
+    CPPUNIT_ASSERT_EQUAL(2.0, gpesoneg->getWeight(1,3));
+    
+    FloydWarshall fw(gpesoneg);
+    CPPUNIT_ASSERT_EQUAL(0.0, fw.getDistance(1, 1));
+    CPPUNIT_ASSERT_EQUAL(0.0, fw.getDistance(2, 2));
+    CPPUNIT_ASSERT_EQUAL(0.0, fw.getDistance(3, 3));
+    
+    CPPUNIT_ASSERT_EQUAL(-1.0, fw.getDistance(2, 3));
+    CPPUNIT_ASSERT_EQUAL(0.0, fw.getDistance(1, 3));
+    
+    CPPUNIT_ASSERT_EQUAL(-1.0, gpesoneg->getDistance(2, 3));
+    CPPUNIT_ASSERT_EQUAL(0.0, gpesoneg->getDistance(1, 3));
+    delete gpesoneg;
+}
+
 void floydwarshalltest::testAverDist() {
   Graph *gm = new GraphMatrix(5, true);
   gm->addEdge(1, 2, 2.0);

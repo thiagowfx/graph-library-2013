@@ -11,6 +11,12 @@ Distância média: 4.17181
 Tempo de execução: 114.28 s
 RUN FINISHED; exit value 0; real time: 1m 54s; user: 30ms; system: 1m 54s
 
+Grafo 2 com Dijkstra
+Distância média: 2.0859
+Tempo de execução: 1573.11 s
+RUN FINISHED; exit value 0; real time: 26m 14s; user: 260ms; system: 26m 13s
+
+
 (sem medir o tempo de calculo da distancia media)
 Distância média: 4.17181
 Tempo de execução: 113.37 s
@@ -87,6 +93,12 @@ Grafo 3
 Distância média: 32.0215
 Tempo de execução: 500.403 s
 RUN FINISHED; exit value 0; real time: 1h 20m 0s; user: 4s; system: 1h 19m 51s
+
+Grafo 3 com Dijkstra
+Distância média: 16.0141
+Tempo de execução: 612.58 s
+RUN FINISHED; exit value 0; real time: 10m 13s; user: 2s; system: 10m 9s
+
 
 
 

@@ -21,6 +21,12 @@ FloydWarshall::FloydWarshall(const Graph *G) : G(G) {
     for (unsigned long long k = 1; k <= N; ++k)
         for (unsigned long long i = 1; i <= N; ++i)
             for (unsigned long long j = 1; j <= N; ++j) {
+                /** No grafo não direcionado, se w(i,j) < 0,
+                 *  (i,j) e (j,i) formam um ciclo negativo, então descarto esses casos. 
+                 *  Além disso, o teste é D[i][k] < D[i][k] + D[k][j] 
+                 *  sempre falso no caso k == i ou k == j */
+                if (i == k || k == j || i == j)
+                    continue;
                 alt = D[i][k] + D[k][j];
                 if ( alt < D[i][j] ) {
                     D[i][j] = alt;

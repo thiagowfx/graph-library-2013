@@ -17,6 +17,7 @@ class floydwarshalltest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE(floydwarshalltest);
 
     CPPUNIT_TEST(testFloydWarshall);
+    CPPUNIT_TEST(testFWNeg);
     CPPUNIT_TEST(testAverDist);
     CPPUNIT_TEST(testFloydWarshallException);
 
@@ -30,6 +31,7 @@ public:
 
 private:
     void testFloydWarshall();
+    void testFWNeg();
     void testAverDist();
     void testFloydWarshallException();
 };

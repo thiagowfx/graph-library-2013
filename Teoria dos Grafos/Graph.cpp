@@ -86,7 +86,7 @@ double Graph::getDistance(const unsigned long long node1, const unsigned long lo
         return di.getDistance(node2);
     } 
     else {
-        FloydWarshall fi(this);
+        FloydWarshall fi(this);        
         return fi.getDistance(node1, node2);
     }
 }

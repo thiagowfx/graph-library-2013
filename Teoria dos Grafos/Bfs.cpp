@@ -14,21 +14,22 @@ Bfs::Bfs(const Graph* G) : G(G) {
 void Bfs::clear() {
     bfsQueue = std::queue<unsigned long long> ();
     bfsExplored = std::vector<bool> (G->getN() + 1, false);
-    // decisão de design: pai começa apontando para 0.
+    // decisão de design: pai começa apontando para 0 (nó que não existe). Pai da raiz é ele mesmo.
     bfsTree = std::vector<unsigned long long> (G->getN() + 1, 0);
-    // decisão de design: bfsLevel só faz sentido se o nó foi explorado
+    // Ver se o nó já foi explorado. Isso distingue level = 0 da raiz e level = 0 de um nó não explorado.
     bfsLevel = std::vector<unsigned long long> (G->getN() + 1, 0);
 }
 
 unsigned long long Bfs::getParent(const unsigned long long node) const {
+    if (!bfsExplored[node])
+        throw std::exception();
     return bfsTree.at(node);
 }
 
 unsigned long long Bfs::getLevel(const unsigned long long node) const {
-    if (bfsExplored[node])
-        return bfsLevel.at(node);
-    else
+    if (!bfsExplored[node])
         throw std::exception();
+    return bfsLevel.at(node);
 }
 
 void Bfs::bfs(const unsigned long long source) {
@@ -42,7 +43,7 @@ void Bfs::bfs(const unsigned long long source) {
     bfsTree[source] = source;
     bfsQueue.push(source);
     bfsExplored[source] = true;
-    // redundante, mas vamos lá
+    // redundante por causa de clear(), mas vamos lá
     bfsLevel[source] = 0;
 
     while (!bfsQueue.empty()) {
@@ -75,10 +76,21 @@ Bfs::~Bfs() {
 void Bfs::saveInfo(const char* filename) const {
     std::ofstream os;
     os.open(filename);
+    unsigned long long parent;
 
     // template: parent[i] = j
-    for (int i = 1; i <= G->getN(); ++i)
-        os << "parent[" << i << "] = " << getParent(i) << std::endl;
+    for (int i = 1; i <= G->getN(); ++i) {
+        os << "parent[" << i << "] = ";
+
+        try {
+            os << getParent(i);
+        }
+        catch (std::exception) {
+            os << "undef";
+        }
+
+        os << std::endl;
+    }
 
     os.close();
 }

@@ -20,6 +20,8 @@ class bfstestclass1 : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST(testBfsGrafoDesconexo);
     CPPUNIT_TEST(testBfsStartOverPrimeiro);
     CPPUNIT_TEST(testBfsConflict);
+    CPPUNIT_TEST(testBfsSaveInfo);
+    CPPUNIT_TEST(testBfsSaveInfo2);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -35,6 +37,7 @@ private:
     void testBfsStartOverPrimeiro();
     void testBfsConflict();
     void testBfsSaveInfo();
+    void testBfsSaveInfo2();
 };
 
 #endif	/* BFSTESTCLASS1_H */

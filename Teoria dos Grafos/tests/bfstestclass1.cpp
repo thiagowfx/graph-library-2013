@@ -47,219 +47,248 @@ void bfstestclass1::tearDown() {
 
 void bfstestclass1::testBfs() {
     // di = bfs instance
-    Bfs di(gEx);
+    Bfs bi(gEx);
 
-    di.bfs(1);
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(3));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(5));
-    
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(2));
-    CPPUNIT_ASSERT_EQUAL(2ULL, di.getLevel(3));
-    CPPUNIT_ASSERT_EQUAL(2ULL, di.getLevel(4));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(5));
-    
-    di.bfs(1);
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(3));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(5));
+    bi.bfs(1);
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(5ULL, bi.getParent(3));
+    CPPUNIT_ASSERT_EQUAL(5ULL, bi.getParent(4));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(5));
 
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(2));
-    CPPUNIT_ASSERT_EQUAL(2ULL, di.getLevel(3));
-    CPPUNIT_ASSERT_EQUAL(2ULL, di.getLevel(4));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(5));
-    
-    di.bfsStartOver(5);
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(1));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(2));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(3));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
+    CPPUNIT_ASSERT_EQUAL(0ULL, bi.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(2));
+    CPPUNIT_ASSERT_EQUAL(2ULL, bi.getLevel(3));
+    CPPUNIT_ASSERT_EQUAL(2ULL, bi.getLevel(4));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(5));
 
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(1));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(2));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(3));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(4));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(5));
-    
-    di.bfsStartOver(5);
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(1));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(2));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(3));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
-    
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(1));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(2));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(3));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(4));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(5));
+    bi.bfs(1);
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(5ULL, bi.getParent(3));
+    CPPUNIT_ASSERT_EQUAL(5ULL, bi.getParent(4));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(5));
+
+    CPPUNIT_ASSERT_EQUAL(0ULL, bi.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(2));
+    CPPUNIT_ASSERT_EQUAL(2ULL, bi.getLevel(3));
+    CPPUNIT_ASSERT_EQUAL(2ULL, bi.getLevel(4));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(5));
+
+    bi.bfsStartOver(5);
+    CPPUNIT_ASSERT_EQUAL(5ULL, bi.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(5ULL, bi.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(5ULL, bi.getParent(3));
+    CPPUNIT_ASSERT_EQUAL(5ULL, bi.getParent(4));
+    CPPUNIT_ASSERT_EQUAL(5ULL, bi.getParent(5));
+
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(3));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(4));
+    CPPUNIT_ASSERT_EQUAL(0ULL, bi.getLevel(5));
+
+    bi.bfsStartOver(5);
+    CPPUNIT_ASSERT_EQUAL(5ULL, bi.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(5ULL, bi.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(5ULL, bi.getParent(3));
+    CPPUNIT_ASSERT_EQUAL(5ULL, bi.getParent(4));
+    CPPUNIT_ASSERT_EQUAL(5ULL, bi.getParent(5));
+
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(3));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(4));
+    CPPUNIT_ASSERT_EQUAL(0ULL, bi.getLevel(5));
 }
 
 void bfstestclass1::testBfsGrafoDesconexo() {
-    Bfs di(gDe);
+    Bfs bi(gDe);
 
-    di.bfs(1);
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(3));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(4));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(5));
+    bi.bfs(1);
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(3));
+    CPPUNIT_ASSERT_THROW(bi.getParent(4), std::exception);
+    CPPUNIT_ASSERT_THROW(bi.getParent(5), std::exception);
 
-    di.bfs(5);
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(3));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
+    bi.bfs(5);
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(3));
+    CPPUNIT_ASSERT_EQUAL(5ULL, bi.getParent(4));
+    CPPUNIT_ASSERT_EQUAL(5ULL, bi.getParent(5));
 
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(2));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(3));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(4));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(5));
+    CPPUNIT_ASSERT_EQUAL(0ULL, bi.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(3));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(4));
+    CPPUNIT_ASSERT_EQUAL(0ULL, bi.getLevel(5));
 
-    
-    di.bfsStartOver(5);
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(1));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(2));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(3));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
 
-    di.bfs(3);
-    CPPUNIT_ASSERT_EQUAL(3ULL, di.getParent(1));
-    CPPUNIT_ASSERT_EQUAL(3ULL, di.getParent(2));
-    CPPUNIT_ASSERT_EQUAL(3ULL, di.getParent(3));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
+    bi.bfsStartOver(5);
+    CPPUNIT_ASSERT_THROW(bi.getParent(1), std::exception);
+    CPPUNIT_ASSERT_THROW(bi.getParent(2), std::exception);
+    CPPUNIT_ASSERT_THROW(bi.getParent(3), std::exception);
+    CPPUNIT_ASSERT_EQUAL(5ULL, bi.getParent(4));
+    CPPUNIT_ASSERT_EQUAL(5ULL, bi.getParent(5));
 
-    di.bfsStartOver(1);
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(3));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(4));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(5));
+    bi.bfs(3);
+    CPPUNIT_ASSERT_EQUAL(3ULL, bi.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(3ULL, bi.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(3ULL, bi.getParent(3));
+    CPPUNIT_ASSERT_EQUAL(5ULL, bi.getParent(4));
+    CPPUNIT_ASSERT_EQUAL(5ULL, bi.getParent(5));
 
-    di.bfs(4);
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(3));
-    CPPUNIT_ASSERT_EQUAL(4ULL, di.getParent(4));
-    CPPUNIT_ASSERT_EQUAL(4ULL, di.getParent(5));
+    bi.bfsStartOver(1);
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(3));
+    CPPUNIT_ASSERT_THROW(bi.getParent(4), std::exception);
+    CPPUNIT_ASSERT_THROW(bi.getParent(5), std::exception);
+
+    bi.bfs(4);
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(3));
+    CPPUNIT_ASSERT_EQUAL(4ULL, bi.getParent(4));
+    CPPUNIT_ASSERT_EQUAL(4ULL, bi.getParent(5));
 }
 
 void bfstestclass1::testBfsStartOverPrimeiro() {
-    Bfs di(gDe);
+    Bfs bi(gDe);
 
-    di.bfsStartOver(5);
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(1));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(2));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(3));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
-    
-    CPPUNIT_ASSERT_THROW(di.getLevel(1), std::exception);
-    CPPUNIT_ASSERT_THROW(di.getLevel(2), std::exception);
-    CPPUNIT_ASSERT_THROW(di.getLevel(3), std::exception);
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(4));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(5));
-    
-    di.bfsStartOver(1);
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(3));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(4));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getParent(5));
+    bi.bfsStartOver(5);
+    CPPUNIT_ASSERT_THROW(bi.getParent(1), std::exception);
+    CPPUNIT_ASSERT_THROW(bi.getParent(2), std::exception);
+    CPPUNIT_ASSERT_THROW(bi.getParent(3), std::exception);
+    CPPUNIT_ASSERT_EQUAL(5ULL, bi.getParent(4));
+    CPPUNIT_ASSERT_EQUAL(5ULL, bi.getParent(5));
 
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(2));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(3));
-    CPPUNIT_ASSERT_THROW(di.getLevel(4), std::exception);
-    CPPUNIT_ASSERT_THROW(di.getLevel(5), std::exception);
-    
-    di.bfs(5);
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(3));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(4));
-    CPPUNIT_ASSERT_EQUAL(5ULL, di.getParent(5));
-    
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(2));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(3));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(4));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(5));
-    
+    CPPUNIT_ASSERT_THROW(bi.getLevel(1), std::exception);
+    CPPUNIT_ASSERT_THROW(bi.getLevel(2), std::exception);
+    CPPUNIT_ASSERT_THROW(bi.getLevel(3), std::exception);
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(4));
+    CPPUNIT_ASSERT_EQUAL(0ULL, bi.getLevel(5));
+
+    bi.bfsStartOver(1);
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(3));
+    CPPUNIT_ASSERT_THROW(bi.getLevel(5), std::exception);
+    CPPUNIT_ASSERT_THROW(bi.getLevel(5), std::exception);
+
+    CPPUNIT_ASSERT_EQUAL(0ULL, bi.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(3));
+    CPPUNIT_ASSERT_THROW(bi.getLevel(4), std::exception);
+    CPPUNIT_ASSERT_THROW(bi.getLevel(5), std::exception);
+
+    bi.bfs(5);
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(3));
+    CPPUNIT_ASSERT_EQUAL(5ULL, bi.getParent(4));
+    CPPUNIT_ASSERT_EQUAL(5ULL, bi.getParent(5));
+
+    CPPUNIT_ASSERT_EQUAL(0ULL, bi.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(2));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(3));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(4));
+    CPPUNIT_ASSERT_EQUAL(0ULL, bi.getLevel(5));
+
 }
 
 void bfstestclass1::testBfsConflict() {
-    Bfs di(gK2);
+    Bfs bi(gK2);
 
-    di.bfs(1);
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
-    
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(2));
+    bi.bfs(1);
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(2));
 
-    di.bfs(1);
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
+    CPPUNIT_ASSERT_EQUAL(0ULL, bi.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(2));
 
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(2));
-    
-    di.bfs(2);
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(1));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getParent(2));
-    
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(1));
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(2));
-    
-    di.bfsStartOver(2);
-    CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(1));
-    CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(2));
-    
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(1));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(2));
-    
-    di.bfs(1);
-    CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(1));
-    CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(2));
-    
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(1));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(2));
-    
-    di.bfs(2);
-    CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(1));
-    CPPUNIT_ASSERT_EQUAL(2ULL, di.getParent(2));
-    
-    CPPUNIT_ASSERT_EQUAL(1ULL, di.getLevel(1));
-    CPPUNIT_ASSERT_EQUAL(0ULL, di.getLevel(2));
+    bi.bfs(1);
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(2));
+
+    CPPUNIT_ASSERT_EQUAL(0ULL, bi.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(2));
+
+    bi.bfs(2);
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getParent(2));
+
+    CPPUNIT_ASSERT_EQUAL(0ULL, bi.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(2));
+
+    bi.bfsStartOver(2);
+    CPPUNIT_ASSERT_EQUAL(2ULL, bi.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(2ULL, bi.getParent(2));
+
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(0ULL, bi.getLevel(2));
+
+    bi.bfs(1);
+    CPPUNIT_ASSERT_EQUAL(2ULL, bi.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(2ULL, bi.getParent(2));
+
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(0ULL, bi.getLevel(2));
+
+    bi.bfs(2);
+    CPPUNIT_ASSERT_EQUAL(2ULL, bi.getParent(1));
+    CPPUNIT_ASSERT_EQUAL(2ULL, bi.getParent(2));
+
+    CPPUNIT_ASSERT_EQUAL(1ULL, bi.getLevel(1));
+    CPPUNIT_ASSERT_EQUAL(0ULL, bi.getLevel(2));
 }
 
 void bfstestclass1::testBfsSaveInfo() {
-    Bfs di(gEx);
-    di.bfs(1);
+    Bfs bi(gEx);
+    bi.bfs(1);
     const char file[] = "tmp/testBfsSaveInfo.txt";
-    di.saveInfo(file);
-    
+    bi.saveInfo(file);
+
     std::ifstream is;
     is.open(file);
     std::string s;
 
-    std::getline(is, s);        CPPUNIT_ASSERT("parent[1] = 1" == s);
-    std::getline(is, s);        CPPUNIT_ASSERT("parent[2] = 1" == s);
-    std::getline(is, s);        CPPUNIT_ASSERT("parent[3] = 5" == s);
-    std::getline(is, s);        CPPUNIT_ASSERT("parent[4] = 5" == s);
-    std::getline(is, s);        CPPUNIT_ASSERT("parent[5] = 1" == s);
+    std::getline(is, s);
+    CPPUNIT_ASSERT("parent[1] = 1" == s);
+    std::getline(is, s);
+    CPPUNIT_ASSERT("parent[2] = 1" == s);
+    std::getline(is, s);
+    CPPUNIT_ASSERT("parent[3] = 5" == s);
+    std::getline(is, s);
+    CPPUNIT_ASSERT("parent[4] = 5" == s);
+    std::getline(is, s);
+    CPPUNIT_ASSERT("parent[5] = 1" == s);
+
+    is.close();
+}
+
+void bfstestclass1::testBfsSaveInfo2() {
+    Bfs bi(gDe);
+    bi.bfs(1);
+    const char file[] = "tmp/testBfsSaveInfo2.txt";
+    bi.saveInfo(file);
+
+    std::ifstream is;
+    is.open(file);
+    std::string s;
+
+    std::getline(is, s);
+    CPPUNIT_ASSERT("parent[1] = 1" == s);
+    std::getline(is, s);
+    CPPUNIT_ASSERT("parent[2] = 1" == s);
+    std::getline(is, s);
+    CPPUNIT_ASSERT("parent[3] = 1" == s);
+    std::getline(is, s);
+    CPPUNIT_ASSERT("parent[4] = undef" == s);
+    std::getline(is, s);
+    CPPUNIT_ASSERT("parent[5] = undef" == s);
 
     is.close();
 }

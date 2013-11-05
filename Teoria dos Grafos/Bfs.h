@@ -9,35 +9,43 @@
 #define	BFS_H
 
 #include "Graph.h"
+#include <queue>
+#include <stdexcept>
+#include <vector>
 
 class Bfs {
 public:
-    /** Instancia uma nova <b>Bfs</b> a qual atuará no grafo <i>G</i>. */
+    /** Constrói uma nova <b>Bfs</b> para atuar em <b>G</b>. */
     Bfs(const Graph* G);
     virtual ~Bfs();
-    /** Chama a Bfs a partir do nó <i>source</i>*/
+    /** Faz uma BFS a partir do nó <i>source</i>. */
     void bfs(const unsigned long long source);
-    /** Chama a BFS a partir de <i>source</i>, porém a recomeça do zero, sem aproveitar informações de Bfs' anteriores.*/
+    /** Faz uma BFS a partir do nó <i>source</i>, porém ignora as buscas anteriores. Equivalente a criar uma nova instância. */
     void bfsStartOver(const unsigned long long source);
-    /** Escreve informações sobre a BFS para o arquivo <i>filename</i>. */
+    /** Escreve informações sobre a BFS para o arquivo <b>filename</b>.\n
+     *  template: parent[i] = j 
+     **/
     void saveInfo(const char* filename) const;
-    /** Retorna o pai de <i>node</i>.*/
+    /** Retorna o pai de <i>node</i>.\n
+     *  Lança uma exceção se o nó ainda não foi explorado. 
+     **/
     unsigned long long getParent(const unsigned long long node) const;
-    /** Retorna o level do nó <i>source</i> em relação à origem da BFS. */
+    /** Retorna o level do nó <i>source</i>.
+     *  Lança uma exceção se o nó ainda não foi explorado. 
+     **/
     unsigned long long getLevel(const unsigned long long node) const;
 private:
     /** Grafo no qual a classe vai atuar. */
     const Graph *G;
     /** Árvore da BFS. Contém os pais dos nós. */
     std::vector <unsigned long long> bfsTree;
-    /** Pilha a ser usada na BFS. */
+    /** Fila para selecionar os próximos nós a serem processados. */
     std::queue <unsigned long long> bfsQueue;
-    /** Vetor de vértices explorados durante a BFS. */
+    /** Marca os vértices explorados durante a execução da BFS. */
     std::vector<bool> bfsExplored;
-    /** Vetor dos níveis da BFS. */
+    /** Guarda os níveis dos nós. */
     std::vector<unsigned long long> bfsLevel;
-    /** Reseta quaisquer informações já processadas por uma instância dessa classe.\n
-     * Equivalente a reconstruir a Bfs. */
+    /** Equivalente criar uma nova instância dessa classe. */
     void clear();
 };
 

@@ -2,6 +2,7 @@
 #define	HEAP_H
 
 #include <deque>
+#include <stdexcept>
 
 /** Classe Genérica de Heap de mínimo. Compatível com a <b>priority_queue</b> da STL. Sem limite superior. */
 template<class T>
@@ -72,7 +73,7 @@ void Heap<T>::push(const T& data) {
 template<class T>
 void Heap<T>::pop() {
     if (tam == 0)
-        throw std::exception();
+        throw std::underflow_error("Pop numa Heap vazia");
     --tam;
 
     tree[0] = tree[tam];
@@ -116,7 +117,7 @@ void Heap<T>::pop() {
 template<class T>
 T Heap<T>::top() {
     if (tam == 0)
-        throw std::exception();
+        throw std::underflow_error("Top numa Heap vazia.");
     return tree.at(0);
 }
 

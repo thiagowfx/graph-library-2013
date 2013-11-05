@@ -6,36 +6,33 @@
  */
 
 #include "FloydWarshall.h"
-
 #define INF std::numeric_limits<double>::max()
 
-FloydWarshall::FloydWarshall(const Graph *G): G(G) {
+FloydWarshall::FloydWarshall(const Graph *G) : G(G) {
     clear();
-    unsigned long long n = G->getN();
-    
-    /** Carrega as matrizes de distâncias e pais */
-    for (unsigned long long i = 1; i <= n; ++i) {
-        for (unsigned long long j = 1; j <= n; ++j) {
-            /** Estou assumindo que para todo i, isEdge(i,i) = false */
-            if (i == j) {
+    unsigned long long N = G->getN();
+
+    // inicializar as matrizes de distâncias e dos pais
+    for (unsigned long long i = 1; i <= N; ++i) {
+        for (unsigned long long j = 1; j <= N; ++j) {
+            if (i == j)
                 D[i][j] = 0;
+            else if ( G->isEdge(i, j) ) {
+                D[i][j] = G->getWeight(i, j);
+                P[i][j] = i;
             }
-            else if (G->isEdge(i,j)){
-                D.at(i).at(j) = G->getWeight(i,j);
-                P.at(i).at(j) = i;
-            }        
         }
     }
-    
+
     double alt;
-    for (unsigned long long k = 1; k <= n; ++k)
-        for (unsigned long long i = 1; i <= n; ++i)
-            for (unsigned long long j = 1; j <= n; ++j) {
-                alt = D.at(i).at(k) + D.at(k).at(j);
-                if (alt < D.at(i).at(j)) {
-                    D.at(i).at(j) = alt;
-                    P.at(i).at(j) = P.at(k).at(j);
-                }                   
+    for (unsigned long long k = 1; k <= N; ++k)
+        for (unsigned long long i = 1; i <= N; ++i)
+            for (unsigned long long j = 1; j <= N; ++j) {
+                alt = D[i][k] + D[k][j];
+                if ( alt < D[i][j] ) {
+                    D[i][j] = alt;
+                    P[i][j] = P[k][j];
+                }
             }
 }
 
@@ -43,31 +40,30 @@ FloydWarshall::~FloydWarshall() {
 }
 
 void FloydWarshall::clear() {
-    D = std::vector < std::vector< double > > (G->getN()+1, std::vector< double >(G->getN()+1, INF));
-    P = std::vector < std::vector<unsigned long long > > (G->getN()+1, std::vector<unsigned long long>(G->getN()+1, 0ULL));
+    D = std::vector < std::vector< double > > (G->getN() + 1, std::vector< double >(G->getN() + 1, INF));
+    P = std::vector < std::vector<unsigned long long > > (G->getN() + 1, std::vector<unsigned long long>(G->getN() + 1, 0ULL));
 }
 
-unsigned long long FloydWarshall::getParent(unsigned long long source, unsigned long long target) const {
-    return P.at(source).at(target);
+unsigned long long FloydWarshall::getParent(const unsigned long long source, const unsigned long long target) const {
+    return P[source][target];
 }
 
-double FloydWarshall::getDistance(unsigned long long source, unsigned long long target) const {
-    return D.at(source).at(target);
+double FloydWarshall::getDistance(const unsigned long long source, const unsigned long long target) const {
+    return D[source][target];
 }
 
 double FloydWarshall::getAverageDist() const {
-  double averageDist = 0.0;
+    double averageDist = 0.0;
 
-  // somar tudo
-  for (unsigned long long u = 1; u <= G->getN(); ++u) {
-    for (unsigned long long v = 1; v <= G->getN(); ++v) {
-      if (D[u][v] != INF)
-	averageDist += D[u][v];
+    // somar todas as arestas, sem repetir (par NÃO-ORDENADO)
+    for (unsigned long long u = 1; u <= G->getN(); ++u) {
+        for (unsigned long long v = u + 1; v <= G->getN(); ++v) {
+            if (D[u][v] != INF)
+                averageDist += D[u][v];
+        }
     }
-  }
+    // agora dividir por C(n 2)
+    averageDist /= ((G->getN() * (G->getN() - 1)) / double(2));
 
-  // agora dividir
-  averageDist /= ((G->getN() * (G->getN() - 1))/double(2));
-
-  return averageDist;
+    return averageDist;
 }

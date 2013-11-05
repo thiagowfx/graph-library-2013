@@ -127,23 +127,23 @@ void primtestclass1::testMst2() {
     CPPUNIT_ASSERT(v == mi.getPath(2));
 }
 
-void primtestclass1::testSaveInfo() {
+void primtestclass1::testSaveGraph() {
     const char output[] = "tmp/mstSaveInfo.txt";
     const char expected[] = "tests/graphs/mstSaveInfo.exp";
     Mst mi(gl, 3ULL);
-    mi.saveInfo(output);
+    mi.saveGraph(output);
     CPPUNIT_ASSERT(areFilesEquali(output, expected));
 
     const char output2[] = "tmp/mstSaveInfo2.txt";
     const char expected2[] = "tests/graphs/mstSaveInfo2.exp";
     Mst mj(gm, 1ULL);
-    mj.saveInfo(output2);
+    mj.saveGraph(output2);
     CPPUNIT_ASSERT(areFilesEquali(output2, expected2));
 
     const char output3[] = "tmp/mstSaveInfo3.txt";
     const char expected3[] = "tests/graphs/mstSaveInfo3.exp";
     Mst mk(gDesc, 1ULL);
-    mk.saveInfo(output3);
+    mk.saveGraph(output3);
     CPPUNIT_ASSERT(areFilesEquali(output3, expected3));
 }
 
@@ -178,4 +178,23 @@ void primtestclass1::testMstGrafoDesconexo() {
     CPPUNIT_ASSERT_EQUAL(1.0, mi.getDistance(3));
     CPPUNIT_ASSERT_THROW(mi.getKey(4), std::exception);
     CPPUNIT_ASSERT_THROW(mi.getKey(5), std::exception);
+}
+
+void primtestclass1::testSaveInfo() {
+    Mst mi(gDesc, 1ULL);
+    const char file[] = "tmp/testPrimSaveInfo.txt";
+    mi.saveInfo(file);
+
+    std::ifstream is;
+    is.open(file);
+    std::string s;
+
+    std::getline(is, s);    CPPUNIT_ASSERT("custo = 2, source = 1" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("key[1] = 0, parent[1] = 1" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("key[2] = 1, parent[2] = 3" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("key[3] = 1, parent[3] = 1" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("key[4] = undef, parent[4] = undef" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("key[5] = undef, parent[5] = undef" == s);
+
+    is.close();
 }

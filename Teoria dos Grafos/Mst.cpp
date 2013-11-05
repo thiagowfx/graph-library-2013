@@ -11,7 +11,7 @@
 
 #define INF std::numeric_limits<double>::max()
 
-Mst::Mst(const Graph *G, unsigned long long source) : G(G), source(source) {
+Mst::Mst(const Graph *G, const unsigned long long source) : G(G), source(source) {
     prim(G, source);
 };
 
@@ -27,7 +27,7 @@ void Mst::clear() {
     numberOfMstNodes = 0;
 }
 
-void Mst::prim(const Graph *G, unsigned long long source) {
+void Mst::prim(const Graph *G, const unsigned long long source) {
     clear();
     unsigned long long u, v;
     std::vector<unsigned long long> neighbours;
@@ -38,7 +38,7 @@ void Mst::prim(const Graph *G, unsigned long long source) {
     key[source] = 0;
     // decisão de design: o pai de <i>source</i> é ele mesmo
     parent[source] = source;
-    
+
     for (unsigned long long i = 1; i <= G->getN(); ++i) {
         Q.push(std::make_pair(key[i], i));
     }
@@ -53,7 +53,7 @@ void Mst::prim(const Graph *G, unsigned long long source) {
             continue;
 
         explored[u] = true;
-        
+
         ++numberOfMstNodes;
         mstCost += next_pair.first;
 
@@ -71,7 +71,7 @@ void Mst::prim(const Graph *G, unsigned long long source) {
     }
 }
 
-double Mst::getDistance(unsigned long long target) const {
+double Mst::getDistance(const unsigned long long target) const {
     if (!explored[target])
         throw std::exception();
 
@@ -89,13 +89,13 @@ unsigned long long Mst::getSource() const {
     return source;
 }
 
-unsigned long long Mst::getParent(unsigned long long node) const {
+unsigned long long Mst::getParent(const unsigned long long node) const {
     if (!explored[node])
         throw std::exception();
     return parent[node];
 }
 
-std::vector<unsigned long long> Mst::getPath(unsigned long long target) const {
+std::vector<unsigned long long> Mst::getPath(const unsigned long long target) const {
     if (!explored[target])
         throw std::exception();
 
@@ -115,21 +115,52 @@ double Mst::getMstCost() const {
     return mstCost;
 }
 
-double Mst::getKey(unsigned long long node) const {
+double Mst::getKey(const unsigned long long node) const {
     if (!explored[node])
         throw std::exception();
     return key[node];
 }
 
-void Mst::saveInfo(const char* filename) const {
+void Mst::saveGraph(const char* filename) const {
     std::ofstream os;
     os.open(filename);
 
+    // template: igual ao de um grafo
     os << "custo = " << mstCost << std::endl;
     os << getNumberOfMstNodes() << std::endl;
     for (register int i = 1; i <= G->getN(); ++i) {
         if (i != source && explored[i])
             os << i << " " << getParent(i) << " " << getKey(i) << std::endl;
+    }
+
+    os.close();
+}
+
+void Mst::saveInfo(const char *filename) const {
+    std::ofstream os;
+    os.open(filename);
+
+    // template:
+    // custo = c, source = s
+    os << "custo = " << mstCost;
+    os << ", source = " << source << std::endl;
+    
+    // template:
+    // key[i] = k, parent[i] = p
+    for (unsigned long long i = 1; i <= G->getN(); ++i) {
+        os << "key[" << i << "] = ";
+        try {
+            os << getKey(i);
+        }        catch (std::exception) {
+            os << "undef";
+        }
+        os << ", parent[" << i << "] = ";
+        try {
+            os << getParent(i);
+        }        catch (std::exception) {
+            os << "undef";
+        }
+        os << std::endl;
     }
 
     os.close();

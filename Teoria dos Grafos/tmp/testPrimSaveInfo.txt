@@ -1,0 +1,6 @@
+custo = 2, source = 1
+key[1] = 0, parent[1] = 1
+key[2] = 1, parent[2] = 3
+key[3] = 1, parent[3] = 1
+key[4] = undef, parent[4] = undef
+key[5] = undef, parent[5] = undef

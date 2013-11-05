@@ -191,8 +191,7 @@ void newtestclass::testGetDist() {
     gsempeso->addEdge(1, 2);
     gsempeso->addEdge(2, 3);
     CPPUNIT_ASSERT( 1.0 == gsempeso->getDistance(1, 2));
-    CPPUNIT_ASSERT( 2.0 == gsempeso->getDistance(1, 3));
-    
+    CPPUNIT_ASSERT( 2.0 == gsempeso->getDistance(1, 3));    
     delete gsempeso;
     
     Graph *gpesopos = new GraphMatrix(3, true);
@@ -200,8 +199,7 @@ void newtestclass::testGetDist() {
     gpesopos->addEdge(1, 3, 3.0);
     gpesopos->addEdge(2, 3, 1.0);
     CPPUNIT_ASSERT( 1.0 == gpesopos->getDistance(1, 2) );
-    CPPUNIT_ASSERT( 2.0 == gpesopos->getDistance(1, 3) );
-    
+    CPPUNIT_ASSERT( 2.0 == gpesopos->getDistance(1, 3) );   
     delete gpesopos;
     
     Graph *gpesoneg = new GraphMatrix(3, true);
@@ -213,7 +211,6 @@ void newtestclass::testGetDist() {
     CPPUNIT_ASSERT_EQUAL(1.0, gpesoneg->getWeight(1,2));
     CPPUNIT_ASSERT_EQUAL(-1.0, gpesoneg->getWeight(2,3));
     CPPUNIT_ASSERT_EQUAL(2.0, gpesoneg->getWeight(1,3));
-    //CPPUNIT_ASSERT_EQUAL( -1.0, gpesoneg->getDistance(2, 3));
     CPPUNIT_ASSERT_EQUAL( 0.0,  gpesoneg->getDistance(1, 3));
     delete gpesoneg;
 }

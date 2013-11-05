@@ -54,7 +54,6 @@ private:
     std::vector<bool> explored;
     std::vector<unsigned long long> parent;
     Heap < std::pair<double, unsigned long long> > Q;
-    double mstCost;
     void clear();
     void prim(const Graph *G, unsigned long long source);
 };

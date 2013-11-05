@@ -39,10 +39,9 @@
     <logicalFolder name="ResourceFiles"
                    displayName="Arquivos de Recurso"
                    projectFiles="true">
+      <itemPath>relatorios.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="f1" displayName="Relatórios" projectFiles="true">
-      <itemPath>relatorio2-estudo1-questao1.cpp</itemPath>
-      <itemPath>relatorio2-estudo1-questao2.cpp</itemPath>
       <itemPath>relatorio2-estudo1-questao3-alt.cpp</itemPath>
       <itemPath>relatorio2-estudo1-questao3.cpp</itemPath>
     </logicalFolder>
@@ -367,7 +366,7 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
-      <item path="relatorio2-estudo1-questao1.cpp" ex="false" tool="1" flavor2="0">
+      <item path="relatorios.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/bfstestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -23,7 +23,6 @@ void Mst::clear() {
     parent = std::vector<unsigned long long>(G->getN() + 1, 0);
     explored = std::vector<bool>(G->getN() + 1, false);
     // decisão de design: sem árvore, o custo é nulo
-    mstCost = 0;
     numberOfMstNodes = 0;
 }
 
@@ -38,31 +37,24 @@ void Mst::prim(const Graph *G, const unsigned long long source) {
     key[source] = 0;
     // decisão de design: o pai de <i>source</i> é ele mesmo
     parent[source] = source;
-
-    for (unsigned long long i = 1; i <= G->getN(); ++i) {
-        Q.push(std::make_pair(key[i], i));
-    }
+    Q.push( std::make_pair(key[source],source) );
 
     while (!Q.empty()) {
         next_pair = Q.top();
         Q.pop();
         u = next_pair.second;
 
-        // limitação da priority queue: pode ser que guardemos nela, mais de uma vez, o mesmo nó
-        if (explored[u] || key[u] == INF)
+        if (explored[u])
             continue;
-
+        
         explored[u] = true;
-
         ++numberOfMstNodes;
-        mstCost += next_pair.first;
 
         neighbours = G->getNeighbours(u);
         for (int i = 0; i < neighbours.size(); ++i) {
             v = neighbours[i];
-
             k = G->getWeight(u, v);
-            if (!explored[v] && k < key[v]) {
+            if ( !explored[v] && k < key[v]) {
                 key[v] = k;
                 parent[v] = u;
                 Q.push(std::make_pair(key[v], v));
@@ -112,6 +104,10 @@ std::vector<unsigned long long> Mst::getPath(const unsigned long long target) co
 }
 
 double Mst::getMstCost() const {
+    double mstCost = 0.0;
+    for (unsigned long long i = 1; i <= G->getN(); ++i)
+        if (key[i] != INF) // if (explored[i])
+            mstCost += key[i];
     return mstCost;
 }
 
@@ -126,7 +122,7 @@ void Mst::saveGraph(const char* filename) const {
     os.open(filename);
 
     // template: igual ao de um grafo
-    os << "custo = " << mstCost << std::endl;
+    os << "custo = " << getMstCost() << std::endl;
     os << getNumberOfMstNodes() << std::endl;
     for (register int i = 1; i <= G->getN(); ++i) {
         if (i != source && explored[i])
@@ -142,22 +138,22 @@ void Mst::saveInfo(const char *filename) const {
 
     // template:
     // custo = c, source = s
-    os << "custo = " << mstCost;
+    os << "custo = " << getMstCost();
     os << ", source = " << source << std::endl;
-    
+
     // template:
     // key[i] = k, parent[i] = p
     for (unsigned long long i = 1; i <= G->getN(); ++i) {
         os << "key[" << i << "] = ";
         try {
             os << getKey(i);
-        }        catch (std::exception) {
+        } catch (std::exception) {
             os << "undef";
         }
         os << ", parent[" << i << "] = ";
         try {
             os << getParent(i);
-        }        catch (std::exception) {
+        } catch (std::exception) {
             os << "undef";
         }
         os << std::endl;

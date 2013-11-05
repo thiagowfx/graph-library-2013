@@ -57,7 +57,7 @@ void Dijkstra::dijkstra(const Graph *G, const unsigned long long source, const b
         for (unsigned long long i = 0; i < neighbours.size(); ++i) {
             v = neighbours[i];
             dist = distance[u] + G->getWeight(u, v);
-            if (dist < distance[v] && !explored[v]) {
+            if ( !explored[v] && dist < distance[v]) {
                 distance[v] = dist;
                 parent[v] = u;
                 Q.push(std::make_pair(distance[v], v));

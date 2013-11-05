@@ -1,10 +1,3 @@
-/* 
- * File:   Utilities.h
- * Author: thiago
- *
- * Created on October 31, 2013, 11:43 PM
- */
-
 #ifndef UTILITIES_H
 #define	UTILITIES_H
 

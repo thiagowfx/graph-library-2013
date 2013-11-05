@@ -110,10 +110,10 @@ void dijkstratest::testSaveInfo() {
     std::string s;
 
     std::getline(is, s);    CPPUNIT_ASSERT("source = 1" == s);
-    std::getline(is, s);    CPPUNIT_ASSERT("distance[1] = 0, parent[1] = 1" == s);
-    std::getline(is, s);    CPPUNIT_ASSERT("distance[2] = 2, parent[2] = 1" == s);
-    std::getline(is, s);    CPPUNIT_ASSERT("distance[3] = 4, parent[3] = 2" == s);
-    std::getline(is, s);    CPPUNIT_ASSERT("distance[4] = undef, parent[4] = undef" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("distance[1] = 0, parent[1] = 1, path[1] = 1" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("distance[2] = 2, parent[2] = 1, path[2] = 1 2" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("distance[3] = 4, parent[3] = 2, path[3] = 1 2 3" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("distance[4] = undef, parent[4] = undef, path[4] = undef" == s);
 
     is.close();
 }

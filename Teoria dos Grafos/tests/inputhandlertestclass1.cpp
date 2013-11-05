@@ -146,11 +146,11 @@ void inputhandlertestclass1::testRemoveDuplicates() {
     const char output[] = "tmp/duplicates.txt";
     const char expected[] = "tests/graphs/duplicates.exp";
     ih.removeDuplicates(input, output);
-    CPPUNIT_ASSERT(areFilesEquali(output, expected));
+    CPPUNIT_ASSERT(areFilesEqual(output, expected));
 
     const char input2[] = "tests/graphs/duplicates2.txt";
     const char output2[] = "tmp/duplicates2.txt";
     const char expected2[] = "tests/graphs/duplicates2.exp";
     ih.removeDuplicates(input2, output2);
-    CPPUNIT_ASSERT(areFilesEquali(output2, expected2));
+    CPPUNIT_ASSERT(areFilesEqual(output2, expected2));
 }

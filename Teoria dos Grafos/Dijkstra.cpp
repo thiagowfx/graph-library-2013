@@ -2,6 +2,21 @@
 
 #define INF std::numeric_limits<double>::max()
 
+std::string returnVectorSaveInfo(const std::vector<unsigned long long>& v) {
+    //    for (int i = 0; i < (int) v.size(); ++i)
+    //        std::cout << v[i] << " ";
+    //    std::cout << std::endl;
+    std::string s;
+    char tmp[100];
+    for (unsigned long long i = 0; i < v.size(); ++i) {
+        sprintf(tmp, "%lld", v[i]);
+        s += tmp;
+        if (i != (v.size() - 1))
+            s += " ";
+    }
+    return s;
+}
+
 Dijkstra::Dijkstra(const Graph *G, const unsigned long long source) : G(G), source(source) {
     // não importa qual nó é passado como último argumento
     dijkstra(G, source, false, 0);
@@ -27,7 +42,7 @@ void Dijkstra::dijkstra(const Graph *G, const unsigned long long source, const b
     parent[source] = source;
     Q.push(std::make_pair(distance[source], source));
 
-    while ( !Q.empty() ) {
+    while (!Q.empty()) {
         next_pair = Q.top();
         Q.pop();
         // alt: u = std::get<1>(next_pair);
@@ -45,7 +60,7 @@ void Dijkstra::dijkstra(const Graph *G, const unsigned long long source, const b
             if (dist < distance[v] && !explored[v]) {
                 distance[v] = dist;
                 parent[v] = u;
-                Q.push( std::make_pair(distance[v], v) );
+                Q.push(std::make_pair(distance[v], v));
             }
         }
     }
@@ -87,7 +102,7 @@ std::vector<unsigned long long> Dijkstra::getPath(const unsigned long long targe
         node = parent[node];
     }
     path.push_back(source);
-    
+
     // de <i>source</i> a <i>path</i>
     std::reverse(path.begin(), path.end());
     return path;
@@ -96,28 +111,32 @@ std::vector<unsigned long long> Dijkstra::getPath(const unsigned long long targe
 void Dijkstra::saveInfo(const char *filename) const {
     std::ofstream os;
     os.open(filename);
-    
+
     // template:
     // source = s
-    // distance[i] = d, parent[i] = p
+    // distance[i] = d, parent[i] = p, path = a b c
     os << "source = " << source << std::endl;
     for (unsigned long long i = 1; i <= G->getN(); ++i) {
         os << "distance[" << i << "] = ";
         try {
             os << getDistance(i);
-        }
-        catch (std::exception) {
+        } catch (std::exception) {
             os << "undef";
         }
         os << ", parent[" << i << "] = ";
         try {
             os << getParent(i);
+        } catch (std::exception) {
+            os << "undef";
         }
-        catch (std::exception) {
+        os << ", path[" << i << "] = ";
+        try {
+            os << returnVectorSaveInfo(getPath(i));
+        } catch (std::exception) {
             os << "undef";
         }
         os << std::endl;
     }
-    
+
     os.close();
 }

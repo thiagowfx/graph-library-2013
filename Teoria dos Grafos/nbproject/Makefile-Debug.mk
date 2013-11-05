@@ -45,7 +45,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/GraphMatrix.o \
 	${OBJECTDIR}/InputHandler.o \
 	${OBJECTDIR}/Mst.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/newmain.o
 
 # Test Directory
 TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
@@ -137,10 +137,10 @@ ${OBJECTDIR}/Mst.o: nbproject/Makefile-${CND_CONF}.mk Mst.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/Mst.o Mst.cpp
 
-${OBJECTDIR}/main.o: nbproject/Makefile-${CND_CONF}.mk main.cpp 
+${OBJECTDIR}/newmain.o: nbproject/Makefile-${CND_CONF}.mk newmain.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/newmain.o newmain.cpp
 
 # Subprojects
 .build-subprojects:
@@ -438,17 +438,17 @@ ${OBJECTDIR}/Mst_nomain.o: ${OBJECTDIR}/Mst.o Mst.cpp
 	    ${CP} ${OBJECTDIR}/Mst.o ${OBJECTDIR}/Mst_nomain.o;\
 	fi
 
-${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cpp 
+${OBJECTDIR}/newmain_nomain.o: ${OBJECTDIR}/newmain.o newmain.cpp 
 	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/main.o`; \
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/newmain.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -g -I. -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/main_nomain.o main.cpp;\
+	    $(COMPILE.cc) -g -I. -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/newmain_nomain.o newmain.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/main.o ${OBJECTDIR}/main_nomain.o;\
+	    ${CP} ${OBJECTDIR}/newmain.o ${OBJECTDIR}/newmain_nomain.o;\
 	fi
 
 # Run Test Targets

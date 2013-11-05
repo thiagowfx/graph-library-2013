@@ -132,19 +132,19 @@ void primtestclass1::testSaveGraph() {
     const char expected[] = "tests/graphs/mstSaveInfo.exp";
     Mst mi(gl, 3ULL);
     mi.saveGraph(output);
-    CPPUNIT_ASSERT(areFilesEquali(output, expected));
+    CPPUNIT_ASSERT(areFilesEqual(output, expected));
 
     const char output2[] = "tmp/mstSaveInfo2.txt";
     const char expected2[] = "tests/graphs/mstSaveInfo2.exp";
     Mst mj(gm, 1ULL);
     mj.saveGraph(output2);
-    CPPUNIT_ASSERT(areFilesEquali(output2, expected2));
+    CPPUNIT_ASSERT(areFilesEqual(output2, expected2));
 
     const char output3[] = "tmp/mstSaveInfo3.txt";
     const char expected3[] = "tests/graphs/mstSaveInfo3.exp";
     Mst mk(gDesc, 1ULL);
     mk.saveGraph(output3);
-    CPPUNIT_ASSERT(areFilesEquali(output3, expected3));
+    CPPUNIT_ASSERT(areFilesEqual(output3, expected3));
 }
 
 void primtestclass1::testMstGrafoDesconexo() {

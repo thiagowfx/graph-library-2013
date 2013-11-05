@@ -14,10 +14,10 @@
 
 template <class T> bool compareVectors(const std::vector<T>& v1, const std::vector<T>& v2);
 template<class T> std::string printVector(const std::vector<T>& v);
-bool areFilesEquali(const char *filename1, const char *filename2);
+template<class T> std::string printVectorSaveInfo(const std::vector<T>& v);
+bool areFilesEqual(const char *filename1, const char *filename2);
 
-template <class T>
-bool compareVectors(const std::vector<T>& v1, const std::vector<T>& v2) {
+template <class T> bool compareVectors(const std::vector<T>& v1, const std::vector<T>& v2) {
     // from <algorithms>
     // std::equal(v.begin(), v.begin() + v.size(), v2.begin());
 
@@ -29,15 +29,14 @@ bool compareVectors(const std::vector<T>& v1, const std::vector<T>& v2) {
     return true;
 }
 
-template<class T>
-std::string printVector(const std::vector<T>& v) {
+template<class T> std::string printVector(const std::vector<T>& v) {
     //    for (int i = 0; i < (int) v.size(); ++i)
     //        std::cout << v[i] << " ";
     //    std::cout << std::endl;
     std::string s;
     s += ": ";
     char tmp[100];
-    for (int i = 0; i < (int) v.size(); ++i) {
+    for (unsigned long long i = 0; i < v.size(); ++i) {
         sprintf(tmp, "%lld", v[i]);
         s += tmp;
         s += " ";
@@ -46,7 +45,7 @@ std::string printVector(const std::vector<T>& v) {
     return s;
 }
 
-bool areFilesEquali(const char *filename1, const char *filename2) {
+bool areFilesEqual(const char *filename1, const char *filename2) {
     std::ifstream is1;
     std::ifstream is2;
     is1.open(filename1);

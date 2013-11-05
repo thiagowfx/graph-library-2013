@@ -78,7 +78,7 @@ void Bfs::saveInfo(const char* filename) const {
     os.open(filename);
     unsigned long long parent;
 
-    // template: parent[i] = j
+    // template: parent[i] = j, level[i] = j
     for (int i = 1; i <= G->getN(); ++i) {
         os << "parent[" << i << "] = ";
 
@@ -87,7 +87,12 @@ void Bfs::saveInfo(const char* filename) const {
         } catch (std::exception) {
             os << "undef";
         }
-
+        os << ", level[" << i << "] = ";
+        try {
+            os << getLevel(i);
+        } catch (std::exception) {
+            os << "undef";
+        }
         os << std::endl;
     }
 

@@ -33,11 +33,11 @@ unsigned long long Bfs::getLevel(const unsigned long long node) const {
 }
 
 void Bfs::bfs(const unsigned long long source) {
-    unsigned long long next, i, viz;
-
     // decisão de design: se <i>source</i> já foi explorado numa bfs anterior, parar aqui
     if (bfsExplored[source])
         return;
+
+    unsigned long long next, i, viz;
 
     // decisão de design: pai da raiz é a própria raiz
     bfsTree[source] = source;
@@ -84,8 +84,7 @@ void Bfs::saveInfo(const char* filename) const {
 
         try {
             os << getParent(i);
-        }
-        catch (std::exception) {
+        } catch (std::exception) {
             os << "undef";
         }
 
@@ -93,4 +92,10 @@ void Bfs::saveInfo(const char* filename) const {
     }
 
     os.close();
+}
+
+void Bfs::bfsAll() {
+    for (unsigned long long i = 1; i <= G->getN(); ++i)
+        if (!bfsExplored[i])
+            bfs(i);
 }

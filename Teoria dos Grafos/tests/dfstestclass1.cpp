@@ -283,11 +283,11 @@ void dfstestclass1::testDfsSaveInfo() {
     is.open(file);
     std::string s;
 
-    std::getline(is, s);    CPPUNIT_ASSERT("parent[1] = 1" == s);
-    std::getline(is, s);    CPPUNIT_ASSERT("parent[2] = 5" == s);
-    std::getline(is, s);    CPPUNIT_ASSERT("parent[3] = 5" == s);
-    std::getline(is, s);    CPPUNIT_ASSERT("parent[4] = 5" == s);
-    std::getline(is, s);    CPPUNIT_ASSERT("parent[5] = 1" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("parent[1] = 1, level[1] = 0" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("parent[2] = 5, level[2] = 2" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("parent[3] = 5, level[3] = 2" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("parent[4] = 5, level[4] = 2" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("parent[5] = 1, level[5] = 1" == s);
 
     is.close();
 }
@@ -303,11 +303,11 @@ void dfstestclass1::testDfsSaveInfo2() {
     is.open(file);
     std::string s;
 
-    std::getline(is, s);    CPPUNIT_ASSERT("parent[1] = 1" == s);
-    std::getline(is, s);    CPPUNIT_ASSERT("parent[2] = 3" == s);
-    std::getline(is, s);    CPPUNIT_ASSERT("parent[3] = 1" == s);
-    std::getline(is, s);    CPPUNIT_ASSERT("parent[4] = undef" == s);
-    std::getline(is, s);    CPPUNIT_ASSERT("parent[5] = undef" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("parent[1] = 1, level[1] = 0" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("parent[2] = 3, level[2] = 2" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("parent[3] = 1, level[3] = 1" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("parent[4] = undef, level[4] = undef" == s);
+    std::getline(is, s);    CPPUNIT_ASSERT("parent[5] = undef, level[5] = undef" == s);
 
     is.close();
 }

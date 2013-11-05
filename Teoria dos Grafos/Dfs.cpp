@@ -90,6 +90,13 @@ void Dfs::saveInfo(const char* filename) const {
         } catch (std::exception) {
             os << "undef";
         }
+        os << ", level[" << i << "] = ";
+
+        try {
+            os << getLevel(i);
+        } catch (std::exception) {
+            os << "undef";
+        }
 
         os << std::endl;
     }

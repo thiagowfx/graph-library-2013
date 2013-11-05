@@ -1,10 +1,3 @@
-/* 
- * File:   InputHandler.h
- * Author: thiago
- *
- * Created on 11 de Outubro de 2013, 21:36
- */
-
 #ifndef INPUTHANDLER_H
 #define	INPUTHANDLER_H
 
@@ -24,7 +17,7 @@ public:
        InputHandler ih;\n
        ih.readGraph(&g, filename, 'm');
      */
-    void readGraph(Graph **g, const char *filename, char rep, bool weighted);
+    void readGraph(Graph **g, const char *filename, const char rep, const bool weighted);
     /** Remove as linhas duplicadas consecutivas do arquivo <i>inputFile</i>, escrevendo a saída no arquivo <i>outputFile</i>. */
     void removeDuplicates(const char *inputFile, const char *outputFile);
 private:

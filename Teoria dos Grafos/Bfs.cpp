@@ -1,10 +1,3 @@
-/* 
- * File:   Bfs.cpp
- * Author: thiago
- * 
- * Created on October 28, 2013, 1:39 PM
- */
-
 #include "Bfs.h"
 
 Bfs::Bfs(const Graph* G) : G(G) {

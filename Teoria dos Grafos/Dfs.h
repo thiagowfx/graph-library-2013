@@ -1,10 +1,3 @@
-/* 
- * File:   Dfs.h
- * Author: thiago
- *
- * Created on October 28, 2013, 12:54 PM
- */
-
 #ifndef DFS_H
 #define	DFS_H
 

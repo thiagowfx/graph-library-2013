@@ -56,7 +56,7 @@ void floydwarshalltest::testAverDist() {
   gm->addEdge(4, 5, 1.0);
 
   FloydWarshall f(gm);
-  CPPUNIT_ASSERT_EQUAL(1.4, f.getAverageDist());
+  CPPUNIT_ASSERT_EQUAL(0.7, f.getAverageDist());
 
   Graph *gl = new GraphList(3, true);
   gl->addEdge(1, 2, 2.0);
@@ -64,7 +64,7 @@ void floydwarshalltest::testAverDist() {
   gl->addEdge(1, 3, 2.0);
 
   FloydWarshall _f(gl);
-  CPPUNIT_ASSERT_EQUAL(4.0, _f.getAverageDist());
+  CPPUNIT_ASSERT_EQUAL(2.0, _f.getAverageDist());
 
   delete gl;
   delete gm;

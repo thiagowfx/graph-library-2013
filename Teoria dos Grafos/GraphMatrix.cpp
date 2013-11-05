@@ -1,10 +1,3 @@
-/* 
- * File:   GraphMatrix.cpp
- * Author: thiago
- * 
- * Created on 10 de Outubro de 2013, 10:51
- */
-
 #include "GraphMatrix.h"
 
 GraphMatrix::GraphMatrix(const unsigned long long N, const bool weighted) : Graph(N, weighted) {

@@ -1,10 +1,3 @@
-/* 
- * File:   Graph.h
- * Author: thiago
- *
- * Created on 10 de Outubro de 2013, 10:26
- */
-
 #ifndef GRAPH_H
 #define	GRAPH_H
 

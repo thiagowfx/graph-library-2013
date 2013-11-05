@@ -1,10 +1,3 @@
-/* 
- * File:   FloydWarshall.cpp
- * Author: gdcs
- *
- * Created on November 3, 2013, 12:19 AM
- */
-
 #include "FloydWarshall.h"
 #define INF std::numeric_limits<double>::max()
 

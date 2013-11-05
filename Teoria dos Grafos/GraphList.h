@@ -1,10 +1,3 @@
-/* 
- * File:   GraphList.h
- * Author: thiago
- *
- * Created on 11 de Outubro de 2013, 00:02
- */
-
 #ifndef GRAPHLIST_H
 #define	GRAPHLIST_H
 

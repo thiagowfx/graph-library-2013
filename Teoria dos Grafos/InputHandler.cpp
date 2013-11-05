@@ -1,10 +1,3 @@
-/* 
- * File:   InputHandler.cpp
- * Author: thiago
- * 
- * Created on 11 de Outubro de 2013, 21:36
- */
-
 #include "InputHandler.h"
 
 InputHandler::InputHandler() {
@@ -13,7 +6,7 @@ InputHandler::InputHandler() {
 InputHandler::~InputHandler() {
 }
 
-void InputHandler::readGraph(Graph **g, const char *filename, char rep, bool weighted) {
+void InputHandler::readGraph(Graph **g, const char *filename, const char rep, const bool weighted) {
     std::ifstream is;
     is.open(filename);
 

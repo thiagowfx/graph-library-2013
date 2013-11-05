@@ -1,10 +1,3 @@
-/*
- * File:   dfstestclass1.cpp
- * Author: thiago
- *
- * Created on Oct 28, 2013, 12:56:00 PM
- */
-
 #include "dfstestclass1.h"
 
 Graph* gEx;

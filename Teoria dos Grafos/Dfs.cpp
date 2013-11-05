@@ -1,10 +1,3 @@
-/* 
- * File:   Dfs.cpp
- * Author: thiago
- * 
- * Created on October 28, 2013, 12:54 PM
- */
-
 #include "Dfs.h"
 
 Dfs::Dfs(const Graph* G) : G(G) {

@@ -1,10 +1,3 @@
-/*
- * File:   dijkstratest.h
- * Author: abc116
- *
- * Created on 30/10/2013, 16:42:22
- */
-
 #ifndef DIJKSTRATEST_H
 #define	DIJKSTRATEST_H
 

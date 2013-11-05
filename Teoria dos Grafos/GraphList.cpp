@@ -1,10 +1,3 @@
-/* 
- * File:   GraphList.cpp
- * Author: thiago
- * 
- * Created on 11 de Outubro de 2013, 00:02
- */
-
 #include "GraphList.h"
 
 GraphList::GraphList(const unsigned long long N, const bool weighted) : Graph(N, weighted) {
@@ -33,14 +26,14 @@ void GraphList::addEdge(const unsigned long long node1, const unsigned long long
 }
 
 bool GraphList::isEdge(const unsigned long long node1, const unsigned long long node2) const {
-    for (int i = 0; i < adjList.at(node1).size(); ++i)
+    for (unsigned long long i = 0; i < adjList.at(node1).size(); ++i)
         if (adjList.at(node1).at(i).first == node2)
             return true;
     return false;
 }
 
 double GraphList::getWeight(const unsigned long long node1, const unsigned long long node2) const {
-    for (int i = 0; i < adjList.at(node1).size(); ++i)
+    for (unsigned long long i = 0; i < adjList.at(node1).size(); ++i)
         if (adjList.at(node1).at(i).first == node2)
             return adjList.at(node1).at(i).second;
     // edge doesn't exist
@@ -49,7 +42,7 @@ double GraphList::getWeight(const unsigned long long node1, const unsigned long 
 
 std::vector<unsigned long long> GraphList::getNeighbours(const unsigned long long node) const {
     std::vector<unsigned long long> ret;
-    for (int i = 0; i < adjList.at(node).size(); ++i)
+    for (unsigned long long i = 0; i < adjList.at(node).size(); ++i)
         ret.push_back(adjList.at(node).at(i).first);
     return ret;
 }

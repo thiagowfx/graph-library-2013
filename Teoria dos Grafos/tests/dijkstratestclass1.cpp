@@ -1,10 +1,3 @@
-/*
- * File:   dijkstratest.cpp
- * Author: abc116
- *
- * Created on 30/10/2013, 16:42:23
- */
-
 #include "dijkstratestclass1.h"
 
 Graph *gm;

@@ -1,10 +1,3 @@
-/*
- * File:   bfstestclass1.cpp
- * Author: thiago
- *
- * Created on Oct 28, 2013, 1:42:33 PM
- */
-
 #include "bfstestclass1.h"
 
 Graph* gEx;

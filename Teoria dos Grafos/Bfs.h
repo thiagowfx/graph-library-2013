@@ -1,10 +1,3 @@
-/* 
- * File:   Bfs.h
- * Author: thiago
- *
- * Created on October 28, 2013, 1:39 PM
- */
-
 #ifndef BFS_H
 #define	BFS_H
 

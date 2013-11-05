@@ -1,10 +1,3 @@
-/*
- * File:   dfstestclass1.h
- * Author: thiago
- *
- * Created on Oct 28, 2013, 12:56:00 PM
- */
-
 #ifndef DFSTESTCLASS1_H
 #define	DFSTESTCLASS1_H
 

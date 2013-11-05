@@ -1,9 +1,3 @@
-/* 
- * File:   Graph.cpp
- * Author: thiago
- * 
- * Created on 10 de Outubro de 2013, 10:26
- */
 #include "Graph.h"
 
 Graph::Graph(const unsigned long long N, const bool weighted) {

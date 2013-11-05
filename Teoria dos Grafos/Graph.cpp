@@ -6,7 +6,7 @@
  */
 #include "Graph.h"
 
-Graph::Graph(unsigned long long N, bool weighted) {
+Graph::Graph(const unsigned long long N, const bool weighted) {
     this->N = N;
     M = 0;
     degrees = std::deque<unsigned long long>(N + 1);
@@ -35,7 +35,7 @@ double Graph::getAverDeg() const {
         return 2 * double(M) / N;
 }
 
-unsigned long long Graph::getDegree(unsigned long long node) const {
+unsigned long long Graph::getDegree(const unsigned long long node) const {
     return degrees.at(node);
 }
 
@@ -48,12 +48,12 @@ std::vector<double> Graph::getEmpDist() const {
     return v;
 }
 
-void Graph::addEdge(unsigned long long node1, unsigned long long node2) {
+void Graph::addEdge(const unsigned long long node1, const unsigned long long node2) {
     ++M;
     ++degrees.at(node1), ++degrees.at(node2);
 }
 
-void Graph::addEdge(unsigned long long node1, unsigned long long node2, double weight) {
+void Graph::addEdge(const unsigned long long node1, const unsigned long long node2, const double weight) {
     Graph::addEdge(node1, node2);
     if (weighted == 1 && weight < 0)
         weighted = 2;

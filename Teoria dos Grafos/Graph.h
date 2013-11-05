@@ -29,7 +29,7 @@
 class Graph {
 public:
     /** Um grafo com <b>N</b> nós. <i>weighted</i> é <i>true</i> se o grafo possuir pesos. */
-    Graph(unsigned long long N, bool weighted);
+    Graph(const unsigned long long N, const bool weighted);
     virtual ~Graph();
 protected:
     /** Diz se o grafo tem ou não pesos:\n
@@ -51,17 +51,17 @@ public:
     /** Retorna o grau médio dos nós do grafo. */
     double getAverDeg() const;
     /** Retorna o grau de <i>node</i>. */
-    unsigned long long getDegree(unsigned long long node) const;
+    unsigned long long getDegree(const unsigned long long node) const;
     /** Retorna um vetor de <i>double</i> com a distribuição empírica do grafo. */
     std::vector<double> getEmpDist() const;
     /** Retorna <b>true</b> se a aresta <i>node1</i>-<i>node2</i> pertence ao grafo. */
-    virtual bool isEdge(unsigned long long node1, unsigned long long node2) const = 0;
+    virtual bool isEdge(const unsigned long long node1, const unsigned long long node2) const = 0;
     /** Adiciona a aresta <i>node1</i>-<i>node2</i> ao grafo. */
-    virtual void addEdge(unsigned long long node1, unsigned long long node2) = 0;
+    virtual void addEdge(const unsigned long long node1, const unsigned long long node2) = 0;
     /** Adiciona a aresta <i>node1</i>-<i>node2</i> ao grafo, com peso <i>weight</i>. */
-    virtual void addEdge(unsigned long long node1, unsigned long long node2, double weight) = 0;
+    virtual void addEdge(const unsigned long long node1, const unsigned long long node2, const double weight) = 0;
     /** Retorna um vetor com os vizinhos de <i>node</i>. */
-    virtual std::vector<unsigned long long> getNeighbours(unsigned long long node) const = 0;
+    virtual std::vector<unsigned long long> getNeighbours(const unsigned long long node) const = 0;
     /** Salva as informações do grafo para o arquivo <b>filename</b>. */
     void saveInfo(const char* filename) const;
     /** Retorna <i>true</i> se o grafo tem pesos. Se o grafo não tem pesos, é como se todas as arestas tivessem peso igual a 1. */
@@ -69,7 +69,7 @@ public:
     /** Retorna <i>true</i> se o grafo tem algum peso negativo. Se o grafo não tiver pesos, retorna <i>false</i>. */
     bool isNegativeWeighted() const;
     /** Retorna o peso da aresta formada por <i>node1</i> e <i>node2</i>. */
-    virtual double getWeight(unsigned long long node1, unsigned long long node2) const = 0;
+    virtual double getWeight(const unsigned long long node1, const unsigned long long node2) const = 0;
 };
 
 #endif	/* GRAPH_H */

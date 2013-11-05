@@ -1,10 +1,3 @@
-/* 
- * File:   Dijkstra.cpp
- * Author: abc116
- * 
- * Created on 30 de Outubro de 2013, 16:41
- */
-
 #include "Dijkstra.h"
 
 #define INF std::numeric_limits<double>::max()

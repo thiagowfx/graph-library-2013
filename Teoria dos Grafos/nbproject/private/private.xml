@@ -7,9 +7,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/gdcs/Programming/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/Heap.h</file>
-            <file>file:/home/gdcs/Programming/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/tests/heaptestclass1.cpp</file>
-            <file>file:/home/gdcs/Programming/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/Dijkstra.cpp</file>
+            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/tests/heaptestclass1.h</file>
+            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/tests/bfstestclass1.cpp</file>
+            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/Bfs.cpp</file>
+            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/tests/bfstestclass1.h</file>
+            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/tests/heaptestclass1.cpp</file>
+            <file>file:/home/thiago/git/teoria-dos-grafos-trabalho-1/Teoria%20dos%20Grafos/Bfs.h</file>
         </group>
     </open-files>
 </project-private>

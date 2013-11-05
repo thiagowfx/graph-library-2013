@@ -43,7 +43,7 @@ private:
     const Graph *G;
     /** Árvore da BFS. Contém os pais dos nós. */
     std::vector <unsigned long long> bfsTree;
-    /** Fila para selecionar os próximos nós a serem processados. */
+    /** Seleciona os próximos nós a serem processados. */
     std::queue <unsigned long long> bfsQueue;
     /** Marca os vértices explorados durante a execução da BFS. */
     std::vector<bool> bfsExplored;

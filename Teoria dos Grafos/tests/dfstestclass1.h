@@ -21,6 +21,8 @@ class dfstestclass1 : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST(testDfsStartOverPrimeiro);
     CPPUNIT_TEST(testDfsConflict);
     CPPUNIT_TEST(testDfsSaveInfo);
+    CPPUNIT_TEST(testDfsSaveInfo2);
+    CPPUNIT_TEST(testDfsAll);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -36,6 +38,8 @@ private:
     void testDfsStartOverPrimeiro();
     void testDfsConflict();
     void testDfsSaveInfo();
+    void testDfsSaveInfo2();
+    void testDfsAll();
 };
 
 #endif	/* DFSTESTCLASS1_H */

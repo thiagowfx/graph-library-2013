@@ -9,35 +9,47 @@
 #define	DFS_H
 
 #include "Graph.h"
+#include <exception>
+#include <stack>
+#include <vector>
 
 class Dfs {
 public:
-    /** Instancia uma nova <b>Dfs</b> a qual atuará no grafo <i>G</i>. */
+    /** Constrói uma nova <b>Dfs</b> para atuar em <b>G</b>. */
     Dfs(const Graph* G);
     virtual ~Dfs();
-    /** Chama a Dfs a partir do nó <i>source</i>*/
+    /** Faz uma DFS a partir do nó <i>source</i>. */
     void dfs(const unsigned long long source);
-    /** Chama a DFS a partir de <i>source</i>, porém a recomeça do zero, sem aproveitar informações de Dfs' anteriores.*/
+    /** Faz uma DFS a partir do nó <i>source</i>, porém ignora as buscas anteriores. Equivalente a criar uma nova instância. */
     void dfsStartOver(const unsigned long long source);
-    /** Escreve informações sobre a DFS para o arquivo <i>filename</i>. */
+    /** Executa a DFS em todos os vértices do grafo.\n
+     *  Objetivo: gerar uma floresta de DFS do grafo.
+     **/
+    void dfsAll();
+    /** Escreve informações sobre a DFS para o arquivo <b>filename</b>.\n
+     *  template: parent[i] = j 
+     **/
     void saveInfo(const char* filename) const;
-    /** Retorna o pai de <i>node</i>.*/
+    /** Retorna o pai de <i>node</i>.\n
+     *  Lança uma exceção se o nó ainda não foi explorado. 
+     **/
     unsigned long long getParent(const unsigned long long source) const;
-    /** Retorna o level do nó <i>source</i> em relação à origem da DFS. */
+    /** Retorna o level do nó <i>source</i>.
+     *  Lança uma exceção se o nó ainda não foi explorado. 
+     **/
     unsigned long long getLevel(const unsigned long long node) const;
 private:
     /** Grafo no qual a classe vai atuar. */
     const Graph *G;
     /** Árvore da DFS. Contém os pais dos nós. */
     std::vector <unsigned long long> dfsTree;
-    /** Pilha a ser usada na DFS. */
+    /** Selecionar os próximos nós a serem processados. */
     std::stack <unsigned long long> dfsStack;
-    /** Vetor de vértices explorados durante a DFS. */
+    /** Marca os vértices explorados durante a execução da DFS. */
     std::vector<bool> dfsExplored;
-    /** Vetor dos níveis da DFS. */
+    /** Guarda os níveis dos nós. */
     std::vector<unsigned long long> dfsLevel;
-    /** Reseta quaisquer informações já processadas por uma instância dessa classe.\n
-     * Equivalente a reconstruir a Dfs. */
+    /** Equivalente criar uma nova instância dessa classe. */
     void clear();
 };
 

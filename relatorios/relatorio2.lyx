@@ -89,8 +89,8 @@ Do objetivo
 \begin_layout Standard
 O objetivo desta segunda parte do trabalho foi de estender a primeira parte
  da biblioteca, acrescentando suporte a pesos nas arestas dos grafos, além
- de incluir diversos algoritmos, tais como Dijkstra -- para o caminho mínimo
- --, Prim -- para a árvore geradora mínima (MST) e Floyd Warshall (
+ de incluir diversos algoritmos, tais como Dijkstra -- para o caminho mínimo,
+ Prim -- para a árvore geradora mínima (MST) e Floyd Warshall (
 \emph on
 APSP - 
 \emph default
@@ -240,7 +240,7 @@ Dijkstra (caminho mínimo)
 \end_layout
 
 \begin_layout Itemize
-Floyd (-Warshall) (distância média)
+FloydWarshall (distância média)
 \end_layout
 
 \begin_layout Itemize
@@ -1864,9 +1864,13 @@ Distância Média
 \begin_layout Standard
 Para calcular a distância média utilizamos o algoritmo de 
 \series bold
-Floyd-Warshall
+Dijkstra
 \series default
-, junto com a representação de 
+ para os grafos 1 e 3, e o de 
+\series bold
+Floyd-Warshall 
+\series default
+para o grafo 2, junto com a representação de 
 \series bold
 lista de adjacência.
 \end_layout
@@ -1874,8 +1878,9 @@ lista de adjacência.
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="6" columns="2">
+<lyxtabular version="3" rows="6" columns="3">
 <features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <row>
@@ -1890,13 +1895,24 @@ Grafo
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \series bold
 Distância Média
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Tempo
 \end_layout
 
 \end_inset
@@ -1912,11 +1928,20 @@ Distância Média
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13.021
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.02 s
 \end_layout
 
 \end_inset
@@ -1932,11 +1957,20 @@ Distância Média
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.0859
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+9.12 s
 \end_layout
 
 \end_inset
@@ -1952,11 +1986,20 @@ Distância Média
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16.0141
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+10 min 30 s
 \end_layout
 
 \end_inset
@@ -1972,11 +2015,20 @@ Distância Média
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+x
 \end_layout
 
 \end_inset
@@ -1992,11 +2044,20 @@ Distância Média
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+x
 \end_layout
 
 \end_inset
@@ -2476,12 +2537,27 @@ Pico de memória médio:
 Árvore geradora mínima
 \end_layout
 
-\begin_layout Enumerate
-Vizinhos de Dijkstra:
+\begin_layout Itemize
+Representação utilizada: lista de adjacência
+\end_layout
+
+\begin_layout Itemize
+Tempo de execução para encontrar a MST: 21 s (usando a priority_queue da
+ STL)
+\end_layout
+
+\begin_layout Itemize
+Tempo de execução médio para obter as respostas da MST: 0.64 segundos
 \end_layout
 
 \begin_layout Enumerate
-Vértices de maior grau:
+Vizinhos de Dijkstra: 217250 (A.J.M.
+ van Gasteren), 669617 (Carel S.Scholten), 672390 (W.Heise)
+\end_layout
+
+\begin_layout Enumerate
+Vértices de maior grau: 473131 (Wei Li, grau 171), 268534 (Wei Wang, grau
+ 146), 88809 (Wei Zhang, grau 143)
 \end_layout
 
 \begin_layout Enumerate
@@ -2490,15 +2566,18 @@ Vértices de maior grau:
 
 \begin_deeper
 \begin_layout Enumerate
-Vizinhos de Figueiredo:
+Vizinhos de Figueiredo: 255335 (Alexandre A.
+ Santos), 337713 (André C.
+ Pinho), 11466 (Donald F.
+ Towsley)
 \end_layout
 
 \begin_layout Enumerate
-Vizinhos de Marroquim:
+Vizinhos de Marroquim: 496285 (Claudio Esperança)
 \end_layout
 
 \begin_layout Enumerate
-Vizinhos em comum:
+Vizinhos em comum: Na MST encontrada não possuem vizinhos em comum.
 \end_layout
 
 \end_deeper

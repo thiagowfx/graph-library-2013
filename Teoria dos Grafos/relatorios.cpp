@@ -52,6 +52,25 @@ void relatorio2_estudo1_questao3() {
     std::cout << fw.getAverageDist() << std::endl;
 }
 
+void relatorio2_estudo1_questao3_alt() {
+    boost::progress_timer timer;
+    
+    double summed_distance = 0, average_distance;
+    Dijkstra *di;
+    for (unsigned long long v = 1; v <= g->getN(); ++v) {
+        // cria um objeto Dijkstra com source v
+        di = new Dijkstra(g,v);
+        for (unsigned long long u = 1; u < v; ++u) {
+            // Distância de v até u.
+            summed_distance += di->getDistance(u);
+        }
+        delete di;
+    }
+    average_distance = summed_distance / (double) ((g->getN() * (g->getN() - 1))/ 2);
+    
+    std::cout << "Distância média: " << average_distance << std::endl;
+}
+
 void relatorio2_estudo2_questao1() {
     boost::progress_timer timer;
 

@@ -1,6 +1,5 @@
 #include "Prim.h"
-
-#define INF std::numeric_limits<double>::max()
+#include <queue>
 
 Prim::Prim(const Graph *G, const unsigned long long source) : G(G), source(source) {
     prim(G, source);
@@ -13,42 +12,39 @@ void Prim::clear() {
     key = std::vector<double>(G->getN() + 1, INF);
     parent = std::vector<unsigned long long>(G->getN() + 1, 0);
     explored = std::vector<bool>(G->getN() + 1, false);
-    // decisão de design: sem árvore, o custo é nulo
-    numberOfMstNodes = 0;
 }
 
 void Prim::prim(const Graph *G, const unsigned long long source) {
     clear();
-    unsigned long long u, v;
-    std::vector<unsigned long long> neighbours;
-    std::pair<double, unsigned long long> next_pair;
-    // immediate key
-    double k;
 
-    key[source] = 0;
-    // decisão de design: o pai de <i>source</i> é ele mesmo
-    parent[source] = source;
-    Q.push(std::make_pair(key[source], source));
+    // Always include first 1st vertex in MST.
+    key[source] = 0; // Make key 0 so that this vertex is picked as first vertex
+    parent[source] = source; // First node is always root of MST
+    std::priority_queue< std::pair<double, unsigned long long>,
+            std::vector< std::pair<double, unsigned long long> >,
+            std::greater< std::pair<double, unsigned long long> > > h;
 
-    while (!Q.empty()) {
-        next_pair = Q.top();
-        Q.pop();
-        u = next_pair.second;
+    //Heap< std::pair<double, unsigned long long> > h;
+    h.push(std::make_pair(key[source], source));
 
-        if (explored[u])
-            continue;
-
+    while (!h.empty()) {
+        // Pick the minimum key vertex from the set of vertices not yet included in MST
+        std::pair<double, unsigned long long> np = h.top();
+        h.pop();
+        unsigned long long u = np.second;
+        // Add the picked vertex to the MST Set
         explored[u] = true;
-        ++numberOfMstNodes;
 
-        neighbours = G->getNeighbours(u);
-        for (int i = 0; i < neighbours.size(); ++i) {
-            v = neighbours[i];
-            k = G->getWeight(u, v);
-            if (!explored[v] && k < key[v]) {
-                key[v] = k;
-                parent[v] = u;
-                Q.push(std::make_pair(key[v], v));
+        // Update key value and parent index of the adjacent vertices of
+        // the picked vertex. Consider only those vertices which are not yet
+        // included in MST
+        std::vector<unsigned long long> neighbours = G->getNeighbours(u);
+        for (unsigned long long i = 0; i < neighbours.size(); ++i) {
+            unsigned long long v = neighbours[i];
+            // Update the key only if graph[u][v] is smaller than key[v]
+            if (!explored[v] && G->getWeight(u, v) < key[v]) {
+                parent[v] = u, key[v] = G->getWeight(u, v);
+                h.push(std::make_pair(key[v], v));
             }
         }
     }
@@ -114,7 +110,8 @@ void Prim::saveGraph(const char* filename) const {
 
     // template: igual ao de um grafo
     os << "custo = " << getMstCost() << std::endl;
-    os << getNumberOfMstNodes() << std::endl;
+    //os << getNumberOfMstNodes() << std::endl;
+    os << G->getN() << std::endl;
     for (unsigned long long int i = 1; i <= G->getN(); ++i) {
         if (i != source && explored[i])
             os << i << " " << getParent(i) << " " << getKey(i) << std::endl;
@@ -157,8 +154,4 @@ void Prim::saveInfo(const char *filename) const {
     }
 
     os.close();
-}
-
-unsigned long long Prim::getNumberOfMstNodes() const {
-    return numberOfMstNodes;
 }

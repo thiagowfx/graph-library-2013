@@ -7,8 +7,7 @@
 
 class Prim {
 public:
-    /** Constrói uma MST em <i>G</i> a partir do nó <i>source</i>, aplicando o algoritmo de <b>Prim</b>.
-        NOTA: o grafo pode ser desconexo. */
+    /** Constrói uma MST em <i>G</i> a partir do nó <i>source</i>, aplicando o algoritmo de <b>Prim</b>. */
     Prim(const Graph *G, const unsigned long long source);
     virtual ~Prim();
     /** Retorna o pai de <i>node</i> na MST, em relação à raiz da árvore.
@@ -35,12 +34,9 @@ public:
     void saveGraph(const char* filename) const;
     /** Salva informações da MST para o arquivo <b>filename</b>. */
     void saveInfo(const char* filename) const;
-    /** Retorna o número de nós da Mst. */
-    unsigned long long getNumberOfMstNodes() const;
 private:
     const Graph *G;
     const unsigned long long source;
-    unsigned long long numberOfMstNodes;
     std::vector<double> key;
     std::vector<bool> explored;
     std::vector<unsigned long long> parent;

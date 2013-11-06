@@ -46,7 +46,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/InputHandler.o \
 	${OBJECTDIR}/Prim.o \
 	${OBJECTDIR}/Utilities.o \
-	${OBJECTDIR}/relatorio2-estudo1-questao3-alt.o
+	${OBJECTDIR}/relatorios.o
 
 # Test Directory
 TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
@@ -142,10 +142,10 @@ ${OBJECTDIR}/Utilities.o: nbproject/Makefile-${CND_CONF}.mk Utilities.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/Utilities.o Utilities.cpp
 
-${OBJECTDIR}/relatorio2-estudo1-questao3-alt.o: nbproject/Makefile-${CND_CONF}.mk relatorio2-estudo1-questao3-alt.cpp 
+${OBJECTDIR}/relatorios.o: nbproject/Makefile-${CND_CONF}.mk relatorios.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/relatorio2-estudo1-questao3-alt.o relatorio2-estudo1-questao3-alt.cpp
+	$(COMPILE.cc) -g -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/relatorios.o relatorios.cpp
 
 # Subprojects
 .build-subprojects:
@@ -440,17 +440,17 @@ ${OBJECTDIR}/Utilities_nomain.o: ${OBJECTDIR}/Utilities.o Utilities.cpp
 	    ${CP} ${OBJECTDIR}/Utilities.o ${OBJECTDIR}/Utilities_nomain.o;\
 	fi
 
-${OBJECTDIR}/relatorio2-estudo1-questao3-alt_nomain.o: ${OBJECTDIR}/relatorio2-estudo1-questao3-alt.o relatorio2-estudo1-questao3-alt.cpp 
+${OBJECTDIR}/relatorios_nomain.o: ${OBJECTDIR}/relatorios.o relatorios.cpp 
 	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/relatorio2-estudo1-questao3-alt.o`; \
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/relatorios.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -g -I. -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/relatorio2-estudo1-questao3-alt_nomain.o relatorio2-estudo1-questao3-alt.cpp;\
+	    $(COMPILE.cc) -g -I. -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/relatorios_nomain.o relatorios.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/relatorio2-estudo1-questao3-alt.o ${OBJECTDIR}/relatorio2-estudo1-questao3-alt_nomain.o;\
+	    ${CP} ${OBJECTDIR}/relatorios.o ${OBJECTDIR}/relatorios_nomain.o;\
 	fi
 
 # Run Test Targets

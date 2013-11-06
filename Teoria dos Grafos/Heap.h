@@ -55,10 +55,7 @@ void Heap<T>::push(const T& data) {
 
     while (aux) {
         if (tree[aux] < tree[aux / 2]) {
-            // std::swap(tree[aux], tree[aux / 2]);
-            tmp = tree[aux];
-            tree[aux] = tree[aux / 2];
-            tree[aux / 2] = tmp;
+            std::swap(tree[aux], tree[aux / 2]);
         } else
             break;
         aux /= 2;
@@ -79,7 +76,7 @@ void Heap<T>::pop() {
     unsigned long long aux = 0;
     T tmp;
 
-    while (2 * aux + 2 < tam) {
+    while ((2 * aux + 2) < tam) {
 
         unsigned long long f1 = 2 * aux + 1;
         unsigned long long f2 = 2 * aux + 2;
@@ -87,29 +84,19 @@ void Heap<T>::pop() {
         if (tree[f1] < tree[f2] || tree[f1] == tree[f2]) {
             if (tree[aux] < tree[f1] || tree[aux] == tree[f1])
                 break;
-            //std::swap(tree[aux], tree[f1]);
-            tmp = tree[aux];
-            tree[aux] = tree[f1];
-            tree[f1] = tmp;
+            std::swap(tree[aux], tree[f1]);
             aux = f1;
         } else {
             if (tree[aux] < tree[f2] || tree[aux] == tree[f2])
                 break;
-            //std::swap(tree[aux], tree[f2]);
-            tmp = tree[aux];
-            tree[aux] = tree[f2];
-            tree[f2] = tmp;
+            std::swap(tree[aux], tree[f2]);
             aux = f2;
         }
     }
 
-    if (2 * aux + 1 < tam) {
-        if (tree[2 * aux + 1] < tree[aux]) {
-            //std::swap(tree[aux], tree[2 * aux + 1]);
-            tmp = tree[aux];
-            tree[aux] = tree[2 * aux + 1];
-            tree[2 * aux + 1] = tmp;
-        }
+    if ((2 * aux + 1) < tam) {
+        if (tree[2 * aux + 1] < tree[aux])
+            std::swap(tree[aux], tree[2 * aux + 1]);
     }
 }
 

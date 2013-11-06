@@ -352,10 +352,7 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
-      <item path="relatorio2-estudo1-questao3-alt.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
+      <item path="relatorios.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/bfstestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>

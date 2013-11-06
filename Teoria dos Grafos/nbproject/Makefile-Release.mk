@@ -67,8 +67,8 @@ TESTFILES= \
 CFLAGS=`cppunit-config --cflags` 
 
 # CC Compiler Flags
-CCFLAGS=--std=c++0x
-CXXFLAGS=--std=c++0x
+CCFLAGS=`cppunit-config --cflags` 
+CXXFLAGS=`cppunit-config --cflags` 
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -77,15 +77,15 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=`cppunit-config --libs`  
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/teoria_dos_grafos
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${TESTDIR}/TestFiles/f5
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/teoria_dos_grafos: ${OBJECTFILES}
-	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/teoria_dos_grafos ${OBJECTFILES} ${LDLIBSOPTIONS}
+${TESTDIR}/TestFiles/f5: ${OBJECTFILES}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc} -o ${TESTDIR}/TestFiles/f5 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/Bfs.o: Bfs.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -473,7 +473,7 @@ ${OBJECTDIR}/relatorios_nomain.o: ${OBJECTDIR}/relatorios.o relatorios.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/teoria_dos_grafos
+	${RM} ${TESTDIR}/TestFiles/f5
 
 # Subprojects
 .clean-subprojects:

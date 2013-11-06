@@ -8,8 +8,8 @@
 #include <string>
 #include <time.h>
 
-#define GRAFO_ATUAL rd
-#define TEST relatorio2_estudo2_questao2
+#define GRAFO_ATUAL c5
+#define TEST relatorio2_estudo1_questao3_alt
 
 const char tt[] = "inputs/teste.txt";
 const char c1[] = "inputs/grafo_1.txt";
@@ -55,9 +55,15 @@ void relatorio2_estudo1_questao3() {
 void relatorio2_estudo1_questao3_alt() {
     boost::progress_timer timer;
     
+    // log intermediário
+    char outFile[] = "answers/relatorio2_estudo1_questao3_alt.txt";
+    std::ofstream os;
+    os.open(outFile);
+    
     double summed_distance = 0, average_distance;
     Dijkstra *di;
     for (unsigned long long v = 1; v <= g->getN(); ++v) {
+        os << v << std::endl;
         // cria um objeto Dijkstra com source v
         di = new Dijkstra(g,v);
         for (unsigned long long u = 1; u < v; ++u) {
@@ -68,7 +74,10 @@ void relatorio2_estudo1_questao3_alt() {
     }
     average_distance = summed_distance / (double) ((g->getN() * (g->getN() - 1))/ 2);
     
-    std::cout << "Distância média: " << average_distance << std::endl;
+    std::cout << "Distância média " << std::endl;
+    std::cout << average_distance << std::endl;
+    
+    os.close();
 }
 
 void relatorio2_estudo2_questao1() {

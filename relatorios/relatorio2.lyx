@@ -168,12 +168,19 @@ UML
 Umbrello
 \series default
 , do ambiente KDE, para representar as relações entre as classes.
- 
+ Na verdade, testamos vários softwares de UML antes de tomar essa decisão,
+ tais como o ArgoUML, Dia e o Microsoft Visio 2010 e 2013, mas concluímos
+ que o Umbrello era o melhor que atendia aos nossos requisitos, que eram
+ essencialmente simplicidade com clareza.
 \end_layout
 
 \begin_layout Standard
-Ao final do trabalho, contamos um total de [!!!] testes realizados (cada
+Ao final do trabalho, contabilizamos em torno de 60 testes realizados (cada
  teste é uma função que procura cobrir diversos aspectos de cada classe).
+ Acreditamos que esses testes contribuíram de forma significativa para reduzir
+ diversos bugs mas, assim como todo software, não podemos garantir que nossa
+ implementação é 100% bug-free.
+ Mas, quanto mais testes, menor é a chance de algum bug passar despercebido.
 \end_layout
 
 \begin_layout Standard
@@ -181,11 +188,30 @@ Como
 \emph on
 profiler, 
 \emph default
-utilizamos o 
+pensamos em utilizar inicialmente o 
 \series bold
 Valgrind
 \series default
- para medir a memória de pico em algumas etapas das execuções dos programas.
+ para medir a memória de pico em algumas etapas das execuções dos programas,
+ mas vimos que isso não era absolutamente necessário, já que utilizamos
+ lista de adjacência e os grafos não eram densos demais.
+ Além disso, para medir o tempo de execução dos programas, começamos utilizando
+ a rotina clock() da biblioteca 
+\series bold
+time
+\series default
+.
+ Entretanto, tivemos alguns problemas com ela.
+ Então passamos a utilizar a ferramenta 
+\series bold
+time 
+\series default
+do Linux de forma integrada ao Netbeans, assim como a classe 
+\series bold
+progress_timer
+\series default
+ da biblioteca Boost.
+ As duas ferramentas se mostraram concordantes e confiáveis.
 \end_layout
 
 \begin_layout Section
@@ -306,6 +332,7 @@ lista de adjacência
 \series default
 do grafo.
  A execução de cada um deles foi bastante rápida, bastando uns poucos segundos.
+ Nosso algoritmo de Dijkstra utilizou o heap que implementamos manualmente.
 \end_layout
 
 \begin_layout Standard
@@ -1774,7 +1801,7 @@ Custo da MST
 \begin_inset Formula $31947$
 \end_inset
 
- / 32058
+
 \end_layout
 
 \end_inset
@@ -1809,7 +1836,7 @@ Custo da MST
 \begin_inset Formula $216236$
 \end_inset
 
- / 216796
+
 \end_layout
 
 \end_inset
@@ -1844,7 +1871,7 @@ Custo da MST
 \begin_inset Formula $608677$
 \end_inset
 
- / 609651
+
 \end_layout
 
 \end_inset
@@ -1857,6 +1884,17 @@ Custo da MST
 
 \end_layout
 
+\begin_layout Standard
+Notamos que o nosso heap implementado manualmente não gerou os resultados
+ corretos para essa parte.
+ Por exemplo, no grafo 5 tínhamos encontrado 60965, um valor ligeiramente
+ maior do que o correto.
+ O mesmo se repetiu para os grafos 3 e 4 (mas o 1 e o 2 ficaram corretos).
+ Acreditamos que isso tem a ver com o fato de que não podemos atualizar
+ algumas posições do heap além de (exceto) o topo.
+ Para Dijkstra não houve esse problema.
+\end_layout
+
 \begin_layout Subsection
 Distância Média
 \end_layout
@@ -1866,13 +1904,37 @@ Para calcular a distância média utilizamos o algoritmo de
 \series bold
 Dijkstra
 \series default
- para os grafos 1 e 3, e o de 
+ (SSSP) para os grafos 1 e 3, e o de 
 \series bold
 Floyd-Warshall 
 \series default
-para o grafo 2, junto com a representação de 
+(APSP) para o grafo 2, utilizando a representação de 
 \series bold
-lista de adjacência.
+lista de adjacência 
+\series default
+para todos os grafos.
+\end_layout
+
+\begin_layout Standard
+Para os grafos 4 e 5, optamos pelo algoritmo de Dijkstra pois o algoritmo
+ de Floyd, com complexidade 
+\begin_inset Formula $O(n\text{³})$
+\end_inset
+
+, levaria tempo demais para ser executado (note que esses grafos são os
+ que possuem o maior número de nós).
+\end_layout
+
+\begin_layout Standard
+Em particular, para esses dois grafos, também acrescentamos uma operação
+ adicional: a cada iteração o programa escrevia para um arquivo de saída,
+ o qual atuava como um log.
+ A razão disso é que previmos que o algoritmo demoraria várias horas para
+ ser executado; portanto, o log foi a forma encontrada para monitorar tanto
+ a) qual o progresso de execução do programa e b) se ele ainda estava sendo
+ executado OK, ou se alguma exceção ou erro foi lançado ao longo de sua
+ execução.
+ Este foi o item mais demorado dentre os estudos de caso.
 \end_layout
 
 \begin_layout Standard
@@ -2048,7 +2110,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-x
+57.165
 \end_layout
 
 \end_inset
@@ -2057,7 +2119,7 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-x
+4,32 h
 \end_layout
 
 \end_inset
@@ -2497,11 +2559,11 @@ Tempo de execução médio:
 
 \begin_deeper
 \begin_layout Itemize
-Sem 
+Sem a flag de compilação 
 \family typewriter
 -O3
 \family default
-: 
+ (debug): 
 \begin_inset Formula $32$
 \end_inset
 
@@ -2517,7 +2579,7 @@ Com
 \family typewriter
 -O3
 \family default
-: 
+ (release): 
 \begin_inset Formula $9$
 \end_inset
 
@@ -2529,25 +2591,41 @@ s
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
-Pico de memória médio:
+\begin_layout Standard
+Vimos que o grafo é desconexo, já que não existe um caminho entre os célebres
+ pesquisadores Turing e Dijkstra.
+ Notamos que a otimização do compilador realmente faz 
+\series bold
+bastante 
+\series default
+diferença em tempo de execução.
 \end_layout
 
 \begin_layout Subsection
 Árvore geradora mínima
 \end_layout
 
-\begin_layout Itemize
-Representação utilizada: lista de adjacência
+\begin_layout Standard
+Calculamos todos os resultados através do algoritmo de Prim, utilizando
+ uma heap de mínimo.
+ Geramos, como uma etapa intermediária, o arquivo de saída da MST, para
+ apenas depois operarmos sobre ele para responder às questões pedidas.
 \end_layout
 
 \begin_layout Itemize
-Tempo de execução para encontrar a MST: 21 s (usando a priority_queue da
- STL)
+Representação utilizada: lista de adjacência;
 \end_layout
 
 \begin_layout Itemize
-Tempo de execução médio para obter as respostas da MST: 0.64 segundos
+Tempo de execução médio para encontrar a MST: 21 s (usando a 
+\family typewriter
+priority_queue 
+\family default
+da STL);
+\end_layout
+
+\begin_layout Itemize
+Tempo de execução médio para obter as respostas da MST: 0,64 segundo.
 \end_layout
 
 \begin_layout Enumerate
@@ -2577,7 +2655,8 @@ Vizinhos de Marroquim: 496285 (Claudio Esperança)
 \end_layout
 
 \begin_layout Enumerate
-Vizinhos em comum: Na MST encontrada não possuem vizinhos em comum.
+Vizinhos em comum: Na MST encontrada não possuem vizinhos em comum (na verdade,
+ não possuem vizinhos em comum nem no grafo da rede)
 \end_layout
 
 \end_deeper

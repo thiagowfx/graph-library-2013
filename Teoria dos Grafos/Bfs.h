@@ -41,7 +41,7 @@ private:
     std::vector<bool> bfsExplored;
     /** Guarda os níveis dos nós. */
     std::vector<unsigned long long> bfsLevel;
-    /** Equivalente criar uma nova instância dessa classe. */
+    /** Equivalente a criar uma nova instância dessa classe. */
     void clear();
 };
 

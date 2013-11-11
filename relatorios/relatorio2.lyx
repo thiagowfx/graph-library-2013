@@ -332,7 +332,9 @@ lista de adjacência
 \series default
 do grafo.
  A execução de cada um deles foi bastante rápida, bastando uns poucos segundos.
- Nosso algoritmo de Dijkstra utilizou o heap que implementamos manualmente.
+ Nosso algoritmo de Dijkstra utilizamos tanto uma fila de prioridade que
+ implementamos manualmente quanto a a disponível na biblioteca STL.
+ Não observamos diferenças significativas entre os dois.
 \end_layout
 
 \begin_layout Standard
@@ -1644,6 +1646,8 @@ lista de adjacência
 Prim
 \series default
  para encontrar a MST.
+ Usamos a implementação da fila de prioridade fornecida pela biblioteca
+ STL.
  Bastou executar uma única vez cada programa.
  Nessa parte o tempo de execução foi mais variado; em particular, o grafo
  2 foi o mais demorado, e o 1 o mais rápido.
@@ -1884,17 +1888,6 @@ Custo da MST
 
 \end_layout
 
-\begin_layout Standard
-Notamos que o nosso heap implementado manualmente não gerou os resultados
- corretos para essa parte.
- Por exemplo, no grafo 5 tínhamos encontrado 60965, um valor ligeiramente
- maior do que o correto.
- O mesmo se repetiu para os grafos 3 e 4 (mas o 1 e o 2 ficaram corretos).
- Acreditamos que isso tem a ver com o fato de que não podemos atualizar
- algumas posições do heap além de (exceto) o topo.
- Para Dijkstra não houve esse problema.
-\end_layout
-
 \begin_layout Subsection
 Distância Média
 \end_layout
@@ -1994,7 +1987,7 @@ Tempo
 \begin_inset Text
 
 \begin_layout Plain Layout
-13.021
+13.02
 \end_layout
 
 \end_inset
@@ -2023,7 +2016,7 @@ Tempo
 \begin_inset Text
 
 \begin_layout Plain Layout
-2.0859
+2.09
 \end_layout
 
 \end_inset
@@ -2052,7 +2045,7 @@ Tempo
 \begin_inset Text
 
 \begin_layout Plain Layout
-16.0141
+16.01
 \end_layout
 
 \end_inset
@@ -2081,7 +2074,7 @@ Tempo
 \begin_inset Text
 
 \begin_layout Plain Layout
-24.6328
+24.63
 \end_layout
 
 \end_inset
@@ -2110,7 +2103,7 @@ Tempo
 \begin_inset Text
 
 \begin_layout Plain Layout
-57.165
+57.16
 \end_layout
 
 \end_inset
@@ -2119,7 +2112,7 @@ Tempo
 \begin_inset Text
 
 \begin_layout Plain Layout
-4,32 h
+4 h 19 min
 \end_layout
 
 \end_inset

@@ -118,6 +118,7 @@
         <cTool>
           <incDir>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </incDir>
           <commandLine>`cppunit-config --cflags`</commandLine>
         </cTool>
@@ -125,11 +126,14 @@
           <commandlineTool>g++</commandlineTool>
           <incDir>
             <pElem>.</pElem>
+            <pElem>.</pElem>
           </incDir>
           <commandLine>`cppunit-config --cflags` --std=c++0x</commandLine>
         </ccTool>
         <linkerTool>
+          <output>${TESTDIR}/TestFiles/f5</output>
           <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
@@ -271,26 +275,6 @@
         </ccTool>
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f4</output>
-          <linkerLibItems>
-            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
-          </linkerLibItems>
-        </linkerTool>
-      </folder>
-      <folder path="TestFiles/f5">
-        <cTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-          <commandLine>`cppunit-config --cflags`</commandLine>
-        </cTool>
-        <ccTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-          <commandLine>`cppunit-config --cflags`</commandLine>
-        </ccTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f5</output>
           <linkerLibItems>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
           </linkerLibItems>
@@ -423,6 +407,7 @@
         <ccTool>
           <developmentMode>6</developmentMode>
           <commandLine>--std=c++0x</commandLine>
+          <warningLevel>0</warningLevel>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -430,6 +415,12 @@
         <asmTool>
           <developmentMode>5</developmentMode>
         </asmTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f5</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
       <item path="Bfs.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -554,20 +545,6 @@
         </ccTool>
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f4</output>
-          <linkerLibItems>
-            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
-          </linkerLibItems>
-        </linkerTool>
-      </folder>
-      <folder path="TestFiles/f5">
-        <cTool>
-          <commandLine>`cppunit-config --cflags`</commandLine>
-        </cTool>
-        <ccTool>
-          <commandLine>`cppunit-config --cflags`</commandLine>
-        </ccTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f5</output>
           <linkerLibItems>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
           </linkerLibItems>

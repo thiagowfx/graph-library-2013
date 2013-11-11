@@ -41,8 +41,11 @@ private:
     /** Representa os pais dos nós em relação ao menor caminho até a origem. */
     std::vector<unsigned long long> parent;
     /** Decide os próximos nós a serem explorados. */
-    Heap< std::pair<double, unsigned long long> > Q;
-    /** Inicializa os vetores. */
+    // Heap< std::pair<double, unsigned long long> > Q;
+    std::priority_queue< std::pair<double, unsigned long long>,
+        std::vector< std::pair<double, unsigned long long> >,
+        std::greater< std::pair<double, unsigned long long> > > Q;
+   /** Inicializa os vetores. */
     void clear();
     /** Aplica o algoritmo de Dijkstra a partir de <i>source</i>. Para imediatamente ao explorar <i>target</i> caso o flag <i>stop</i> seja <b>true</b>. */
     void dijkstra(const Graph *G, const unsigned long long source, const bool stop, const unsigned long long target);

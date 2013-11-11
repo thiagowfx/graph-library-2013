@@ -128,7 +128,7 @@
             <pElem>.</pElem>
             <pElem>.</pElem>
           </incDir>
-          <commandLine>`cppunit-config --cflags`</commandLine>
+          <commandLine>`cppunit-config --cflags` --std=c++0x</commandLine>
         </ccTool>
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f5</output>

@@ -5,6 +5,7 @@
                    displayName="Arquivos de Cabeçalho"
                    projectFiles="true">
       <itemPath>Bfs.h</itemPath>
+      <itemPath>Clique.h</itemPath>
       <itemPath>Connectivity.h</itemPath>
       <itemPath>Dfs.h</itemPath>
       <itemPath>Dijkstra.h</itemPath>
@@ -22,6 +23,7 @@
                    displayName="Arquivos de Código-Fonte"
                    projectFiles="true">
       <itemPath>Bfs.cpp</itemPath>
+      <itemPath>Clique.cpp</itemPath>
       <itemPath>Connectivity.cpp</itemPath>
       <itemPath>Dfs.cpp</itemPath>
       <itemPath>Dijkstra.cpp</itemPath>
@@ -36,9 +38,10 @@
     <logicalFolder name="ResourceFiles"
                    displayName="Arquivos de Recurso"
                    projectFiles="true">
-      <itemPath>newmain.cpp</itemPath>
       <itemPath>relatorio2-estudo1-questao3-alt.cpp</itemPath>
-      <itemPath>relatorios.cpp</itemPath>
+      <itemPath>relatorio2-estudos.cpp</itemPath>
+      <itemPath>relatorio3-cotasuperior.cpp</itemPath>
+      <itemPath>relatorio3-heuristica1.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Arquivos de Teste"
@@ -142,6 +145,10 @@
       </item>
       <item path="Bfs.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Clique.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Clique.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Connectivity.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Connectivity.h" ex="false" tool="3" flavor2="0">
@@ -336,7 +343,7 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
-      <item path="relatorios.cpp" ex="false" tool="1" flavor2="0">
+      <item path="relatorio3-heuristica1.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/bfstestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -426,6 +433,10 @@
       </item>
       <item path="Bfs.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Clique.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Clique.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Connectivity.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Connectivity.h" ex="false" tool="3" flavor2="0">
@@ -606,7 +617,7 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
-      <item path="relatorios.cpp" ex="false" tool="1" flavor2="0">
+      <item path="relatorio3-heuristica1.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/bfstestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -8,7 +8,7 @@
 #include <string>
 #include <time.h>
 
-#define GRAFO_ATUAL c4
+#define GRAFO_ATUAL c1
 #define TEST relatorio2_estudo1_questao3_alt
 
 const char tt[] = "inputs/teste.txt";

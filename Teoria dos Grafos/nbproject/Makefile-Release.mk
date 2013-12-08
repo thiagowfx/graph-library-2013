@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Bfs.o \
+	${OBJECTDIR}/Clique.o \
 	${OBJECTDIR}/Connectivity.o \
 	${OBJECTDIR}/Dfs.o \
 	${OBJECTDIR}/Dijkstra.o \
@@ -46,7 +47,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/InputHandler.o \
 	${OBJECTDIR}/Prim.o \
 	${OBJECTDIR}/Utilities.o \
-	${OBJECTDIR}/relatorios.o
+	${OBJECTDIR}/relatorio3-heuristica1.o
 
 # Test Directory
 TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
@@ -91,6 +92,11 @@ ${OBJECTDIR}/Bfs.o: Bfs.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O3 -w -MMD -MP -MF $@.d -o ${OBJECTDIR}/Bfs.o Bfs.cpp
+
+${OBJECTDIR}/Clique.o: Clique.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O3 -w -MMD -MP -MF $@.d -o ${OBJECTDIR}/Clique.o Clique.cpp
 
 ${OBJECTDIR}/Connectivity.o: Connectivity.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -142,10 +148,10 @@ ${OBJECTDIR}/Utilities.o: Utilities.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O3 -w -MMD -MP -MF $@.d -o ${OBJECTDIR}/Utilities.o Utilities.cpp
 
-${OBJECTDIR}/relatorios.o: relatorios.cpp 
+${OBJECTDIR}/relatorio3-heuristica1.o: relatorio3-heuristica1.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O3 -w -MMD -MP -MF $@.d -o ${OBJECTDIR}/relatorios.o relatorios.cpp
+	$(COMPILE.cc) -O3 -w -MMD -MP -MF $@.d -o ${OBJECTDIR}/relatorio3-heuristica1.o relatorio3-heuristica1.cpp
 
 # Subprojects
 .build-subprojects:
@@ -310,6 +316,19 @@ ${OBJECTDIR}/Bfs_nomain.o: ${OBJECTDIR}/Bfs.o Bfs.cpp
 	    ${CP} ${OBJECTDIR}/Bfs.o ${OBJECTDIR}/Bfs_nomain.o;\
 	fi
 
+${OBJECTDIR}/Clique_nomain.o: ${OBJECTDIR}/Clique.o Clique.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/Clique.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O3 -w -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/Clique_nomain.o Clique.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/Clique.o ${OBJECTDIR}/Clique_nomain.o;\
+	fi
+
 ${OBJECTDIR}/Connectivity_nomain.o: ${OBJECTDIR}/Connectivity.o Connectivity.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	@NMOUTPUT=`${NM} ${OBJECTDIR}/Connectivity.o`; \
@@ -440,17 +459,17 @@ ${OBJECTDIR}/Utilities_nomain.o: ${OBJECTDIR}/Utilities.o Utilities.cpp
 	    ${CP} ${OBJECTDIR}/Utilities.o ${OBJECTDIR}/Utilities_nomain.o;\
 	fi
 
-${OBJECTDIR}/relatorios_nomain.o: ${OBJECTDIR}/relatorios.o relatorios.cpp 
+${OBJECTDIR}/relatorio3-heuristica1_nomain.o: ${OBJECTDIR}/relatorio3-heuristica1.o relatorio3-heuristica1.cpp 
 	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/relatorios.o`; \
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/relatorio3-heuristica1.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O3 -w -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/relatorios_nomain.o relatorios.cpp;\
+	    $(COMPILE.cc) -O3 -w -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/relatorio3-heuristica1_nomain.o relatorio3-heuristica1.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/relatorios.o ${OBJECTDIR}/relatorios_nomain.o;\
+	    ${CP} ${OBJECTDIR}/relatorio3-heuristica1.o ${OBJECTDIR}/relatorio3-heuristica1_nomain.o;\
 	fi
 
 # Run Test Targets

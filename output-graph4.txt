@@ -1,7 +1,0 @@
-Distância média 
-24.6328
-7901.65 s
-
-
-RUN FINISHED; exit value 0; real time: 2h 11m 38s; user: 53s; system: 2h 10m 48s
-

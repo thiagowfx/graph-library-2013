@@ -9,7 +9,6 @@
 
 using namespace std;
 
-const char cpteste[] = "inputs/cpteste.txt";
 const char g_10_0[] = "inputs/G_10_0.txt";
 const char g_10_1[] = "inputs/G_10_1.txt";
 const char g_100_0[] = "inputs/G_100_0.txt";

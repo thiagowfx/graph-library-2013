@@ -38,6 +38,8 @@ public:
     double getAverDeg() const;
     /** Retorna o grau de <i>node</i>. */
     unsigned long long getDegree(const unsigned long long node) const;
+    /** Retorna <i>gmax</i>, isto é, o maior grau dentre os nós do grafo, e o (um) nó que contém tal grau. */
+    std::pair<unsigned long long, unsigned long long> getMaxDegree() const;
     /** Retorna um vetor de <i>double</i> com a distribuição empírica do grafo. */
     std::vector<double> getEmpDist() const;
     /** Retorna <b>true</b> se a aresta <i>node1</i>-<i>node2</i> pertence ao grafo. */

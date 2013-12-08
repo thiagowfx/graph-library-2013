@@ -33,6 +33,19 @@ unsigned long long Graph::getDegree(const unsigned long long node) const {
     return degrees.at(node);
 }
 
+std::pair<unsigned long long, unsigned long long> Graph::getMaxDegree() const {
+    unsigned long long max_degree = 0;
+    unsigned long long node = 0;
+    
+    for (unsigned long long i = 1; i <= N; ++i)
+        if ( getDegree(i) > max_degree ) {
+            max_degree = getDegree(i);
+            node = i;
+        }
+    
+    return std::pair<unsigned long long, unsigned long long>(max_degree, node);
+}
+
 std::vector<double> Graph::getEmpDist() const {
     std::vector<double> v(N, 0.0);
     for (int i = 1; i <= N; ++i)

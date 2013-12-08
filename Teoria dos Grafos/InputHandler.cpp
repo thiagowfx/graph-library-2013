@@ -46,20 +46,46 @@ void InputHandler::removeDuplicates(const char *inputFile, const char *outputFil
     is.open(inputFile);
     os.open(outputFile);
     std::string line1, line2;
-    
+
     // ignorar a primeira linha (quantidade de nós)
     getline(is, line1);
     os << line1 << std::endl;
-    
+
     // se duas ou mais linhas consecutivas são iguais, escrever apenas uma vez
     getline(is, line1);
-    while ( getline(is, line2) ) {
+    while (getline(is, line2)) {
         if (line1 != line2)
             os << line1 << std::endl;
         line1 = line2;
     }
     os << line1 << std::endl;
-    
+
     is.close();
     os.close();
+}
+
+std::vector<double> InputHandler::greatestEdges(unsigned long long n, const char *filename) {
+    std::ifstream is;
+    is.open(filename);
+
+    std::string line;
+    double weight;
+    std::deque<double> d;
+    unsigned long long lines_read = 0;
+
+    // number of nodes - ignore it
+    getline(is, line);
+
+    // read weights
+    while (getline(is, line)) {
+        sscanf(line.c_str(), "%*lld %*lld %lf", &weight);
+        d.push_back(weight);
+        ++lines_read;
+    }
+    
+    std::cout << n << " / " << lines_read << std::endl;
+    
+    is.close();
+    std::partial_sort(d.begin(), d.begin() + n, d.end(), std::greater<double>());
+    return std::vector<double>(d.begin(), d.begin() + n);
 }

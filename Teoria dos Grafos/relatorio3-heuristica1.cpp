@@ -4,7 +4,7 @@
 #include "Clique.h"
 #include "InputHandler.h"
 
-#define GRAFO_ATUAL g_10_1
+#define GRAFO_ATUAL g_100_0
 #define TEST CarraganPardalosTesteW
 
 using namespace std;

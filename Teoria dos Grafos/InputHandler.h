@@ -20,6 +20,8 @@ public:
     void readGraph(Graph **g, const char *filename, const char rep, const bool weighted);
     /** Remove as linhas duplicadas consecutivas do arquivo <i>inputFile</i>, escrevendo a saída no arquivo <i>outputFile</i>. */
     void removeDuplicates(const char *inputFile, const char *outputFile);
+    /** Retorna um vetor com as <i>n</i> maiores arestas do grafo do arquivo <i>filename</i>. */
+    std::vector<double> greatestEdges(unsigned long long n, const char *filename);
 private:
 };
 

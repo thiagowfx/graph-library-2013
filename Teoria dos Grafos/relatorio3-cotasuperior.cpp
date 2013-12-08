@@ -9,7 +9,7 @@
 #include <boost/progress.hpp>
 using namespace std;
 
-#define GRAFO_ATUAL g_10_0
+#define GRAFO_ATUAL g_100k_1
 
 const char g_10_0[] = "inputs/G_10_0.txt";
 const char g_10_1[] = "inputs/G_10_1.txt";
@@ -31,6 +31,18 @@ int main(int argc, char** argv) {
     pair<unsigned long long, unsigned long long> p = g->getMaxDegree();
     cout << "Maior grau: " << p.first << endl;
     cout << "Nó: " <<  p.second << endl;
+    
+    double cota_superior = 0.0;
+    
+    vector<double> v = ih.greatestEdges( (p.first * (p.first - 1))/2 , GRAFO_ATUAL);
+    // cout << endl << "gmax maiores pesos: " << endl;
+    for (unsigned long long i = 0; i < v.size(); ++i) {
+        // cout << v[i] << " ";
+        cota_superior += v[i];
+    }
+    //cout << endl;
+    
+    cout << "Cota superior: " << cota_superior << endl;
     
     return 0;
 }

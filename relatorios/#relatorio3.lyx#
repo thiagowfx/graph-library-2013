@@ -96,7 +96,7 @@ clique de peso máximo
  do grafo.
  Sabe-se que esse problema é NP-completo, de modo que não existe uma solução
  eficiente (em tempo polinomial) para ele.
- Atualmente, apenas sabe-se abordar esse problema através da força bruta,
+ Atualmente, apenas sabe-se abordar esse problema através de força bruta,
  em tempo exponencial.
 \end_layout
 
@@ -113,7 +113,37 @@ aproximada
 \end_layout
 
 \begin_layout Section
-Das decisões de projeto
+Da abordagem do problema
+\end_layout
+
+\begin_layout Standard
+Decidimos, antes de tudo, obter uma cota superior para o peso máximo de
+ um clique do grafo.
+ Trivialmente, a maior cota superior pode ser obtida através da soma de
+ todas as arestas (pesos) do grafo.
+ No entanto, essa é a pior cota que poderíamos tomar; ela só é igual ao
+ peso máximo quando o grafo é completo.
+\end_layout
+
+\begin_layout Standard
+Uma segunda abordagem seria a de obter o maior grau dentre os nós do grafo,
+ 
+\emph on
+gmax
+\emph default
+, e então observar que o maior clique possui no máximo esse tamanho.
+ Assim, supomos que esse clique existe, observando que ele possui exatamente
+ 
+\begin_inset Formula $q=\frac{\text{gmax}*\text{(gmax - 1)}}{2}$
+\end_inset
+
+ arestas.
+ Desse modo, a nossa cota superior é obtida através da soma dos pesos das
+ maiores 
+\begin_inset Formula $q$
+\end_inset
+
+ arestas do grafo.
 \end_layout
 
 \begin_layout Section
@@ -127,8 +157,9 @@ Estudo de Caso
 \begin_layout Standard
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="13" columns="8">
+<lyxtabular version="3" rows="13" columns="9">
 <features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -149,13 +180,24 @@ Grafo
 
 \end_inset
 </cell>
-<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 
 \series bold
 Cota Superior
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Clique Médio
 \end_layout
 
 \end_inset
@@ -238,6 +280,15 @@ Heurística #2
 
 \end_inset
 </cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
@@ -310,7 +361,7 @@ Tamanho
 \begin_inset Text
 
 \begin_layout Plain Layout
-G_10_0
+10_0
 \end_layout
 
 \end_inset
@@ -319,7 +370,22 @@ G_10_0
 \begin_inset Text
 
 \begin_layout Plain Layout
-55.625
+\begin_inset Formula $67.25$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $46.25$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -384,7 +450,7 @@ G_10_0
 \begin_inset Text
 
 \begin_layout Plain Layout
-G_10_1
+10_1
 \end_layout
 
 \end_inset
@@ -393,7 +459,22 @@ G_10_1
 \begin_inset Text
 
 \begin_layout Plain Layout
-61
+\begin_inset Formula $75$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $45$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -458,7 +539,7 @@ G_10_1
 \begin_inset Text
 
 \begin_layout Plain Layout
-G_100_0
+100_0
 \end_layout
 
 \end_inset
@@ -467,7 +548,22 @@ G_100_0
 \begin_inset Text
 
 \begin_layout Plain Layout
-621.319 
+\begin_inset Formula $1052.36$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $392.5$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -532,7 +628,7 @@ G_100_0
 \begin_inset Text
 
 \begin_layout Plain Layout
-G_100_1
+100_1
 \end_layout
 
 \end_inset
@@ -541,7 +637,22 @@ G_100_1
 \begin_inset Text
 
 \begin_layout Plain Layout
-357
+\begin_inset Formula $1376$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $114$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -606,7 +717,7 @@ G_100_1
 \begin_inset Text
 
 \begin_layout Plain Layout
-G_1000_0
+1000_0
 \end_layout
 
 \end_inset
@@ -615,6 +726,21 @@ G_1000_0
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $33450.1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $13874.5$
+\end_inset
+
 
 \end_layout
 
@@ -680,7 +806,7 @@ G_1000_0
 \begin_inset Text
 
 \begin_layout Plain Layout
-G_1000_1
+1000_1
 \end_layout
 
 \end_inset
@@ -689,6 +815,21 @@ G_1000_1
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $218791$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $32287$
+\end_inset
+
 
 \end_layout
 
@@ -750,11 +891,35 @@ G_1000_1
 </cell>
 </row>
 <row>
-<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-G_10000_0
+10000_0
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $81830.7$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $9709.24$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -763,16 +928,7 @@ G_10000_0
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-6s (com -O3)
+6s (c/ -O3)
 \end_layout
 
 \end_inset
@@ -833,7 +989,16 @@ G_10000_0
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -846,7 +1011,7 @@ G_10000_0
 \begin_inset Text
 
 \begin_layout Plain Layout
-1m 24s (sem -O3)
+1m24s (s/ -O3)
 \end_layout
 
 \end_inset
@@ -902,7 +1067,7 @@ G_10000_0
 \begin_inset Text
 
 \begin_layout Plain Layout
-G_10000_1
+10000_1
 \end_layout
 
 \end_inset
@@ -911,6 +1076,21 @@ G_10000_1
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $454403$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $8835$
+\end_inset
+
 
 \end_layout
 
@@ -976,7 +1156,7 @@ G_10000_1
 \begin_inset Text
 
 \begin_layout Plain Layout
-G_100000_0
+100000_0
 \end_layout
 
 \end_inset
@@ -985,6 +1165,21 @@ G_100000_0
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $72827.2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1382.5$
+\end_inset
+
 
 \end_layout
 
@@ -1050,7 +1245,7 @@ estoura a memória
 \begin_inset Text
 
 \begin_layout Plain Layout
-G_100000_1
+100000_1
 \end_layout
 
 \end_inset
@@ -1059,6 +1254,21 @@ G_100000_1
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $435559$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $532$
+\end_inset
+
 
 \end_layout
 

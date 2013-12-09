@@ -183,6 +183,10 @@ clique médio
 Dos algoritmos
 \end_layout
 
+\begin_layout Standard
+[...] maior clique [...] nome do algoritmo [...] usa matriz [...]
+\end_layout
+
 \begin_layout Section
 Estudo de Caso
 \end_layout
@@ -1367,6 +1371,35 @@ estoura a memória
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Note que encontramos boas previsões para os grafos 10_1, 100_1, e 10000_1
+ (esse último nem tanto, dado que a incerteza é grande).
+ Isso porque o peso encontrado é maior que o clique médio (e, obviamente,
+ menor que a cota superior).
+\end_layout
+
+\begin_layout Standard
+Pelo exemplo, também podemos notar que a eficiência desse algoritmo é boa
+ -- pelo menos para casos não tão grandes.
+ Note que para os dois últimos casos a memória utilizada é relativamente
+ grande (em torno de 7,5 GB).
+ Para 1 milhão de vértices, seria gastado em torno de 750GB (!) de memória,
+ simplesmente tornando essa primeira heurística inviável.
+ A conta é feita assim: 
+\begin_inset Formula $8n\text{²},$
+\end_inset
+
+ onde 8 bytes é o tamanho de um 
+\emph on
+double 
+\emph default
+e 
+\begin_inset Formula $n\text{²}$
+\end_inset
+
+ é a quantidade de memória que uma matriz de adjacência gasta.
 \end_layout
 
 \end_body

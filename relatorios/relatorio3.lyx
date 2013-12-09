@@ -146,6 +146,39 @@ gmax
  arestas do grafo.
 \end_layout
 
+\begin_layout Standard
+Além da cota superior, podemos estimar o peso máximo de outra forma.
+ Supomos que o 
+\begin_inset Quotes eld
+\end_inset
+
+clique médio
+\begin_inset Quotes erd
+\end_inset
+
+ tem tamanho igual ao 
+\emph on
+gmed
+\emph default
+ = grau médio do grafo.
+ Dessa forma, tomamos as maiores 
+\begin_inset Formula $\frac{\text{gmed}*\text{(gmed-1)}}{2}$
+\end_inset
+
+ arestas do grafo, somando seus pesos; obtendo, assim, o 
+\begin_inset Quotes eld
+\end_inset
+
+clique médio
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Note que esse número não é nem uma cota superior, nem inferior; ele apenas
+ é uma aproximação (possivelmente) um pouco melhor do que a cota superior
+ (apesar de não sabermos se é para cima ou para baixo, isso depende do grafo).
+\end_layout
+
 \begin_layout Section
 Dos algoritmos
 \end_layout
@@ -180,7 +213,7 @@ Grafo
 
 \end_inset
 </cell>
-<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -191,7 +224,7 @@ Cota Superior
 
 \end_inset
 </cell>
-<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -208,7 +241,7 @@ Clique Médio
 \begin_layout Plain Layout
 
 \series bold
-Heurística #1
+Heurística #1 - maior clique
 \end_layout
 
 \end_inset
@@ -271,20 +304,20 @@ Heurística #2
 
 \end_inset
 </cell>
-<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+(gmax)
 \end_layout
 
 \end_inset
 </cell>
-<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+(gmed)
 \end_layout
 
 \end_inset
@@ -928,7 +961,7 @@ Tamanho
 \begin_inset Text
 
 \begin_layout Plain Layout
-6s (com -O3)
+6s (c/ -O3)
 \end_layout
 
 \end_inset
@@ -1011,7 +1044,7 @@ Tamanho
 \begin_inset Text
 
 \begin_layout Plain Layout
-1m 24s (sem -O3)
+1m24s (s/ -O3)
 \end_layout
 
 \end_inset
@@ -1088,6 +1121,9 @@ Tamanho
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $8835$
+\end_inset
+
 
 \end_layout
 
@@ -1174,6 +1210,9 @@ Tamanho
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $1382.5$
+\end_inset
+
 
 \end_layout
 
@@ -1260,6 +1299,9 @@ estoura a memória
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $532$
+\end_inset
+
 
 \end_layout
 

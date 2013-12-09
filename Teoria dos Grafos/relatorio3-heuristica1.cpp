@@ -24,12 +24,13 @@ Graph *g;
 void CarraganPardalosTeste() {
    Clique testeClique(g);
    vector<unsigned long long> saida = testeClique.getMaxClique();
-   for (unsigned long long i = 0; i < saida.size()-1; ++i) {
+   
+   for (unsigned long long i = 0; i < saida.size()-1; ++i)
        cout << saida[i] << " - ";
-   }
    cout << saida.back() << endl;
-   cout << "tamanho: " << testeClique.getMaxCliqueSize() << endl;
-   cout << "peso: " << testeClique.getMaxCliqueWeight() << endl;
+   
+   cout << "Tamanho: " << testeClique.getMaxCliqueSize() << endl;
+   cout << "Peso: " << testeClique.getMaxCliqueWeight() << endl;
 }
 
 void CarraganPardalosTesteW() {

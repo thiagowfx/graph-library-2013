@@ -15,8 +15,8 @@ private:
     const Graph *G;
     std::vector<unsigned long long> MaxClique;
 public:
-    std::vector<unsigned long long> getMaxClique();
-    unsigned long long getMaxCliqueSize();
+    std::vector<unsigned long long> getMaxClique() const;
+    unsigned long long getMaxCliqueSize() const;
     double getCliqueWeight(std::vector<unsigned long long> *v);
     double getMaxCliqueWeight();
 };

@@ -43,11 +43,11 @@ int main() {
     InputHandler ih;
 
 #define GRAFO_ATUAL g_10_0_mod
-    ih.removeDuplicates(g_10_0, GRAFO_ATUAL, true);
+    //ih.removeDuplicates2(g_10_0, GRAFO_ATUAL, true);
 
     // Algoritmo do clique máximo.
-    // ih.readGraph(&g, GRAFO_ATUAL, 'm', true);
-    // CarraganPardalosTesteW();
+    ih.readGraph(&g, GRAFO_ATUAL, 'm', true);
+    CarraganPardalosTesteW();
 
     return 0;
 }

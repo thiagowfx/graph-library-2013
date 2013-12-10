@@ -159,7 +159,7 @@ gmax
 , e então observar que o maior clique possui no máximo esse tamanho.
  Assim, supomos que esse clique existe, observando que ele possui exatamente
  
-\begin_inset Formula $q=\frac{\text{gmax}*\text{(gmax - 1)}}{2}$
+\begin_inset Formula $q=\frac{\text{gmax}*\text{(gmax + 1)}}{2}$
 \end_inset
 
  arestas.
@@ -169,10 +169,47 @@ gmax
 \end_inset
 
  arestas do grafo.
+ Chamamos essa cota de 
+\series bold
+Cota Superior #1.
 \end_layout
 
 \begin_layout Standard
-Além da cota superior, podemos estimar o peso máximo de outra forma.
+Uma pequena melhoria nesse raciocínio é a de, em vez de apenas considerar
+ o grau máximo do grafo, considerar o máximo grau que uma clique no grafo
+ poderia ter (teoricamente).
+ Por exemplo, não adianta haver uma estrela cujo maior grau é 1000 e aplicar
+ a 
+\series bold
+Cota Superior #1
+\series default
+ para tomarmos todas as arestas da estrela.
+ O clique máximo de uma estrela tem tamanho 2.
+ Assim, na 
+\series bold
+Cota Superior #2
+\series default
+ tomamos o maior grau 
+\series bold
+
+\begin_inset Formula $r$
+\end_inset
+
+
+\series default
+ que pudermos encontrar, tal que existam no mínimo 
+\begin_inset Formula $r$
+\end_inset
+
+ nós com grau maior ou igual a 
+\begin_inset Formula $r$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Além das cotas superiores, podemos estimar o peso máximo de outra forma.
  Supomos que o 
 \begin_inset Quotes eld
 \end_inset
@@ -187,7 +224,7 @@ gmed
 \emph default
  = grau médio do grafo.
  Dessa forma, tomamos as maiores 
-\begin_inset Formula $\frac{\text{gmed}*\text{(gmed-1)}}{2}$
+\begin_inset Formula $\frac{\text{gmed}*\text{(gmed+1)}}{2}$
 \end_inset
 
  arestas do grafo, somando seus pesos; obtendo, assim, o 
@@ -525,7 +562,7 @@ Peso Máx
 \begin_inset Text
 
 \begin_layout Plain Layout
-gmax_grafo
+gmax
 \end_layout
 
 \end_inset
@@ -543,7 +580,7 @@ Peso Máx
 \begin_inset Text
 
 \begin_layout Plain Layout
-gmax_clique
+gmax
 \end_layout
 
 \end_inset
@@ -795,7 +832,10 @@ s/ O3
 \begin_inset Text
 
 \begin_layout Plain Layout
-18
+\begin_inset Formula $18$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1157,7 +1197,7 @@ s/ O3
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1166,7 +1206,7 @@ s/ O3
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1175,7 +1215,7 @@ s/ O3
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1238,6 +1278,18 @@ s/ O3
 \begin_inset Text
 
 \begin_layout Plain Layout
+174
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $91500$
+\end_inset
+
 
 \end_layout
 
@@ -1247,16 +1299,7 @@ s/ O3
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
+102
 \end_layout
 
 \end_inset
@@ -1273,29 +1316,29 @@ s/ O3
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-30 ms
+
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-80 ms
+
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-90 ms
+
 \end_layout
 
 \end_inset
@@ -1354,6 +1397,18 @@ s/ O3
 \begin_inset Text
 
 \begin_layout Plain Layout
+304
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $36810.9$
+\end_inset
+
 
 \end_layout
 
@@ -1363,16 +1418,7 @@ s/ O3
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
+127
 \end_layout
 
 \end_inset
@@ -1389,7 +1435,7 @@ s/ O3
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1407,7 +1453,7 @@ s/ O3
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="3" alignment="left" valignment="middle" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -1470,6 +1516,18 @@ s/ O3
 \begin_inset Text
 
 \begin_layout Plain Layout
+226
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $147250$
+\end_inset
+
 
 \end_layout
 
@@ -1479,16 +1537,7 @@ s/ O3
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
+125
 \end_layout
 
 \end_inset
@@ -1505,11 +1554,11 @@ s/ O3
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-1.05s
+
 \end_layout
 
 \end_inset
@@ -1523,11 +1572,11 @@ s/ O3
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-2.56 s
+
 \end_layout
 
 \end_inset
@@ -1586,6 +1635,18 @@ s/ O3
 \begin_inset Text
 
 \begin_layout Plain Layout
+217
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $36862.7$
+\end_inset
+
 
 \end_layout
 
@@ -1595,16 +1656,7 @@ s/ O3
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
+110
 \end_layout
 
 \end_inset
@@ -1702,6 +1754,18 @@ estoura a memória
 \begin_inset Text
 
 \begin_layout Plain Layout
+216
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $124545$
+\end_inset
+
 
 \end_layout
 
@@ -1711,16 +1775,7 @@ estoura a memória
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
+115
 \end_layout
 
 \end_inset
@@ -1885,20 +1940,8 @@ Heurística #1: vértices do clique encontrado:
  9453, 9540, 9693, 9713, 9875, 9922, 9942 
 \end_layout
 
-\begin_layout Itemize
-100000_0 
-\begin_inset Formula $\Longrightarrow$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-100000_1 
-\begin_inset Formula $\Longrightarrow$
-\end_inset
-
-
+\begin_layout Section
+Conclusão
 \end_layout
 
 \begin_layout Standard

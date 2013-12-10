@@ -10,7 +10,7 @@
 #include <boost/progress.hpp>
 using namespace std;
 
-#define GRAFO_ATUAL g_100k_0_mod
+#define GRAFO_ATUAL g_10_0_mod
 
 const char g_10_0[] = "inputs/G_10_0.txt";
 const char g_10_1[] = "inputs/G_10_1.txt";
@@ -47,7 +47,7 @@ int main(int argc, char** argv) {
 
     double cota_superior = 0.0;
 
-    vector<double> v = ih.greatestEdges((p.first * (p.first - 1)) / 2, GRAFO_ATUAL, true);
+    vector<double> v = ih.greatestEdges((p.first * (p.first + 1)) / 2, GRAFO_ATUAL, true);
     // cout << endl << "gmax maiores pesos: " << endl;
     for (unsigned long long i = 0; i < v.size(); ++i) {
         // cout << v[i] << " ";
@@ -62,7 +62,7 @@ int main(int argc, char** argv) {
     double cota_superior2 = 0.0;
 
     unsigned long long averDegree = floor(g->getAverDeg());
-    v = ih.greatestEdges((averDegree * (averDegree - 1)) / 2, GRAFO_ATUAL, true);
+    v = ih.greatestEdges((averDegree * (averDegree + 1)) / 2, GRAFO_ATUAL, true);
     // cout << endl << "gmax maiores pesos: " << endl;
     for (unsigned long long i = 0; i < v.size(); ++i) {
         // cout << v[i] << " ";
@@ -91,7 +91,7 @@ int main(int argc, char** argv) {
 
     cout << "Grau: " << grau << endl;
 
-    v = ih.greatestEdges((grau * (grau - 1)) / 2, GRAFO_ATUAL, true);
+    v = ih.greatestEdges((grau * (grau + 1)) / 2, GRAFO_ATUAL, true);
 
     for (unsigned long long i = 0; i < v.size(); ++i)
         cota_superior3 += v[i];

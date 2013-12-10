@@ -127,7 +127,7 @@ void InputHandler::removeDuplicates2(const char *inputFile, const char *outputFi
     os << number_of_nodes << std::endl;
 
     for (it = dict.begin(); it != dict.end(); ++it)
-        os << it->first.first << " " << it->first.second << " " << it->second << std::endl;
+        os << it->first.first << " " << it->first.second << " " << std::setprecision(10) << it->second << std::endl;
 
     is.close();
     os.close();

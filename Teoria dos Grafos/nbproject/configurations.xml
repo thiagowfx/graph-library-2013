@@ -617,7 +617,7 @@
           </linkerLibItems>
         </linkerTool>
       </folder>
-      <item path="relatorio3-heuristica1.cpp" ex="false" tool="1" flavor2="0">
+      <item path="relatorio3-cotasuperior.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="tests/bfstestclass1.cpp" ex="false" tool="1" flavor2="0">
       </item>

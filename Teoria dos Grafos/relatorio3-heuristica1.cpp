@@ -3,7 +3,7 @@
 #include "Utilities.h"
 #include "Clique.h"
 #include "InputHandler.h"
-
+#include <boost/progress.hpp>
 using namespace std;
 
 const char g_10_0[] = "inputs/G_10_0.txt";
@@ -32,7 +32,7 @@ void CarraganPardalosTesteW() {
     Clique testeClique(g);
     vector<unsigned long long> saida = testeClique.getMaxClique();
     for (unsigned long long i = 0; i < saida.size() - 1; ++i) {
-        cout << saida[i] << " - ";
+        cout << saida[i] << ", ";
     }
     cout << saida.back() << endl;
     cout << "tamanho: " << testeClique.getMaxCliqueSize() << endl;
@@ -41,11 +41,12 @@ void CarraganPardalosTesteW() {
 
 int main() {
     InputHandler ih;
-
-#define GRAFO_ATUAL g_10_0_mod
-    //ih.removeDuplicates2(g_10_0, GRAFO_ATUAL, true);
+    
+    #define GRAFO_ATUAL g_100k_0_mod
+    //ih.removeDuplicates2(g_100k_1, GRAFO_ATUAL, true);
 
     // Algoritmo do clique máximo.
+    boost::progress_timer pt;
     ih.readGraph(&g, GRAFO_ATUAL, 'm', true);
     CarraganPardalosTesteW();
 

@@ -40,22 +40,35 @@ void InputHandler::readGraph(Graph **g, const char *filename, const char rep, co
     is.close();
 }
 
-void InputHandler::removeDuplicates(const char *inputFile, const char *outputFile) {
+void InputHandler::removeDuplicates(const char *inputFile, const char *outputFile, bool weighted) {
     std::ifstream is;
     std::ofstream os;
     is.open(inputFile);
     os.open(outputFile);
     std::string line1, line2;
+    unsigned long long node1, node2;
+    double weight;
 
     // ignorar a primeira linha (quantidade de nós)
     getline(is, line1);
     os << line1 << std::endl;
 
     // se duas ou mais linhas consecutivas são iguais, escrever apenas uma vez
+    // ademais, ordenar os vértices (menor -> maior)
     getline(is, line1);
     while (getline(is, line2)) {
-        if (line1 != line2)
-            os << line1 << std::endl;
+        if (line1 != line2) {
+            /* Escreve a linha line1 de volta. */
+            // os << line1 << std::endl;
+
+            if (weighted) {
+                sscanf(line1.c_str(), "%lld %lld %lf", &node1, &node2, &weight);
+                os << std::min(node1, node2) << " " << std::max(node1, node2) << " " << weight << std::endl;
+            } else {
+                sscanf(line1.c_str(), "%lld %lld", &node1, &node2);
+                os << std::min(node1, node2) << " " << std::max(node1, node2) << std::endl;
+            }
+        }
         line1 = line2;
     }
     os << line1 << std::endl;
@@ -64,7 +77,7 @@ void InputHandler::removeDuplicates(const char *inputFile, const char *outputFil
     os.close();
 }
 
-std::vector<double> InputHandler::greatestEdges(unsigned long long n, const char *filename) {
+std::vector<double> InputHandler::greatestEdges(unsigned long long n, const char *filename, bool weighted) {
     std::ifstream is;
     is.open(filename);
 
@@ -77,14 +90,24 @@ std::vector<double> InputHandler::greatestEdges(unsigned long long n, const char
     getline(is, line);
 
     // read weights
-    while (getline(is, line)) {
-        sscanf(line.c_str(), "%*lld %*lld %lf", &weight);
-        d.push_back(weight);
-        ++lines_read;
-    }
-    
-    std::cout << n << " / " << lines_read << std::endl;
-    
+    if (weighted) {
+        while (getline(is, line)) {
+            sscanf(line.c_str(), "%*lld %*lld %lf", &weight);
+            d.push_back(weight);
+            ++lines_read;
+        }
+    } else { // dummy, all weights = 1
+        while (getline(is, line)) {
+            weight = 1.0
+            d.push_back(weight);
+            ++lines_read;
+        }
+    } 
+
+    // std::cout << n << " / " << lines_read << std::endl;
+    // assert( n < lines_read );
+    n = std::min(n, lines_read);
+
     is.close();
     std::partial_sort(d.begin(), d.begin() + n, d.end(), std::greater<double>());
     return std::vector<double>(d.begin(), d.begin() + n);

@@ -117,6 +117,39 @@ Da abordagem do problema
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Em primeiro lugar, tivemos que reprocessar os grafos de entrada, pois eles
+ continham arestas paralelas (
+\begin_inset Quotes eld
+\end_inset
+
+multigrafo
+\begin_inset Quotes erd
+\end_inset
+
+).
+ Naturalmente, como queremos trabalhar apenas com grafos simples, eliminamos
+ as arestas múltiplas, selecionando apenas uma: as que tinham maior peso.
+ Adicionamos um método para realizar esse pré-processamento na classe 
+\emph on
+InputHandler
+\emph default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Cotas estimadas
+\end_layout
+
+\begin_layout Standard
 Decidimos, antes de tudo, obter uma cota superior para o peso máximo de
  um clique do grafo.
  Trivialmente, a maior cota superior pode ser obtida através da soma de
@@ -179,11 +212,31 @@ clique médio
  (apesar de não sabermos se é para cima ou para baixo, isso depende do grafo).
 \end_layout
 
+\begin_layout Subsection
+Heurísticas
+\end_layout
+
+\begin_layout Standard
+Uma possível heurística para abordar o problema é a seguinte: encontramos
+ o maior clique do grafo, na esperança de que ele tenha um peso grande (não
+ necessariamente o maior, é claro).
+\end_layout
+
 \begin_layout Section
 Dos algoritmos
 \end_layout
 
 \begin_layout Standard
+Para encontrar o maior clique, fizemos 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+GUILHERME INSIRA SUAS NOTAS AQUI
+\end_layout
+
+\end_inset
+
 [...] maior clique [...] nome do algoritmo [...] usa matriz [...]
 \end_layout
 
@@ -332,7 +385,7 @@ Heurística #2
 \begin_layout Plain Layout
 
 \series bold
-Tempo
+Tempo (matriz // lista)
 \end_layout
 
 \end_inset
@@ -787,7 +840,7 @@ Tamanho
 \begin_inset Text
 
 \begin_layout Plain Layout
-3s
+35 (60) ms // 100 ms (2s)
 \end_layout
 
 \end_inset
@@ -876,7 +929,7 @@ Tamanho
 \begin_inset Text
 
 \begin_layout Plain Layout
-240ms
+30 (70) ms // 90 ms (2s)
 \end_layout
 
 \end_inset
@@ -965,7 +1018,7 @@ Tamanho
 \begin_inset Text
 
 \begin_layout Plain Layout
-6s (c/ -O3)
+6s (s/ O3)
 \end_layout
 
 \end_inset
@@ -1048,7 +1101,7 @@ Tamanho
 \begin_inset Text
 
 \begin_layout Plain Layout
-1m24s (s/ -O3)
+1m24s (c/ O3)
 \end_layout
 
 \end_inset

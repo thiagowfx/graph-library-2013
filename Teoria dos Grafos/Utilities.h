@@ -2,6 +2,7 @@
 #define	UTILITIES_H
 
 #include <algorithm>    // std::reverse
+#include <cassert>
 #include <cstring>
 #include <deque>
 #include <exception>    // std::exception

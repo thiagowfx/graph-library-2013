@@ -37,7 +37,7 @@ int main(int argc, char** argv) {
     
     double cota_superior = 0.0;
     
-    vector<double> v = ih.greatestEdges( (p.first * (p.first - 1))/2 , GRAFO_ATUAL);
+    vector<double> v = ih.greatestEdges( (p.first * (p.first - 1))/2 , GRAFO_ATUAL, true);
     // cout << endl << "gmax maiores pesos: " << endl;
     for (unsigned long long i = 0; i < v.size(); ++i) {
         // cout << v[i] << " ";
@@ -52,7 +52,7 @@ int main(int argc, char** argv) {
     double cota_superior2 = 0.0;
     
     unsigned long long averDegree = floor ( g->getAverDeg() );
-    v = ih.greatestEdges( (averDegree * (averDegree - 1))/2 , GRAFO_ATUAL);
+    v = ih.greatestEdges( (averDegree * (averDegree - 1))/2 , GRAFO_ATUAL, true);
     // cout << endl << "gmax maiores pesos: " << endl;
     for (unsigned long long i = 0; i < v.size(); ++i) {
         // cout << v[i] << " ";

@@ -4,6 +4,9 @@
 #include "Clique.h"
 #include "InputHandler.h"
 #include <boost/progress.hpp>
+
+#define GRAFO_ATUAL g_10k_0_mod
+
 using namespace std;
 
 const char g_10_0[] = "inputs/G_10_0.txt";
@@ -42,7 +45,6 @@ void CarraghanPardalosTeste() {
 int main() {
     InputHandler ih;
     
-    #define GRAFO_ATUAL g_100k_0_mod
     //ih.removeDuplicates2(g_100k_1, GRAFO_ATUAL, true);
 
     // Algoritmo do clique máximo.

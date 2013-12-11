@@ -28,7 +28,7 @@ const char g_100k_0_mod[] = "inputs/G_100000_0_mod.txt";
 const char g_100k_1_mod[] = "inputs/G_100000_1_mod.txt";
 Graph *g;
 
-void CarraganPardalosTesteW() {
+void CarraghanPardalosTeste() {
     Clique testeClique(g);
     vector<unsigned long long> saida = testeClique.getMaxClique();
     for (unsigned long long i = 0; i < saida.size() - 1; ++i) {
@@ -48,7 +48,7 @@ int main() {
     // Algoritmo do clique máximo.
     boost::progress_timer pt;
     ih.readGraph(&g, GRAFO_ATUAL, 'm', true);
-    CarraganPardalosTesteW();
+    CarraghanPardalosTeste();
 
     return 0;
 }

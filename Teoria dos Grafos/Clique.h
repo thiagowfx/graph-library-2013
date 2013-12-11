@@ -7,9 +7,7 @@
 class Clique {
 public:
     Clique(const Graph *G);
-    void CarraganPardalosMaxClique();
-    void CarraganPardalosMaxCliqueMod();
-    void CarraganPardalosMaxWeightClique();
+    void CarraghanPardalosMaxClique();
     virtual ~Clique();
 private:
     const Graph *G;

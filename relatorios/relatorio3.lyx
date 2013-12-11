@@ -92,11 +92,11 @@ O objetivo desta terceira parte do trabalho foi de utilizar a biblioteca
 \series bold
 clique de peso máximo
 \series default
-, que consiste em encontrar o clique de maior peso, dentre todos os cliques
- do grafo.
- Sabe-se que esse problema é NP-completo, de modo que não existe uma solução
- eficiente (em tempo polinomial) para ele.
- Atualmente, apenas sabe-se abordar esse problema através de força bruta,
+, que consiste em encontrar o clique de maior peso, num grafo com pesos
+ nas arestas.
+ Sabe-se que esse problema é NP-difícil, de modo que soluções polinomiais
+ são ainda desconhecidas.
+ Atualmente, podemos apenas encontrar soluções exatas através de força bruta,
  em tempo exponencial.
 \end_layout
 
@@ -108,8 +108,8 @@ aproximada
 \series default
 .
  A ideia seria utilizar algum algoritmo guloso, ou de programação dinâmica,
- ou algo similar, para buscar encontrar uma clique com o peso mais aproximado
- do de maior peso quanto possível, mas em um espaço de tempo limitado.
+ ou algo similar, para encontrar uma clique com o peso mais próximo do ótimo
+ quanto possível, mas a um custo computacional (tempo e memória) acessível.
 \end_layout
 
 \begin_layout Section
@@ -132,9 +132,47 @@ multigrafo
  Adicionamos um método para realizar esse pré-processamento (filtragem)
  na classe 
 \emph on
-InputHandler
+InputHandler.
+\end_layout
+
+\begin_layout Standard
+Na ausência de soluções exatas eficientes para o problema, buscamos soluções
+ que aproximem bem a solução ótima, e possa ser calculada dispondo de uma
+ quantidade de recursos de tempo e memória razoáveis.
+ 
+\end_layout
+
+\begin_layout Standard
+Consultando algumas referências na literatura, encontramos uma solução simples
+ para um problema similar: o de achar um clique com o maior número de vértices
+ no grafo.
+ Notamos que no caso em que todas as arestas têm o mesmo peso, achar o clique
+ de peso máximo se resume a achar o maior clique em número de vértices.
+ Além disso, caso os pesos das arestas não variem muito em torno da média,
+ podemos imaginar que o clique de maior peso seja também o clique com maior
+ número de vértices.
+\end_layout
+
+\begin_layout Standard
+Para resolver então o problema do maior clique, nos baseamos no algoritmo
+ descrito por Carraghan e Pardalos, no artigo 
+\emph on
+'An exact algorithm for the maximum clique problem' 
 \emph default
-.
+(Operations Research Letters, 1990).
+\end_layout
+
+\begin_layout Standard
+Esse algoritmo se baseia numa enumeração parcial dos cliques do grafo, que
+ a cada momento registra o maior clique já obtido, e evita entrar em cálculos
+ que sabidamente não levarão a uma resposta melhor (
+\emph on
+pruning
+\emph default
+).
+ Essa técnica em geral permite encontrar a solução exata em bem menos tempo
+ do que a enumeração total.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -154,12 +192,16 @@ Decidimos, antes de tudo, obter uma cota superior para o peso máximo de
 Uma segunda abordagem seria a de obter o maior grau dentre os nós do grafo,
  
 \emph on
-gmax
+
+\begin_inset Formula $g_{max}$
+\end_inset
+
+
 \emph default
 , e então observar que o maior clique possui no máximo esse tamanho.
  Assim, supomos que esse clique existe, observando que ele possui exatamente
  
-\begin_inset Formula $q=\frac{\text{gmax}*\text{(gmax + 1)}}{2}$
+\begin_inset Formula $q=\frac{g_{max}(g_{max}+1)}{2}$
 \end_inset
 
  arestas.
@@ -208,82 +250,6 @@ Cota Superior #2
 .
 \end_layout
 
-\begin_layout Standard
-Além das cotas superiores, podemos estimar o peso máximo de outra forma.
- Supomos que o 
-\begin_inset Quotes eld
-\end_inset
-
-clique médio
-\begin_inset Quotes erd
-\end_inset
-
- tem tamanho igual ao 
-\emph on
-gmed
-\emph default
- = grau médio do grafo.
- Dessa forma, tomamos as maiores 
-\begin_inset Formula $\frac{\text{gmed}*\text{(gmed+1)}}{2}$
-\end_inset
-
- arestas do grafo, somando seus pesos; obtendo, assim, o 
-\begin_inset Quotes eld
-\end_inset
-
-
-\series bold
-Clique Médio
-\series default
-
-\begin_inset Quotes erd
-\end_inset
-
-.
- Note que esse número não é nem uma cota superior, nem inferior; ele apenas
- é uma aproximação (possivelmente) um pouco melhor do que a cota superior
- (apesar de não sabermos se é para cima ou para baixo, isso depende do grafo).
-\end_layout
-
-\begin_layout Subsection
-Heurísticas
-\end_layout
-
-\begin_layout Standard
-Uma possível heurística para abordar o problema é a seguinte: encontramos
- o maior clique do grafo, na esperança de que ele tenha um peso grande (não
- necessariamente o maior, é claro).
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Complementar
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Dos algoritmos
-\end_layout
-
-\begin_layout Standard
-Para encontrar o maior clique, fizemos 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-GUILHERME INSIRA SUAS NOTAS AQUI
-\end_layout
-
-\end_inset
-
-[...] maior clique [...] nome do algoritmo [...] usa matriz [...]
-\end_layout
-
 \begin_layout Section
 Estudo de Caso
 \end_layout
@@ -297,10 +263,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="13" columns="7">
+<lyxtabular version="3" rows="13" columns="5">
 <features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -345,26 +309,6 @@ Cota Superior #1
 
 \series bold
 Cota Superior #2
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Clique Méd.
 \end_layout
 
 \end_inset
@@ -429,26 +373,6 @@ Clique
 
 \end_inset
 </cell>
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-Grau Médio
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 </row>
 <row>
 <cell multirow="4" alignment="center" valignment="top" usebox="none">
@@ -487,29 +411,11 @@ Peso Máx
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-gmax
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Peso Méd
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-gmed
+gmax
 \end_layout
 
 \end_inset
@@ -552,29 +458,11 @@ gmed
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-4
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-58.75
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+4
 \end_layout
 
 \end_inset
@@ -617,29 +505,11 @@ gmed
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-3
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-45
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+3
 \end_layout
 
 \end_inset
@@ -682,29 +552,11 @@ gmed
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-11
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-528.125
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+11
 \end_layout
 
 \end_inset
@@ -747,29 +599,11 @@ gmed
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-11
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-186
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+11
 \end_layout
 
 \end_inset
@@ -812,29 +646,11 @@ gmed
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-105
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-14084.8
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+105
 \end_layout
 
 \end_inset
@@ -877,29 +693,11 @@ gmed
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-102
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-33349
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+102
 \end_layout
 
 \end_inset
@@ -942,29 +740,11 @@ gmed
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-127
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-10042.5
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+127
 \end_layout
 
 \end_inset
@@ -1007,29 +787,11 @@ gmed
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-125
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-9424
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+125
 \end_layout
 
 \end_inset
@@ -1072,29 +834,11 @@ gmed
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-110
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1770
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+110
 \end_layout
 
 \end_inset
@@ -1137,29 +881,11 @@ gmed
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-115
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-684
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+115
 \end_layout
 
 \end_inset
@@ -1176,7 +902,7 @@ gmed
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Cotas Superiores e Clique Médio
+Cotas Superiores
 \end_layout
 
 \end_inset
@@ -1238,7 +964,7 @@ Grafo
 \begin_layout Plain Layout
 
 \series bold
-Heurística #1 - maior clique
+Maior clique por Carraghan-Pardalos
 \end_layout
 
 \end_inset
@@ -2193,17 +1919,13 @@ Conclusão
 
 \begin_layout Standard
 Note que encontramos boas previsões para os grafos 10_1, 100_1, e 10000_1
- (esse último nem tanto, dado que a incerteza é grande).
- Isso porque o peso encontrado é maior que o clique médio (e, obviamente,
- menor que a cota superior).
+ com as cotas superiores!
 \end_layout
 
 \begin_layout Standard
-Pelo exemplo, também podemos notar que a eficiência desse algoritmo é boa
- -- pelo menos para casos não tão grandes.
- Note que para os dois últimos casos a memória utilizada é relativamente
+Note que para os dois últimos casos a memória utilizada é relativamente
  grande (em torno de 7,5 GB).
- Para 1 milhão de vértices, seria gastado em torno de 750GB (!) de memória,
+ Para 1 milhão de vértices, seria gasto em torno de 750GB (!) de memória,
  simplesmente tornando essa primeira heurística inviável.
  A conta é feita assim: 
 \begin_inset Formula $8n\text{²},$
@@ -2218,6 +1940,12 @@ e
 \end_inset
 
  é a quantidade de memória que uma matriz de adjacência gasta.
+\end_layout
+
+\begin_layout Standard
+Compensamos esse custo de memória pela velocidade com que o algoritmo acha
+ o clique de tamanho máximo, e o fato de que em muitos casos esse é exatamente
+ o clique de peso máximo!
 \end_layout
 
 \end_body

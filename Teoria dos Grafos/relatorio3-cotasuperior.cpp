@@ -10,7 +10,7 @@
 #include <boost/progress.hpp>
 using namespace std;
 
-#define GRAFO_ATUAL g_10_0_mod
+#define GRAFO_ATUAL g_100k_1_mod
 
 const char g_10_0[] = "inputs/G_10_0.txt";
 const char g_10_1[] = "inputs/G_10_1.txt";

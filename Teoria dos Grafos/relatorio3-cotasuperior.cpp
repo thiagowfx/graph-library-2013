@@ -10,7 +10,7 @@
 #include <boost/progress.hpp>
 using namespace std;
 
-#define GRAFO_ATUAL g_100k_1_mod
+#define GRAFO_ATUAL g_100k_0_mod
 
 const char g_10_0[] = "inputs/G_10_0.txt";
 const char g_10_1[] = "inputs/G_10_1.txt";
@@ -35,6 +35,8 @@ const char g_100k_1_mod[] = "inputs/G_100000_1_mod.txt";
 Graph *g;
 
 int main(int argc, char** argv) {
+    
+    boost::progress_timer pt;
 
     InputHandler ih;
     ih.readGraph(&g, GRAFO_ATUAL, 'l', true);
@@ -96,7 +98,15 @@ int main(int argc, char** argv) {
     for (unsigned long long i = 0; i < v.size(); ++i)
         cota_superior3 += v[i];
 
-    cout << "Cota superior 3: " << cota_superior3 << endl;
+    cout << "Cota superior 3: " << cota_superior3 << endl <<  "--------" << endl;
+    
+    // ---------------------------------------------------
+    
+    
+//    cout << "maiores arestas:" << endl;    
+//    for (unsigned long long i = 0; i < v.size(); ++i) {
+//        cout << v[i] << endl;
+//    }
 
     return 0;
 }

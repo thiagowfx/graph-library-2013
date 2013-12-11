@@ -47,7 +47,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/InputHandler.o \
 	${OBJECTDIR}/Prim.o \
 	${OBJECTDIR}/Utilities.o \
-	${OBJECTDIR}/relatorio3-heuristica1.o
+	${OBJECTDIR}/relatorio3-cotasuperior.o
 
 # Test Directory
 TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
@@ -148,10 +148,10 @@ ${OBJECTDIR}/Utilities.o: nbproject/Makefile-${CND_CONF}.mk Utilities.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -I. -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/Utilities.o Utilities.cpp
 
-${OBJECTDIR}/relatorio3-heuristica1.o: nbproject/Makefile-${CND_CONF}.mk relatorio3-heuristica1.cpp 
+${OBJECTDIR}/relatorio3-cotasuperior.o: nbproject/Makefile-${CND_CONF}.mk relatorio3-cotasuperior.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -I. -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/relatorio3-heuristica1.o relatorio3-heuristica1.cpp
+	$(COMPILE.cc) -g -I. -I. -MMD -MP -MF $@.d -o ${OBJECTDIR}/relatorio3-cotasuperior.o relatorio3-cotasuperior.cpp
 
 # Subprojects
 .build-subprojects:
@@ -459,17 +459,17 @@ ${OBJECTDIR}/Utilities_nomain.o: ${OBJECTDIR}/Utilities.o Utilities.cpp
 	    ${CP} ${OBJECTDIR}/Utilities.o ${OBJECTDIR}/Utilities_nomain.o;\
 	fi
 
-${OBJECTDIR}/relatorio3-heuristica1_nomain.o: ${OBJECTDIR}/relatorio3-heuristica1.o relatorio3-heuristica1.cpp 
+${OBJECTDIR}/relatorio3-cotasuperior_nomain.o: ${OBJECTDIR}/relatorio3-cotasuperior.o relatorio3-cotasuperior.cpp 
 	${MKDIR} -p ${OBJECTDIR}
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/relatorio3-heuristica1.o`; \
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/relatorio3-cotasuperior.o`; \
 	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} $@.d;\
-	    $(COMPILE.cc) -g -I. -I. -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/relatorio3-heuristica1_nomain.o relatorio3-heuristica1.cpp;\
+	    $(COMPILE.cc) -g -I. -I. -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/relatorio3-cotasuperior_nomain.o relatorio3-cotasuperior.cpp;\
 	else  \
-	    ${CP} ${OBJECTDIR}/relatorio3-heuristica1.o ${OBJECTDIR}/relatorio3-heuristica1_nomain.o;\
+	    ${CP} ${OBJECTDIR}/relatorio3-cotasuperior.o ${OBJECTDIR}/relatorio3-cotasuperior_nomain.o;\
 	fi
 
 # Run Test Targets

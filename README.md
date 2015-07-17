@@ -1,14 +1,13 @@
 # README
 
-Biblioteca de grafos em C++.
-Essa é a parte 3 do trabalho.
+A graph library implemented in C++.
 
-## Dependências para o desenvolvimento
+## Dev dependencies
 
-* C++11 (gcc 4.8.x+) - OBS.: C++0x também funciona
+* C++11 (gcc 4.8.x+) - C++0x também funciona
 * NetBeans 7.4+
-* CppUnit (testes de unidade - opcional)
-* Boost Libraries (opcional)
-* Valgrind (profiler - opcional)
+* CppUnit (unit tests - optional)
+* Boost Libraries (optional)
+* Valgrind (profiler - optional)
 
-Para realizar modificações no Netbeans, basta criar um 'novo projeto a partir de código-fonte existente', e então especificar a pasta correta. Não deletar a pasta `nbproject`.
+On NetBeans, do a 'new project from existing source code'.
